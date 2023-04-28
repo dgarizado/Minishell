@@ -6,12 +6,13 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:16:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/04/28 23:44:53 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#define PRAMPT "minishell$>"
+
+t_data data;
 
 int	init_prompt(void)
 {
@@ -35,6 +36,7 @@ int	init_prompt(void)
 
 int	main(void)
 {	
+	init();
 	init_prompt();
 	return (0);
 }
