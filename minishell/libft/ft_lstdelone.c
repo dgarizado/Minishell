@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/12/09 14:20:56 by dgarizad          #+#    #+#             */
+/*   Updated: 2022/12/09 14:27:32 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_pwd(void)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	char	buffer[1024];
-
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
-	return (0);
+	del(lst -> content);
+	free(lst);
 }

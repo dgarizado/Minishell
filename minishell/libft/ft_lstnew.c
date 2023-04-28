@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/12/08 19:02:05 by dgarizad          #+#    #+#             */
+/*   Updated: 2022/12/08 20:54:54 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_pwd(void)
+t_list	*ft_lstnew(void *content)
 {
-	char	buffer[1024];
+	t_list	*new_node;
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
-	return (0);
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node -> content = content;
+	new_node -> next = NULL;
+	return (new_node);
 }

@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/11/29 22:34:01 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/04/06 15:02:59 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+// #include <stdio.h>
+// #include <string.h>
+#include "libft.h"
 
-int	ft_pwd(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	buffer[1024];
+	unsigned int		i;
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
-	return (0);
+	if (!dst && !src)
+		return (0);
+	i = 0;
+	if (dst > src)
+	{
+		while (len-- > 0)
+		{
+			*((char *)(dst + len)) = *((char *)(src + len));
+		}
+	}
+	else
+	{
+		while (i < len)
+		{
+			*((char *)(dst + i)) = *((char *)(src + i));
+			i++;
+		}
+	}
+	return (dst);
 }

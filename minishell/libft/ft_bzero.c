@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/11/29 22:10:04 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/04/06 15:02:17 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+//#include <strings.h>
+//#include <stdio.h>
+#include "libft.h"
 
-int	ft_pwd(void)
+void	ft_bzero(void *s, size_t n)
 {
-	char	buffer[1024];
+	unsigned int	i;
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
-	return (0);
+	if (n == 0)
+		return ;
+	i = 0;
+	while (i < n)
+	{
+		*((char *)(s + i)) = '\0';
+		i++;
+	}
 }

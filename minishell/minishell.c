@@ -1,28 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/04/28 20:16:33 by dgarizad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #define PRAMPT "minishell$>"
 
-int init_prompt()
+int	init_prompt(void)
 {
-    while (42) {
+	char	*input;
 
-		char	*input;
-        input = readline(PRAMPT);
-        if (!input) {
-            break;
-        }
-        add_history(input);
-        rl_on_new_line();
+	while (42)
+	{
+		input = readline(PRAMPT);
+		if (!input)
+			break ;
+		add_history(input);
+		rl_on_new_line();
 		if (strcmp(input, "pwd") == 0)
 			ft_pwd();
-        free(input);
-    }
-
-    return (0);
+		if (strcmp(input, "cd") == 0)
+			ft_cd("..");
+		free(input);
+	}
+	return (0);
 }
-int main() {
-    
+
+int	main(void)
+{	
 	init_prompt();
-    return 0;
+	return (0);
 }
 // int main(int argc, char **argv, char **envp) {
 //     char *input = readline("Enter some text: ");

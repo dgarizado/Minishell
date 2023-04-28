@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/12/01 15:30:10 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/04/06 14:59:20 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+//#include <stdio.h>
+//#include <ctype.h>
+#include "libft.h"
 
-int	ft_pwd(void)
+int	ft_toupper(int c)
 {
-	char	buffer[1024];
-
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
-	return (0);
+	if (c > 96 && c < 123)
+		c -= 32;
+	return (c);
 }

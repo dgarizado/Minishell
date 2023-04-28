@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/12/01 15:45:11 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/04/06 15:03:37 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+// #include <stdio.h>
+// #include <string.h>
+#include "libft.h"
 
-int	ft_pwd(void)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	buffer[1024];
+	unsigned int	i;
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
+	i = 0;
+	while (i < n)
+	{
+		if (*((unsigned char *)s) == (unsigned char)c)
+			return ((void *)s);
+		s++;
+		i++;
+	}
 	return (0);
 }

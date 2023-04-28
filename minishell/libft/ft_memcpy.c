@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/11/29 22:34:01 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/04/06 15:02:46 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+//#include <stdio.h>
+//#include <string.h>
+#include "libft.h"
 
-int	ft_pwd(void)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	buffer[1024];
+	unsigned int	i;
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
-	return (0);
+	if (!dst && !src)
+		return (0);
+	i = 0;
+	while (i < n)
+	{
+		*((char *)(dst + i)) = *((char *)(src + i));
+		if ((char *)(src + i) == (void *)0)
+			return (dst);
+		i++;
+	}
+	return (dst);
 }

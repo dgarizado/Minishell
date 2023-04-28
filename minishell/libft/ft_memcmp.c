@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/12/01 16:57:57 by dgarizad          #+#    #+#             */
+/*   Updated: 2022/12/01 18:11:52 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-int	ft_pwd(void)
+static int	ft_compare(unsigned char s1, unsigned char s2)
 {
-	char	buffer[1024];
+	int	result;
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
+	result = s1 - s2;
+	return (result);
 }
 
-int	ft_cd(char *newdir)
+int	ft_memcmp(const void *s1, const void *s2, unsigned int n)
 {
-	chdir(newdir);
-	return (0);
+	unsigned int	i;
+	int				result;
+
+	i = 0;
+	result = 0;
+	while (i < n)
+	{
+		if (*(char *)(s1 + i) != *(char *)(s2 + i))
+		{
+			result = ft_compare(*(char *)(s1 + i), *(char *)(s2 + i));
+			break ;
+		}
+		i++;
+	}
+	return (result);
 }

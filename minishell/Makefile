@@ -1,25 +1,22 @@
-#  |  |  ___ \    \  |         |
-#  |  |     ) |  |\/ |   _  |  |  /   _ 
-# ___ __|  __/   |   |  (   |    <    __/ 
-#    _|  _____| _|  _| \__,_| _|\_\ \___|
-#                              by jcluzet
+
 ################################################################################
 #                                     CONFIG                                   #
 ################################################################################
 
 NAME        := minishell
 CC        := gcc
-FLAGS    := -Wall -Wextra -Werror 
+FLAGS    := -Wall -Wextra -Werror -lreadline
+LIBFT = ./libft/libft.a
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS        :=      minishell.c \
+SRCS        :=      $(wildcard *.c)
                           
 OBJS        := $(SRCS:.c=.o)
 
-.c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+%.o: %.c
+	@$(CC) -c $< -o $@ $(CFLAGS)
 
 ################################################################################
 #                                  Makefile  objs                              #
@@ -34,10 +31,14 @@ BLUE		:= \033[1;34m
 CYAN 		:= \033[1;36m
 RM		    := rm -f
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} $(LIBFT)
 			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			${CC} ${FLAGS} -o ${NAME} ${OBJS}
+			${CC} ${FLAGS} -o ${NAME} ${OBJS} $(LIBFT)
 			@echo "$(GREEN)$(NAME) created[0m ✔️"
+
+$(LIBFT): 
+	@echo "Your beloved ${YELLOW}libft..."
+	@make -C ./libft
 
 all:		${NAME}
 
@@ -48,8 +49,9 @@ clean:
 			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
 
 fclean:		clean
-			@ ${RM} ${NAME}
+			@ ${RM} ${NAME} *.out
 			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
+			make fclean -C ./libft
 
 re:			fclean all
 

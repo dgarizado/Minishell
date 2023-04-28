@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/12/01 16:57:57 by dgarizad          #+#    #+#             */
+/*   Updated: 2022/12/01 17:10:09 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-int	ft_pwd(void)
+static int	ft_compare(unsigned char s1, unsigned char s2)
 {
-	char	buffer[1024];
+	int	result;
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
+	result = s1 - s2;
+	return (result);
 }
 
-int	ft_cd(char *newdir)
+int	ft_strncmp(const char *s1, const char*s2, unsigned int n)
 {
-	chdir(newdir);
-	return (0);
+	unsigned int	i;
+	int				result;
+
+	i = 0;
+	result = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	{
+		if (s1[i] != s2[i])
+		{
+			result = ft_compare(s1[i], s2[i]);
+			break ;
+		}
+		i++;
+	}
+	return (result);
 }

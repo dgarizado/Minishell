@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/11/30 22:48:53 by dgarizad          #+#    #+#             */
+/*   Updated: 2022/11/30 22:52:03 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-int	ft_pwd(void)
+unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize)
 {
-	char	buffer[1024];
+	unsigned int	i;
+	unsigned int	j;
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
-	return (0);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		i++;
+	}
+	j = 0;
+	if (dstsize)
+	{
+		while (j < i && j < dstsize)
+		{
+			dst[j] = src [j];
+			j++;
+		}
+		if (dstsize > i)
+			dst[i] = 0;
+		else
+			dst[dstsize -1] = 0;
+	}
+	return (i);
 }

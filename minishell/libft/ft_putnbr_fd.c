@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 20:18:14 by dgarizad         ###   ########.fr       */
+/*   Created: 2022/12/08 16:37:31 by dgarizad          #+#    #+#             */
+/*   Updated: 2022/12/08 17:14:57 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_pwd(void)
+static void	ft_putchar(char c, int fd)
 {
-	char	buffer[1024];
-
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
+	write(fd, &c, 1);
 }
 
-int	ft_cd(char *newdir)
+static void	ft_putnbr(long nb, int fd)
 {
-	chdir(newdir);
-	return (0);
+	if (nb < 0)
+	{
+		nb *= -1;
+		write(fd, "-", 1);
+	}	
+	if (nb / 10 != 0)
+	{
+		ft_putnbr(nb / 10, fd);
+	}
+	ft_putchar((nb % 10) + 48, fd);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	ln;
+
+	ln = n;
+	ft_putnbr(ln, fd);
 }
