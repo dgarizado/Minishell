@@ -12,6 +12,7 @@ static int	ft_shift(char *str, int *index)
 	}
 	return (0);
 }
+
 static int	ft_remove(char *str, int *index, char c)
 {
 	ft_shift(str, index);
@@ -65,11 +66,11 @@ int	ft_lexic(char *input)
 		if (input[i] == '\'' || input[i] == '\"' )
 		{
 			if (ft_is_closed(input, &i, input[i]) == 1)
-				printf("\nunclosed quotes!\n");
+				ft_error("\nunclosed quotes!\n");
 		}
 		i++;
 	}
-	ft_unquote(input);
-	printf("\nmodified: %s\n", input);
+	//ft_unquote(input);
+	//printf("\nmodified: %s\n", input);
 	return (0);
 }

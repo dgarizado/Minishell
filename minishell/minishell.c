@@ -6,33 +6,41 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/30 17:45:06 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/04/30 22:26:34 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_data data;
+t_data g_data;
+
+int	print_token1(char **str)
+{
+	int i = 0;
+	while (str[i] != NULL)
+	{
+		printf("\n%s\n", str[i]);
+		i++;
+	}
+	return (0);
+}
 
 int	init_prompt(void)
 {
-	char	*input;
-
 	while (42)
 	{
-		input = readline(PRAMPT);
-		if (!input)
+		g_data.input = readline(PRAMPT);
+		if (!(g_data.input))
 			break ;
-		add_history(input);
+		add_history((g_data.input));
 		rl_on_new_line();
-		ft_lexic(input);
-		if (strcmp(input, "pwd") == 0)
-			ft_pwd();
-		if (strcmp(input, "cd") == 0)
-			ft_cd("..");
-		if (strcmp(input, "exit") == 0)
+		ft_lexic((g_data.input));
+		g_data.token1 = pipexsplit((g_data.input));
+		if (strcmp((g_data.input), "exit") == 0)
 			ft_exit();
-		free(input);
+		print_token1(g_data.token1);
+		free((g_data.input));
+		free(g_data.token1);
 	}
 	return (0);
 }
@@ -40,11 +48,20 @@ int	init_prompt(void)
 int	main(void)
 {	
 	init();
-	init_prompt();
+	while (1)
+	{
+		g_data.mainpid = fork();
+		if (g_data.mainpid == 0)
+			init_prompt();
+		wait(&g_data.child_status);
+		g_data.child_status = (WEXITSTATUS(g_data.child_status));
+		if (g_data.child_status == 255)
+			break ;
+	}
 	return (0);
 }
 // int main(int argc, char **argv, char **envp) {
-//     char *input = readline("Enter some text: ");
+//     char *(data.input) = readline("Enter some text: ");
 //     char buffer[1024];
 //     add_history(input);
 //     printf("You entered: %s\n", input);

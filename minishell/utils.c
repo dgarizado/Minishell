@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/30 21:32:48 by dgarizad         ###   ########.fr       */
+/*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/04/30 22:17:53 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-extern t_data g_data;
 
-int	operators(void)
+extern t_data	g_data;
+
+void	ft_error(char *err)
 {
-	g_data.redirector[INFILE] = '<';
-	//g_data.redirector[DELIMITER] = '<<';
-	g_data.redirector[OUTFILE] = '>';
-	//g_data.redirector[APPEND] = '>>';
-	g_data.separator[PIPE] = '|';
-	//data.separator[AND] = '&&';
-	//data.separator[OR] = '||';
-	return (0);
+	ft_putstr_fd(err, 2);
+	exit(errno);
 }
 
-int	init(void)
+int	ft_check_tokens(void)
 {
-	ft_memset(&g_data, '0', sizeof(g_data));
-	operators();
+	
 	return (0);
 }
