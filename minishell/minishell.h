@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/29 00:49:44 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:44:04 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,14 @@ typedef struct s_data
 	char	redirector[4];
 }	t_data;
 
+//BUILTS IN
 int	ft_pwd(void);
 int	ft_cd(char *newdir);
-
+int	ft_exit(void);
 //INIT
 int	init(void);
+
+ //LEXIC
+int	ft_lexic(char *input);
+
 #endif

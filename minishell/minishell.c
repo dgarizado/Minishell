@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/28 23:44:53 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:45:06 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ int	init_prompt(void)
 			break ;
 		add_history(input);
 		rl_on_new_line();
+		ft_lexic(input);
 		if (strcmp(input, "pwd") == 0)
 			ft_pwd();
 		if (strcmp(input, "cd") == 0)
 			ft_cd("..");
+		if (strcmp(input, "exit") == 0)
+			ft_exit();
 		free(input);
 	}
 	return (0);
