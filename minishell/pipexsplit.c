@@ -6,11 +6,13 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:16:25 by vcereced          #+#    #+#             */
-/*   Updated: 2023/04/30 20:42:27 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/01 16:23:26 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern t_data	g_data;
 
 static	size_t	count_words(char *str)
 {
@@ -42,7 +44,10 @@ static size_t	gen_string_apostrophe(char *str, char **matriz, size_t i)
 	j++;
 	while (str[j] != flag)
 		j++;
-	matriz[i] = ft_substr(&str[0], 0, j+1);
+	if (g_data.flags.token1 == 0) //RETURNS WITH "" or '' 
+		matriz[i] = ft_substr(&str[0], 0, j + 1);
+	else
+		matriz[i] = ft_substr(&str[0], 1, j - 1);
 	return (j);
 }
 
@@ -73,6 +78,12 @@ static void	gen_matriz(size_t *i, size_t *j, char *str, char **matriz)
 	}
 }
 
+/**
+ * @brief This function is used to tokenize the first
+ * 
+ * @param str 
+ * @return char** 
+ */
 char	**pipexsplit(char *str)
 {
 	size_t	i;

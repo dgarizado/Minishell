@@ -6,13 +6,18 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/30 22:25:28 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/01 21:48:02 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# define PRAMPT "minishell$>"
+# define PRAMPT "mini🐢$>"
+# define WHITE   "\x1b[1;37m"
+# define YELLOW "\x1b[1;33m"
+# define BLUE "\x1b[1;36m"
+# define PINK "\x1b[1;35m"
+# define RST_CLR    "\x1b[0m"
 
 # include <stdio.h>
 # include <readline/readline.h>
@@ -22,23 +27,29 @@
 # include <string.h>
 # include "./libft/libft.h"
 # include "errno.h"
+# include <stdbool.h>
 
-typedef enum	e_redirections
+typedef enum e_redirections
 {
 	INFILE,
 	DELIMITER,
 	OUTFILE,
 	APPEND,
 	REDIR_COUNT
-} t_redirections;
+}	t_redirections;
 
-typedef enum	e_separators
+typedef enum e_separators
 {
 	PIPE,
 	AND,
 	OR,
 	SEP_COUNT
-} t_separators;
+}	t_separators;
+
+typedef struct s_flags
+{
+	int	token1;
+}	t_flags;
 
 typedef struct s_data
 {
@@ -46,25 +57,33 @@ typedef struct s_data
 	char	redirector[4];
 	char	*input;
 	char	**token1;
+	t_flags	flags;
 	pid_t	mainpid;
 	int		child_status;
-		
 }	t_data;
+
+//MAIN
+int		init_prompt(void);
 
 //BUILTS IN
 int		ft_pwd(void);
 int		ft_cd(char *newdir);
 int		ft_exit(void);
+
 //INIT
 int		init(void);
 
- //LEXIC
+//LEXIC
 int		ft_lexic(char *input);
+bool	is_enclosed(const char *str, int idx);
 
 //PIPEX SPLIT
 char	**pipexsplit(char *str);
 
 //UTILS
 void	ft_error(char *err);
+
+//EXPAND
+int		ft_check_expand(void);
 
 #endif

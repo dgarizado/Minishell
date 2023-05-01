@@ -1,47 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lexic.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/05/01 21:41:06 by dgarizad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-static int	ft_shift(char *str, int *index)
+/**
+ * @brief Returns true if it is enclosed by '
+ * fasle if not.
+ * @param str 
+ * @param idx 
+ * @return true 
+ * @return false 
+ */ //CHECKPOINT
+bool	is_enclosed(const char *str, int idx)
 {
-	int i;
+	bool	inside_quotes;
+	int		i;
 
-	i = *index;
-	while (str[i] != '\0')
-	{
-		str[i] = str[i  + 1];
-		i++;
-	}
-	return (0);
-}
-
-static int	ft_remove(char *str, int *index, char c)
-{
-	ft_shift(str, index);
-	while (str[*index] != '\0')
-	{
-		if (str[*index] == c)
-		{
-			ft_shift(str, index);
-			break ;
-		}
-		(*index)++;
-	}
-	return (0);
-}
-
-int ft_unquote(char *input)
-{
-	int	i;
-
+	inside_quotes = false;
 	i = 0;
-	while(input[i] != '\0')
+	while (i < idx)
 	{
-		if (input[i] == '\'' || input[i] == '\"' )
+		if (str[i] == '\'')
 		{
-			ft_remove(input, &i, input[i]);
+			inside_quotes = !inside_quotes;
 		}
 		i++;
 	}
-	return (0);
+	return (inside_quotes);
 }
 
 static int	ft_is_closed(char *str, int *index, char c)
@@ -61,7 +55,7 @@ int	ft_lexic(char *input)
 	int	i;
 
 	i = 0;
-	while(input[i] != '\0')
+	while (input[i] != '\0')
 	{
 		if (input[i] == '\'' || input[i] == '\"' )
 		{
@@ -70,7 +64,5 @@ int	ft_lexic(char *input)
 		}
 		i++;
 	}
-	//ft_unquote(input);
-	//printf("\nmodified: %s\n", input);
 	return (0);
 }
