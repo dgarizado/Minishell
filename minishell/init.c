@@ -6,13 +6,17 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/01 18:46:45 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/02 22:42:55 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
+// void	leak(void)
+// {
+// 	system ("leaks -q minishell");
+// }
 
 int	operators(void)
 {
@@ -25,6 +29,7 @@ int	operators(void)
 	//data.separator[OR] = '||';
 	return (0);
 }
+
 /**
  * @brief Main process wont execute commands. 
  * it reads the input and then forks.
@@ -33,6 +38,7 @@ int	operators(void)
  */
 int	init(void)
 {
+	// atexit(leak);
 	ft_bzero(&g_data, sizeof(g_data));
 	operators();
 	while (1)

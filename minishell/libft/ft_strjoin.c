@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 10:33:11 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/06 15:04:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/02 20:29:34 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ static char	*ft_cat(char *dest, const char *src, size_t index)
 	return (dest);
 }
 
+/**
+ * @brief concatenates two strings and returns a new one. Thats all.
+ * It wont free the input strings. 
+ * @param s1 
+ * @param s2 
+ * @return char* 
+ */
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*new_string;

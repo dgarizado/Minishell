@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/01 16:23:04 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/02 22:42:26 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ void	ft_error(char *err)
 
 // int	ft_check_tokens(void)
 // {
-	
 // 	return (0);
 // }

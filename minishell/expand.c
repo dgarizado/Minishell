@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/01 22:34:11 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/02 22:52:17 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,76 @@
 
 extern t_data	g_data;
 
-int	aux(int i, int j, char *newstr, char *expand)
+char	*ft_getenv(int i, int j, int lenvar)
 {
-	int	k;
-	int	l;
-	
-	k = 0;
-	j = 0;
-	while (g_data.token1[i][k] != '$')
+	char	*var;
+	char	*aux;
+
+	var = ft_substr(g_data.token1[i], j + 1, lenvar - 1);
+	aux = getenv(var);
+	if (!aux)
 	{
-		newstr[k] = g_data.token1[i][k];
-		k++;
+		aux = ft_calloc(1, 1);
 	}
-	l = 0;
-	while (expand[l] != '\0')
-	{
-		newstr[k] = expand[l];
-		k++;
-		l++;
-	}
-	newstr[k] = '"';
-	return (0);
+	var = NULL;
+	free (var);
+	return (aux);
 }
 
 /**
- * @brief This function i meant to 
- * expand env variables into text. 
- * This will need a realloc and a join.
+ * @brief Calculates the len of the $VAR 
+ * Is used for the expantion.
  * @param i 
  * @param j 
  * @return int 
  */
+int	aux(int i, int j)
+{
+	int	k;
+
+	k = 0;
+	while (g_data.token1[i][j] != ' ' && g_data.token1[i][j] \
+	&& g_data.token1[i][j] != '\"' && g_data.token1[i][j] != '\'') //HARDCODED NEED TO BE FIXED
+	{
+		j++;
+		k++;
+	}
+	return (k);
+}
+
+/**
+ * @brief This function finds the call of x 
+ * and expands it into the proper string. 
+ * @param i 
+ * @param j 
+ * @return int 
+ *///CHECK POINT
 int	ft_expand(int i, int j)
 {
-	int	len1; 
-	int	len2;
-	int newlen;
-	char	*newstr;
-	char	*expand = "expanded!";
-	
-	len1 = ft_strlen(g_data.token1[i]);
-	len2 = ft_strlen(expand);
-	newlen = len1 + len2 -1; //-1 in this case bcause $ is one char. this has to be the len of $ARG or whatever is called.
-	newstr = ft_calloc(1, newlen + 1); 
-	if (!newstr)
-		return (1);
-	j = 0;
-	aux(i, j, newstr, expand);
-	printf("\ntoken: %d , has %d chars\n", i, len1);
-	free(g_data.token1[i]);
-	g_data.token1[i] = newstr;
+	int		lenvar;
+	char	*str1;
+	char	*str2;
+	char	*expand;
+
+	str1 = ft_substr(g_data.token1[i], 0, j);
+	lenvar = aux(i, j);
+	expand = ft_getenv(i, j, lenvar);
+	str2 = ft_strjoin(str1, expand);
+	expand = NULL;
+	free(expand);
+	str1 = NULL;
+	free(str1);
+	str1 = ft_substr(g_data.token1[i], j + lenvar, ft_strlen(g_data.token1[i]));
+	g_data.token1[i] = NULL;
+	free (g_data.token1[i]);
+	g_data.token1[i] = ft_strjoin(str2, str1);
+	str1 = NULL;
+	free(str1);
+	str2 = NULL;
+	free(str2);
 	return (0);
 }
+
 /**
  * @brief This function checks if there is $
  * in each token. Then expand it if it is
@@ -73,9 +91,9 @@ int	ft_expand(int i, int j)
  * 
  * @return int 
  */
-int ft_check_expand(void)
+int	ft_check_expand(void)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = 0;
@@ -85,8 +103,7 @@ int ft_check_expand(void)
 		while (g_data.token1[i][j] != '\0')
 		{
 			if (g_data.token1[i][j] == '$' && g_data.token1[i][0] != '\'')
-				ft_expand(i, j);	
-			//printf("\ntoken %d has dollar \n", i);
+				ft_expand(i, j);
 			j++;
 		}		
 		i++;
