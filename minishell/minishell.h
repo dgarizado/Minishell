@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/01 21:48:02 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:15:37 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ typedef struct s_data
 	char	separator[3];
 	char	redirector[4];
 	char	*input;
+	char	*input_ex;
 	char	**token1;
+	char	**token2;
 	t_flags	flags;
 	pid_t	mainpid;
 	int		child_status;
@@ -85,5 +87,8 @@ void	ft_error(char *err);
 
 //EXPAND
 int		ft_check_expand(void);
+
+//UNTOKEN
+char	*ft_untoken(void);
 
 #endif

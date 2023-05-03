@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/02 22:52:17 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:10:20 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 extern t_data	g_data;
 
+/**
+ * @brief Trims the string that contains $ARG
+ * in order to search it in the ENV list. 
+ * @param i 
+ * @param j 
+ * @param lenvar 
+ * @return char* 
+ */
 char	*ft_getenv(int i, int j, int lenvar)
 {
 	char	*var;
@@ -33,6 +41,8 @@ char	*ft_getenv(int i, int j, int lenvar)
 /**
  * @brief Calculates the len of the $VAR 
  * Is used for the expantion.
+ * if there is a $ in the string, it wont count it
+ *
  * @param i 
  * @param j 
  * @return int 
@@ -47,6 +57,8 @@ int	aux(int i, int j)
 	{
 		j++;
 		k++;
+		if (g_data.token1[i][j] == '$')
+			break ;
 	}
 	return (k);
 }

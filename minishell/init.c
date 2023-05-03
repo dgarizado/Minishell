@@ -6,17 +6,17 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/02 22:42:55 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:17:41 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
-// void	leak(void)
-// {
-// 	system ("leaks -q minishell");
-// }
+void	leak(void)
+{
+	system ("leaks -q minishell");
+}
 
 int	operators(void)
 {
@@ -38,9 +38,9 @@ int	operators(void)
  */
 int	init(void)
 {
-	// atexit(leak);
 	ft_bzero(&g_data, sizeof(g_data));
 	operators();
+	//atexit(leak);
 	while (1)
 	{
 		g_data.input = readline(PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>");
@@ -55,7 +55,7 @@ int	init(void)
 		{
 			printf("\nBig daddy PID:%d\n", getpid());
 			wait(&g_data.child_status);
-			free((g_data.input));
+			free((g_data.input)); // IS IT PROPERLY FREED HERE AT DAD?
 			g_data.child_status = (WEXITSTATUS(g_data.child_status));
 			if (g_data.child_status == 255)
 				break ;
