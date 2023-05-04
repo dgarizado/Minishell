@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/03 19:17:41 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:58:43 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	operators(void)
 	//g_data.redirector[DELIMITER] = '<<';
 	g_data.redirector[OUTFILE] = '>';
 	//g_data.redirector[APPEND] = '>>';
-	g_data.separator[PIPE] = '|';
+	//g_data.separator[PIPE] = '|';
 	//data.separator[AND] = '&&';
 	//data.separator[OR] = '||';
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 21:05:38 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:58:23 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@
 typedef enum e_redirections
 {
 	INFILE,
-	DELIMITER,
 	OUTFILE,
-	APPEND,
 	REDIR_COUNT
 }	t_redirections;
 
@@ -58,7 +56,7 @@ typedef struct s_flags
 typedef struct s_data
 {
 	char	separator[3];
-	char	redirector[4];
+	char	redirector[2];
 	char	*input;
 	char	*input_ex;
 	char	**token1;
@@ -74,7 +72,6 @@ int		init_prompt(void);
 
 //BUILTS IN
 int		ft_pwd(void);
-int		ft_cd(char *newdir);
 int		ft_exit(void);
 int 		msg_error(char *s1, char *s2);
 int 		str_error(char *s1, char *s2);
