@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 22:58:23 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:21:16 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,8 @@ int		ft_check_expand(void);
 
 //UNTOKEN
 char	*ft_untoken(void);
+
+//PROGRAM
+int		ft_program(char *str);
 
 #endif

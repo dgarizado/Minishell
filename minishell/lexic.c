@@ -6,11 +6,13 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/01 21:41:06 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 00:02:12 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_data	g_data;
 
 /**
  * @brief Returns true if it is enclosed by '
@@ -50,6 +52,13 @@ static int	ft_is_closed(char *str, int *index, char c)
 	return (1);
 }
 
+/**
+ * @brief Checks if there are unclosed  ' or ""
+ * and performs the first tokenization in order
+ * to facilitate the expand function. 
+ * @param input 
+ * @return int 
+ */
 int	ft_lexic(char *input)
 {
 	int	i;
@@ -64,5 +73,9 @@ int	ft_lexic(char *input)
 		}
 		i++;
 	}
+	g_data.token1 = pipexsplit((g_data.input));
+	if (strcmp((g_data.token1[0]), "exit") == 0)
+		ft_exit();
+	ft_check_expand();
 	return (0);
 }

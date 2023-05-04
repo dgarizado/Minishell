@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 23:01:49 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:40:38 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@ extern t_data	g_data;
 
 int	ft_redic(char *str)
 {
-	int	i;
-
+	int		i;
+	char	*redirector;
+	
 	i = 0;
-	while (g_data.redirector[i] != NULL)
+	while (i < REDIR_COUNT)
 	{
-		if (isredic(str[i]))
+		redirector = ft_strchr(str, g_data.redirector[i]);
+		if (redirector != NULL)
+			printf("\nFOUND:'%s'\n", redirector);
 		i++;
 	}
 	return (0);
 }
 int	ft_program(char *str)
 {
-	
+	ft_redic(str);
 	return (0);
 }
