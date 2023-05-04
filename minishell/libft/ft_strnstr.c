@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 18:31:20 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/06 15:04:49 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:15:05 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ static size_t	ft_cmp(const char *s1, const char*s2, size_t n)
 	return (1);
 }
 
+/**
+ * @brief Search if the needle is inside the n-lenght characters of 
+ * the haystack.
+ * 
+ * @param haystack 
+ * @param needle 
+ * @param len 
+ * @return char* 
+ */
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/03 21:15:37 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/04 21:05:38 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # define BLUE "\x1b[1;36m"
 # define PINK "\x1b[1;35m"
 # define RST_CLR    "\x1b[0m"
+# define INFILEE "<"
+# define OUTFILEE ">"
+# define APPENDD ">>"
+# define HEREDOCC "<<"
 
 # include <stdio.h>
 # include <readline/readline.h>
@@ -59,6 +63,7 @@ typedef struct s_data
 	char	*input_ex;
 	char	**token1;
 	char	**token2;
+	char	**pipes;
 	t_flags	flags;
 	pid_t	mainpid;
 	int		child_status;
