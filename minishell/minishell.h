@@ -76,6 +76,11 @@ int		init_prompt(void);
 int		ft_pwd(void);
 int		ft_cd(char *newdir);
 int		ft_exit(void);
+int 		msg_error(char *s1, char *s2);
+int 		str_error(char *s1, char *s2);
+char 		*swap_arg(char *s1, char *s2);
+int 		chdir_swap(char *new_path, char **arr);
+int		ft_cd(char **arr);
 
 //INIT
 int		init(void);
