@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/05 17:21:52 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:29:53 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ bool	is_enclosed(const char *str, int idx)
 	return (inside_quotes);
 }
 
+/**
+ * @brief checks if the " or ' has 
+ * a partner that closes it. If not
+ * returns 1 and its considered an error. or not?
+ * @param str 
+ * @param index 
+ * @param c 
+ * @return int 
+ */
 static int	ft_is_closed(char *str, int *index, char c)
 {
 	(*index)++;
@@ -91,7 +100,7 @@ int	ft_lexic(char *input)
 		i++;
 	}
 	g_data.token1 = pipexsplit((g_data.input));
-	if (strcmp((g_data.token1[0]), "exit") == 0)
+	if (strcmp((g_data.token1[0]), "exit") == 0) // STRCMP!!
 		ft_exit();
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();

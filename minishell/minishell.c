@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/05 17:18:24 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:34:28 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ int	init_prompt(void)
 		ft_lexic((g_data.input));
 		ft_parcerito();
 		printf("\nLIST OF PROGRAMS:\n");
-		print_token1(g_data.pipes);
-		printf("\nSTART PROGRAN!:\n");
+		print_token1(g_data.token1);
+		printf("\nWEDDING PLANNER!:\n");
+		wedding_planner();
 		ft_program(g_data.pipes[0]);
 		free(g_data.token1); //THIS IS NOT PROPERLY FREED. IS A SPLIT!
 		exit(0); //HERE WE DEVELOP HOW TO KILL THIS CHILD
