@@ -6,13 +6,29 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/05 00:02:12 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:21:52 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 t_data	g_data;
+
+/**
+ * @brief Splits the already expanded input into words and 
+ * stores it in data.token2.
+ * Splits the expanded input by pipes so each program
+ * can be identified. Stores it in data.pipes.
+ * @return int 
+ */
+int	ft_parcerito(void)
+{
+	g_data.flags.token1 = 1;
+	g_data.token2 = pipexsplit(g_data.input_ex); //NEEDS PROPER FREE
+	g_data.flags.token1 = 0;
+	g_data.pipes = ft_split(g_data.input_ex, '|'); //NEEDS PROPER FREE
+	return (0);
+}
 
 /**
  * @brief Returns true if it is enclosed by '
@@ -54,8 +70,9 @@ static int	ft_is_closed(char *str, int *index, char c)
 
 /**
  * @brief Checks if there are unclosed  ' or ""
- * and performs the first tokenization in order
- * to facilitate the expand function. 
+ * and performs a first tokenization(split by spaces) in order
+ * to facilitate the expand function. The Expansion 
+ * is also done here.
  * @param input 
  * @return int 
  */
@@ -77,5 +94,6 @@ int	ft_lexic(char *input)
 	if (strcmp((g_data.token1[0]), "exit") == 0)
 		ft_exit();
 	ft_check_expand();
+	g_data.input_ex = ft_untoken();
 	return (0);
 }

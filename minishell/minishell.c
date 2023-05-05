@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 23:59:29 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:18:24 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,8 @@ int	init_prompt(void)
 	while (42)
 	{
 		ft_lexic((g_data.input));
-		g_data.input_ex = ft_untoken();
-		g_data.flags.token1 = 1;
-		g_data.token2 = pipexsplit(g_data.input_ex);
-		g_data.flags.token1 = 0;
-		g_data.pipes = ft_split(g_data.input_ex, '|');
-		printf("\nLIST OF COMMANDS:\n");
+		ft_parcerito();
+		printf("\nLIST OF PROGRAMS:\n");
 		print_token1(g_data.pipes);
 		printf("\nSTART PROGRAN!:\n");
 		ft_program(g_data.pipes[0]);

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 23:40:38 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:41:13 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ int	ft_redic(char *str)
 	}
 	return (0);
 }
+
+/**
+ * @brief Reveives a unique string containin only one command and
+ * their redirections. 
+ * Checks if there are redirections and removes them from
+ * the arguments.
+ * Performs the redirections.
+ * @param str 
+ * @return int 
+ */
 int	ft_program(char *str)
 {
 	ft_redic(str);

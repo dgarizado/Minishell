@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 23:21:16 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:39:57 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ int		init_prompt(void);
 //BUILTS IN
 int		ft_pwd(void);
 int		ft_exit(void);
-int 		msg_error(char *s1, char *s2);
-int 		str_error(char *s1, char *s2);
-char 		*swap_arg(char *s1, char *s2);
-int 		chdir_swap(char *new_path, char **arr);
+int		msg_error(char *s1, char *s2);
+int		str_error(char *s1, char *s2);
+char	*swap_arg(char *s1, char *s2);
+int		chdir_swap(char *new_path, char **arr);
 int		ft_cd(char **arr);
 
 //INIT
@@ -85,6 +85,7 @@ int		init(void);
 //LEXIC
 int		ft_lexic(char *input);
 bool	is_enclosed(const char *str, int idx);
+int		ft_parcerito(void);
 
 //PIPEX SPLIT
 char	**pipexsplit(char *str);

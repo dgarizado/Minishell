@@ -6,13 +6,14 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 22:58:43 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:40:53 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
+
 void	leak(void)
 {
 	system ("leaks -q minishell");
