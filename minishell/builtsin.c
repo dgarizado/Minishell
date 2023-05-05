@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtsin.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/30 22:19:39 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:09:04 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ int	ft_pwd(void)
 {
 	char	buffer[1024];
 
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
-
-int	ft_cd(char *newdir)
-{
-	chdir(newdir);
-	return (0);
+	getcwd(buffer, sizeof(buffer));
+	
+	if (*buffer)
+		return (printf("%s\n", buffer));
+	else
+		return (errno);
 }
 
 int	ft_exit(void)

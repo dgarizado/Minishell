@@ -6,11 +6,11 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:06:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/04 21:17:32 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/05 00:48:20 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishel.h"
+#include "minishell.h"
 
 static char	*join_path_desktop(char *username)
 {
@@ -65,8 +65,6 @@ static int	count_args(char **arr)
 
 int	ft_cd(char **arr)
 {
-	char	vector[256];
-
 	if (!arr || !*arr)
 		return (127);
 	else if (count_args(arr) > 3)

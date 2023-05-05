@@ -6,11 +6,11 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/04 21:22:50 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/05 00:04:48 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishel.h"
+#include "minishell.h"
 
 static	size_t	ft_cmp(const char *s1, const char*s2, size_t n)
 {

@@ -6,12 +6,11 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:48:42 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/03 21:31:35 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:08:47 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "stdio.h"
+#include "minishell.h"
 
 static int	check_flag(char *arr, int *i, int *len)
 {
@@ -51,7 +50,7 @@ int	ft_echo(char **arr)
 
 	flag = 0;
 	if (!arr || !*arr)
-		exit(127);
+		return(127);
 	if (arr[1])
 	{
 		len = 0;
@@ -68,5 +67,5 @@ int	ft_echo(char **arr)
 	}
 	if (flag == 0)
 		write(1, "\n", 1);
-	exit (0);
+	return (0);
 }

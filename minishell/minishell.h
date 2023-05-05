@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/03 21:15:37 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:04:29 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,11 @@ int		init_prompt(void);
 
 //BUILTS IN
 int		ft_pwd(void);
-int		ft_cd(char *newdir);
 int		ft_exit(void);
-int 		msg_error(char *s1, char *s2);
-int 		str_error(char *s1, char *s2);
-char 		*swap_arg(char *s1, char *s2);
-int 		chdir_swap(char *new_path, char **arr);
+int 	msg_error(char *s1, char *s2);
+int 	str_error(char *s1, char *s2);
+char 	*swap_arg(char *s1, char *s2);
+int 	chdir_swap(char *new_path, char **arr);
 int		ft_cd(char **arr);
 
 //INIT
