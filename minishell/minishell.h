@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/05 18:57:37 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:27:54 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_data
 	char	**token1;
 	char	**token2;
 	char	**pipes;
+	char	**commands;
 	int		pipes_nbr;
 	t_flags	flags;
 	pid_t	mainpid;
