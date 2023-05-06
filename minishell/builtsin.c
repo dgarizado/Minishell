@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 23:09:04 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:17:04 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	ft_pwd(void)
 	getcwd(buffer, sizeof(buffer));
 	
 	if (*buffer)
-		return (printf("%s\n", buffer));
+	{
+		printf("%s\n", buffer);
+		return (EXIT_SUCCESS);
+	}
 	else
 		return (errno);
 }

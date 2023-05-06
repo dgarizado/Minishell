@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 23:04:29 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/06 02:26:12 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ int 	str_error(char *s1, char *s2);
 char 	*swap_arg(char *s1, char *s2);
 int 	chdir_swap(char *new_path, char **arr);
 int		ft_cd(char **arr);
+char	**ft_abort(char **new_array, unsigned int i);
+int		ft_export(char **arr, char *str);
+char 	**ft_export_unset(char **arr, char ***static_env);
 
 //INIT
 int		init(void);
