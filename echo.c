@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:48:42 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/16 18:59:34 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/03 23:48:55 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_echo(char **arr)
 
 	flag = 0;
 	if (!arr || !*arr)
-		return(127);
+		exit(127);
 	if (arr[1])
 	{
 		len = 0;
@@ -67,5 +67,5 @@ int	ft_echo(char **arr)
 	}
 	if (flag == 0)
 		write(1, "\n", 1);
-	return (0);
+	exit (0);
 }
