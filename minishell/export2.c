@@ -6,14 +6,14 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:39:50 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/06 02:55:20 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:32:20 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern char	**environ;
-
+char **global_env;
+/*
 void check(void)
 {
 	system("leaks a.out");
@@ -86,14 +86,7 @@ char **ft_export_set(char **arr, char ***static_env)
 		ft_printf_arr(environ);
 		return (EXIT_SUCCESS);
 	}
-	new_env = ft_gen_new_env(arr);
-	if (!(*static_env))
-		*static_env = new_env;
-	else
-	{
-		ft_abort(*static_env, ft_arrlen(*static_env));
-		*static_env = new_env;
-	}
+
 	return (new_env);
 }
 
@@ -107,6 +100,12 @@ int	ft_export(char **arr, char *str)
 	if(!ft_strncmp(str, "unset", 5))
 		environ = ft_export_unset(arr, &static_env);
 	return (errno);
+}*/
+
+
+static void set_env_to_global(char **env)
+{
+	
 }
 
 void	swap_argv(int argc, char **argv)
@@ -123,22 +122,21 @@ void	swap_argv(int argc, char **argv)
 	}
 	argv[argc - 1] = NULL;
 }
-/*
-int main(int argc, char **argv)
+
+int main(int argc, char **argv, char **env)
 {
 	int n = 0;
-
+	set_env_to_global(char **env);
 	swap_argv(argc, argv);
-	//ft_printf_arr(environ);
+
 	write(1, "----------------------------------------\n", 42);
 	while (n < 1)
 	{
-		ft_export(argv, "set");
-		ft_export(argv, "unset");
+		ft_export(argv);
 		n++;
 	}
 	write(1, "----------------------------------------\n", 42);
-	ft_printf_arr(environ);
+
 	write(1, "----------------------------------------\n", 42);
 	atexit(check);
 	return (0);
