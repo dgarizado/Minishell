@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   redic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/16 18:58:28 by vcereced         ###   ########.fr       */
+/*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/05/05 17:41:30 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_pwd(void)
-{
-	char	buffer[1024];
+extern t_data	g_data;
 
-	getcwd(buffer, sizeof(buffer));
-	
-	if (*buffer)
-	{
-		printf("%s\n", buffer);
-		return (EXIT_SUCCESS);
-	}
-	else
-		return (errno);
-}
-
-int	ft_exit(void)
+int	ft_redicc(void)
 {
-	exit (255);
-	return (1);
+	// int	i;
+
+	// i = 0;
+	// while (g_data.pipes[i] != NULL)
+	// {
+	// 	if (ft_strnstr(g_data.pipes[i], ))
+	// 	{
+	// 	}
+	// 	i++;
+	// }
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/03 17:10:20 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 22:21:00 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ extern t_data	g_data;
  * @param lenvar 
  * @return char* 
  */
-char	*ft_getenv(int i, int j, int lenvar)
+static char	*ft_getenv(int i, int j, int lenvar)
 {
 	char	*var;
 	char	*aux;
@@ -47,7 +47,7 @@ char	*ft_getenv(int i, int j, int lenvar)
  * @param j 
  * @return int 
  */
-int	aux(int i, int j)
+static int	aux(int i, int j)
 {
 	int	k;
 

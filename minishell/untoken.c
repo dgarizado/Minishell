@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:55:54 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/03 21:04:59 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:52:14 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ char	*ft_join(char *s1, char *s2)
 	return (new_string);
 }
 
+/**
+ * @brief Iterates the **str and joins all rows 
+ * in one line, adding a space between rows. 
+ * 
+ * @return char* 
+ */
 char	*ft_untoken(void)
 {
 	char	*newstr;//NEED TO BE FREED OR NOT IF IS IN A CHILD?
