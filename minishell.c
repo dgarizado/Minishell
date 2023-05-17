@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/16 19:58:13 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/17 19:47:22 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	init_prompt(void)
 		printf(YELLOW"\nWEDDING PLANNER!:\n"RST_CLR);
 		wedding_planner();
 		print_token1(g_data.commands);
+		printf("\ninput str:%s\n", g_data.input_ex);
 		ft_program(g_data.pipes[0]);
 		free(g_data.token1); //THIS IS NOT PROPERLY FREED. IS A SPLIT!
 		exit(0); //HERE WE DEVELOP HOW TO KILL THIS CHILD
