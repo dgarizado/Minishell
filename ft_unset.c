@@ -6,86 +6,98 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:56:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/16 22:56:18 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/17 21:16:35 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern char	**environ;
+extern t_data; g_data;
 
-/*static int	ft_arrlen(char **env)
-{
-	int	n;
-
-	n = 0;
-	while (env[n])
-		n++;
-	return (n);
-}*/
-
-int ft_get_index_var(char *str)
+int ft_get_var(char *str)//return 0  if not encounter, return index when encounter
 {
 	int i;
 
 	i = 0;
-	while (environ[i])
+	while (g_data.env[i])
 	{
-		if(!ft_strncmp(*environ, str, ft_strlen(str)))
+		if(!ft_strncmp(g_data.env[i], str, ft_strlen(str)))
 			return(i);
 		i++;
 	}
 	return(0);
 }
 
-static char **ft_gen_new_env(char *str)
+static int ft_count_to_clear(char **arr)
 {
-	//char **new_env;
-	int	i;
-	char *swap;
+	int nvar_to_clear;
+	int i;
+	int n;
 	
-	i = ft_get_index_var(str);
-	swap = environ[i+1];
-	free(environ[i]);
-	environ[i] = swap;
-	i++;
-	while(environ[i])
+	nvar_to_clear = 0;
+	while(g_data.env[i])
 	{
-		swap = environ[i + 1];
-		environ[i] =swap;
+		n = 0;
+		while(arr[n])
+		{
+			if (ft_get_var(arr[n]) != 0)
+				nvar_to_clear++;
+			n++;
+		}
 		i++;
 	}
-	
-	return (environ);
+	return (nvar_to_clear);
 }
 
-char **ft_export_unset(char **arr, char ***static_env)//NOT FINISH!!!!!!!!!!
+static char	**ft_gen_new_arr(char **arr)
+{
+	char **new_arr_env;
+	int	len_new_env;
+	int i;
+	int n;
+	
+	len_new_env = ft_arrlen(g_data.env) - ft_count_to_clear(arr);
+	new_arr_env = (char **)malloc(sizeof(char *) * len_new_env + 1);
+	i = 0;
+	n= 0;
+	while (i < len_new_env)
+	{
+		if (ft_get_var(arr[n]) != 0)
+		{
+			new_arr_env[n] = ft_strdup(arr[i]);
+			n++;
+		}
+		i++;
+	}
+	new_arr_env[n] = NULL;
+	return (new_arr_env);
+}
+
+static char **ft_gen_new_env(char *arr)
+{
+	char	**new_arr_env;
+
+	new_arr_env = ft_gen_new_arr(arr);
+	if (g_data.flag_env != 0)
+		ft_abort(g_data.env, ft_arrlen(g_data.env));
+	g_data.flag_env++;
+	return (new_arr_env);
+}
+
+char **ft_unset(char **arr, char ***static_env)
 {
 	char **new_env;
 	
-	if (!environ)
+	if (!g_data.env)
 	{
 		str_error("unset", "env not found");
-		return(NULL);
+		return(EXIT_FAILURE);
 	}
-	arr++;
-	while(*arr)
+	if (!arr[1])
 	{
-		if (getenv(*arr))
-		{
-			
-			new_env = ft_gen_new_env(*arr);
-			if (!(*static_env))
-				*static_env = new_env;
-			else
-			{
-				ft_abort(*static_env, ft_arrlen(*static_env));
-				*static_env = new_env;
-			}
-		}
-		else
-			str_error("unset: not found;", *arr);
-		arr++;
+		str_error("unset", "enough arguments");
+		return (EXIT_SUCCESS);
 	}
-	return (new_env);
+	g_data.env = ft_gen_new_env(arr);
+	return (errno);
 }
