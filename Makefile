@@ -13,7 +13,7 @@ OBJ_DIR = ./obj
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS        :=      $(wildcard *.c)
+SRCS        :=      $(wildcard *.c) $(wildcard built-in/*.c)
                           
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

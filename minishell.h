@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/17 20:33:17 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/17 20:52:02 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		ft_export(char **arr);
 char 	**ft_export_unset(char **arr, char ***static_env);
 
 //INIT
-int		init(void);
+int		init(char **env);
 
 //LEXIC
 int		ft_lexic(char *input);

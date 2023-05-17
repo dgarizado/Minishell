@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cd_2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/04 21:22:50 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/17 21:16:57 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishel.h"
+#include "../minishell.h"
 
 static	size_t	ft_cmp(const char *s1, const char*s2, size_t n)
 {
