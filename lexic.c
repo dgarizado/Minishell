@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/05 18:29:53 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/16 23:06:46 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,12 @@ int	ft_lexic(char *input)
 	g_data.token1 = pipexsplit((g_data.input));
 	if (strcmp((g_data.token1[0]), "exit") == 0) // STRCMP!!
 		ft_exit();
+	//HARCODED DELET:
+	if (strcmp((g_data.token1[0]), "export") == 0) // STRCMP!!
+	{
+		ft_export(g_data.token1);
+		//ft_printf_arr(g_data.env);
+	}
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
 	return (0);

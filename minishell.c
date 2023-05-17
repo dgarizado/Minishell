@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/17 19:47:22 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/17 20:22:42 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	init_prompt(void)
 	{
 		ft_lexic((g_data.input));
 		ft_parcerito();
-		printf(YELLOW"\nLIST OF TOKENS LEVEL1:\n"RST_CLR);
+		printf("\nLIST OF TOKENS LEVEL1:\n");
 		print_token1(g_data.token1);
-		printf(YELLOW"\nWEDDING PLANNER!:\n"RST_CLR);
+		printf("\nWEDDING PLANNER!:\n");
 		wedding_planner();
 		print_token1(g_data.commands);
 		printf("\ninput str:%s\n", g_data.input_ex);

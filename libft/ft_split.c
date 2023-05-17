@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:14:50 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/04/06 15:05:18 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/16 20:34:06 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,6 @@ static int	ft_count_del(char const *s, char c)
 		i++;
 	}
 	return (count);
-}
-
-static char	**ft_abort(char **new_array, unsigned int i)
-{
-	while (i-- > 0)
-		free(new_array[i]);
-	free(new_array);
-	return (0);
 }
 
 static char	**ft_array_gen(char const *s, char c, char **new_array)
