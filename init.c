@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/05 17:40:53 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/16 22:53:28 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ extern t_data	g_data;
 void	leak(void)
 {
 	system ("leaks -q minishell");
+}
+
+static void set_env_to_global(char **env)
+{
+	g_data.env = env;
 }
 
 int	operators(void)
@@ -37,11 +42,11 @@ int	operators(void)
  * 
  * @return int 
  */
-int	init(void)
+int	init(char **env)
 {
 	ft_bzero(&g_data, sizeof(g_data));
 	operators();
-	//atexit(leak);
+	set_env_to_global(env);
 	while (1)
 	{
 		g_data.input = readline(PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>");
