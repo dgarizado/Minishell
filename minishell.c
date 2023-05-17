@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/17 20:22:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/17 21:06:18 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	init_prompt(void)
 	{
 		ft_lexic((g_data.input));
 		ft_parcerito();
-		printf("\nLIST OF TOKENS LEVEL1:\n");
+		printf(YELLOW"\nLIST OF TOKENS LEVEL1:\n"RST_CLR);
 		print_token1(g_data.token1);
-		printf("\nWEDDING PLANNER!:\n");
+		printf(YELLOW"\nWEDDING PLANNER!:\n"RST_CLR);
 		wedding_planner();
 		print_token1(g_data.commands);
 		printf("\ninput str:%s\n", g_data.input_ex);
@@ -52,8 +52,10 @@ int	init_prompt(void)
 }
 
 //CHECKPOINT
-int	main(void)
+int	main(int argc, char **argv, char **env)
 {	
-	init();
+	argc = 0;
+	argv = NULL;
+	init(env);
 	return (0);
 }

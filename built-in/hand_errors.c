@@ -6,11 +6,11 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:05:51 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/17 20:46:28 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/17 21:31:25 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	str_error(char *s1, char *s2)
 {
