@@ -6,14 +6,15 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 23:27:39 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/06 02:27:40 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/17 19:56:55 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "./libft/libft.h"
 
 int g_dataflagstoken1 = 0; ///WATCH OUT
-
+/*
 void	ft_printf_arr(char **new_arg)
 {
 	int	n;
@@ -24,7 +25,7 @@ void	ft_printf_arr(char **new_arg)
 		printf("%s\n", new_arg[n]);
 		n++;
 	}
-}
+}*/
 
 
 static	size_t	count_words(char *str)
@@ -61,9 +62,9 @@ static char *gen_string_apostrophe(char *str, size_t *jj)
 		j++;
 	*jj = *jj + j;
 	if (g_dataflagstoken1 == 0)
-		return (ft_substr(&str[0], 0, j + 1));
+		return (ft_substr(&str[0], 0, j + 1));//con comillas
 	else
-		return (ft_substr(&str[0], 1, j - 1));
+		return (ft_substr(&str[0], 1, j - 1));//sin comillas
 
 }
 
@@ -126,11 +127,11 @@ char	**specialsplit(char *str, char c)
 	}
 	return (matriz);
 }
-
+/*
 int main(void)
 {
-	char *str = "ABA CDC'ABA'otr 'text'";
+	char *str = "hola | amig | no 'te | procupes'";
 	//char *str = "a |a'| po'rt|'camila '|'texto'";
-	ft_printf_arr(specialsplit(str, ' '));
+	ft_printf_arr(specialsplit(str, '|'));
 	return 0;
-}
+}*/

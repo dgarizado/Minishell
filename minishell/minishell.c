@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/06 02:19:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/16 23:07:23 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	init_prompt(void)
 	{
 		ft_lexic((g_data.input));
 		ft_parcerito();
-		printf("\nLIST OF TOKENS LEVEL1:\n");
+		printf(YELLOW"\nLIST OF TOKENS LEVEL1:\n"RST_CLR);
 		print_token1(g_data.token1);
-		printf("\nWEDDING PLANNER!:\n");
+		printf(YELLOW"\nWEDDING PLANNER!:\n"RST_CLR);
 		wedding_planner();
 		print_token1(g_data.commands);
 		ft_program(g_data.pipes[0]);
@@ -51,8 +51,10 @@ int	init_prompt(void)
 }
 
 //CHECKPOINT
-int	main(void)
+int	main(int argc, char **argv, char **env)
 {	
-	init();
+	argc = 0;
+	argv = NULL;
+	init(env);
 	return (0);
 }

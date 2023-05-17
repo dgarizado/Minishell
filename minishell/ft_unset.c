@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:56:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/06 02:57:30 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/16 22:56:18 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern char	**environ;
 
-static int	ft_arrlen(char **env)
+/*static int	ft_arrlen(char **env)
 {
 	int	n;
 
@@ -22,7 +22,7 @@ static int	ft_arrlen(char **env)
 	while (env[n])
 		n++;
 	return (n);
-}
+}*/
 
 int ft_get_index_var(char *str)
 {
@@ -40,10 +40,8 @@ int ft_get_index_var(char *str)
 
 static char **ft_gen_new_env(char *str)
 {
-	char **new_env;
-	int	len_env;
+	//char **new_env;
 	int	i;
-	int	n;
 	char *swap;
 	
 	i = ft_get_index_var(str);
@@ -58,7 +56,7 @@ static char **ft_gen_new_env(char *str)
 		i++;
 	}
 	
-	return (new_env);
+	return (environ);
 }
 
 char **ft_export_unset(char **arr, char ***static_env)//NOT FINISH!!!!!!!!!!
