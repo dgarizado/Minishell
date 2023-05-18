@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:06:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/17 21:16:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:55:47 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static char	*join_path_desktop(char *username)
+static char	*join_path_home(char *username)
 {
 	char	*path;
 
@@ -23,7 +23,7 @@ static char	*join_path_desktop(char *username)
 		return (NULL);
 }
 
-static char	*gen_path_desktop(void)
+static char	*gen_path_home(void)
 {
 	char	*username;
 	char	*path;
@@ -31,22 +31,22 @@ static char	*gen_path_desktop(void)
 	username = getenv("USER");
 	if (username)
 	{
-		path = join_path_desktop(username);
+		path = join_path_home(username);
 		return (path);
 	}
 	else
 		return (NULL);
 }
 
-static int	ch_desktop(char **arr)
+static int	ch_home(char **arr)
 {
-	char	*path_desktop;
+	char	*path_home;
 	int		status;
 
-	path_desktop = gen_path_desktop();
-	status = chdir(path_desktop);
-	if (path_desktop)
-		free(path_desktop);
+	path_home = gen_path_home();
+	status = chdir(path_home);
+	if (path_home)
+		free(path_home);
 	if (status == 0)
 		return (0);
 	else
@@ -65,7 +65,6 @@ static int	count_args(char **arr)
 
 int	ft_cd(char **arr)
 {
-
 	if (!arr || !*arr)
 		return (127);
 	else if (count_args(arr) > 3)
@@ -73,7 +72,7 @@ int	ft_cd(char **arr)
 	else if (count_args(arr) == 3)
 		return (chdir_swap(swap_arg(arr[1], arr[2]), arr));
 	else if (!arr[1])
-		return (ch_desktop(arr));
+		return (ch_home(arr));
 	else if (chdir(arr[1]) == 0)
 		return (0);
 	else
@@ -102,6 +101,7 @@ int	main(int argc, char **argv)
 	status = ft_cd(argv);
 	printf("DIRECCION afteeerr  %s\n", getcwd(vector, sizeof(vector)));
 	printf("****salida STATUS %d\n\n", status);
-	atexit(check);
+	//atexit(check);
 	return (0);
-}*/
+}
+*/

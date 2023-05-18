@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:48:42 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/03 23:46:58 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:55:26 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ int	ft_echo(char **arr)
 	}
 	if (flag == 0)
 		write(1, "\n", 1);
-	exit (0);
+	return (0);
 }

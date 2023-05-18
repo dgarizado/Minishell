@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/17 20:52:02 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/18 22:30:04 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,17 @@ typedef struct s_data
 	int		child_status;
 }	t_data;
 
+typedef struct s_execute
+	{
+		char	**matriz_command;
+		char	*str_path;
+}	t_struc;
+
 //MAIN
 int		init_prompt(void);
 
 //BUILTS IN
-int		ft_pwd(void);
+int		ft_pwd(char **arr);
 int		ft_exit(void);
 int		msg_error(char *s1, char *s2);
 int		str_error(char *s1, char *s2);
@@ -90,7 +96,13 @@ int 	chdir_swap(char *new_path, char **arr);
 int		ft_cd(char **arr);
 char	**ft_abort(char **new_array, unsigned int i);
 int		ft_export(char **arr);
-char 	**ft_export_unset(char **arr, char ***static_env);
+int		ft_unset(char **arr);
+void	ft_copy(char **new_arr_env, char **arr, int i, int *n);
+int 	ft_get_var(char *str, int n);
+int		ft_echo(char **arr);
+void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
+char	**pipexsplit(char *str);
+int		ft_env(void);
 
 //INIT
 int		init(char **env);
