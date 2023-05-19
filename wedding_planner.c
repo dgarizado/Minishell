@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/06 02:07:32 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/18 23:18:30 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ extern t_data	g_data;
  * uses the tokenized1 version for an easy development.
  * @return int 
  */
-static int	ft_count_pipes(void)
+int	ft_count_pipes(void)
 {
 	int	i;
 	int pipes;
@@ -69,21 +69,6 @@ char	*ft_join_pipes(int *i)
  */
 int	wedding_planner(void)
 {
-	int	wd;
-	int	i; 
-	int j;
-	
-	g_data.pipes_nbr = ft_count_pipes();	
-	g_data.commands = (char **)ft_calloc(g_data.pipes_nbr + 2, sizeof(char*)); //NEEDS FREEDOM
-	if (!g_data.commands)
-		return (1);
-	wd = 0;
-	j = 0;
-	i = 0;
-	while(wd < g_data.pipes_nbr +1)
-	{
-		g_data.commands[wd] = ft_join_pipes(&i);
-		wd++;
-	}
+	g_data.commands = specialsplit(g_data.input_ex, '|');
 	return (0);
 }

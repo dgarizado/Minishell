@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/17 20:52:02 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:19:04 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ typedef struct s_flags
 	int	token1;
 }	t_flags;
 
+
 typedef struct s_data
 {
 	char	separator[3];
 	char	redirector[2];
 	char	*input;
 	char	*input_ex;
+	char	*str_redic;
 	char	**token1;
 	char	**token2;
 	char	**pipes;
@@ -98,6 +100,7 @@ int		init(char **env);
 //LEXIC
 int		ft_lexic(char *input);
 bool	is_enclosed(const char *str, int idx);
+int		ft_is_closed(char *str, int *index, char c);
 int		ft_parcerito(void);
 
 //PIPEX SPLIT
@@ -105,6 +108,7 @@ char	**pipexsplit(char *str);
 
 //UTILS
 void	ft_error(char *err);
+int		delete_str(int i, int j, char *str);
 
 //EXPAND
 int		ft_check_expand(void);
@@ -118,5 +122,8 @@ int		ft_program(char *str);
 
 //WEDDING PLANNER
 int		wedding_planner(void);
+
+//SPECIAL SPLIT
+char	**specialsplit(char *str, char c);
 
 #endif

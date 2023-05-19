@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/16 23:06:46 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/18 01:19:11 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ bool	is_enclosed(const char *str, int idx)
  * @param c 
  * @return int 
  */
-static int	ft_is_closed(char *str, int *index, char c)
+int	ft_is_closed(char *str, int *index, char c)
 {
 	(*index)++;
 	while (str[*index] != '\0')
@@ -99,7 +99,7 @@ int	ft_lexic(char *input)
 		}
 		i++;
 	}
-	g_data.token1 = pipexsplit((g_data.input));
+	g_data.token1 = specialsplit((g_data.input), ' ');
 	if (strcmp((g_data.token1[0]), "exit") == 0) // STRCMP!!
 		ft_exit();
 	//HARCODED DELET:

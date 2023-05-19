@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/17 18:57:26 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:10:39 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,16 @@
 
 extern t_data	g_data;
 
-// int	ft_redic(char *str)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*redirector;
-// 	char	*red;
-	
-// 	i = 0;
-// 	while (i < REDIR_COUNT)
-// 	{
-// 		redirector = ft_strchr(str, g_data.redirector[i]);
-// 		if (redirector != NULL)
-// 		{
-// 			j = i;
-// 			while (redirector[j] != '\0' && redirector[j] != ' ' && redirector[j] != '<' && redirector[j] != '>')
-// 			{
-// 				j++;
-// 			}
-// 			red = ft_substr(redirector, 0, j);
-// 			printf("\nFOUND:'%s'\n", redirector);
-// 			printf("\nreFOUND:'%s'\n", red);	
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
+/**
+ * @brief Counts the number of redirections in order
+ * to allocate enough strings for storing them.
+ * It doesnt properly count if there is >>>>>>>
+ * this can be improved. otherwise it will allocate
+ * extra spaces, that wont generate errors.
+ * @param str 
+ * @param c 
+ * @return int 
+ */
 int	ft_count_redic(char *str, char c)
 {
 	int	i;
@@ -61,67 +44,102 @@ int	ft_count_redic(char *str, char c)
 	return (count);
 }
 
-char	get_next_redic(char *str, char c)
+static int	aux_aux(int *i, int *j, int *k, char c)
 {
-	int		i;
-	int		count;
-	int		j;
-	int		k;
-	char	*aux;
-
-	i = 0;
-	k = 0;
-	aux = ft_substr(str, 0, ft_strlen(str) + 1);
-	printf("\ncopied:%s\n", str);
-	count = 0;
-	while (str[i] != '\0')
+	(*j)++;
+	if (g_data.str_redic[*j] == '\0' || g_data.str_redic[*j] == ' ' \
+	|| g_data.str_redic[*j] == c)
 	{
-		if (str[i] == c)
-		{
-			j = i + 1;
-			while (str[j] == ' ')
-				j++;
-			while(str[j] != '\0' && str[j] != ' ')	
-			{
-				count++;
-				j++;
-				if (str[j] == '\0' || str[j] == ' ')
-				{
-					g_data.infiles[k] = ft_substr(aux, i, j);
-					printf("\nredic: %s\n", g_data.infiles[k]);
-					k++;
-					
-				}
-			}	
-		}
-		i++;
+		if (c == '<')
+			g_data.infiles[*k] = ft_substr(g_data.str_redic, *i, *j - *i);
+		else
+			g_data.outfiles[*k] = ft_substr(g_data.str_redic, *i, *j - *i);
+		delete_str(*i, *j, g_data.str_redic);
+		(*k)++;
 	}
-	return (count);
+	return (0);
 }
 
 /**
- * @brief Reveives a unique string containin only one command and
+ * @brief Aux function for norminette issues. 
+ * Here the redirections are managed to be stored in a different array.
+ *  data.infiles or data.outfiles.
+ * Also here, the text for redirections is removed. 
+ * @param i 
+ * @param j 
+ * @param k 
+ * @param c 
+ * @param str 
+ * @return int 
+ */
+int	aux(int *i, int *j, int *k, char c)
+{
+	if (g_data.str_redic[*i] == c)
+	{
+		if (g_data.str_redic[*i + 1] == c)
+			(*j) = *i + 2;
+		else
+			(*j) = *i + 1;
+		while (g_data.str_redic[*j] == ' ')
+			(*j)++;
+		while (g_data.str_redic[*j] && g_data.str_redic[*j] != ' ' \
+		&& g_data.str_redic[*j] != c)
+		{
+			aux_aux(i, j, k, c);
+		}
+		if (g_data.str_redic[*i + 1] == c)
+			(*i)++;
+	}
+			(*i)++;
+	return (0);
+}
+
+/**
+ * @brief Get the next redic character And build the appropriate
+ * string to store it.
+ * 
+ * @param str 
+ * @param c 
+ * @return char 
+ */
+char	get_next_redic(char *str, char c)
+{
+	int		i;
+	int		j;
+	int		k;
+
+	i = 0;
+	k = 0;
+	g_data.str_redic = str;
+	while (str[i] != '\0')
+	{
+		aux(&i, &j, &k, c);
+	}
+	g_data.str_redic = NULL;
+	return (0);
+}
+
+/**
+ * @brief Reveives a unique string containing only one command and
  * their redirections. 
  * Checks if there are redirections and removes them from
  * the arguments.
- * Performs the redirections.
+ * Stores the redirection names in two arrays (for infiles and for outifiles)
  * @param str 
  * @return int 
  */
 int	ft_program(char *str)
 {
-	// // while (str)
-	// // {
-	// 	ft_redic(str);
-	// 	str++;
-	// // }
-	//GET NEXT REDIC
-	int i = 0;
+	int	i;
+
 	i = ft_count_redic(str, '>');
-	g_data.outfiles = ft_calloc(sizeof(char *), i + 1);
+	if (i > 0)
+		g_data.outfiles = ft_calloc(sizeof(char *), i + 1);
 	i = ft_count_redic(str, '<');
-	g_data.infiles = ft_calloc(sizeof(char *), i + 1);
-	printf("\ncame in: %s infiles\n", str);
-	printf("\nfirst redic has: %d characters\n", get_next_redic(str, '<'));
+	if (i > 0)
+		g_data.infiles = ft_calloc(sizeof(char *), i + 1);
+	get_next_redic(str, '<');
+	get_next_redic(str, '>');
+	printf("\nresult for exec:'%s'\n", str);
 	return (0);
 }
