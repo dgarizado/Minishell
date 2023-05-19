@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/18 22:30:04 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:20:55 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,12 @@
 # include <unistd.h>
 # include <string.h>
 # include "./libft/libft.h"
-# include "errno.h"
+# include <errno.h>
 # include <stdbool.h>
+# include <stdarg.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <stddef.h>
 
 typedef enum e_redirections
 {
@@ -63,11 +67,15 @@ typedef struct s_data
 	char	**token2;
 	char	**pipes;
 	char	**commands;
-	char	**infiles;//erase
+	char	**infiles;//erase 
 	char	**outfiles;//erase
 	char	**env;
-	int		pipes_nbr;
-	int		flag_env;
+	int		**pipes;
+	int		n_pipe;
+	pid_t 	pid;
+	int		fd_infile;
+	int		fd_outfile;
+	int		flag_env;//for export
 	t_flags	flags;
 	pid_t	mainpid;
 	int		child_status;
@@ -103,6 +111,13 @@ int		ft_echo(char **arr);
 void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
 char	**pipexsplit(char *str);
 int		ft_env(void);
+
+//PIPEX
+int 	ft_pipex(char **arr);
+void	sent_to_pipe(char *str);
+void	receive_from_send_to_pipe(char *str);
+void	receive_from_pipe(char *str);
+void	close_all_pipes(void);
 
 //INIT
 int		init(char **env);

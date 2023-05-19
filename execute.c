@@ -6,15 +6,15 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/18 22:31:42 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:23:30 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_data	g_data;
+extern t_data	g_data;
 
-void	ft_execve(char **arr)
+static int	ft_execve(char **arr)
 {
 	char	*str_path;
 	char	**matriz_command;
@@ -22,27 +22,34 @@ void	ft_execve(char **arr)
 	gen_command_and_path(arr, g_data.env, &str_path, &matriz_command);
 	execve(str_path, matriz_command, g_data.env);
 	str_error(arr[0], "not found");
-	exit(127);
+	return(127);
 }
 
-void	ft_built_in(char **arr)
+static int	ft_built_in(char **arr)
 {
 	if (!ft_strncmp(arr[0], "echo", ft_strlen(arr[0])))
-		exit(ft_echo(arr));
+		return(ft_echo(arr));
 	else if (!ft_strncmp(arr[0], "pwd", ft_strlen(arr[0])))
-		exit(ft_pwd(arr));
+		return(ft_pwd(arr));
 	else if (!ft_strncmp(arr[0], "env", ft_strlen(arr[0])))
-		exit(ft_env());
+		return(ft_env());
 	else if (!ft_strncmp(arr[0], "exit", ft_strlen(arr[0])))
 		ft_exit();
+	else
+		return (-1);
 }
 
 void	ft_execute(char **arr)
 {
+	int status;
+	
 	if (!arr || !(arr[0]))
 		exit(str_error(arr[0], "missing arg"));
-	ft_built_in(arr);
-	ft_execve(arr);
+	status = ft_built_in(arr);
+	if (status != 1)
+		return (status);
+	else
+		return (ft_execve(arr));
 }
 
 /*
