@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 18:41:22 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/19 22:58:15 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,5 @@ int	ft_redic(char *str)
 		g_data.infiles = ft_calloc(sizeof(char *), i + 1);
 	get_next_redic(str, '<');
 	get_next_redic(str, '>');
-	printf("\nresult for exec:'%s'\n", str);
 	return (0);
 }

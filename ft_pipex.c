@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/19 21:06:19 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/19 22:50:01 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ static void pipe_and_fork(char **arr)
 	}
 	fork_proccess();
 	if (g_data.pid == 0)
-		receive_from_pipe(arr[g_data.n_pipe]);
+	{
+		receive_from_pipe(arr[g_data.n_pipe + 1]);
+	}
 	close_all_pipes();
 }
 

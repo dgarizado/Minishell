@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/19 17:23:30 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/19 22:52:41 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_execve(char **arr)
 {
 	char	*str_path;
 	char	**matriz_command;
-
+	
 	gen_command_and_path(arr, g_data.env, &str_path, &matriz_command);
 	execve(str_path, matriz_command, g_data.env);
 	str_error(arr[0], "not found");
@@ -34,22 +34,27 @@ static int	ft_built_in(char **arr)
 	else if (!ft_strncmp(arr[0], "env", ft_strlen(arr[0])))
 		return(ft_env());
 	else if (!ft_strncmp(arr[0], "exit", ft_strlen(arr[0])))
-		ft_exit();
+		return(ft_exit());
 	else
 		return (-1);
 }
 
-void	ft_execute(char **arr)
+int	ft_execute(char **arr)
 {
 	int status;
 	
 	if (!arr || !(arr[0]))
 		exit(str_error(arr[0], "missing arg"));
 	status = ft_built_in(arr);
-	if (status != 1)
+	if (status != -1)
+	{
 		return (status);
+	}
 	else
-		return (ft_execve(arr));
+	{
+		status = ft_execve(arr);
+		return (status);
+	}
 }
 
 /*

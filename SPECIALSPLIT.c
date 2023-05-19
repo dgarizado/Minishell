@@ -6,27 +6,14 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 23:27:39 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/18 01:23:29 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/19 23:20:36 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "./libft/libft.h"
 
-int g_dataflagstoken1 = 0; ///WATCH OUT
-/*
-void	ft_printf_arr(char **new_arg)
-{
-	int	n;
-
-	n = 0;
-	while (new_arg[n])
-	{
-		printf("%s\n", new_arg[n]);
-		n++;
-	}
-}*/
-
+extern	t_data g_data;
 
 static	size_t	count_words(char *str)
 {
@@ -61,10 +48,10 @@ static char *gen_string_apostrophe(char *str, size_t *jj)
 	while (str[j] != ' ' && str[j])
 		j++;
 	*jj = *jj + j;
-	if (g_dataflagstoken1 == 0)
-		return (ft_substr(&str[0], 0, j + 1));//con comillas
+	if (g_data.flags.token1 == 0)
+		return (ft_substr(&str[0], 0, j + 1));//con comillas //WATCHOUT
 	else
-		return (ft_substr(&str[0], 1, j - 1));//sin comillas
+		return (ft_substr(&str[0], 1, j -2));//sin comillas
 
 }
 //CHECKPOINTTT
@@ -108,6 +95,7 @@ static char *gen_matriz(char *str, size_t *j, char c)
 	}
 	return(NULL);
 }
+
 char	**specialsplit(char *str, char c)
 {
 	size_t	i;
@@ -128,9 +116,11 @@ char	**specialsplit(char *str, char c)
 	return (matriz);
 }
 /*
-int main(void)
+int main(int argc, char **a, char **e)
 {
-	char *str = "hola | amig | no 'te | procupes'";
+	char *str = "'hola' ' ajkl' ";
+	g_data.env = e;
+	g_data.flags.token1 = 1;
 	//char *str = "a |a'| po'rt|'camila '|'texto'";
 	ft_printf_arr(specialsplit(str, '|'));
 	return 0;

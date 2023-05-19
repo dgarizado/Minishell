@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/18 01:19:11 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:58:19 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_data	g_data;
 int	ft_parcerito(void)
 {
 	g_data.flags.token1 = 1;
-	g_data.token2 = pipexsplit(g_data.input_ex); //NEEDS PROPER FREE
+	g_data.token2 = specialsplit(g_data.input_ex, ' '); //NEEDS PROPER FREE
 	g_data.flags.token1 = 0;
-	g_data.pipes = ft_split(g_data.input_ex, '|'); //NEEDS PROPER FREE
+	g_data.pipess = ft_split(g_data.input_ex, '|'); //NEEDS PROPER FREE
 	return (0);
 }
 
@@ -109,6 +109,5 @@ int	ft_lexic(char *input)
 		//ft_printf_arr(g_data.env);
 	}
 	ft_check_expand();
-	g_data.input_ex = ft_untoken();
 	return (0);
 }
