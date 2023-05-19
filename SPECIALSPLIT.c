@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   SPECIALSPLIT.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 23:27:39 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/17 20:27:01 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/18 01:23:29 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static char *gen_string_apostrophe(char *str, size_t *jj)
 		return (ft_substr(&str[0], 1, j - 1));//sin comillas
 
 }
-
+//CHECKPOINTTT
 static char *gen_matriz(char *str, size_t *j, char c)
 {
 	size_t	n;
