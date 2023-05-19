@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/02 22:42:26 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:18:43 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,21 @@ void	ft_error(char *err)
 	exit(errno);
 }
 
-// int	ft_check_tokens(void)
-// {
-// 	return (0);
-// }
+/**
+ * @brief Replace with a space the specific characters from i 
+ * to j of the str.
+ * 
+ * @param i 
+ * @param j 
+ * @param str 
+ * @return int 
+ */
+int	delete_str(int i, int j, char *str)
+{
+	while (i <= j)
+	{
+		str[i] = ' ';
+		i++;
+	}
+	return (0);
+}
