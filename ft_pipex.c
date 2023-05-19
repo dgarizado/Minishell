@@ -6,13 +6,14 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/19 19:17:49 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:06:19 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-//extern t_data	g_data;
-t_data	g_data;
+
+extern t_data	g_data;
+//t_data	g_data;
 
 void	gen_pipes(char **arr)
 {
@@ -79,17 +80,4 @@ int ft_pipex(char **arr)
 	}
 	//free_pipex(pipex);
 	exit(EXIT_SUCCESS);//no deberia salir con este exit sino con el de el ultimo hihjo
-}
-
-int main(int argc, char **argv, char **env)
-{
-	char *arr[4];
-	arr[0] = "echo hola";
-	arr[1] = "echo hola2";
-	arr[2] = "echo hola3";
-	arr[3] = NULL;
-	
-	g_data.env = env;
-	ft_pipex(arr);
-	return (0);
 }
