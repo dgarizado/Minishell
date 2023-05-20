@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/19 22:50:01 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 18:47:37 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ extern t_data	g_data;
 void	gen_pipes(char **arr)
 {
 	int i;
-	int n;;
+	int n;
 
 	i = 0;
 	n = (ft_arrlen(arr) - 1);

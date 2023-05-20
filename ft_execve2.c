@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/19 23:34:53 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:01:40 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 extern t_data	g_data;
 
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	char	*str_trimed;
-	size_t	len;
+// char	*ft_strtrim(char const *s1, char const *set)
+// {
+// 	char	*str_trimed;
+// 	size_t	len;
 
-	len = ft_strlen(s1);
-	while (s1[0] != '\0' && ft_strchr(set, s1[0]))
-		s1++;
-	len = ft_strlen(s1);
-	while (s1[0] != '\0' && ft_strrchr(set, s1[len - 1]))
-		len--;
-	str_trimed = ft_substr(s1, 0, len);
-	return (str_trimed);
-}
+// 	len = ft_strlen(s1);
+// 	while (s1[0] != '\0' && ft_strchr(set, s1[0]))
+// 		s1++;
+// 	len = ft_strlen(s1);
+// 	while (s1[0] != '\0' && ft_strrchr(set, s1[len - 1]))
+// 		len--;
+// 	str_trimed = ft_substr(s1, 0, len);
+// 	return (str_trimed);
+// }
 
 static char	*copy(char *str_program, char *str_path, char *program)
 {
@@ -48,31 +48,29 @@ static char	*copy(char *str_program, char *str_path, char *program)
 static char	*matriz_cat_program(char**matriz_path, char*program)
 {
 	size_t	i;
-	char	*str_program;
+	char	*str_path_program;
 
 	i = 0;
 	while (matriz_path[i] != NULL)
 	{
-		str_program = copy(str_program, matriz_path[i], program);
-		if (!access(str_program, 0))
+		str_path_program = copy(str_path_program, matriz_path[i], program);
+		if (!access(str_path_program, 0))
 		{
 			ft_abort(matriz_path, ft_arrlen(matriz_path));
-			return (str_program);
+			return (str_path_program);
 		}
-		free(str_program);
+		free(str_path_program);
 		i++;
 	}
 	ft_abort(matriz_path, ft_arrlen(matriz_path));
 	return (NULL);
 }
 
-static char	*gen_str_path(char**env, char *path, char *name)
+static char	*gen_str_path(char**env, char *path, char *program)
 {
 	size_t	i;
 	char	**matriz_path;
-	char	*program;
 
-	program = name;
 	i = 0;
 	while (env[i] != NULL)
 	{
@@ -85,12 +83,12 @@ static char	*gen_str_path(char**env, char *path, char *name)
 		str_error("env", "not available");
 		exit(errno);
 	}
-	matriz_path = ft_split(&env[i][ft_strlen(program) + 1], ':');
+	matriz_path = ft_split(&env[i][ft_strlen("PATH=")], ':');
 	return (matriz_cat_program(matriz_path, program));
 }
 
 void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz)
 {
-		*matriz = ar;
-		*path = gen_str_path(en, "PATH", ar[0]);
+	*matriz = ar;
+	*path = gen_str_path(en, "PATH", ar[0]);
 }

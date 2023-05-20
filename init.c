@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 17:06:55 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 18:09:31 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	add_history_aux(char *input)
 	tmp = ft_strtrim(input, " ");
 	if (ft_strlen(tmp) > 0)
 	{
-		add_history(tmp);
+		add_history(input);
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
@@ -68,8 +68,6 @@ int	init(char **env)
 		if (!(g_data.input))
 			break ;
 		add_history_aux(g_data.input);
-		// add_history((g_data.input));
-		// rl_on_new_line();
 		g_data.mainpid = fork();
 		if (g_data.mainpid == 0)
 			init_prompt();
