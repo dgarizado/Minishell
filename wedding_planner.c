@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wedding_planner.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/18 23:18:30 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:44:01 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ char	*ft_join_pipes(int *i)
 int	wedding_planner(void)
 {
 	g_data.commands = specialsplit(g_data.input_ex, '|');
+	exit(ft_program(str));
 	return (0);
 }
