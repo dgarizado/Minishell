@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 18:46:21 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:59:01 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	init_prompt(void)
 	while (42)
 	{
 		ft_lexic((g_data.input));
-		ft_parcerito();
-		printf(YELLOW"\nLIST OF TOKENS LEVEL1:\n"RST_CLR);
-		print_token1(g_data.token1);
-		printf(YELLOW"\nWEDDING PLANNER!:\n"RST_CLR);
+		//ft_parcerito();
+		// printf(YELLOW"\nLIST OF TOKENS LEVEL1:\n"RST_CLR);
+		// print_token1(g_data.token1);
+		//printf(YELLOW"\nWEDDING PLANNER!:\n"RST_CLR);
 		wedding_planner();
 		print_token1(g_data.commands);
 		printf(YELLOW"\nPROGRAM!:\n"RST_CLR);
@@ -48,7 +48,7 @@ int	init_prompt(void)
 		//HERE WE CALL PIPEX!!!
 			//INSIDE PIPEX PROGRAM IS CALLED!
 		//
-		ft_program(g_data.commands[0]);
+		//ft_program(g_data.commands[0]);
 		printf(BLUE"\ninfiles:\n"RST_CLR);
 		print_token1(g_data.infiles);
 		printf(BLUE"\noutfiles:\n"RST_CLR);

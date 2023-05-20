@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 19:34:31 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:49:20 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_data
 	char	*str_redic;
 	char	**token1;
 	char	**token2;
-	char	**pipes;
+	char	**pipess;
 	char	**commands;
 	char	**infiles;//erase 
 	char	**outfiles;//erase
@@ -152,6 +152,9 @@ int		ft_redic(char *str);
 
 //WEDDING PLANNER
 int		wedding_planner(void);
+
+//EXECUTE
+int		ft_execute(char **arr);
 
 //SPECIAL SPLIT
 char	**specialsplit(char *str, char c);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execve2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/18 22:32:19 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/19 23:34:53 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static char	*gen_str_path(char**env, char *path, char *name)
 	}
 	if (!env[i])
 	{
-		str_error("env", "not avaible");
+		str_error("env", "not available");
 		exit(errno);
 	}
 	matriz_path = ft_split(&env[i][ft_strlen(program) + 1], ':');

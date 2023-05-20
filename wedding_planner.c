@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 19:44:01 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:46:33 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,13 @@ char	*ft_join_pipes(int *i)
  */
 int	wedding_planner(void)
 {
+	g_data.input_ex = ft_untoken();
 	g_data.commands = specialsplit(g_data.input_ex, '|');
-	exit(ft_program(str));
+	if (ft_arrlen(g_data.commands) > 1)
+	{
+		ft_pipex(g_data.commands);
+	}
+	else
+		exit(ft_program(g_data.commands[0]));
 	return (0);
 }

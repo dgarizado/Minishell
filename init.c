@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/17 20:58:06 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:06:55 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,21 @@ int	operators(void)
 	return (0);
 }
 
+void	add_history_aux(char *input)
+{
+	char	*tmp;
+
+	tmp = ft_strtrim(input, " ");
+	if (ft_strlen(tmp) > 0)
+	{
+		add_history(tmp);
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+	}
+	free(tmp);
+}
+
 /**
  * @brief Main process wont execute commands. 
  * it reads the input and then forks.
@@ -52,14 +67,15 @@ int	init(char **env)
 		g_data.input = readline(PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>");
 		if (!(g_data.input))
 			break ;
-		add_history((g_data.input));
-		rl_on_new_line();
+		add_history_aux(g_data.input);
+		// add_history((g_data.input));
+		// rl_on_new_line();
 		g_data.mainpid = fork();
 		if (g_data.mainpid == 0)
 			init_prompt();
 		else
 		{
-			printf("\nBig daddy PID:%d\n", getpid());
+			printf("\nBig daddy PID:%d\n", g_data.mainpid);
 			wait(&g_data.child_status);
 			free((g_data.input)); // IS IT PROPERLY FREED HERE AT DAD?
 			g_data.child_status = (WEXITSTATUS(g_data.child_status));

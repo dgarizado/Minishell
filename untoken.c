@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:55:54 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/05 18:52:14 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:59:20 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ extern t_data	g_data;
  * @param index 
  * @return char* 
  */
-static char	*ft_copy(char *dest, const char *src, size_t index)
+static char	*ft_copyy(char *dest, const char *src, size_t index)
 {
 	unsigned int	i;
 
@@ -52,10 +52,10 @@ char	*ft_join(char *s1, char *s2)
 	new_string = (char *)ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 2);
 	if (!new_string)
 		return (NULL);
-	new_string = ft_copy(new_string, s1, 0);
+	new_string = ft_copyy(new_string, s1, 0);
 	last = ft_strlen(s1);
 	new_string[last] = ' ';
-	new_string = ft_copy(new_string, s2, last + 1);
+	new_string = ft_copyy(new_string, s2, last + 1);
 	return (new_string);
 }
 
