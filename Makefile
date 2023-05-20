@@ -5,10 +5,13 @@
 
 NAME        := minishell
 CC        := gcc
-FLAGS    := -Wall -Wextra -Werror 
+FLAGS    := -Wall -Wextra -Werror
 LIBFT = ./libft/libft.a
 HEADER = ./minishell.h
+RLHEADER = -I "/Users/$(USER)/.brew/opt/readline/include"
 OBJ_DIR = ./obj
+USER = $(shell whoami)
+LIBS = -L "/Users/$(USER)/.brew/opt/readline/lib" -lreadline
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
@@ -17,9 +20,9 @@ SRCS        :=      $(wildcard *.c) $(wildcard built-in/*.c)
                           
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-$(OBJ_DIR)/%.o: %.c $(HEADER)
+$(OBJ_DIR)/%.o: %.c $(HEADER) 
 	@mkdir -p $(@D)
-	@$(CC) -c $< -o $@ $(FLAGS)
+	@$(CC) -c $< -o $@ $(FLAGS) $(RLHEADER)
 
 ################################################################################
 #                                  Makefile  objs                              #
@@ -34,9 +37,10 @@ BLUE		:= \033[1;34m
 CYAN 		:= \033[1;36m
 RM		    := rm -rf
 
+
 ${NAME}:	${OBJS} $(LIBFT)
 			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			@${CC} -o ${NAME} ${OBJS} $(LIBFT) ${FLAGS} -lreadline
+			@${CC}  ${OBJS} $(LIBFT) $(LIBS) ${FLAGS} -o ${NAME} 
 			@echo "$(GREEN)$(NAME) created[0m ✔️"
 
 $(LIBFT): 
