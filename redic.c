@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 22:58:15 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 22:24:05 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,15 @@ int	ft_count_redic(char *str, char c)
 	return (count);
 }
 
+/**
+ * @brief Aux function for norminette issues.
+ * Here is finally where the redirections are stored.
+ * @param i 
+ * @param j 
+ * @param k 
+ * @param c 
+ * @return int 
+ */
 static int	aux_aux(int *i, int *j, int *k, char c)
 {
 	(*j)++;
@@ -119,6 +128,12 @@ char	get_next_redic(char *str, char c)
 	return (0);
 }
 
+/**
+ * @brief Stores the redirections in the appropriate array.
+ * 
+ * @param str 
+ * @return int 
+ */
 int	ft_redic(char *str)
 {
 	int	i;
@@ -131,5 +146,6 @@ int	ft_redic(char *str)
 		g_data.infiles = ft_calloc(sizeof(char *), i + 1);
 	get_next_redic(str, '<');
 	get_next_redic(str, '>');
+	analyze_redic();
 	return (0);
 }

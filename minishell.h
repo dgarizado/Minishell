@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 21:49:20 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 22:21:27 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef enum e_separators
 typedef struct s_flags
 {
 	int	token1;
+	int	here_doc;
 }	t_flags;
 
 
@@ -74,6 +75,7 @@ typedef struct s_data
 	char	**env;
 	int		**pipes;
 	int		n_pipe;
+	int		fd_in;
 	pid_t 	pid;
 	int		fd_infile;
 	int		fd_outfile;
@@ -149,6 +151,9 @@ int		ft_program(char *str);
 
 //REDIC
 int		ft_redic(char *str);
+
+//REDIC2
+int		analyze_redic(void);
 
 //WEDDING PLANNER
 int		wedding_planner(void);

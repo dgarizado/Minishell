@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 16:59:01 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/20 23:54:09 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ int	print_token1(char **str)
 }
 
 /**
- * @brief Child process that performs the
+ * @brief Child process that performs the ft_program.
  * 
  * @return int 
  */
+//CHECKPOIINT
 int	init_prompt(void)
 {
 	while (42)

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 21:58:19 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 12:31:38 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	ft_lexic(char *input)
 	int	i;
 
 	i = 0;
+	if (input == NULL || input[0] == '\0')
+		return (0);
 	while (input[i] != '\0')
 	{
 		if (input[i] == '\'' || input[i] == '\"' )
