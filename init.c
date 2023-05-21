@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 18:09:31 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 12:43:14 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	init(char **env)
 			init_prompt();
 		else
 		{
-			printf("\nBig daddy PID:%d\n", g_data.mainpid);
+			//printf("\nBig daddy PID:%d\n", g_data.mainpid);
 			wait(&g_data.child_status);
 			free((g_data.input)); // IS IT PROPERLY FREED HERE AT DAD?
 			g_data.child_status = (WEXITSTATUS(g_data.child_status));
