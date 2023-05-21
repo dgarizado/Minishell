@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/21 12:43:14 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 13:05:13 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	init(char **env)
 		if (!(g_data.input))
 			break ;
 		add_history_aux(g_data.input);
+		rl_on_new_line();
+		//add_history_aux(g_data.input);
 		g_data.mainpid = fork();
 		if (g_data.mainpid == 0)
 			init_prompt();
