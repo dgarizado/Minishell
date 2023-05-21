@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:48:42 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/21 12:36:45 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 14:03:10 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ int	ft_echo(char **arr)
 	int	flag;
 
 	flag = 0;
-	printf("\necho\n");
-	ft_printf_arr(arr);
 	if (!arr || !*arr)
 		exit(127);
 	if (arr[1])
@@ -62,7 +60,6 @@ int	ft_echo(char **arr)
 		while (--len > 0)
 		{
 			write(1, arr[i], ft_strlen(arr[i]));
-			printf("\nX\n");
 			if (len > 1)
 				write(1, " ", 1);
 			i++;
