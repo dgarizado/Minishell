@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 22:54:26 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 12:54:36 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,12 @@ int	infiles(void)
 	char	*eof;
 	
 	i = 0;
-	printf("infiles\n");
+	printf(YELLOW"\ninfiles\n"RST_CLR);
 	while (g_data.infiles[i])
 	{
 		if (g_data.infiles[i][1] == '<')
 		{
+			printf(BLUE"\nhere_doc\n"RST_CLR);
 			eof = ft_strtrim(g_data.infiles[i], "<");		
 			ft_here_doc(i, eof);
 			g_data.flags.here_doc = 1;
