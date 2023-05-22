@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/21 23:29:46 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:03:20 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,14 @@ int *delimiter(char *eof, int *fd)
 	return (0);
 }
 
-void	ft_here_doc(char *eof)
+/**
+ * @brief Creates a sub process that will write to the pipe the content of here_doc
+ * the parent will read from the pipe and any command will have
+ * the content of the pipe as input.
+ * The here_doc will be read only if there is no more infiles
+ * @param eof 
+ */
+void	ft_here_doc(char *eof, int i)
 {
 	int		pid;
 	int		fd[2];
@@ -60,11 +67,11 @@ void	ft_here_doc(char *eof)
 	}
 	else
 	{
-		close (fd[1]);
-		close (fd[0]); //WTF... IT WORKS WITHOUT THIS LINE OR WITH IT
-		dup2(fd[0], STDIN_FILENO);
 		waitpid (pid, NULL, 0);
-		g_data.fd_in = fd[0];
+		close (fd[1]);
+		if (g_data.infiles[i + 1] == NULL)
+		dup2(fd[0], STDIN_FILENO);
+		close (fd[0]);
 	}
 }
 
@@ -91,19 +98,18 @@ int	infiles_doc(void)
 		{
 			printf(BLUE"\nhere_doc\n"RST_CLR);
 			eof = ft_strtrim(g_data.infiles[i], "< ");
-			printf("eof = '%s'\n", eof);
-			ft_here_doc(eof);
+			ft_here_doc(eof, i);
 			g_data.flags.here_doc = 1;
 			if (g_data.infiles[i + 1] == NULL)
 				break ;
 			else
 				free(eof);
 		}
-		g_data.fd_in = open(g_data.infiles[i], O_RDONLY);
-		g_data.flags.here_doc = 0;
+		ft_open(i);
 		i++;
 	}
-	free(eof);
+	// if (eof) //MEMORY LEAK WH
+	// 	free(eof);
 	return (0);
 }
 
@@ -118,25 +124,40 @@ int	ft_error_in(char *s1, char *s2, char *s3, int ret)
 
 /**
  * @brief Checks if all infiles are valid, only with one '<'
- * 
+ * yes, it can be done with access, but we get the same result.
  * @return int 
  */
 int	check_infiles(void)
 {
-	int	i;
-	int	fd;
+	int		i;
+	int		fd;
+	char	*aux;
 
 	i = 0;
+	printf(YELLOW"\ncheck_infiles"RST_CLR".\n");
 	while (g_data.infiles[i])
 	{
-		if (g_data.infiles[i][1] != '<')
+		while (g_data.infiles[i] != NULL && g_data.infiles[i][1] == '<')
+		{
+			printf("g_data.infiles[%d] = '%s'\n", i, g_data.infiles[i]);
 			i++;
-		fd = open(g_data.infiles[i], O_RDONLY);
+		}
+		printf("\nIM HERE\n");
+		if (g_data.infiles[i] == NULL)
+			break ;
+		aux = ft_strtrim(g_data.infiles[i], "< ");
+		fd = open(aux, O_RDONLY);
 		if (fd == -1)
-			return (ft_error_in(RED"minishell: ", (g_data.infiles[i] + 1), \
+		{
+			//free(aux);
+			return (ft_error_in(RED"\nminishell: ", (g_data.infiles[i] + 1), \
 			": No such file or directory\n"RST_CLR, 1));
+		}
+		close(fd);
+		//free(aux);
 		i++;
 	}
+	printf("\ncheck_infiles done\n");
 	return (0);
 }
 
@@ -154,7 +175,7 @@ int	analyze_redic(void)
 	if (g_data.infiles)
 	{
 		infiles_doc();
-		//check_infiles();
+		check_infiles();
 	}
 	return (0);
 }

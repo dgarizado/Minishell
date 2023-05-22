@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/21 18:39:27 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/22 19:32:26 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,9 @@ int		ft_redic(char *str);
 
 //REDIC2
 int		analyze_redic(void);
+
+//REDIC3
+int		ft_open(int i);
 
 //WEDDING PLANNER
 int		wedding_planner(void);
