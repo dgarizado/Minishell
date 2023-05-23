@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_arr.c                                    :+:      :+:    :+:   */
+/*   ft_$.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 19:54:02 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/23 19:46:58 by vcereced         ###   ########.fr       */
+/*   Created: 2023/05/23 12:33:14 by vcereced          #+#    #+#             */
+/*   Updated: 2023/05/23 12:40:24 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "../minishell.h"
 
-int	ft_printf_arr(char **arr)
-{
-	int	n;
 
-	n = 0;
-	if (!arr)
-		return (msg_error(arr[0], "env"));
-	while (arr[n])
-	{
-		printf("%s\n", arr[n]);
-		n++;
-	}
+extern t_data	g_data;
+
+int ft_$(void)
+{
+	printf("%d\n", g_data.child_status);
 	return (EXIT_SUCCESS);
 }

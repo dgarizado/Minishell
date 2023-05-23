@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/05 22:21:00 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:33:42 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,27 @@ static char	*ft_getenv(int i, int j, int lenvar)
 {
 	char	*var;
 	char	*aux;
+	int		n;
 
+	aux = NULL;
 	var = ft_substr(g_data.token1[i], j + 1, lenvar - 1);
-	aux = getenv(var);
+	n = 0;
+	while (g_data.env[n])
+	{
+		if (ft_strncmp(g_data.env[n], var, ft_strlen(var)) == 0)
+			break ;
+		n++;
+	}
+	if (!g_data.env[n])
+		str_error(var,  "not found");
+	else
+		aux = &g_data.env[n][ft_strlen(var) + 1];
 	if (!aux)
 	{
 		aux = ft_calloc(1, 1);
 	}
-	var = NULL;
 	free (var);
+	var = NULL;
 	return (aux);
 }
 
@@ -120,5 +132,6 @@ int	ft_check_expand(void)
 		}		
 		i++;
 	}
+	//ft_printf_arr(g_data.token1);
 	return (0);
 }

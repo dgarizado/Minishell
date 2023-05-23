@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 21:29:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:43:36 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	ft_program(char *str)
 	char	**tokenized_cmd; //NEED FREE?
 
 	ft_redic(str);
-	// printf(YELLOW"\ninfiles: \n"RST_CLR);
-	// ft_printf_arr(g_data.infiles);
-	g_data.flags.token1 = 1; 
+	//printf(YELLOW"\ninfiles: \n"RST_CLR);
+	//ft_printf_arr(g_data.infiles);
+	g_data.flags.token1 = 1;
 	tokenized_cmd = specialsplit(str, ' ');
 	return (ft_execute(tokenized_cmd));
 }

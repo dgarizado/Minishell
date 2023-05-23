@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 23:54:09 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:38:38 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,7 @@ int	print_token1(char **str)
 //CHECKPOIINT
 int	init_prompt(void)
 {
-	while (42)
-	{
-		ft_lexic((g_data.input));
-		//ft_parcerito();
-		// printf(YELLOW"\nLIST OF TOKENS LEVEL1:\n"RST_CLR);
-		// print_token1(g_data.token1);
-		//printf(YELLOW"\nWEDDING PLANNER!:\n"RST_CLR);
-		wedding_planner();
-		print_token1(g_data.commands);
-		printf(YELLOW"\nPROGRAM!:\n"RST_CLR);
-		printf("\ninput str:%s\n", g_data.input_ex);
-		//HERE WE CALL PIPEX!!!
-			//INSIDE PIPEX PROGRAM IS CALLED!
-		//
-		//ft_program(g_data.commands[0]);
-		printf(BLUE"\ninfiles:\n"RST_CLR);
-		print_token1(g_data.infiles);
-		printf(BLUE"\noutfiles:\n"RST_CLR);
-		print_token1(g_data.outfiles);
-		free(g_data.token1); //THIS IS NOT PROPERLY FREED. IS A SPLIT!
-		exit(0); //HERE WE DEVELOP HOW TO KILL THIS CHILD
-	}
+	wedding_planner();
 	return (0);
 }
 
