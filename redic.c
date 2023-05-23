@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 22:24:05 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:35:42 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,18 @@ static int	aux_aux(int *i, int *j, int *k, char c)
  * @param str 
  * @return int 
  */
+//CHECK POINT !!!!!!!!!!!!!
 int	aux(int *i, int *j, int *k, char c)
 {
+	
 	if (g_data.str_redic[*i] == c)
 	{
-		if (g_data.str_redic[*i + 1] == c)
-			(*j) = *i + 2;
-		else
-			(*j) = *i + 1;
-		while (g_data.str_redic[*j] == ' ')
+		// if (g_data.str_redic[*i + 1] == c)
+		// 	(*j) = *i + 2;
+		// else
+		// 	(*j) = *i + 1;
+		(*j) = *i + 1;
+		while (g_data.str_redic[*j] == ' ' || g_data.str_redic[*j] == c)
 			(*j)++;
 		while (g_data.str_redic[*j] && g_data.str_redic[*j] != ' ' \
 		&& g_data.str_redic[*j] != c)
@@ -119,6 +122,7 @@ char	get_next_redic(char *str, char c)
 
 	i = 0;
 	k = 0;
+	j = 0;
 	g_data.str_redic = str;
 	while (str[i] != '\0')
 	{

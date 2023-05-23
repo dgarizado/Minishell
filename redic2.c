@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/22 20:03:20 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:16:34 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,30 @@
 
 extern t_data	g_data;
 
-//CHECKPOINT
+int	ft_error_in(char *s1, char *s2, char *s3, int ret)
+{
+	ft_putstr_fd(s1, 2);
+	if (s2)
+		ft_putstr_fd(s2, 2);
+	ft_putstr_fd(s3, 2);
+	exit (ret);
+}
+
+int	aux_del(int i)
+{
+	while (g_data.infiles[i])
+	{
+		if (g_data.infiles[i][1] == '<' && g_data.infiles[i][2] == '<')
+		{
+			printf(RED"minishell: syntax error near unexpected token `<'\n"RST_CLR);
+			g_data.flags.here_doc_ret = 258;
+			g_data.flags.here_doc_aux = i;
+			break ;
+		}
+		i++;
+	}
+	return (0);
+}
 
 /**
  * @brief Here we write to the pipe the content of here_doc
@@ -23,12 +46,10 @@ extern t_data	g_data;
  * @param eof 
  * @return char* 
  */
-int *delimiter(char *eof, int *fd)
+int delimiter(char *eof, int *fd)
 {
 	char	*line;
-	
-	printf(BLUE"\ndelimiter\n"RST_CLR);
-	//dup2(fd[1], STDOUT_FILENO);
+
 	while (42)
 		{
 			line = readline("> ");
@@ -58,23 +79,25 @@ void	ft_here_doc(char *eof, int i)
 	int		fd[2];
 
 	pipe(fd);
+	if (g_data.flags.here_doc_ret != 258)
+		aux_del(i);
 	pid = fork();
 	if (pid == 0)
 	{
 		close(fd[0]);
-		delimiter(eof, fd);
-		exit (0);
+		exit (delimiter(eof, fd));
 	}
 	else
 	{
 		waitpid (pid, NULL, 0);
 		close (fd[1]);
-		if (g_data.infiles[i + 1] == NULL)
+		if (g_data.infiles[i + 1] == NULL && g_data.flags.here_doc_ret != 258)
 		dup2(fd[0], STDIN_FILENO);
 		close (fd[0]);
 	}
 }
 
+//CHECKPOINTVICTOR SIMPATICO
 /**
  * @brief Analizes infiles array
  * open all the infiles and save the 
@@ -90,16 +113,13 @@ int	infiles_doc(void)
 	char	*eof; //MEMORY LEAK
 	
 	i = 0;
-	printf(YELLOW"\ninfiles"RST_CLR".\n");
-	ft_printf_arr(g_data.infiles);
 	while (g_data.infiles[i])
 	{
 		if (g_data.infiles[i][1] == '<' && g_data.infiles[i][2] != '<') 
 		{
-			printf(BLUE"\nhere_doc\n"RST_CLR);
 			eof = ft_strtrim(g_data.infiles[i], "< ");
-			ft_here_doc(eof, i);
-			g_data.flags.here_doc = 1;
+			if (g_data.flags.here_doc_ret != 258 || g_data.flags.here_doc_aux > i)
+				ft_here_doc(eof, i);
 			if (g_data.infiles[i + 1] == NULL)
 				break ;
 			else
@@ -111,15 +131,6 @@ int	infiles_doc(void)
 	// if (eof) //MEMORY LEAK WH
 	// 	free(eof);
 	return (0);
-}
-
-int	ft_error_in(char *s1, char *s2, char *s3, int ret)
-{
-	ft_putstr_fd(s1, 2);
-	if (s2)
-		ft_putstr_fd(s2, 2);
-	ft_putstr_fd(s3, 2);
-	exit (ret);
 }
 
 /**
@@ -134,15 +145,15 @@ int	check_infiles(void)
 	char	*aux;
 
 	i = 0;
-	printf(YELLOW"\ncheck_infiles"RST_CLR".\n");
 	while (g_data.infiles[i])
 	{
 		while (g_data.infiles[i] != NULL && g_data.infiles[i][1] == '<')
 		{
-			printf("g_data.infiles[%d] = '%s'\n", i, g_data.infiles[i]);
+			// if (g_data.infiles[i][2] == '<')
+			// 	return (ft_error_in(RED"\nminishell: ", (g_data.infiles[i] + 1), \
+			// 	": syntax error near unexpected token `<<'\n"RST_CLR, 258));
 			i++;
 		}
-		printf("\nIM HERE\n");
 		if (g_data.infiles[i] == NULL)
 			break ;
 		aux = ft_strtrim(g_data.infiles[i], "< ");
@@ -171,10 +182,11 @@ int	check_infiles(void)
  */
 int	analyze_redic(void)
 {
-	//printf("\nanalize_redic\n");
 	if (g_data.infiles)
 	{
 		infiles_doc();
+		if (g_data.flags.here_doc_ret == 258)
+			exit (g_data.flags.here_doc_ret);
 		check_infiles();
 	}
 	return (0);
