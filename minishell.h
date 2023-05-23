@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 21:49:20 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:42:56 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 # define PRAMPT "mini🐢$>"
 # define WHITE   "\x1b[1;37m"
 # define YELLOW "\x1b[1;33m"
+#define RED "\x1b[0;31m"
 # define BLUE "\x1b[1;36m"
 # define PINK "\x1b[1;35m"
-# define RST_CLR    "\x1b[0m"
+# define RST_CLR "\x1b[0m"
 # define INFILEE "<"
 # define OUTFILEE ">"
 # define APPENDD ">>"
@@ -55,6 +56,8 @@ typedef enum e_separators
 typedef struct s_flags
 {
 	int	token1;
+	int	here_doc_ret;
+	int here_doc_aux;
 }	t_flags;
 
 
@@ -74,6 +77,7 @@ typedef struct s_data
 	char	**env;
 	int		**pipes;
 	int		n_pipe;
+	int		fd_in;
 	pid_t 	pid;
 	int		fd_infile;
 	int		fd_outfile;
@@ -149,6 +153,14 @@ int		ft_program(char *str);
 
 //REDIC
 int		ft_redic(char *str);
+
+//REDIC2
+int		analyze_redic(void);
+int		ft_error_in(char *s1, char *s2, char *s3, int ret);
+
+//REDIC3
+int		ft_open(int i);
+int		check_here_docs(void);
 
 //WEDDING PLANNER
 int		wedding_planner(void);
