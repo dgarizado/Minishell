@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 12:09:05 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:22:06 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 t_data	g_data;
 
-void check(void)
-{
-	system("leaks ./minishell");
-}
 /**
  * @brief Splits the already expanded input into words and 
  * stores it in data.token2.
@@ -28,9 +24,9 @@ void check(void)
 int	ft_parcerito(void)
 {
 	g_data.flags.token1 = 1;
-	g_data.token2 = specialsplit(g_data.input_ex, ' '); //NEEDS PROPER FREE
+	g_data.token2 = specialsplit(g_data.input_ex, ' ');
 	g_data.flags.token1 = 0;
-	g_data.pipess = ft_split(g_data.input_ex, '|'); //NEEDS PROPER FREE
+	g_data.pipess = ft_split(g_data.input_ex, '|');
 	return (0);
 }
 
@@ -90,8 +86,8 @@ static int	ft_check_pipes(void)
 {
 	char	**arr;
 	int		n;
-	
-	arr = specialsplit(g_data.input_ex, '|');	
+
+	arr = specialsplit(g_data.input_ex, '|');
 	if (ft_arrlen(arr) > 1)
 		n = 0;
 	else
@@ -115,7 +111,7 @@ static int	ft_check_exe(void)
 	ft_strncmp((g_data.token1[0]), "unset", 6) == 0 || \
 	ft_strncmp((g_data.token1[0]), "cd", 2) == 0)
 	{
-		return(0);
+		return (0);
 	}
 	return (1);
 }
@@ -131,7 +127,7 @@ static int	ft_check_exe(void)
 int	ft_lexic(char *input)
 {
 	int	i;
-	int status;
+	int	status;
 
 	if (input == NULL)
 		return (0);
@@ -141,24 +137,18 @@ int	ft_lexic(char *input)
 		if (input[i] == '\'' || input[i] == '\"' )
 		{
 			if (ft_is_closed(input, &i, input[i]) == 1)
-				ft_error("\nunclosed quotes!\n"); 
+				return (ft_error("\nunclosed quotes!\n"));
 		}
 		i++;
 	}
-	//printf("\n----ENTRADA STR -> LEXIC------\n%s\n", g_data.input); 
-	g_data.token1 = specialsplit((g_data.input), ' ');//for check_expand //ERROOR INTO SPLIT
-	//write(1, "\n--------ARR SPECIALSPLIT YES '' FIRST SPLIT INTO LEXIC -------\n",65); 
-	//ft_printf_arr(g_data.token1);
+	g_data.flags.token1 = 0;
+	g_data.token1 = specialsplit((g_data.input), ' ');
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
-//	printf("\n%s\n", g_data.input_ex);
-	if(ft_check_exe() == 0 && ft_check_pipes() == 1) //MEMORY LEAKS,WHEN ITS EXECUTED IS ALWAYS MAIN EXCEPT OCURR IN p1 | p2 | p3!!!
+	if (ft_check_exe() == 0 && ft_check_pipes() == 1)// EXE IN GENESIS
 	{
-		//g_data.input_ex = ft_untoken();
 		status = ft_program(g_data.input_ex);
-		//free(g_data.input_ex);
-		//ft_abort(g_data.token1, ft_arrlen(g_data.token1));
-		return(status);
+		return (status);
 	}
 	return (-1);
 }

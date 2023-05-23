@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:39:50 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/21 00:28:16 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:06:59 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ extern t_data	g_data;
 
 static char	**ft_gen_new_arr(char **arr_parsed)
 {
-	char **new_env;
-	int	len_env;
-	int	i;
-	int	n;
+	char	**new_env;
+	int		len_env;
+	int		i;
+	int		n;
 
 	i = 0;
 	n = 0;
@@ -41,7 +41,7 @@ static int	ft_parse_count(char **arr)
 {
 	int	count;
 	int	i;
-	
+
 	i = 1;
 	count = 0;
 	while (arr[i])
@@ -55,11 +55,11 @@ static int	ft_parse_count(char **arr)
 
 static char	**ft_parse_arr(char **arr)
 {
-	char **arr_parsed;
-	int n;
-	int i;
-	char *ptr;
-	
+	char	**arr_parsed;
+	int		n;
+	int		i;
+	char	*ptr;
+
 	i = 0;
 	arr_parsed = (char **)malloc(sizeof (char *) * (ft_parse_count(arr) + 1));
 	n = 0;
@@ -70,7 +70,6 @@ static char	**ft_parse_arr(char **arr)
 			ptr = ft_strchr(arr[i], '=');
 			if (ptr[1] == '=')
 				str_error_export("minishell", (ft_strchr(arr[i], '=') + 2), " not found");
-				//printf("\nerror VIVTOR\n");	
 			else if (ft_strchr(arr[i], '=') && arr[i][0] != '=')
 			{
 				arr_parsed[n] = ft_strdup(arr[i]);
@@ -85,9 +84,8 @@ static char	**ft_parse_arr(char **arr)
 
 static char	**ft_gen_new_env(char **arr)
 {
-	char		**arr_parsed;
-	char		**new_arr_env;
-	//static int	flag_env_to_free;
+	char	**arr_parsed;
+	char	**new_arr_env;
 
 	arr_parsed = ft_parse_arr(arr);
 	new_arr_env = ft_gen_new_arr(arr_parsed);
@@ -101,15 +99,10 @@ static char	**ft_gen_new_env(char **arr)
 int	ft_export(char **arr)
 {
 	if (!g_data.env)
-	{
-		str_error("export", "env not found");
-		return (EXIT_FAILURE);
-	}
+		return (str_error("export", "env not found"));
 	if (!arr[1])
-	{
-		ft_printf_arr(g_data.env);
-		return (EXIT_SUCCESS);
-	}
-	g_data.env = ft_gen_new_env(arr);
+		return (ft_printf_arr(g_data.env));
+	else
+		g_data.env = ft_gen_new_env(arr);
 	return (errno);
 }

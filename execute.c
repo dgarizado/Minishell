@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/20 21:06:25 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:49:36 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,25 @@ static int	ft_execve(char **arr)
 	
 	gen_command_and_path(arr, g_data.env, &str_path, &matriz_command);
 	execve(str_path, matriz_command, g_data.env);
-	str_error(arr[0], "not found");
-	return(127);
+	return (msg_error(arr[0], "not found"));
+	//return(127);
 }
 
 static int	ft_built_in(char **arr)
 {
-	if (!ft_strncmp(arr[0], "echo", ft_strlen(arr[0])))
+	if (!ft_strncmp(arr[0], "echo", 4))
 		return(ft_echo(arr));
-	else if (!ft_strncmp(arr[0], "export", ft_strlen(arr[0])))
+	else if (!ft_strncmp(arr[0], "export", 6))
 		return(ft_export(arr));
-	else if (!ft_strncmp(arr[0], "unset", ft_strlen(arr[0])))
+	else if (!ft_strncmp(arr[0], "unset", 5))
 		return(ft_unset(arr));
-	else if (!ft_strncmp(arr[0], "cd", ft_strlen(arr[0])))
+	else if (!ft_strncmp(arr[0], "cd", 2))
 		return(ft_cd(arr));
-	else if (!ft_strncmp(arr[0], "pwd", ft_strlen(arr[0])))
+	else if (!ft_strncmp(arr[0], "pwd", 3))
 		return(ft_pwd(arr));
-	else if (!ft_strncmp(arr[0], "env", ft_strlen(arr[0])))
+	else if (!ft_strncmp(arr[0], "env", 3))
 		return(ft_env());
-	else if (!ft_strncmp(arr[0], "exit", ft_strlen(arr[0])))
+	else if (!ft_strncmp(arr[0], "exit", 4))
 		return(ft_exit());
 	else
 		return (-1);
@@ -50,7 +50,7 @@ int	ft_execute(char **arr)
 	int status;
 	
 	if (!arr || !(arr[0]))
-		exit(str_error(arr[0], "missing arg"));
+		return (str_error(arr[0], "missing arg"));
 	status = ft_built_in(arr);
 	if (status != -1)
 	{
@@ -59,9 +59,8 @@ int	ft_execute(char **arr)
 	}
 	else
 	{
-		status = ft_execve(arr);
 		//ft_abort(arr, ft_arrlen(arr));
-		return (status);
+		return (ft_execve(arr));
 	}
 }
 

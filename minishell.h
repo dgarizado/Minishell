@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/21 00:26:10 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:37:26 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
 char	**pipexsplit(char *str);
 int		ft_env(void);
 int		str_error_export(char *s1, char *s2, char *s3);
+int 	ft_$(void);
 
 //PIPEX
 int 	ft_pipex(char **arr);
@@ -135,7 +136,7 @@ int		ft_parcerito(void);
 char	**pipexsplit(char *str);
 
 //UTILS
-void	ft_error(char *err);
+int	ft_error(char *err);
 int		delete_str(int i, int j, char *str);
 
 //EXPAND

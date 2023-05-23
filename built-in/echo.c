@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:48:42 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/22 23:44:34 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:05:05 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ int	ft_echo(char **arr)
 	}
 	if (flag == 0)
 		write(1, "\n", 1);
-	return (0);
+	return (EXIT_SUCCESS);
 }

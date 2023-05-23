@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 12:03:18 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:13:56 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,9 @@
 
 extern t_data	g_data;
 
-void	leak(void)
-{
-	system ("leaks -q minishell");
-}
-
-static void set_env_to_global(char **env)
+static void	set_env_to_global(char **env)
 {
 	g_data.env = env;
-}
-
-int	operators(void)
-{
-	g_data.redirector[INFILE] = '<';
-	//g_data.redirector[DELIMITER] = '<<';
-	g_data.redirector[OUTFILE] = '>';
-	//g_data.redirector[APPEND] = '>>';
-	//g_data.separator[PIPE] = '|';
-	//data.separator[AND] = '&&';
-	//data.separator[OR] = '||';
-	return (0);
 }
 
 void	add_history_aux(char *input)
@@ -59,10 +42,9 @@ void	add_history_aux(char *input)
  */
 int	init(char **env)
 {
-	int flag;
-	
+	int	flag;
+
 	ft_bzero(&g_data, sizeof(g_data));
-	operators();
 	set_env_to_global(env);
 	while (1)
 	{
@@ -71,24 +53,19 @@ int	init(char **env)
 		{
 			add_history_aux(g_data.input);
 			flag = ft_lexic((g_data.input));
-			
 			if (flag == -1)
 			{
-				g_data.child_pid = fork();	
+				g_data.child_pid = fork();
 				if (g_data.child_pid == 0)
 					init_prompt();
 			}
-				//printf("\nBig daddy PID:%d\n", g_data.child_pid);
-				wait(&g_data.child_status);
-				//wait(NULL);
-					//waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
-				//free((g_data.input)); // IS IT PROPERLY FREED HERE AT DAD?
-				// if (WIFEXITED(g_data.child_status))
-				// 	g_data.child_status = WEXITSTATUS(g_data.child_status);
-				if (g_data.child_status == 255)
-					break ;
+			g_data.child_status = flag;
+			waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
+			if (WIFEXITED(g_data.child_status))
+				g_data.child_status = WEXITSTATUS(g_data.child_status);
+			printf("\n:%d\n", g_data.child_status);
+			free((g_data.input));
 		}
-			
 	}
 	return (EXIT_SUCCESS);
 }
