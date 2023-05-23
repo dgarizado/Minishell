@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:39:50 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/17 20:46:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 00:28:16 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ static char	**ft_parse_arr(char **arr)
 		{
 			ptr = ft_strchr(arr[i], '=');
 			if (ptr[1] == '=')
-				printf("\nerror VIVTOR\n");	
-			//str_error_export("minishell", (ft_strchr(arr[i], '=') + 1), " not found");
+				str_error_export("minishell", (ft_strchr(arr[i], '=') + 2), " not found");
+				//printf("\nerror VIVTOR\n");	
 			else if (ft_strchr(arr[i], '=') && arr[i][0] != '=')
 			{
 				arr_parsed[n] = ft_strdup(arr[i]);

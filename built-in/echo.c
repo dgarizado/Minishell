@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:48:42 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/18 19:55:26 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/22 23:44:34 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	ft_echo(char **arr)
 	int	flag;
 
 	flag = 0;
-	if (!arr || !*arr)
-		exit(127);
+	if (!arr || !(*arr))
+		return(errno);
 	if (arr[1])
 	{
 		len = 0;

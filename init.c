@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 18:09:31 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 13:29:59 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	add_history_aux(char *input)
 		add_history(input);
 		rl_replace_line("", 0);
 		rl_on_new_line();
-		rl_redisplay();
+		//rl_redisplay();
 	}
 	free(tmp);
 }
@@ -59,27 +59,42 @@ void	add_history_aux(char *input)
  */
 int	init(char **env)
 {
+	int flag;
+	
 	ft_bzero(&g_data, sizeof(g_data));
 	operators();
 	set_env_to_global(env);
-	while (43)
+	while (1)
 	{
 		g_data.input = readline(PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>");
-		if (!(g_data.input))
-			break ;
-		add_history_aux(g_data.input);
-		g_data.mainpid = fork();
-		if (g_data.mainpid == 0)
-			init_prompt();
-		else
+		if (g_data.input[0] != '\0')
 		{
-			printf("\nBig daddy PID:%d\n", g_data.mainpid);
-			wait(&g_data.child_status);
-			free((g_data.input)); // IS IT PROPERLY FREED HERE AT DAD?
-			g_data.child_status = (WEXITSTATUS(g_data.child_status));
-			if (g_data.child_status == 255)
-				break ;
+			add_history_aux(g_data.input);
+			flag = ft_lexic((g_data.input));
+			
+			 //if (flag == -1)
+			 
+				g_data.child_pid = fork();	
+			if (g_data.child_pid == 0)
+			{
+				printf("\n----BEFORE INIT_PROMT()------\n%s\n", g_data.input_ex); 
+				init_prompt();
+			}
+			
+			else
+			{
+				printf("\nBig daddy PID:%d\n", g_data.child_pid);
+				wait(&g_data.child_status);
+				//wait(NULL);
+					//waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
+				//free((g_data.input)); // IS IT PROPERLY FREED HERE AT DAD?
+				// if (WIFEXITED(g_data.child_status))
+				// 	g_data.child_status = WEXITSTATUS(g_data.child_status);
+				if (g_data.child_status == 255)
+					break ;
+			}
+			
 		}
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

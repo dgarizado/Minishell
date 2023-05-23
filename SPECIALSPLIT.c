@@ -3,125 +3,171 @@
 /*                                                        :::      ::::::::   */
 /*   SPECIALSPLIT.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 23:27:39 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/19 23:20:36 by dgarizad         ###   ########.fr       */
+/*   Created: 2023/05/21 13:51:28 by vcereced          #+#    #+#             */
+/*   Updated: 2023/05/23 11:57:03 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "./libft/libft.h"
+//#include "./libft/libft.h"
 
-extern	t_data g_data;
+extern t_data	g_data;
+//t_data	g_data;
 
-static	size_t	count_words(char *str)
+static int	count_str(char *str, char c)
 {
-	size_t	count;
+	int		count;
+	char	flag;
 
 	count = 0;
 	while (*str)
 	{
-		if (*str == 34 || *str == 39)
+		if (*str == '\'' || *str == '"')
 		{
+			flag = *str;
 			str++;
-			while (*str != 34 && *str != 39)
+			while (*str != flag)
 				str++;
 		}
-		if (*str != ' ' && (*(str + 1) == ' ' || *(str + 1) == '\0'))
+		if ((*str != c && *(str + 1) == c) || \
+		(*str != c && *(str + 1) == '\0'))
 			count++;
 		str++;
 	}
 	return (count);
 }
 
-static char *gen_string_apostrophe(char *str, size_t *jj)
+static char	*gen_string_with(char *str, int *j, char c)
 {
+	int		n;
 	char	flag;
-	size_t	j;
 
-	j = 0;
-	flag = *str;
-	j++;
-	while (str[j] != flag)
-		j++;
-	while (str[j] != ' ' && str[j])
-		j++;
-	*jj = *jj + j;
-	if (g_data.flags.token1 == 0)
-		return (ft_substr(&str[0], 0, j + 1));//con comillas //WATCHOUT
-	else
-		return (ft_substr(&str[0], 1, j -2));//sin comillas
-
-}
-//CHECKPOINTTT
-static char *gen_matriz(char *str, size_t *j, char c)
-{
-	size_t	n;
-	char *new_string;
-	int flag;
-	int x;
-
-	flag = 0;
-	x = 0;
-	while(str[*j] != '\0')
+	n = 0;
+	while ((str[*j] != c) && str[*j] != 0)
 	{
 		if (str[*j] == '\'' || str[*j] == '"')
 		{
-			new_string = gen_string_apostrophe(&str[*j], j);
+			flag = str[*j];
+			n++;
 			(*j)++;
-			return (new_string);
-		}
-		else if (str[*j] != c)
-		{
-			while(str[*j] == ' ')
-				(*j)++;
-			n = 0;
-			while ((str[*j] != c  || flag == 1) && str[*j] != '\0')	
+			while (str[*j] != flag)
 			{
-				if (str[*j] == '\'' || str[*j] == '"')
-					x++;	
-				if (x == 1)
-					flag = 1;
-				else
-					flag = 0;	
 				n++;
 				(*j)++;
 			}
-			return(ft_substr(&str[((*j) - n)], 0, n));
+		}
+		n++;
+		(*j)++;
+	}
+	return (ft_substr(&str[((*j) - n)], 0, n));
+}
+
+unsigned char	*find_and_mark_chars(unsigned char *tmp)
+{
+	int		i;
+	char	flag;
+
+	i = 0;
+	while (tmp[i] != '\0')
+	{
+		if (tmp[i] == '\'' || tmp[i] == '\"')
+		{
+			flag = tmp[i];
+			tmp[i++] = 254;
+			while (tmp[i] != flag)
+				i++;
+			tmp[i] = 254;
+		}
+		i++;
+	}
+	return (tmp);
+}
+
+unsigned char	*skip_marked_chars(unsigned char *tmp)
+{
+	int	i;
+
+	i = 0;
+	while (tmp[i] != '\0')
+	{
+		if (tmp[i] == 254)
+		{
+			while (tmp[i])
+			{
+				tmp[i] = tmp[i + 1];
+				i++;
+			}
+			i = 0;
+		}
+		else
+			i++;
+	}
+	return (tmp);
+}
+
+static char	*gen_string_without(char *str, int *j, char c)
+{
+	unsigned char	*tmp;
+
+	tmp = (unsigned char *)gen_string_with(str, j, c);
+	tmp = find_and_mark_chars(tmp);
+	tmp = skip_marked_chars(tmp);
+	return ((char *)tmp);
+}
+
+static char	*gen_str(char *str, int *j, char c)
+{
+	while (str[*j] != '\0')
+	{
+		if (str[*j] != c && str[*j] != 0)
+		{
+			if (g_data.flags.token1 == 0)
+				return (gen_string_with(str, j, c));
+			else
+				return (gen_string_without(str, j, c));
 		}
 		else
 			(*j)++;
 	}
-	return(NULL);
+	return (NULL);
 }
 
 char	**specialsplit(char *str, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	n;
+	int		i;
+	int		j;
+	int		n;
 	char	**matriz;
 
-	n = count_words(str);
-	matriz = ft_calloc(n + 1, sizeof(char *));
+	if (!str || !(str[0]))
+		return (NULL);
+	n = count_str(str, c);
+	matriz = malloc((n + 1) * sizeof(char *));
 	matriz[n] = NULL;
 	i = 0;
 	j = 0;
 	while (str[j] != '\0')
-	{
-		matriz[i] = gen_matriz(str, &j, c);
-		i++;
-	}
+		matriz[i++] = gen_str(str, &j, c);
 	return (matriz);
 }
+
 /*
-int main(int argc, char **a, char **e)
+int main(int argc, char **arg, char **e)
 {
-	char *str = "'hola' ' ajkl' ";
+	argc = 0;
+	arg = 0;
+	char *str = "\"5'6asd'\" '' o''''tr \"'\" a''";
+	char **matriz;
+	//char *str = "\"'1234'\" \"5'6asD'\"otra";
 	g_data.env = e;
+
 	g_data.flags.token1 = 1;
-	//char *str = "a |a'| po'rt|'camila '|'texto'";
-	ft_printf_arr(specialsplit(str, '|'));
+	matriz = split_beta(str, ' ');
+	ft_printf_arr(split_beta(str, ' '));
+	ft_abort(matriz, ft_arrlen(matriz));
+	system("leaks a.out");
 	return 0;
-}*/
+}
+*/

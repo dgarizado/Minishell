@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 21:49:20 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 00:26:10 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_data
 	int		fd_outfile;
 	int		flag_env;//for export
 	t_flags	flags;
-	pid_t	mainpid;
+	pid_t	child_pid;
 	int		child_status;
 }	t_data;
 
@@ -113,6 +113,7 @@ int		ft_echo(char **arr);
 void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
 char	**pipexsplit(char *str);
 int		ft_env(void);
+int		str_error_export(char *s1, char *s2, char *s3);
 
 //PIPEX
 int 	ft_pipex(char **arr);

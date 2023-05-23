@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/20 16:59:01 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 00:09:18 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ int	print_token1(char **str)
  */
 int	init_prompt(void)
 {
-	while (42)
-	{
-		ft_lexic((g_data.input));
+		// ft_lexic((g_data.input));// MOVE TO MAIN TO AVOID EXECUTE CD, EXPORT, UNSET IN CHILD PROCESS
 		//ft_parcerito();
 		// printf(YELLOW"\nLIST OF TOKENS LEVEL1:\n"RST_CLR);
 		// print_token1(g_data.token1);
@@ -55,7 +53,6 @@ int	init_prompt(void)
 		print_token1(g_data.outfiles);
 		free(g_data.token1); //THIS IS NOT PROPERLY FREED. IS A SPLIT!
 		exit(0); //HERE WE DEVELOP HOW TO KILL THIS CHILD
-	}
 	return (0);
 }
 
