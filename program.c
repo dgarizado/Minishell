@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 20:47:43 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:35:11 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	ft_program(char *str)
 	ft_redic(str);
 	//printf(YELLOW"\ninfiles: \n"RST_CLR);
 	//ft_printf_arr(g_data.infiles);
-	g_data.flags.token1 = 1;
-	//printf("\n----SPECIALSPLIT NO '' ->> FT_EXECUTE------\n%s\n", str);
+	g_data.flags.token1 = 1;gi
 	tokenized_cmd = specialsplit(str, ' ');
 	return (ft_execute(tokenized_cmd));
 }
