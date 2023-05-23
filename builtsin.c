@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/18 22:30:36 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:04:08 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_pwd(char **arr)
 
 int	ft_exit(void)
 {
-	exit (255);
-	return (1);
+	exit (EXIT_SUCCESS);
+	return (0);
 }
 
 int	ft_env(void)

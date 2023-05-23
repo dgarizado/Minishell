@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/21 13:57:44 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:09:05 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,10 +145,10 @@ int	ft_lexic(char *input)
 		}
 		i++;
 	}
-	printf("\n----ENTRADA STR -> LEXIC------\n%s\n", g_data.input); 
+	//printf("\n----ENTRADA STR -> LEXIC------\n%s\n", g_data.input); 
 	g_data.token1 = specialsplit((g_data.input), ' ');//for check_expand //ERROOR INTO SPLIT
-	write(1, "\n--------ARR SPECIALSPLIT YES '' FIRST SPLIT INTO LEXIC -------\n",65); 
-	ft_printf_arr(g_data.token1);
+	//write(1, "\n--------ARR SPECIALSPLIT YES '' FIRST SPLIT INTO LEXIC -------\n",65); 
+	//ft_printf_arr(g_data.token1);
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
 //	printf("\n%s\n", g_data.input_ex);

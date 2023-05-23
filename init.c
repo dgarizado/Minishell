@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/21 13:29:59 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:03:18 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,13 @@ int	init(char **env)
 			add_history_aux(g_data.input);
 			flag = ft_lexic((g_data.input));
 			
-			 //if (flag == -1)
-			 
+			if (flag == -1)
+			{
 				g_data.child_pid = fork();	
-			if (g_data.child_pid == 0)
-			{
-				printf("\n----BEFORE INIT_PROMT()------\n%s\n", g_data.input_ex); 
-				init_prompt();
+				if (g_data.child_pid == 0)
+					init_prompt();
 			}
-			
-			else
-			{
-				printf("\nBig daddy PID:%d\n", g_data.child_pid);
+				//printf("\nBig daddy PID:%d\n", g_data.child_pid);
 				wait(&g_data.child_status);
 				//wait(NULL);
 					//waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
@@ -92,9 +87,8 @@ int	init(char **env)
 				// 	g_data.child_status = WEXITSTATUS(g_data.child_status);
 				if (g_data.child_status == 255)
 					break ;
-			}
-			
 		}
+			
 	}
 	return (EXIT_SUCCESS);
 }
