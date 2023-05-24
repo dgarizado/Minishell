@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 21:16:34 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:06:59 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,6 @@ int	check_infiles(void)
 		//free(aux);
 		i++;
 	}
-	printf("\ncheck_infiles done\n");
 	return (0);
 }
 

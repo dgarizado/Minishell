@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 17:18:43 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:03:43 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_error(char *err)
  */
 int	delete_str(int i, int j, char *str)
 {
-	while (i <= j)
+	while (i <= j && str[i] != '\0')
 	{
 		str[i] = ' ';
 		i++;
