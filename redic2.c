@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redic2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 21:16:34 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/23 22:14:22 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_error_in(char *s1, char *s2, char *s3, int ret)
 	if (s2)
 		ft_putstr_fd(s2, 2);
 	ft_putstr_fd(s3, 2);
-	exit (ret);
+	exit (ret);///posible exit in genesis
 }
 
 int	aux_del(int i)
@@ -168,7 +168,6 @@ int	check_infiles(void)
 		//free(aux);
 		i++;
 	}
-	printf("\ncheck_infiles done\n");
 	return (0);
 }
 
