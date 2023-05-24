@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_arr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 19:54:02 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/16 20:01:49 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:11:10 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_printf_arr(char **arr)
 	n = 0;
 	while (arr[n])
 	{
-		printf("%s\n", arr[n]);
+		printf("'%s'\n", arr[n]);
 		n++;
 	}
 }

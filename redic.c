@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 17:35:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:33:16 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int	aux_aux(int *i, int *j, int *k, char c)
 			g_data.infiles[*k] = ft_substr(g_data.str_redic, *i, *j - *i);
 		else
 			g_data.outfiles[*k] = ft_substr(g_data.str_redic, *i, *j - *i);
+		// printf(PINK"infiles[%d] = '%s'\n"RST_CLR, *k, g_data.infiles[*k]);
 		delete_str(*i, *j, g_data.str_redic);
 		(*k)++;
 	}
@@ -94,7 +95,7 @@ int	aux(int *i, int *j, int *k, char c)
 		(*j) = *i + 1;
 		while (g_data.str_redic[*j] == ' ' || g_data.str_redic[*j] == c)
 			(*j)++;
-		while (g_data.str_redic[*j] && g_data.str_redic[*j] != ' ' \
+		while (g_data.str_redic[*j] != '\0' && g_data.str_redic[*j] != ' ' \
 		&& g_data.str_redic[*j] != c)
 		{
 			aux_aux(i, j, k, c);
@@ -142,13 +143,17 @@ int	ft_redic(char *str)
 {
 	int	i;
 
+	//printf(YELLOW"\nstrlen: %zu ENTERS AT REDIC = '%s'\n"RST_CLR,ft_strlen(str) , str);
 	i = ft_count_redic(str, '>');
 	if (i > 0)
 		g_data.outfiles = ft_calloc(sizeof(char *), i + 1);
 	i = ft_count_redic(str, '<');
 	if (i > 0)
 		g_data.infiles = ft_calloc(sizeof(char *), i + 1);
+	// printf(YELLOW"\nstrlen:%zu ENTERS BEFORE GN_REDIC = '%s'\n"RST_CLR, ft_strlen(str), str);
 	get_next_redic(str, '<');
+	// printf(YELLOW"\nstrlen:%zu AFTER GN_REDIC = '%s'\n"RST_CLR, ft_strlen(str),str);
+	//ft_printf_arr(g_data.infiles);
 	get_next_redic(str, '>');
 	analyze_redic();
 	return (0);
