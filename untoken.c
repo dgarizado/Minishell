@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   untoken.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:55:54 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/19 21:59:20 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/21 00:14:15 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ char	*ft_untoken(void)
 	char	*aux;
 	int		i;
 
+	// if (!g_data.token1)
 	i = 1;
 	newstr = g_data.token1[0];
 	while (g_data.token1[i] != NULL)

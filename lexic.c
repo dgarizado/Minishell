@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/21 12:31:38 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:42:06 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_data	g_data;
 int	ft_parcerito(void)
 {
 	g_data.flags.token1 = 1;
-	g_data.token2 = specialsplit(g_data.input_ex, ' '); //NEEDS PROPER FREE
+	g_data.token2 = specialsplit(g_data.input_ex, ' ');
 	g_data.flags.token1 = 0;
-	g_data.pipess = ft_split(g_data.input_ex, '|'); //NEEDS PROPER FREE
+	g_data.pipess = ft_split(g_data.input_ex, '|');
 	return (0);
 }
 
@@ -78,17 +78,59 @@ int	ft_is_closed(char *str, int *index, char c)
 }
 
 /**
+ * @brief Check if there are pipes not enclosed in '' or "".
+ * 
+ * @return int 0 OK, 1 NO
+ */
+static int	ft_check_pipes(void)
+{
+	char	**arr;
+	int		n;
+
+	arr = specialsplit(g_data.input_ex, '|');
+	if (ft_arrlen(arr) > 1)
+		n = 0;
+	else
+		n = 1;
+	ft_abort(arr, ft_arrlen(arr));
+	return (n);
+}
+
+/**
+ * @brief Check to execute unset, export, cd
+ * Check is alone or in pipes
+ * execute ft_program in main followed to skip init_promt().
+ * So we dont loose the changes in env and the path of the procees.
+ * 
+ * @return int 0 OK, 1 NO
+ */
+static int	ft_check_exe(void)
+{
+	if (ft_strncmp((g_data.token1[0]), "exit", 4) == 0 || \
+	ft_strncmp((g_data.token1[0]), "export", 7) == 0 || \
+	ft_strncmp((g_data.token1[0]), "unset", 6) == 0 || \
+	ft_strncmp((g_data.token1[0]), "cd", 2) == 0)
+	{
+		return (0);
+	}
+	return (1);
+}
+
+/**
  * @brief Checks if there are unclosed  ' or ""
  * and performs a first tokenization(split by spaces) in order
  * to facilitate the expand function. The Expansion 
- * is also done here.
+ * is also done here. 
  * @param input 
- * @return int 
+ * @return int if execute program return status, if not return -1 means to continue to init_promt()
  */
 int	ft_lexic(char *input)
 {
 	int	i;
+	int	status;
 
+	if (input == NULL)
+		return (0);
 	i = 0;
 	if (input == NULL || input[0] == '\0')
 		return (0);
@@ -97,19 +139,18 @@ int	ft_lexic(char *input)
 		if (input[i] == '\'' || input[i] == '\"' )
 		{
 			if (ft_is_closed(input, &i, input[i]) == 1)
-				ft_error("\nunclosed quotes!\n");
+				return (ft_error("\nunclosed quotes!\n"));
 		}
 		i++;
 	}
+	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
-	if (strcmp((g_data.token1[0]), "exit") == 0) // STRCMP!!
-		ft_exit();
-	//HARCODED DELET:
-	if (strcmp((g_data.token1[0]), "export") == 0) // STRCMP!!
-	{
-		ft_export(g_data.token1);
-		//ft_printf_arr(g_data.env);
-	}
 	ft_check_expand();
-	return (0);
+	g_data.input_ex = ft_untoken();
+	if (ft_check_exe() == 0 && ft_check_pipes() == 1)// EXE IN GENESIS
+	{
+		status = ft_program(g_data.input_ex);
+		return (status);
+	}
+	return (-1);
 }

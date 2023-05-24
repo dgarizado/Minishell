@@ -5,7 +5,8 @@
 
 NAME        := minishell
 CC        := gcc
-FLAGS    := -Wall -Wextra -Werror
+DEBUB        := gcc 
+FLAGS    := -Wall -Wextra -Werror 
 LIBFT = ./libft/libft.a
 HEADER = ./minishell.h
 RLHEADER = -I "/Users/$(USER)/.brew/opt/readline/include"
@@ -50,6 +51,9 @@ $(LIBFT):
 all:		${NAME}
 
 bonus:		all
+
+debug:
+	@${DEBUB}  ${OBJS} $(LIBFT) $(LIBS) ${FLAGS} -o debug
 
 clean:
 			@ ${RM} $(OBJ_DIR) *.o
