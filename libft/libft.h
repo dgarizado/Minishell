@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:21:22 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 18:09:29 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/24 20:16:08 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 void (*del)(void *));
 //EXTRA FUNCTIONS FOR MINISHELL
-int			ft_printf_arr(char **arr);
+int				ft_printf_arr(char **arr);
 int				ft_arrlen(char **env);
 char			**ft_abort(char **new_array, unsigned int i);
-
+int				ft_str_index_chr(const char *s, char c);	
 #endif

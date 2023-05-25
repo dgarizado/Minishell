@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 20:33:42 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/25 01:59:18 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ static char	*ft_getenv(int i, int j, int lenvar)
 			break ;
 		n++;
 	}
-	if (!g_data.env[n])
+	if (!g_data.env[n])///HERE MAY to make $?
+	{
 		str_error(var,  "not found");
+	}
 	else
 		aux = &g_data.env[n][ft_strlen(var) + 1];
 	if (!aux)

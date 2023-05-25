@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 22:56:34 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/18 18:01:04 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/25 01:48:45 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ extern t_data	g_data;
 //return 0  if not encounter, return index when encounter
 int	ft_get_var(char *str, int n)
 {
-	int	i;
 	int	j;
 
 	j = 0;
-	i = 0;
-	while (g_data.env[i][j] != '=')
+	while (g_data.env[n][j] != '=')
 		j++;
 	if (!ft_strncmp(g_data.env[n], str, j))
 		return (1);
@@ -42,6 +40,7 @@ void	ft_copy(char **new_arr_env, char **arr, int i, int *n)
 			encounter++;
 		j++;
 	}
+	printf("ENCOUNTER = %d", encounter);
 	if (encounter == 0)
 	{
 		new_arr_env[*n] = ft_strdup(g_data.env[i]);

@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/23 22:19:58 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/25 01:55:11 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static int	ft_built_in(char **arr)
 		return(ft_env());
 	else if (!ft_strncmp(arr[0], "exit", 4))
 		return(ft_exit());
+	else if (!ft_strncmp(arr[0], "$?", 4))
+	return(ft_$());
 	else
 		return (-1);
 }

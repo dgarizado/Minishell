@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:56:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/20 20:03:16 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/25 01:49:51 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_count_to_clear(char **arr)
 		n = 1;
 		while (arr[n])
 		{
-			if (ft_get_var(arr[n], i) != 0)
+			if (ft_get_var(arr[n], i) == 1)
 				nvar_to_clear++;
 			n++;
 		}
@@ -42,7 +42,9 @@ static char	**ft_gen_new_arr(char **arr)
 	int		len_new_env;
 	int		i;
 	int		n;
-
+	
+	if (!ft_count_to_clear(arr))
+		return (NULL);
 	len_new_env = ft_arrlen(g_data.env) - ft_count_to_clear(arr);
 	new_arr_env = (char **)malloc(sizeof(char *) * len_new_env + 1);
 	i = 0;
@@ -56,15 +58,18 @@ static char	**ft_gen_new_arr(char **arr)
 	return (new_arr_env);
 }
 
-static char	**ft_gen_new_env(char **arr)
+static void ft_gen_new_env2(char **arr)//posible error abort antes de tiempo
 {
 	char	**new_arr_env;
 
 	new_arr_env = ft_gen_new_arr(arr);
-	if (g_data.flag_env != 0)
-		ft_abort(g_data.env, ft_arrlen(g_data.env));
-	g_data.flag_env++;
-	return (new_arr_env);
+	if (new_arr_env)
+	{
+		if (g_data.flag_env != 0)
+			ft_abort(g_data.env, ft_arrlen(g_data.env));
+		g_data.flag_env++;
+		g_data.env = new_arr_env;
+	}
 }
 
 //When kill the main thread free the g_data.env
@@ -75,12 +80,13 @@ int	ft_unset(char **arr)
 		str_error("unset", "env not found");
 		return (EXIT_FAILURE);
 	}
-	if (!arr[1])
+	else if (!arr[1])
 	{
-		str_error("unset", "enough arguments");
+		str_error("unset", "not enough arguments");
 		return (EXIT_SUCCESS);
 	}
-	g_data.env = ft_gen_new_env(arr);
+	else
+		ft_gen_new_env2(arr);
 	return (errno);
 }
 

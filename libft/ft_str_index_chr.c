@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   ft_str_index_chr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/25 00:48:16 by vcereced         ###   ########.fr       */
+/*   Created: 2023/05/24 19:49:20 by vcereced          #+#    #+#             */
+/*   Updated: 2023/05/24 23:53:39 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-extern t_data	g_data;
-
-int	ft_pwd(char **arr)
+#include "libft.h"
+/**
+ * @brief Iter the string to find the char c. when find return n_byte.
+ * @param s 
+ * @param c 
+ * @return int 0 when not appear. when appear return n_byte. when c == '\0 
+ * return n_byte.
+ * 
+ */
+int	ft_str_index_chr(const char *s, char c)
 {
-	char	buffer[1024];
-	if ((arr[1]))
-		return (str_error("pwd: bad option", arr[1]));
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
-	return (0);
-}
+	int	i;
 
-int	ft_exit(void)
-{
-	exit (EXIT_SUCCESS);
-	return (0);
-}
-
-int	ft_env(void)
-{
-	if (!g_data.env)
-		return (str_error("env", "not available"));
-	return (ft_printf_arr(g_data.env));
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return (i +1);
+		i++;
+	}
+	if (c == 0)
+		return (i +1);
+	else
+		return (0);
 }
