@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 23:47:14 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/27 00:44:45 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,14 +147,14 @@ int	ft_lexic(char *input)
 	}
 	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
-	ft_printf_arr(g_data.token1);
+	//ft_printf_arr(g_data.token1);
 	if (ft_check_empty_pipe() == -1)
 		return (-2);
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
 	if (ft_check_exe() == 0 && ft_check_pipes() == 1)// EXE IN GENESIS
 	{
-		write(1, "YES\n", 4);
+		//write(1, "YES\n", 4);
 		status = ft_program(g_data.input_ex);
 		return (status);
 	}

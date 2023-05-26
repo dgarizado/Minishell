@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 20:54:52 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/27 00:42:56 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,8 @@ int	ft_check_expand(void)
 	int flag_quote;
 
 	i = 0;
-	write(1, "EXPAND\n", 7);
-	ft_printf_arr(g_data.token1);
+	//write(1, "EXPAND\n", 7);
+	//ft_printf_arr(g_data.token1);
 	while (g_data.token1[i] != NULL)
 	{
 		j = 0;
