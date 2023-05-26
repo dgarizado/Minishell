@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/20 18:47:37 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/26 23:11:22 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ static void pipe_and_fork(char **arr)
 	while (g_data.n_pipe < (ft_arrlen(arr) - 2))
 	{
 		g_data.n_pipe++;
+		wait(NULL);
 		fork_proccess();
 		if (g_data.pid == 0)
 			receive_from_send_to_pipe(arr[g_data.n_pipe]);
 	}
+	wait(NULL);
 	fork_proccess();
 	if (g_data.pid == 0)
 	{
