@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/24 20:28:19 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:38:54 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ extern t_data	g_data;
 int	ft_program(char *str)
 {
 	char	**tokenized_cmd; //NEED FREE?
-	write(1, "\n ----str BEFORE redic---", 25);
-	printf("\n%s \n", str);
-	ft_redic(str);
-	write(1, "\n ----str after redic---", 25);
-	printf("\n%s \n", str);
+
+	// ft_redic(str);
+	ft_redicc(str);
+	//printf(YELLOW"\ninfiles: \n"RST_CLR);
 	//ft_printf_arr(g_data.infiles);
 	g_data.flags.token1 = 1;
 	tokenized_cmd = specialsplit(str, ' ');

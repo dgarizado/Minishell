@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redic.c                                            :+:      :+:    :+:   */
+/*   allredics.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 00:03:19 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/25 23:34:37 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ extern t_data	g_data;
  * @param c 
  * @return int 
  */
-int	ft_count_redic(char *str, char c)
+int	ft_count_redicc(char *str, char c)
 {
 	int	i;
 	int	count;
@@ -45,7 +45,7 @@ int	ft_count_redic(char *str, char c)
 }
 
 /**
- * @brief Aux function for norminette issues.
+ * @brief Auxc function for norminette issues.
  * Here is finally where the redirections are stored.
  * @param i 
  * @param j 
@@ -53,16 +53,13 @@ int	ft_count_redic(char *str, char c)
  * @param c 
  * @return int 
  */
-static int	aux_aux(int *i, int *j, int *k, char c)
+static int	auxc_auxc(int *i, int *j, int *k, char c)
 {
 	(*j)++;
 	if (g_data.str_redic[*j] == '\0' || g_data.str_redic[*j] == ' ' \
 	|| g_data.str_redic[*j] == c)
 	{
-		if (c == '<')
-			g_data.infiles[*k] = ft_substr(g_data.str_redic, *i, *j - *i);
-		else
-			g_data.outfiles[*k] = ft_substr(g_data.str_redic, *i, *j - *i);
+		g_data.redics[*k] = ft_substr(g_data.str_redic, *i, *j - *i);
 		delete_str(*i, *j, g_data.str_redic);
 		(*k)++;
 	}
@@ -70,7 +67,7 @@ static int	aux_aux(int *i, int *j, int *k, char c)
 }
 
 /**
- * @brief Aux function for norminette issues. 
+ * @brief Auxc function for norminette issues. 
  * Here the redirections are managed to be stored in a different array.
  *  data.infiles or data.outfiles.
  * Also here, the text for redirections is removed. 
@@ -82,19 +79,24 @@ static int	aux_aux(int *i, int *j, int *k, char c)
  * @return int 
  */
 //CHECK POINT !!!!!!!!!!!!!55555
-int	aux(int *i, int *j, int *k, char c)
+int	auxc(int *i, int *j, int *k, char c)
 {
-	if (g_data.str_redic[*i] == c)
+	char	flag;
+
+	flag = 0;
+	c = 0;
+	if (g_data.str_redic[*i] == '<' || g_data.str_redic[*i] == '>')
 	{
+		flag = g_data.str_redic[*i];
 		(*j) = *i + 1;
-		while (g_data.str_redic[*j] == ' ' || g_data.str_redic[*j] == c)
+		while (g_data.str_redic[*j] == ' ' || g_data.str_redic[*j] == flag)
 			(*j)++;
 		while (g_data.str_redic[*j] && g_data.str_redic[*j] != ' ' \
-		&& g_data.str_redic[*j] != c)
+		&& g_data.str_redic[*j] != flag)
 		{
-			aux_aux(i, j, k, c);
+			auxc_auxc(i, j, k, flag);
 		}
-		if (g_data.str_redic[*i + 1] == c)
+		if (g_data.str_redic[*i + 1] == flag)
 			(*i)++;
 	}
 			(*i)++;
@@ -109,7 +111,7 @@ int	aux(int *i, int *j, int *k, char c)
  * @param c 
  * @return char 
  */
-char	get_next_redic(char *str, char c)
+char	get_next_redicc(char *str, char c)
 {
 	int		i;
 	int		j;
@@ -121,7 +123,7 @@ char	get_next_redic(char *str, char c)
 	g_data.str_redic = str;
 	while (str[i] != '\0')
 	{
-		aux(&i, &j, &k, c);
+		auxc(&i, &j, &k, c);
 	}
 	g_data.str_redic = NULL;
 	return (0);
@@ -133,27 +135,26 @@ char	get_next_redic(char *str, char c)
  * @param str 
  * @return int 
  */
-// int	ft_redic(char *str)
-// {
-// 	int		i;
-// 	int		all;
-// 	char	*aux;
+int	ft_redicc(char *str)
+{
+	int		i;
+	int		all;
+	char	*aux;
 
-// 	i = ft_count_redic(str, '>');
-// 	if (i > 0)
-// 		g_data.outfiles = ft_calloc(sizeof(char *), i + 1);
-// 	all = i;
-// 	i = ft_count_redic(str, '<');
-// 	all += i;
-// 	if (i > 0)
-// 		g_data.infiles = ft_calloc(sizeof(char *), i + 1);
-// 	if (all > 0)
-// 		g_data.redics = ft_calloc(sizeof(char *), all + 1);
-// 	aux = ft_strdup(str); 
-// 	if (all > 0)
-// 		ft_redicc(aux);
-// 	get_next_redic(str, '<');
-// 	get_next_redic(str, '>');
-// 	analyze_redic();
-// 	return (0);
-// }
+	i = ft_count_redicc(str, '>');
+	aux = ft_strdup(str);
+	if (i > 0)
+		g_data.outfiles = ft_calloc(sizeof(char *), i + 1);
+	all = i;
+	i = ft_count_redicc(str, '<');
+	all += i;
+	if (i > 0)
+		g_data.infiles = ft_calloc(sizeof(char *), i + 1);
+	if (all > 0)
+		g_data.redics = ft_calloc(sizeof(char *), all + 1);
+	get_next_redic(str, '>');
+	get_next_redic(str, '<');
+	get_next_redicc(aux, '<');
+	analyze_redicc();
+	return (0);
+}
