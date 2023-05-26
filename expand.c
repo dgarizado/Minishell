@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/25 01:59:18 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/26 20:54:52 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,17 @@ static char	*ft_getenv(int i, int j, int lenvar)
 	aux = NULL;
 	var = ft_substr(g_data.token1[i], j + 1, lenvar - 1);
 	n = 0;
+	if (g_data.token1[i][j + 1] == '?')
+		return (ft_itoa(g_data.child_status));
 	while (g_data.env[n])
 	{
-		if (ft_strncmp(g_data.env[n], var, ft_strlen(var)) == 0)
+		if (ft_strncmp(g_data.env[n], var, ft_str_index_chr(g_data.env[n], '=') - 1) == 0)
+		//if (ft_strncmp(g_data.env[n], var, ft_strlen()) == 0)
 			break ;
 		n++;
 	}
 	if (!g_data.env[n])///HERE MAY to make $?
-	{
 		str_error(var,  "not found");
-	}
 	else
 		aux = &g_data.env[n][ft_strlen(var) + 1];
 	if (!aux)
@@ -66,19 +67,26 @@ static int	aux(int i, int j)
 	int	k;
 
 	k = 0;
-	while (g_data.token1[i][j] != ' ' && g_data.token1[i][j] \
-	&& g_data.token1[i][j] != '\"' && g_data.token1[i][j] != '\'') //HARDCODED NEED TO BE FIXED
+	//printf("TOKEN ENTRA %s\n", g_data.token1[i]);
+	//while (g_data.token1[i][j] != ' ' && g_data.token1[i][j] \
+	//&& g_data.token1[i][j] != '\"' && g_data.token1[i][j] != '\'') //HARDCODED NEED TO BE FIXED
+	if (g_data.token1[i][j + 1] == '?')
+		return (2);///POSIBLE 1<->2
+	while (ft_isalnum((char)g_data.token1[i][j]) == 1 || g_data.token1[i][j] == '$')
 	{
+		//printf("\n char -> %c \n", g_data.token1[i][j]);
+		//getchar();
 		j++;
 		k++;
 		if (g_data.token1[i][j] == '$')
 			break ;
 	}
+	//printf("-- LEN_VAR %d\n", k);
 	return (k);
 }
 
 /**
- * @brief This function finds the call of x 
+ * @brief This function finds the call of $ 
  * and expands it into the proper string. 
  * @param i 
  * @param j 
@@ -109,10 +117,41 @@ int	ft_expand(int i, int j)
 	free(str2);
 	return (0);
 }
+void ft_checkquotes(int i, int *j, int *flag_quote, int *flag_expand)
+{
+	if (g_data.token1[i][*j] == '\"' && *flag_quote == 0)
+	{
+		//(*j)++;
+		*flag_quote = 1;
+	}
+	else if (g_data.token1[i][*j] == '\"' && *flag_quote == 1)
+	{
+		//(*j)++;
+		*flag_quote = 0;
+	}
+	
+	else if ( g_data.token1[i][*j] == '\'' && *flag_quote == 0)
+	{
+		//(*j)++;
+		*flag_expand = 0;
+	}
+	if (*flag_quote == 1)
+		*flag_expand = 1;
+}
 
+int ft_de_oca_a_oca(int i, int j, int *flag_quote, int *flag_expand)
+{
+	j++;
+	while (g_data.token1[i][j] != '\'')
+		j++;
+	//j++;
+	*flag_quote = 0;
+	*flag_expand = 1;
+	return (j);
+}
 /**
- * @brief This function checks if there is $
- * in each token. Then expand it if it is
+ * @brief This function checks if there is $  //flag_quote = 1
+ * in each token. Then expand it if it is	  //flag_expand = 1
  * not enclosed by single quotes.
  * 
  * @return int 
@@ -121,19 +160,49 @@ int	ft_check_expand(void)
 {
 	int	i;
 	int	j;
+	int flag_expand;
+	int flag_quote;
 
 	i = 0;
+	write(1, "EXPAND\n", 7);
+	ft_printf_arr(g_data.token1);
 	while (g_data.token1[i] != NULL)
 	{
 		j = 0;
+		flag_quote = 0;
+		flag_expand = 1;
 		while (g_data.token1[i][j] != '\0')
-		{
-			if (g_data.token1[i][j] == '$' && g_data.token1[i][0] != '\'')
+		{	
+			//printf("	INICIO INDEX -> %d\n", j);
+			ft_checkquotes(i, &j, &flag_quote, &flag_expand);
+			//printf("-AFTER CHECH QUOTES -> %s\n", g_data.token1[i]);
+			//printf("-AFTER CHECH QUOTES indice-> %d\n", j);
+			//printf("-AFTER CHECH QUOTES COMILLAS -> %d, EXPAND -> %d\n", flag_quote, flag_expand);
+			if(flag_expand == 0)
+			{
+				j = ft_de_oca_a_oca(i, j, &flag_quote, &flag_expand);
+			//	printf(">FIN OCA -> %s\n", g_data.token1[i]);
+		//		printf(">FIN OCA indice-> %d\n", j);
+		//		printf(">FIN OCA COMILLAS -> %d, EXPAND -> %d\n", flag_quote, flag_expand);
+			}
+			if (g_data.token1[i][j] == '$')//&& g_data.token1[i][0] != '\'')
+			{
 				ft_expand(i, j);
+			//	printf("*AFTER EXPAND -> %s\n", g_data.token1[i]);
+		//		printf("*AFTER EXPAND indice-> %d\n", j);
+		//		printf("*AFTER EXPAND COMILLAS -> %d, EXPAND -> %d\n", flag_quote, flag_expand);
+				flag_quote = 0;
+				flag_expand = 1;
+				j = 0;//try yes/no
+			}
+		//	printf("=FIN BUCLE -> %s\n", g_data.token1[i]);
+		//	printf("=FIN BUCLE indice-> %d\n", j);
+		//	printf("=FIN BUCLE COMILLAS -> %d, EXPAND -> %d\n\n", flag_quote, flag_expand);
+		//	getchar();
 			j++;
 		}		
 		i++;
 	}
-	//ft_printf_arr(g_data.token1);
+	
 	return (0);
 }
