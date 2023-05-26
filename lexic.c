@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 23:15:01 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/26 23:47:14 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int ft_check_empty_pipe(void)
 
 	while(g_data.token1[i + 1] )
 	{
-		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0') ||  (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' && g_data.token1[i + 1][0] == '|'))
+		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' && g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') ||  (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' && g_data.token1[i + 1][0] == '|'))
 		{
 			str_error("minishell" ,"syntax error near unexpected token `|'");
 			return (-1);
@@ -147,6 +147,7 @@ int	ft_lexic(char *input)
 	}
 	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
+	ft_printf_arr(g_data.token1);
 	if (ft_check_empty_pipe() == -1)
 		return (-2);
 	ft_check_expand();

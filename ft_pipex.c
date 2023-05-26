@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/26 23:11:22 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/27 00:00:52 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static void pipe_and_fork(char **arr)
 	while (g_data.n_pipe < (ft_arrlen(arr) - 2))
 	{
 		g_data.n_pipe++;
-		wait(NULL);
 		fork_proccess();
 		if (g_data.pid == 0)
 			receive_from_send_to_pipe(arr[g_data.n_pipe]);
+		wait(NULL);
 	}
 	wait(NULL);
 	fork_proccess();
@@ -64,6 +64,7 @@ static void pipe_and_fork(char **arr)
 	{
 		receive_from_pipe(arr[g_data.n_pipe + 1]);
 	}
+	//wait(NULL);
 	close_all_pipes();
 }
 
