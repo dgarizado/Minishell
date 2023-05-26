@@ -1,43 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redic2.c                                           :+:      :+:    :+:   */
+/*   allredics2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/24 19:03:05 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:37:15 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
-
-int	ft_error_in(char *s1, char *s2, char *s3, int ret)
-{
-	ft_putstr_fd(s1, 2);
-	if (s2)
-		ft_putstr_fd(s2, 2);
-	ft_putstr_fd(s3, 2);
-	exit (ret);///posible exit in genesis
-}
-
-int	aux_del(int i)
-{
-	while (g_data.infiles[i])
-	{
-		if (g_data.infiles[i][1] == '<' && g_data.infiles[i][2] == '<')
-		{
-			printf(RED"minishell: syntax error near unexpected token `<'\n"RST_CLR);
-			g_data.flags.here_doc_ret = 258;
-			g_data.flags.here_doc_aux = i;
-			break ;
-		}
-		i++;
-	}
-	return (0);
-}
 
 /**
  * @brief Here we write to the pipe the content of here_doc
@@ -46,53 +21,60 @@ int	aux_del(int i)
  * @param eof 
  * @return char* 
  */
-int delimiter(char *eof, int *fd)
+int	delimiterr(char *eof, int *fd, int std_out)
 {
 	char	*line;
 
+	dup2(std_out, STDOUT_FILENO);
 	while (42)
+	{
+		line = readline("> ");
+		if (ft_strncmp(line, eof, ft_strlen(line)) == 0 \
+		&& ft_strlen(line) == ft_strlen(eof))
 		{
-			line = readline("> ");
-			if (ft_strncmp(line, eof, ft_strlen(line)) == 0 && ft_strlen(line) == ft_strlen(eof))
-			{
-				free(line);
-				break ;
-			}
-			write(fd[1], line, ft_strlen(line));
-			write(fd[1], "\n", 1);
 			free(line);
+			break ;
 		}
-		close(fd[1]);
+		write(fd[1], line, ft_strlen(line));
+		write(fd[1], "\n", 1);
+		free(line);
+	}
+	close(fd[1]);
 	return (0);
 }
 
 /**
- * @brief Creates a sub process that will write to the pipe the content of here_doc
+ * @brief Creates a sub process that will write to the pipe 
+ * the content of here_doc
  * the parent will read from the pipe and any command will have
  * the content of the pipe as input.
  * The here_doc will be read only if there is no more infiles
  * @param eof 
  */
-void	ft_here_doc(char *eof, int i)
+void	ft_here_docc(char *eof, int i)
 {
 	int		pid;
 	int		fd[2];
+	int		len;
 
 	pipe(fd);
-	if (g_data.flags.here_doc_ret != 258)
-		aux_del(i);
+	// printf("original_std_out = %d\n", g_data.original_std_out);
+	// write(g_data.original_std_out, "aaaaaaa\n", 8);
+	len =  ft_arrlen(g_data.infiles);
 	pid = fork();
 	if (pid == 0)
 	{
 		close(fd[0]);
-		exit (delimiter(eof, fd));
+		exit (delimiterr(eof, fd, g_data.original_std_out));
 	}
 	else
 	{
 		waitpid (pid, NULL, 0);
 		close (fd[1]);
-		if (g_data.infiles[i + 1] == NULL && g_data.flags.here_doc_ret != 258)
-		dup2(fd[0], STDIN_FILENO);
+		if (strcmp(g_data.redics[i], g_data.infiles[len - 1]) == 0) //FORBIDDEN	FUNCTION, change to ft_strcmp
+			dup2(fd[0], STDIN_FILENO);
+		//if (g_data.infiles[i + 1] == NULL && g_data.flags.here_doc_ret != 258) //This is an error, should be checking data.redics...
+			//dup2(fd[0], STDIN_FILENO);
 		close (fd[0]);
 	}
 }
@@ -104,32 +86,34 @@ void	ft_here_doc(char *eof, int i)
  * last fd in g_data.fd_in
  * checks if there is a here_doc call when 
  * there are "<<" in the infile name
- * adn calls the ft_here_doc function
+ * adn calls the ft_here_docc function
  * @return int 
  */
-int	infiles_doc(void)
+int	infiles_docc(void)
 {
-	int		i; 
+	int		i;
 	char	*eof; //MEMORY LEAK
-	
+
 	i = 0;
-	while (g_data.infiles[i])
+	while (g_data.redics[i])
 	{
-		if (g_data.infiles[i][1] == '<' && g_data.infiles[i][2] != '<') 
+		if (g_data.redics[i][1] == '<' && g_data.redics[i][2] != '<')
 		{
-			eof = ft_strtrim(g_data.infiles[i], "< ");
+			eof = ft_strtrim(g_data.redics[i], "< ");
 			if (g_data.flags.here_doc_ret != 258 || g_data.flags.here_doc_aux > i)
-				ft_here_doc(eof, i);
-			if (g_data.infiles[i + 1] == NULL)
+				ft_here_docc(eof, i);
+			if (g_data.redics[i + 1] == NULL)
 				break ;
 			else
 				free(eof);
 		}
-		ft_open(i);
+		if (g_data.redics[i][0] == '>' && g_data.flags.here_doc_ret != 258)
+			ft_open_outfile(i);
+		ft_openn(i);
 		i++;
 	}
 	// if (eof) //MEMORY LEAK WH
-	// 	free(eof);
+	// 	free(eof); 
 	return (0);
 }
 
@@ -138,7 +122,7 @@ int	infiles_doc(void)
  * yes, it can be done with access, but we get the same result.
  * @return int 
  */
-int	check_infiles(void)
+int	check_infiless(void)
 {
 	int		i;
 	int		fd;
@@ -148,12 +132,7 @@ int	check_infiles(void)
 	while (g_data.infiles[i])
 	{
 		while (g_data.infiles[i] != NULL && g_data.infiles[i][1] == '<')
-		{
-			// if (g_data.infiles[i][2] == '<')
-			// 	return (ft_error_in(RED"\nminishell: ", (g_data.infiles[i] + 1), \
-			// 	": syntax error near unexpected token `<<'\n"RST_CLR, 258));
 			i++;
-		}
 		if (g_data.infiles[i] == NULL)
 			break ;
 		aux = ft_strtrim(g_data.infiles[i], "< ");
@@ -179,14 +158,15 @@ int	check_infiles(void)
  * and the last one will be the outfile for the dup2
  * @return int 
  */
-int	analyze_redic(void)
+int	analyze_redicc(void)
 {
-	if (g_data.infiles)
+	if (g_data.redics)
 	{
-		infiles_doc();
+		aux_dell(0);
+		infiles_docc();
 		if (g_data.flags.here_doc_ret == 258)
 			exit (g_data.flags.here_doc_ret);
-		check_infiles();
+		check_infiless();
 	}
 	return (0);
 }
