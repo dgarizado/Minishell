@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 21:44:25 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/26 00:00:34 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,12 @@ typedef struct s_data
 	char	**commands;
 	char	**infiles;//erase 
 	char	**outfiles;//erase
+	char	**redics;
 	char	**env;
 	int		**pipes;
 	int		n_pipe;
 	int		fd_in;
+	int		fd_out; //for allredic3
 	pid_t 	pid;
 	int		fd_infile;
 	int		fd_outfile;
@@ -85,6 +87,7 @@ typedef struct s_data
 	t_flags	flags;
 	pid_t	child_pid;
 	int		child_status;
+	int		original_std_out;
 }	t_data;
 
 typedef struct s_execute
@@ -140,8 +143,9 @@ int		ft_parcerito(void);
 char	**pipexsplit(char *str);
 
 //UTILS
-int	ft_error(char *err);
+int		ft_error(char *err);
 int		delete_str(int i, int j, char *str);
+int		aux_del(int i);
 
 //EXPAND
 int		ft_check_expand(void);
@@ -154,15 +158,27 @@ char	*ft_join(char *s1, char *s2);
 int		ft_program(char *str);
 
 //REDIC
-int		ft_redic(char *str);
+// int		ft_redic(char *str);
+char	get_next_redic(char *str, char c);
 
-//REDIC2
-int		analyze_redic(void);
+// //REDIC2
+// int		analyze_redic(void);
 int		ft_error_in(char *s1, char *s2, char *s3, int ret);
 
-//REDIC3
-int		ft_open(int i);
-int		check_here_docs(void);
+// //REDIC3
+// int		ft_open(int i);
+// int		check_here_docs(void);
+
+//ALLREDIC
+int		ft_redicc(char *str);
+
+//ALLREDIC23
+int		analyze_redicc(void);
+int		ft_openn(int i);
+int		ft_open_outfile(int i);
+
+//ALLUTILS
+int		aux_dell(int i);
 
 //WEDDING PLANNER
 int		wedding_planner(void);
