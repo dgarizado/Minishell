@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/25 23:34:37 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:05:30 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,16 +145,20 @@ int	ft_redicc(char *str)
 	aux = ft_strdup(str);
 	if (i > 0)
 		g_data.outfiles = ft_calloc(sizeof(char *), i + 1);
+	get_next_redic(str, '>');
 	all = i;
 	i = ft_count_redicc(str, '<');
 	all += i;
 	if (i > 0)
+	{
 		g_data.infiles = ft_calloc(sizeof(char *), i + 1);
+		get_next_redic(str, '<');
+	}
 	if (all > 0)
+	{
 		g_data.redics = ft_calloc(sizeof(char *), all + 1);
-	get_next_redic(str, '>');
-	get_next_redic(str, '<');
-	get_next_redicc(aux, '<');
+		get_next_redicc(aux, '<');
+	}
 	analyze_redicc();
 	return (0);
 }

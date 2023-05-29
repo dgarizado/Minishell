@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:54:37 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 16:21:30 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:53:56 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_here_docs(void)
 
 int	ft_open_outfile(int i)
 {
-	char	*aux;
+	char	*aux; //leak?
 	int		len;
 
 	aux = ft_strtrim(g_data.redics[i], "> ");
@@ -60,7 +60,7 @@ int	ft_open_outfile(int i)
 		free(aux);
 		if (strcmp(g_data.redics[i], g_data.outfiles[len - 1]) == 0) //FORBIDDEMN FUNCTION!
 			dup2(g_data.fd_out, STDOUT_FILENO);
-		//close(g_data.fd_out); wtf?
+		//close(g_data.fd_out); //wtf?
 	}
 	return (0);
 }
@@ -75,11 +75,12 @@ int	ft_open_outfile(int i)
  */
 int	ft_openn(int i)
 {
-	char	*aux;
+	char	*aux; //Leak?
 	int		len;
 
 	aux = ft_strtrim(g_data.redics[i], "< ");
-	len = ft_arrlen(g_data.infiles);
+	if (g_data.infiles)
+		len = ft_arrlen(g_data.infiles);
 	g_data.fd_in = open(aux, O_RDONLY);
 	if (g_data.fd_in != -1)
 	{

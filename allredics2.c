@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 16:37:15 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:17:07 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,8 @@ int	analyze_redicc(void)
 		infiles_docc();
 		if (g_data.flags.here_doc_ret == 258)
 			exit (g_data.flags.here_doc_ret);
-		check_infiless();
+		if (g_data.infiles)
+			check_infiless();
 	}
 	return (0);
 }

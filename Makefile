@@ -17,7 +17,7 @@ LIBS = -L "/Users/$(USER)/.brew/opt/readline/lib" -lreadline
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS        :=      $(wildcard *.c) $(wildcard built-in/*.c)
+SRCS        :=      $(wildcard *.c) $(wildcard built-in/*.c) $(wildcard signals/*.c)
                           
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
