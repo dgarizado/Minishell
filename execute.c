@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/25 01:55:11 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/27 00:42:32 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	ft_execve(char **arr)
 	char	**matriz_command;
 	
 	gen_command_and_path(arr, g_data.env, &str_path, &matriz_command);
-	write(1, "----\n", 6);
-	ft_printf_arr(matriz_command);
-	printf("\n path -> %s\n", str_path);
+	//write(1, "----\n", 6);
+	//ft_printf_arr(matriz_command);
+	//printf("\n path -> %s\n", str_path);
 	execve(str_path, matriz_command, g_data.env);
 	return (str_error(arr[0], "command not found"));
 	//return(127);
