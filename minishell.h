@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 00:00:34 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:44:20 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,5 +188,6 @@ int		ft_execute(char **arr);
 
 //SPECIAL SPLIT
 char	**specialsplit(char *str, char c);
+
 
 #endif
