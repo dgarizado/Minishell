@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:32:29 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/23 15:51:35 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/29 18:49:25 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ void	sent_to_pipe(char *str)
 
 void	receive_from_pipe(char *str)
 {
+	int status;
+	
 	dup2(g_data.pipes[g_data.n_pipe][STDIN_FILENO], STDIN_FILENO);
+	
 	close_all_pipes();
-	exit(ft_program(str));
+	status = ft_program(str);
+	exit(status);
 }

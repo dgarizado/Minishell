@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allredics2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 16:37:15 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/27 03:33:43 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	delimiterr(char *eof, int *fd, int std_out)
 	while (42)
 	{
 		line = readline("> ");
+		//printf("line = %s", line);
 		if (ft_strncmp(line, eof, ft_strlen(line)) == 0 \
 		&& ft_strlen(line) == ft_strlen(eof))
 		{

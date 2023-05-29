@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/27 00:48:57 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:07:51 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ static void	fork_proccess(void)
 		exit(msg_error("pipex", "error forking"));
 }
 
+
+// static void ft_wait(void)
+// {	
+// 	waitpid(g_data.pid, &g_data.child_status, WUNTRACED);///posible error condicion
+// 	if (WIFEXITED(g_data.child_status))
+// 	{
+// 		g_data.child_status = WEXITSTATUS(g_data.child_status);
+// 		if (g_data.child_status == 127)
+// 			exit(127);
+// 	}
+// }
+
 static void pipe_and_fork(char **arr)
 {
 	g_data.n_pipe = 0;
@@ -53,36 +65,37 @@ static void pipe_and_fork(char **arr)
 	while (g_data.n_pipe < (ft_arrlen(arr) - 2))
 	{
 		g_data.n_pipe++;
-		wait(NULL);
+		//wait(NULL);
+		//ft_wait();
 		fork_proccess();
 		if (g_data.pid == 0)
 			receive_from_send_to_pipe(arr[g_data.n_pipe]);
+		wait(NULL);
 	}
 	wait(NULL);
+	//ft_wait();
 	fork_proccess();
 	if (g_data.pid == 0)
 	{
-		receie_from_pipe(arr[g_data.n_pipe + 1]);
+		receive_from_pipe(arr[g_data.n_pipe + 1]);
 	}
-	//wait(NULL);
 	close_all_pipes();
 }
 
+
 int ft_pipex(char **arr)
 {
-	int wstatus;
-	int statuscode;
+	//int wstatus;
+	//int statuscode;
 
-//	if (!arr ||  !arr[0])
-//		str_error("pipex", "no argument");
 	pipe_and_fork(arr);
-	waitpid(g_data.pid, &wstatus, WUNTRACED);
-	if (WIFEXITED(wstatus))
-	{
-		statuscode = WEXITSTATUS(wstatus);
-		if (statuscode != 0)
-			exit(statuscode);
-	}
-	//free_pipex(pipex);
-	exit(EXIT_SUCCESS);//no deberia salir con este exit sino con el de el ultimo hihjo
+	wait(NULL);
+	// waitpid(g_data.pid, &wstatus, WUNTRACED);///posible error condicion
+	// if (WIFEXITED(wstatus))
+	// {
+	// 	statuscode = WEXITSTATUS(wstatus);
+	// 	if (statuscode != 0)
+	// 		exit(statuscode);
+	// }
+	exit(EXIT_SUCCESS);
 }

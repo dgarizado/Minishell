@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/24 21:59:45 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:01:21 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
-
-static void	set_env_to_global(char **env)
-{
-	g_data.env = env;
-}
 
 void	add_history_aux(char *input)
 {
@@ -33,6 +28,26 @@ void	add_history_aux(char *input)
 	}
 	free(tmp);
 }
+/**
+ * @brief check if run ft_program in main process to save the changes of path and env.
+ * 
+ */
+int check_to_exe(void)
+{
+	
+	if (ft_check_exe() == 0 && ft_check_pipes() == 1)// EXE IN GENESIS
+	{
+		return (0);
+		//status = ft_program(g_data.input_ex);
+		//return (status);
+	}
+	return (1);
+}
+
+int init_prompt_current_ps()
+{
+	return (ft_program(g_data.input_ex));
+}
 
 /**
  * @brief Main process wont execute commands. 
@@ -40,28 +55,35 @@ void	add_history_aux(char *input)
  * 
  * @return int 
  */
-int	init(char **env)
+int	init(void)
 {
-	int	flag;
-
-	ft_bzero(&g_data, sizeof(g_data));
-	set_env_to_global(env);
-	g_data.original_std_out = dup(STDOUT_FILENO);
-	while (1)
+	while (42)
 	{
 		g_data.input = readline(PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>");
+		if (!g_data.input)
+		{
+			write(1, "exit\n", 6);
+			ft_exit();
+		}
 		if (g_data.input[0] != '\0')
 		{
+			g_data.flag = ft_lexic(); 
 			add_history_aux(g_data.input);
-			flag = ft_lexic((g_data.input));
-			if (flag == -1)
+			if (g_data.flag == 0 && check_to_exe() == 0)
+			{
+				g_data.flag = init_prompt_current_ps();
+				g_data.child_status = STATUS;
+			}
+			else if (g_data.flag == 0)
 			{
 				g_data.child_pid = fork();
 				if (g_data.child_pid == 0)
-					init_prompt();
+				{
+					//set_signals(0);
+					init_prompt_subps();
+				}
 			}
-			g_data.child_status = flag;
-			waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
+			waitpid(g_data.child_pid, &g_data.child_status, 0 );
 			if (WIFEXITED(g_data.child_status))
 				g_data.child_status = WEXITSTATUS(g_data.child_status);
 			printf("\n:%d\n", g_data.child_status);
