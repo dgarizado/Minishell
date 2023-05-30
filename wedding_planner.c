@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/23 20:51:49 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/30 15:26:02 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,16 @@ int	wedding_planner(void)
 	g_data.commands = specialsplit(g_data.input_ex, '|');
 	//write(1, "\n--------ARR INTO WEEDING PLANNER SPLIT INT '|' !-------\n",58); 
 	//ft_printf_arr(g_data.commands);
+	//write(1, "\n-----\n", 8);
 	if (ft_arrlen(g_data.commands) > 1)
+	{
+		//write(2, "way -> wedding planner -> ft_pipex\n", 36);
 		exit(ft_pipex(g_data.commands));
+	}
 	else
+	{
+		//write(2, "way -> wedding planner -> ft_program\n", 38);
 		exit(ft_program(g_data.commands[0]));
+	}
 	return (0);
 }

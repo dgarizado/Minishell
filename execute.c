@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/27 00:42:32 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:40:53 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ static int	ft_execve(char **arr)
 {
 	char	*str_path;
 	char	**matriz_command;
-	
+
 	gen_command_and_path(arr, g_data.env, &str_path, &matriz_command);
-	//write(1, "----\n", 6);
 	//ft_printf_arr(matriz_command);
 	//printf("\n path -> %s\n", str_path);
 	execve(str_path, matriz_command, g_data.env);
@@ -30,22 +29,20 @@ static int	ft_execve(char **arr)
 
 static int	ft_built_in(char **arr)
 {
-	if (!ft_strncmp(arr[0], "echo", 4))
+	if (!ft_strncmp(arr[0], "echo", ft_strlen(arr[0])))
 		return(ft_echo(arr));
-	else if (!ft_strncmp(arr[0], "export", 6))
+	else if (!ft_strncmp(arr[0], "export", ft_strlen(arr[0])))
 		return(ft_export(arr));
-	else if (!ft_strncmp(arr[0], "unset", 5))
+	else if (!ft_strncmp(arr[0], "unset", ft_strlen(arr[0])))
 		return(ft_unset(arr));
-	else if (!ft_strncmp(arr[0], "cd", 2))
+	else if (!ft_strncmp(arr[0], "cd", ft_strlen(arr[0])))
 		return(ft_cd(arr));
-	else if (!ft_strncmp(arr[0], "pwd", 3))
+	else if (!ft_strncmp(arr[0], "pwd", ft_strlen(arr[0])))
 		return(ft_pwd(arr));
-	else if (!ft_strncmp(arr[0], "env", 3))
+	else if (!ft_strncmp(arr[0], "env", ft_strlen(arr[0])))
 		return(ft_env());
-	else if (!ft_strncmp(arr[0], "exit", 4))
+	else if (!ft_strncmp(arr[0], "exit", ft_strlen(arr[0])))
 		return(ft_exit());
-	else if (!ft_strncmp(arr[0], "$?", 4))
-	return(ft_$());
 	else
 		return (-1);
 }

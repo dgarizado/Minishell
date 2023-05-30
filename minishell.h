@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/30 17:55:40 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/30 20:00:52 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_data
 	int		fd_infile;
 	int		fd_outfile;
 	int		flag_env;//for export
+	int		flag;
 	t_flags	flags;
 	pid_t	child_pid;
 	int		child_status;
@@ -99,7 +100,7 @@ typedef struct s_execute
 }	t_struc;
 
 //MAIN
-int		init_prompt(void);
+int		init_prompt_subps(void);
 
 //BUILTS IN
 int		ft_pwd(char **arr);
@@ -123,7 +124,7 @@ void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
 char	**pipexsplit(char *str);
 int		ft_env(void);
 int		str_error_export(char *s1, char *s2, char *s3);
-int 	ft_$(void);
+
 
 //PIPEX
 int 	ft_pipex(char **arr);
@@ -133,12 +134,14 @@ void	receive_from_pipe(char *str);
 void	close_all_pipes(void);
 
 //INIT
-int		init(char **env);
+int		init(void);
 
 //LEXIC
-int		ft_lexic(char *input);
-bool	is_enclosed(const char *str, int idx);
-int		ft_is_closed(char *str, int *index, char c);
+int			ft_lexic(void);
+bool		is_enclosed(const char *str, int idx);
+int			ft_is_closed(char *str, int *index, char c);
+int			ft_check_pipes(void);
+int			ft_check_exe(void);
 
 //PIPEX SPLIT
 char	**pipexsplit(char *str);
@@ -165,6 +168,7 @@ char	get_next_redic(char *str, char c);
 // //REDIC2
 // int		analyze_redic(void);
 int		ft_error_in(char *s1, char *s2, char *s3, int ret);
+int		delimiterr(char *eof, int *fd, int std_out);
 
 // //REDIC3
 // int		ft_open(int i);
@@ -190,4 +194,8 @@ int		ft_execute(char **arr);
 //SPECIAL SPLIT
 char	**specialsplit(char *str, char c);
 
+//SIGNALS
+void 	set_signals(int n);
+void 	sigint_handler(int sig);
+void sigint_handler_child(int sig);
 #endif
