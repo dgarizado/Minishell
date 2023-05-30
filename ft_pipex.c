@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/29 20:49:37 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/30 19:22:53 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	gen_pipes(char **arr)
 
 	i = 0;
 	n = (ft_arrlen(arr) - 1);
-	g_data.pipes = (int **)malloc(sizeof(int) * n);
+	g_data.pipes = (int **)malloc(sizeof(int * ) * n);
 	if (!g_data.pipes)
 		exit(msg_error("pipex", "allocation memory gen pipes"));
 	while (i < n)
@@ -53,12 +53,12 @@ static void pipe_and_fork(char **arr)
 	while (g_data.n_pipe < (ft_arrlen(arr) - 2))
 	{
 		g_data.n_pipe++;
-		//wait(NULL);
+		// wait(NULL);
 		fork_proccess();
 		if (g_data.pid == 0)
 			receive_from_send_to_pipe(arr[g_data.n_pipe]);
 	}
-	//wait(NULL);
+	// wait(NULL);
 	fork_proccess();
 	if (g_data.pid == 0)
 	{

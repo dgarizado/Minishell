@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/29 13:35:46 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:55:40 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_data
 	pid_t	child_pid;
 	int		child_status;
 	int		original_std_out;
+	int		original_std_in;
 }	t_data;
 
 typedef struct s_execute

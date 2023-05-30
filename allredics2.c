@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/29 17:17:07 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:56:47 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	ft_here_docc(char *eof, int i)
 	pid = fork();
 	if (pid == 0)
 	{
+		// close(g_data.pipes[g_data.n_pipe -1][STDIN_FILENO]);
+		dup2(g_data.original_std_in, STDIN_FILENO);
 		close(fd[0]);
 		exit (delimiterr(eof, fd, g_data.original_std_out));
 	}

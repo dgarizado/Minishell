@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/24 21:59:45 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:55:56 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ extern t_data	g_data;
 static void	set_env_to_global(char **env)
 {
 	g_data.env = env;
+	g_data.original_std_in = dup(STDIN_FILENO);
 }
 
 void	add_history_aux(char *input)

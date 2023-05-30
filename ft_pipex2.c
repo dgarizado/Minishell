@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:32:29 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/23 15:51:35 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:50:49 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	receive_from_send_to_pipe(char *str)
 void	sent_to_pipe(char *str)
 {
 	dup2(g_data.pipes[g_data.n_pipe][STDOUT_FILENO], STDOUT_FILENO);
-	close_all_pipes();
+	//close_all_pipes();
+	close(g_data.pipes[g_data.n_pipe][STDIN_FILENO]);
 	exit(ft_program(str));
 }
 
