@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/30 19:57:27 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/30 20:05:02 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	init(void)
 			if (g_data.flag == 0 && check_to_exe() == 0)
 			{
 				g_data.flag = init_prompt_current_ps();
-				g_data.child_status = STATUS;
+				g_data.child_status = g_data.flag;
 			}
 			else if (g_data.flag == 0)
 			{
