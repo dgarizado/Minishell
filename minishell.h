@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/29 13:17:30 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/29 21:15:45 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_data
 	char	**redics;
 	char	**env;
 	int		**pipes;
+	int		tmp_n_pipes;
 	int		n_pipe;
 	int		fd_in;
 	int		fd_out; //for allredic3

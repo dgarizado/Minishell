@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/29 18:47:07 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:28:20 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(int argc, char **argv ,char **env)
 	ft_bzero(&g_data, sizeof(g_data));
 	g_data.original_std_out = dup(STDOUT_FILENO);
 	g_data.env = env;
-	//set_signals(1);
+	set_signals(1);
 	init();
 	return (0);
 }
