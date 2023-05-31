@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/30 19:59:27 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:01:08 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	main(int argc, char **argv ,char **env)
 	argv = NULL;
 	ft_bzero(&g_data, sizeof(g_data));
 	g_data.original_std_out = dup(STDOUT_FILENO);
+	g_data.original_std_in = dup(STDIN_FILENO);
 	g_data.env = env;
 	set_signals(1);
 	init();
