@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/30 20:05:02 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:16:12 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ extern t_data	g_data;
 
 void	add_history_aux(char *input)
 {
-	char	*tmp;
+	// char	*tmp;
 
-	tmp = ft_strtrim(input, " ");
-	if (ft_strlen(tmp) > 0)
+	// tmp = ft_strtrim(input, " ");
+	if (ft_strlen(input) > 0)
 	{
 		add_history(input);
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		//rl_redisplay();
 	}
-	free(tmp);
+	//free(tmp);
 }
 /**
  * @brief check if run ft_program in main process to save the changes of path and env.
@@ -62,12 +62,15 @@ int	init(void)
 		g_data.input = readline(PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>");
 		if (!g_data.input)
 		{
-			write(1, "exit\n", 6);
+			// write(1, "exit\n", 6);
+			rl_replace_line("exit", 1);
+			rl_on_new_line();
+			//rl_redisplay();
 			ft_exit();
 		}
 		if (g_data.input[0] != '\0')
 		{
-			g_data.flag = ft_lexic(); 
+			g_data.flag = ft_lexic();
 			add_history_aux(g_data.input);
 			if (g_data.flag == 0 && check_to_exe() == 0)
 			{

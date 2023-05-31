@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/29 18:29:32 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:59:29 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,62 +117,83 @@ int	ft_check_exe(void)
 	}
 	return (1);
 }
-static int	delimiter_input(char eof, int *fd)
-{
-	char	*line;
+// static int	delimiter_input(char eof, int *fd)
+// {
+// 	char	*line;
 
-	while (42)
-	{
-		line = readline("> ");
-		write(fd[1], line, ft_strlen(line));
-		if (ft_str_index_chr(line, eof) != 0)
-			break ;
-		write(fd[1], "\n", 1);
-		free(line);
-	}
-	free(line);
-	close(fd[1]);
-	return (0);
-}
+// 	while (42)
+// 	{
+// 		line = readline("> ");
+// 		write(fd[1], line, ft_strlen(line));
+// 		if (ft_str_index_chr(line, eof) != 0)
+// 			break ;
+// 		write(fd[1], "\n", 1);
+// 		free(line);
+// 	}
+// 	free(line);
+// 	close(fd[1]);
+// 	return (0);
+// }
+
+// /**
+//  * @brief Complete the input string unclosed with ' or " correspondent
+//  * 
+//  * @param input string from readline of main process
+//  * @param c the quote to be closed
+//  * @return char* string with closed quotes 
+//  */
+// char *ft_close_quotes_input(char *input, char c)
+// {
+// 	int			pid;
+// 	int			fd[2];
+// 	char		buff[1000];
+// 	ssize_t		n;
+// 	char		*tmp;
+// 	int			control_read;
+	
+// 	control_read = 1;
+// 	n = 0;
+// 	pipe(fd);
+// 	pid = fork();
+// 	if (pid == 0)
+// 	{
+// 		close(fd[0]);
+// 		exit (delimiter_input(c, fd));
+// 	}
+// 	else
+// 	{
+// 		wait(NULL);
+// 		n = read(fd[0], &buff, 1000);
+// 		buff[n] = '\0';
+// 		tmp = input;
+// 		input = ft_strjoin(input, buff);
+// 		free(tmp);
+// 		close (fd[1]);
+// 		close (fd[0]);
+// 	}
+// 	return (input);
+// }
 
 /**
- * @brief Complete the input string unclosed with ' or " correspondent
+ * @brief Cheks if the string is only spaces
  * 
- * @param input string from readline of main process
- * @param c the quote to be closed
- * @return char* string with closed quotes 
+ * @param str 
+ * @return int 
  */
-char *ft_close_quotes_input(char *input, char c)
+int is_space(char *str)
 {
-	int			pid;
-	int			fd[2];
-	char		buff[1000];
-	ssize_t		n;
-	char		*tmp;
-	int			control_read;
-	
-	control_read = 1;
-	n = 0;
-	pipe(fd);
-	pid = fork();
-	if (pid == 0)
+	int	i;
+
+	i = 0;
+
+	while (str[i] != '\0')
 	{
-		close(fd[0]);
-		exit (delimiter_input(c, fd));
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' &&\
+		 str[i] != '\v' && str[i] != '\f' && str[i] != '\r')
+			return (0);
+		i++;
 	}
-	else
-	{
-		wait(NULL);
-		n = read(fd[0], &buff, 1000);
-		//printf("VALOR N_READ %zu\n", n);
-		buff[n] = '\0';
-		tmp = input;
-		input = ft_strjoin(input, buff);
-		free(tmp);
-		close (fd[1]);
-		close (fd[0]);
-	}
-	return (input);
+	return (1);
 }
 
 /**
@@ -190,8 +211,8 @@ int	ft_lexic(void)
 	char c;
 
 	i = 0;
-	if (g_data.input == NULL || g_data.input[0] == '\0')
-		return (0);
+	if (g_data.input == NULL || g_data.input[0] == '\0' || is_space(g_data.input) == 1)
+		return (1);
 	while (g_data.input[i] != '\0')
 	{
 		if (g_data.input[i] == '\'' || g_data.input[i] == '\"' )

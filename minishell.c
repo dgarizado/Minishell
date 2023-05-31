@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/31 16:01:08 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:05:25 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,26 @@ int	init_prompt_subps(void)
 
 void sigint_handler_child(int sig) 
 {
-	sig = 2;
+	if (sig == SIGQUIT)
+		sig = 3;
 	if (g_data.child_pid == 0)
 		exit(127);
 }
 
 void sigint_handler(int sig) 
 {
-	sig = 2;
-	rl_on_new_line();
-	rl_replace_line("\n", 0);
-	rl_on_new_line();
-	//rl_redisplay();
-	waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
-			if (WIFEXITED(g_data.child_status))
-				g_data.child_status = WEXITSTATUS(g_data.child_status);
+	if (sig == SIGINT)
+	{
+		write(1, "\n", 1);
+		rl_on_new_line();
+		rl_replace_line("", 1);
+		rl_redisplay();
+		waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
+				if (WIFEXITED(g_data.child_status))
+					g_data.child_status = WEXITSTATUS(g_data.child_status);
+	}
+	if (sig == SIGQUIT)
+		sig = 3;
 }
 
 
@@ -65,12 +70,15 @@ void set_signals(int n)
 
     sigemptyset(&sa.sa_mask);
 	sigaddset(&sa.sa_mask, SIGINT);
+	sigaddset(&sa.sa_mask, SIGQUIT);
     sa.sa_flags = 0;
 	if (n != 0)
 	{
 		sa.sa_handler = sigint_handler;
 		if (sigaction(SIGINT, &sa, NULL) == -1)
         	perror("Error al configurar el manejador de señal");
+		if (sigaction(SIGQUIT, &sa, NULL) == -1)
+			perror("Error al configurar el manejador de señal");
 	}
 	if (n == 0)
 	{

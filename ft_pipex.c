@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/31 16:03:24 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:08:33 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	gen_new_pipe(char **arr)
 	int n;
 
 	n = (ft_arrlen(arr) - 1);
-	g_data.pipes = (int **)malloc(sizeof(int * ) * n);
+	g_data.pipes = (int **)malloc(sizeof(int *) * n);
 	if (!g_data.pipes)
 		exit(msg_error("pipex", "allocation memory gen pipes"));
 
@@ -47,8 +47,14 @@ static void	fork_proccess(void)
 
 static void ft_wait(void)
 {	
-	waitpid(g_data.pid, &g_data.child_status, WUNTRACED);///posible error condicion
+	waitpid(g_data.pid, &g_data.child_status, WNOHANG | WUNTRACED | WCONTINUED);///posible error condicion
 	if (WIFEXITED(g_data.child_status))
+	{
+		g_data.child_status = WEXITSTATUS(g_data.child_status);
+		if (g_data.child_status == 127)
+			exit(127);
+	}
+	if (W(g_data.child_status))
 	{
 		g_data.child_status = WEXITSTATUS(g_data.child_status);
 		if (g_data.child_status == 127)
@@ -65,8 +71,8 @@ static void     pipe_and_fork(char **arr)
 		sent_to_pipe(arr[g_data.n_pipe]);
 	while (g_data.n_pipe < (ft_arrlen(arr) - 2))
 	{
-		g_data.n_pipe++;
 		close(g_data.pipes[g_data.n_pipe][STDOUT_FILENO]);
+		g_data.n_pipe++;
 		ft_wait();
 		fork_proccess();
 		if (g_data.pid == 0)
@@ -86,7 +92,8 @@ int ft_pipex(char **arr)
 	int statuscode;
 
 	pipe_and_fork(arr);
-	waitpid(g_data.pid, &wstatus, WUNTRACED);
+	waitpid(g_data.pid, &wstatus, WUNTRACED | WCONTINUED | WNOHANG);
+	//waitpid(g_data.pid, &wstatus, 0);
 	if (WIFEXITED(wstatus))
 	{
 		statuscode = WEXITSTATUS(wstatus);
