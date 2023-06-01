@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/31 16:59:29 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/01 20:37:41 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ int	ft_check_exe(void)
 // }
 
 /**
- * @brief Cheks if the string is only spaces
+ * @brief Checks if the string is only spaces
  * 
  * @param str 
  * @return int 
@@ -197,6 +197,37 @@ int is_space(char *str)
 }
 
 /**
+ * @brief Sets the flag to determine if there are heredocs 
+ * in order to have or not concurrency in pipex.
+ * @param str 
+ * @return int 
+ */
+void	check_heredocs(char *str)
+{
+	int	i;
+	int flag;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] =='\'' || str[i] == '\"')
+		{
+			flag = str[i];
+			i++;
+			while (str[i] != flag)
+				i++;
+			i++;
+		}
+		if (str[i] == '<' && str[i + 1] == '<')
+		{
+			g_data.flags.concurrency = 1;
+			break;
+		}
+		i++;
+	}
+}
+
+/**
  * @brief Checks if there are unclosed  ' or ""
  * and performs a first tokenization(split by spaces) in order
  * to facilitate the expand function. The Expansion 
@@ -207,7 +238,6 @@ int is_space(char *str)
 int	ft_lexic(void)
 {
 	int	i;
-	//int	status;
 	char c;
 
 	i = 0;
@@ -230,5 +260,6 @@ int	ft_lexic(void)
 		return (1);
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
+	check_heredocs(g_data.input_ex);
 	return (0);
 }

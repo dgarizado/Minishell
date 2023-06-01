@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/31 19:08:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/01 21:13:05 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,15 @@ static void	fork_proccess(void)
 		exit(msg_error("pipex", "error forking"));
 }
 
-
 static void ft_wait(void)
 {	
-	waitpid(g_data.pid, &g_data.child_status, WNOHANG | WUNTRACED | WCONTINUED);///posible error condicion
+	if (g_data.flags.concurrency == 1)
+		waitpid(g_data.pid, &g_data.child_status, 0); //not concurrent remind set flag
+	else
+		waitpid(g_data.pid, &g_data.child_status, WNOHANG);//concurrent
+	// if (WNOHANG)
+	// 	kill(g_data.pid, SIGKILL);
 	if (WIFEXITED(g_data.child_status))
-	{
-		g_data.child_status = WEXITSTATUS(g_data.child_status);
-		if (g_data.child_status == 127)
-			exit(127);
-	}
-	if (W(g_data.child_status))
 	{
 		g_data.child_status = WEXITSTATUS(g_data.child_status);
 		if (g_data.child_status == 127)
@@ -92,7 +90,10 @@ int ft_pipex(char **arr)
 	int statuscode;
 
 	pipe_and_fork(arr);
-	waitpid(g_data.pid, &wstatus, WUNTRACED | WCONTINUED | WNOHANG);
+	if (g_data.flags.concurrency == 1)
+	waitpid(g_data.pid, &g_data.child_status, 0); //not concurrent remind set flag
+	else
+		waitpid(g_data.pid, &g_data.child_status, WNOHANG);
 	//waitpid(g_data.pid, &wstatus, 0);
 	if (WIFEXITED(wstatus))
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/27 00:42:56 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:09:50 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ extern t_data	g_data;
 static char	*ft_getenv(int i, int j, int lenvar)
 {
 	char	*var;
-	char	*aux;
+	char	*aux; //leak?
 	int		n;
 
 	aux = NULL;
@@ -35,14 +35,14 @@ static char	*ft_getenv(int i, int j, int lenvar)
 		return (ft_itoa(g_data.child_status));
 	while (g_data.env[n])
 	{
-		if (ft_strncmp(g_data.env[n], var, ft_str_index_chr(g_data.env[n], '=') - 1) == 0)
-		//if (ft_strncmp(g_data.env[n], var, ft_strlen()) == 0)
+		// if (ft_strncmp(g_data.env[n], var, ft_str_index_chr(g_data.env[n], '=') - 1) == 0)
+		if (ft_strncmp(g_data.env[n], var, ft_strlen(var)) == 0 && g_data.env[n][ft_strlen(var)] == '=')
 			break ;
 		n++;
 	}
-	if (!g_data.env[n])///HERE MAY to make $?
-		str_error(var,  "not found");
-	else
+	if (g_data.env[n])///HERE MAY to make $?
+		//str_error(var,  "not found");
+	//else
 		aux = &g_data.env[n][ft_strlen(var) + 1];
 	if (!aux)
 	{

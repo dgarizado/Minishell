@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allredics2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/30 19:51:16 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:23:44 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_here_docc(char *eof, int i)
 	pipe(fd);
 	// printf("original_std_out = %d\n", g_data.original_std_out);
 	// write(g_data.original_std_out, "aaaaaaa\n", 8);
-	len =  ft_arrlen(g_data.infiles);
+	len = ft_arrlen(g_data.infiles);
 	pid = fork();
 	if (pid == 0)
 	{

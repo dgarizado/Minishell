@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/29 16:41:57 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/01 20:54:43 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,8 @@
 
 extern t_data	g_data;
 
-// int	ft_error(char *err)
-// {
-// 	ft_putstr_fd(err, 2);
-// 	return (errno);
-// }
-
-// /**
-//  * @brief Prints the error message and exits with the ret value.
-//  * 
-//  * @param s1 
-//  * @param s2 
-//  * @param s3 
-//  * @param ret 
-//  * @return int 
-//  */
-// int	ft_error_in(char *s1, char *s2, char *s3, int ret)
-// {
-// 	ft_putstr_fd(s1, 2);
-// 	if (s2)
-// 		ft_putstr_fd(s2, 2);
-// 	ft_putstr_fd(s3, 2);
-// 	exit (ret);
-// }
-
 /**
- * @brief Checks if there is any infile with 
+ * @brief Checks if there is any infile or outfile with 
  * more than two '<' characters.
  * 
  * @param i 
@@ -49,6 +25,7 @@ int	aux_dell(int i)
 {
 	while (g_data.redics[i])
 	{
+		ignore_redics(g_data.redics[i], &i);
 		if (g_data.redics[i][1] == '<' && g_data.redics[i][2] == '<')
 		{
 			printf(RED"minishell: syntax error near unexpected token `<'\n"RST_CLR);
@@ -67,22 +44,3 @@ int	aux_dell(int i)
 	}
 	return (i);
 }
-
-/**
- * @brief Replace with a space the specific characters from i 
- * to j of the str.
- * 
- * @param i 
- * @param j 
- * @param str 
- * @return int 
- */
-// int	delete_str(int i, int j, char *str)
-// {
-// 	while (i <= j && str[i] != '\0')
-// 	{
-// 		str[i] = ' ';
-// 		i++;
-// 	}
-// 	return (0);
-// }

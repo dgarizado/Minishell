@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/31 17:21:17 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/01 20:53:27 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define OUTFILEE ">"
 # define APPENDD ">>"
 # define HEREDOCC "<<"
+# define PROMPT PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>"
 
 # include <stdio.h>
 # include <readline/readline.h>
@@ -60,6 +61,7 @@ typedef struct s_flags
 	int	token1;
 	int	here_doc_ret;
 	int here_doc_aux;
+	int	concurrency;
 }	t_flags;
 
 
@@ -151,6 +153,7 @@ char	**pipexsplit(char *str);
 int		ft_error(char *err);
 int		delete_str(int i, int j, char *str);
 int		aux_del(int i);
+int		ignore_redics(char *str, int *i);
 
 //EXPAND
 int		ft_check_expand(void);

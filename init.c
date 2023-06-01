@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/31 18:16:12 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/01 20:32:33 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	add_history_aux(char *input)
  */
 int check_to_exe(void)
 {
-	
 	if (ft_check_exe() == 0 && ft_check_pipes() == 1)// EXE IN GENESIS
 	{
 		return (0);
@@ -59,13 +58,10 @@ int	init(void)
 {
 	while (42)
 	{
-		g_data.input = readline(PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>");
+		g_data.input = readline(PROMPT);
 		if (!g_data.input)
 		{
-			// write(1, "exit\n", 6);
-			rl_replace_line("exit", 1);
-			rl_on_new_line();
-			//rl_redisplay();
+			printf("\033[F\033[K"PROMPT"exit\n");
 			ft_exit();
 		}
 		if (g_data.input[0] != '\0')
@@ -90,6 +86,7 @@ int	init(void)
 			if (WIFEXITED(g_data.child_status))
 				g_data.child_status = WEXITSTATUS(g_data.child_status);
 			printf("\n:%d\n", g_data.child_status);
+			g_data.flags.concurrency = 0;
 			free((g_data.input));
 		}
 	}
