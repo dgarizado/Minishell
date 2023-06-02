@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/31 19:08:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:30:00 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void ft_wait(void)
 		if (g_data.child_status == 127)
 			exit(127);
 	}
-	if (W(g_data.child_status))
+	if ((g_data.child_status))
 	{
 		g_data.child_status = WEXITSTATUS(g_data.child_status);
 		if (g_data.child_status == 127)
@@ -62,7 +62,7 @@ static void ft_wait(void)
 	}
 }
 
-static void     pipe_and_fork(char **arr)
+static void	pipe_and_fork(char **arr)
 {
 	g_data.n_pipe = 0;
 	gen_new_pipe(arr);
