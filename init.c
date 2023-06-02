@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/01 20:32:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/02 22:38:40 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	init(void)
 			}
 			else if (g_data.flag == 0)
 			{
+				g_data.father = 1;
 				g_data.child_pid = fork();
 				if (g_data.child_pid == 0)
 				{
@@ -85,7 +86,8 @@ int	init(void)
 			waitpid(g_data.child_pid, &g_data.child_status, 0);
 			if (WIFEXITED(g_data.child_status))
 				g_data.child_status = WEXITSTATUS(g_data.child_status);
-			printf("\n:%d\n", g_data.child_status);
+			//printf("\n:%d\n", g_data.child_status);
+			g_data.father = 0;
 			g_data.flags.concurrency = 0;
 			free((g_data.input));
 		}

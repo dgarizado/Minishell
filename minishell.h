@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/01 20:53:27 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/02 22:36:24 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_data
 	int		fd_outfile;
 	int		flag_env;//for export
 	int		flag;
+	int 	father;//for signals condition
 	t_flags	flags;
 	pid_t	child_pid;
 	int		child_status;

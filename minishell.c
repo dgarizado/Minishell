@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/01 18:32:18 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/02 22:55:29 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,30 @@ int	init_prompt_subps(void)
 void sigint_handler_child(int sig) 
 {
 	sig = 0;
-	if (g_data.child_pid == 0)
+	//printf("HA MUERTO UN HIJO!\n");
+//	if (g_data.child_pid == 0)
 		exit(127);
 }
 
 void sigint_handler(int sig) 
 {
-	if (sig == SIGINT)
+	sig = 0;
+	if (g_data.father == 0)
+	{
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		printf("\n\033[F\033[K"PROMPT"\n");
+		rl_redisplay();
+	}
+	else
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
-		rl_replace_line("", 1);
-		rl_redisplay();
-		waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
-				if (WIFEXITED(g_data.child_status))
-					g_data.child_status = WEXITSTATUS(g_data.child_status);
+		rl_replace_line("", 0);
 	}
+	waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
+	if (WIFEXITED(g_data.child_status))
+		g_data.child_status = WEXITSTATUS(g_data.child_status);
 }
 
 void set_signals(int n)
@@ -68,7 +76,7 @@ void set_signals(int n)
 	sigaddset(&sa.sa_mask, SIGINT);
 	signal(SIGQUIT, SIG_IGN);
     sa.sa_flags = 0;
-	if (n != 0)
+	if (n == 1)
 	{
 		sa.sa_handler = sigint_handler;
 		if (sigaction(SIGINT, &sa, NULL) == -1)
@@ -76,7 +84,7 @@ void set_signals(int n)
 	}
 	if (n == 0)
 	{
-		 sa.sa_handler = sigint_handler_child;
+		sa.sa_handler = sigint_handler_child;
 		if (sigaction(SIGINT, &sa, NULL) == -1)
         	perror("Error al configurar el manejador de señal");
 	}
