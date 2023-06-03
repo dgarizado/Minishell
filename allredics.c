@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/29 21:06:30 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/03 13:32:17 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ char	get_next_redicc(char *str, char c)
 	g_data.str_redic = str;
 	while (str[i] != '\0')
 	{
+		ignore_redics(str, &i);
 		auxc(&i, &j, &k, c);
 	}
 	g_data.str_redic = NULL;

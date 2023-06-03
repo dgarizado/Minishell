@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/01 20:52:44 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/03 13:11:37 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	delete_str(int i, int j, char *str)
 int	ignore_redics(char *str, int *i)
 {
 	int flag;
-
+	
 	if (str[(*i)] =='\'' || str[(*i)] == '\"')
 	{
 		flag = str[(*i)];

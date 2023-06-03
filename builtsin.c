@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtsin.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/25 00:48:16 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/03 17:03:55 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ extern t_data	g_data;
 int	ft_pwd(char **arr)
 {
 	char	buffer[1024];
+	
+	memset(buffer, 0, sizeof(buffer));
 	if ((arr[1]))
 		return (str_error("pwd: bad option", arr[1]));
 	printf("%s\n", getcwd(buffer, sizeof(buffer)));

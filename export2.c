@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:39:50 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/25 00:58:18 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/03 16:04:11 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ int	ft_export(char **arr)
 {
 	int	n;
 
+	//printf("export\n");
+	// ft_printf_arr(arr);
+	//printf("%s\n", arr[0]);
 	if (!g_data.env)
 		return (str_error("export", "env not found"));
 	n = 0;
