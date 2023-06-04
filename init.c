@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/02 22:38:40 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:10:11 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	add_history_aux(char *input)
  */
 int check_to_exe(void)
 {
+	// printf(YELLOW"stills token1: %p, '%s'\n"RST_CLR, g_data.token1, g_data.token1[0]);
 	if (ft_check_exe() == 0 && ft_check_pipes() == 1)// EXE IN GENESIS
 	{
 		return (0);
@@ -43,9 +44,16 @@ int check_to_exe(void)
 	return (1);
 }
 
-int init_prompt_current_ps()
+int init_prompt_current_ps(void)
 {
 	return (ft_program(g_data.input_ex));
+}
+
+void	ctrld(void)
+{
+	printf("\033[F\033[K"PROMPT"exit\n");
+	printf("PRESSED CTRL-D! pointer input: %p\n", g_data.input);
+	ft_exit();
 }
 
 /**
@@ -59,15 +67,14 @@ int	init(void)
 	while (42)
 	{
 		g_data.input = readline(PROMPT);
+		// printf(YELLOW"input: %p, %s\n"RST_CLR, g_data.input, g_data.input);
 		if (!g_data.input)
-		{
-			printf("\033[F\033[K"PROMPT"exit\n");
-			ft_exit();
-		}
+			ctrld();
 		if (g_data.input[0] != '\0')
 		{
-			g_data.flag = ft_lexic();
 			add_history_aux(g_data.input);
+			g_data.flag = ft_lexic();
+			// printf(YELLOW"still token1: %p, %s\n"RST_CLR, g_data.token1, g_data.token1[0]);
 			if (g_data.flag == 0 && check_to_exe() == 0)
 			{
 				g_data.flag = init_prompt_current_ps();
@@ -75,6 +82,7 @@ int	init(void)
 			}
 			else if (g_data.flag == 0)
 			{
+				//printf(GREEN"ENTERED ALSO HERE\n"RST_CLR"."RST_CLR);
 				g_data.father = 1;
 				g_data.child_pid = fork();
 				if (g_data.child_pid == 0)
@@ -89,8 +97,10 @@ int	init(void)
 			//printf("\n:%d\n", g_data.child_status);
 			g_data.father = 0;
 			g_data.flags.concurrency = 0;
-			free((g_data.input));
+			//freelancer();
+			g_data.flags.free_expanded = 0;
 		}
 	}
 	return (EXIT_SUCCESS);
 }
+//CHECKPOINT!!!!

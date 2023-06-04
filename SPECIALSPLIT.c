@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   SPECIALSPLIT.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:51:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/23 11:57:03 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/04 14:10:15 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,11 +140,16 @@ char	**specialsplit(char *str, char c)
 	int		j;
 	int		n;
 	char	**matriz;
-
+	static int		alloc = 0;
+	
 	if (!str || !(str[0]))
 		return (NULL);
+	// printf("STR ENTERED: %s, %p\n", str, str);
 	n = count_str(str, c);
+	// printf("AFTER COUNT: %s, %p\n", str, str);
 	matriz = malloc((n + 1) * sizeof(char *));
+	alloc++;
+	// printf(BLUE"\nallocated for: %s : %p : %d :flag %d: looking for '%c': n is %d\n"RST_CLR, str, matriz, alloc, g_data.flags.token1, c, n);
 	matriz[n] = NULL;
 	i = 0;
 	j = 0;

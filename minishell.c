@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/03 14:26:00 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 14:18:11 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ void set_signals(int n)
 	
 }
 
+void leaks(void)
+{
+	system("leaks minishell");
+}
+
 //CHECKPOINT
 int	main(int argc, char **argv ,char **env)
 {	
@@ -101,6 +106,7 @@ int	main(int argc, char **argv ,char **env)
 	g_data.original_std_in = dup(STDIN_FILENO);
 	g_data.env = env;
 	set_signals(1);
+	//atexit(leaks);
 	init();
 	return (0);
 }

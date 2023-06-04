@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/02 22:36:24 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/03 22:00:10 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define RED "\x1b[0;31m"
 # define BLUE "\x1b[1;36m"
 # define PINK "\x1b[1;35m"
+# define GREEN "\x1b[1;32m"
 # define RST_CLR "\x1b[0m"
 # define INFILEE "<"
 # define OUTFILEE ">"
@@ -62,6 +63,7 @@ typedef struct s_flags
 	int	here_doc_ret;
 	int here_doc_aux;
 	int	concurrency;
+	int	free_expanded;
 }	t_flags;
 
 
@@ -202,5 +204,9 @@ char	**specialsplit(char *str, char c);
 //SIGNALS
 void 	set_signals(int n);
 void 	sigint_handler(int sig);
-void sigint_handler_child(int sig);
+void	sigint_handler_child(int sig);
+
+//FREELANCER
+int		freelancer(void);
+int		ft_free_split(char **arr);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/02 20:16:36 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:11:04 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ static void	pipe_and_fork(char **arr, int *pids)
 		receive_from_pipe(arr[g_data.n_pipe + 1]);
 }
 
-
 int ft_pipex(char **arr)
 {
 	int wstatus;
@@ -110,13 +109,14 @@ int ft_pipex(char **arr)
 	// 	printf(BLUE"\n%d\n"RST_CLR, pids[i]);
 	// 	i++;
 	// }
+	// printf("\nI AM DADDY %d\n", getpid());
 	while (pids[i] != 0)
 	{
 		kill(pids[i], 9);
 		i++;
 	}
 	//END DELETE SHIT
-	
+
 	if (WIFEXITED(wstatus))
 	{
 		statuscode = WEXITSTATUS(wstatus);

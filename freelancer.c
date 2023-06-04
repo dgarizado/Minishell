@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtsin.c                                         :+:      :+:    :+:   */
+/*   freelancer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/03 22:39:24 by dgarizad         ###   ########.fr       */
+/*   Created: 2023/06/03 18:03:13 by dgarizad          #+#    #+#             */
+/*   Updated: 2023/06/03 20:54:51 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 extern t_data	g_data;
 
-int	ft_pwd(char **arr)
+int	ft_free_split(char **arr)
 {
-	char	buffer[1024];
-	
-	memset(buffer, 0, sizeof(buffer));
-	if ((arr[1]))
-		return (str_error("pwd: bad option", arr[1]));
-	printf("%s\n", getcwd(buffer, sizeof(buffer)));
+	int	i;
+
+	i = 0;
+	if (!arr)
+		return (0);
+	while (arr[i])
+	{
+		free(arr[i++]);
+		arr[i - 1] = NULL;
+	}
+	free(arr);
 	return (0);
 }
 
-int	ft_exit(void)
+int freelancer(void)
 {
 	free(g_data.input);
-	exit(EXIT_SUCCESS);
+	if (g_data.token1 != NULL)
+		ft_free_split(g_data.token1);
+	if (g_data.flags.free_expanded != 1)
+		free(g_data.input_ex);
 	return (0);
-}
-
-int	ft_env(void)
-{
-	if (!g_data.env)
-		return (str_error("env", "not available"));
-	return (ft_printf_arr(g_data.env));
 }

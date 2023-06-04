@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_arr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 19:54:02 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/23 19:46:58 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/03 19:05:40 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_printf_arr(char **arr)
 		return (msg_error(arr[0], "env"));
 	while (arr[n])
 	{
-		printf("%s\n", arr[n]);
+		printf("%s\n, %p", arr[n], arr[n]);
 		n++;
 	}
 	return (EXIT_SUCCESS);

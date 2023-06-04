@@ -6,13 +6,14 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/01 20:37:41 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:59:28 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_data	g_data;
+// t_data	g_data;
+extern t_data	g_data;
 
 int ft_check_empty_pipe(void)
 {
@@ -82,19 +83,26 @@ int	ft_is_closed(char *str, int *index, char c)
 /**
  * @brief Check if there are pipes not enclosed in '' or "".
  * 
- * @return int 0 OK, 1 NO
+ * @return int 0 when there is at least 1 pipe, 
+ * 1 for no pipes.
  */
 int	ft_check_pipes(void)
 {
 	char	**arr;
 	int		n;
 
+	// printf("NOT FREEING HERE: %s\n", g_data.input_ex);
 	arr = specialsplit(g_data.input_ex, '|');
+	// printf(GREEN"ALLOCATED HERE: %p, %s, %d nodes\n"RST_CLR"."RST_CLR, arr, arr[0], ft_arrlen(arr));
 	if (ft_arrlen(arr) > 1)
 		n = 0;
 	else
 		n = 1;
-	ft_abort(arr, ft_arrlen(arr));
+	// ft_abort(arr, ft_arrlen(arr));
+	//ft_free_split(arr);
+	// if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0)
+	// 	free(g_data.input_ex); //WTF IS THIS
+	// printf(RED"CHEKCK PIPES IS: %d\n"RST_CLR"."RST_CLR"\n"RST_CLR, n);
 	return (n);
 }
 
@@ -104,17 +112,22 @@ int	ft_check_pipes(void)
  * execute ft_program in main followed to skip init_promt().
  * So we dont loose the changes in env and the path of the procees.
  * 
- * @return int 0 OK, 1 NO
+ * @return int 0 For executing directly at current parent process, 
+ * 1 for executing in a child process.
  */
 int	ft_check_exe(void)
 {
-	if (ft_strncmp((g_data.token1[0]), "exit", 4) == 0 || \
+	// printf(GREEN"CHEKCK EXE IS: '%s'."RST_CLR, g_data.token1[0]);
+	// getchar();
+	if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0 || \
 	ft_strncmp((g_data.token1[0]), "export", 7) == 0 || \
 	ft_strncmp((g_data.token1[0]), "unset", 6) == 0 || \
 	ft_strncmp((g_data.token1[0]), "cd", 2) == 0)
 	{
+		// printf(RED"CHECK EXE IS: %d\n"RST_CLR"."RST_CLR, 0);
 		return (0);
 	}
+	// printf(RED"CHEKCK EXE IS: %d\n"RST_CLR"."RST_CLR, 1);
 	return (1);
 }
 // static int	delimiter_input(char eof, int *fd)
@@ -199,6 +212,7 @@ int is_space(char *str)
 /**
  * @brief Sets the flag to determine if there are heredocs 
  * in order to have or not concurrency in pipex.
+ * Ignore the heredocs if they are inside quotes.
  * @param str 
  * @return int 
  */
@@ -255,11 +269,13 @@ int	ft_lexic(void)
 	}
 	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
+	// printf(YELLOW"token1: %p, %s\n"RST_CLR, g_data.token1, g_data.token1[0]);
 	//ft_printf_arr(g_data.token1);
 	if (ft_check_empty_pipe() == -1)
 		return (1);
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
+	// printf(YELLOW"input_ex:"RST_CLR"%s, %p\n"". "RST_CLR, g_data.input_ex, g_data.input_ex);
 	check_heredocs(g_data.input_ex);
 	return (0);
 }
