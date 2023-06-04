@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 16:10:11 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:17:50 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	init(void)
 		{
 			add_history_aux(g_data.input);
 			g_data.flag = ft_lexic();
-			// printf(YELLOW"still token1: %p, %s\n"RST_CLR, g_data.token1, g_data.token1[0]);
+			//printf(YELLOW"still token1: %p, %s\n"RST_CLR, g_data.token1, g_data.token1[0]);
 			if (g_data.flag == 0 && check_to_exe() == 0)
 			{
 				g_data.flag = init_prompt_current_ps();
@@ -82,7 +82,7 @@ int	init(void)
 			}
 			else if (g_data.flag == 0)
 			{
-				//printf(GREEN"ENTERED ALSO HERE\n"RST_CLR"."RST_CLR);
+				//printf(GREEN"ENTERED ALSO HERE\n"RST_CLR".\n"RST_CLR);
 				g_data.father = 1;
 				g_data.child_pid = fork();
 				if (g_data.child_pid == 0)
@@ -97,7 +97,8 @@ int	init(void)
 			//printf("\n:%d\n", g_data.child_status);
 			g_data.father = 0;
 			g_data.flags.concurrency = 0;
-			//freelancer();
+			printf(RED"env array: %p\n"RST_CLR"\n"RST_CLR, g_data.env);
+			freelancer();
 			g_data.flags.free_expanded = 0;
 		}
 	}

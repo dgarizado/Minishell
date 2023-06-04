@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:39:50 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/03 16:04:11 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:49:16 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,11 @@ static void	ft_ch_value_var(char *arr, int n)
 	if (ft_strchr(arr, '=') && arr[0] != '=')
 	{
 		if (ft_strchr(arr, '=')[1] != '=')
+		{
+			if(g_data.flag_env != 0)
+				 free(g_data.env[n]);
 			g_data.env[n] = ft_strdup(arr);
+		}
 		else
 			str_error_export("export", arr, " var found, wrong value");
 	}
@@ -93,12 +97,12 @@ static void	ft_change_env(char **arr)
 			if (!ft_strncmp(g_data.env[n], arr[i], (ft_str_index_chr(g_data.env[n], '='))))
 			{
 				flag = 0;
-				ft_ch_value_var(arr[i], n);
+				ft_ch_value_var(arr[i], n);//leaks ok
 			}
 			n++;
 		}
 		if (flag == 1)
-			ft_gen_new_env(arr[i]);
+			ft_gen_new_env(arr[i]);//leks ok
 		i++;
 	}
 }
@@ -107,9 +111,6 @@ int	ft_export(char **arr)
 {
 	int	n;
 
-	//printf("export\n");
-	// ft_printf_arr(arr);
-	//printf("%s\n", arr[0]);
 	if (!g_data.env)
 		return (str_error("export", "env not found"));
 	n = 0;

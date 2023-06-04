@@ -6,7 +6,7 @@
 NAME        := minishell
 CC        := gcc
 DEBUB        := gcc 
-FLAGS    := -Wall -Wextra -Werror 
+FLAGS    := -Wall -Wextra -Werror #-fsanitize=address -fno-omit-frame-pointer
 LIBFT = ./libft/libft.a
 HEADER = ./minishell.h
 RLHEADER = -I "/Users/$(USER)/.brew/opt/readline/include"
@@ -21,7 +21,7 @@ SRCS        :=      $(wildcard *.c) $(wildcard built-in/*.c) $(wildcard signals/
                           
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-$(OBJ_DIR)/%.o: %.c $(HEADER) 
+$(OBJ_DIR)/%.o: %.c $(HEADER)
 	@mkdir -p $(@D)
 	@$(CC) -c $< -o $@ $(FLAGS) $(RLHEADER)
 

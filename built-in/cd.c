@@ -6,39 +6,13 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:06:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/03 17:22:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:26:37 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 extern t_data	g_data;
-
-// static char	*join_path_home(char *username)
-// {
-// 	char	*path;
-
-// 	path = ft_strjoin("/Users/", username);
-// 	if (path)
-// 		return (path);
-// 	else
-// 		return (NULL);
-// }
-
-// static char	*gen_path_home(void)
-// {
-// 	char	*username;
-// 	char	*path;
-
-// 	username = getenv("USER");
-// 	if (username)
-// 	{
-// 		path = join_path_home(username);
-// 		return (path);
-// 	}
-// 	else
-// 		return (NULL);
-// }
 
 /**
  * @brief Receives a string with the name of the

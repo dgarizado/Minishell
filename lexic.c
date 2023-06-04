@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 16:59:28 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:20:44 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,17 @@ int	ft_check_pipes(void)
 	char	**arr;
 	int		n;
 
-	// printf("NOT FREEING HERE: %s\n", g_data.input_ex);
+	// printf("NOT FREEING HERE: %p\n", g_data.input_ex);
 	arr = specialsplit(g_data.input_ex, '|');
 	// printf(GREEN"ALLOCATED HERE: %p, %s, %d nodes\n"RST_CLR"."RST_CLR, arr, arr[0], ft_arrlen(arr));
 	if (ft_arrlen(arr) > 1)
 		n = 0;
 	else
 		n = 1;
-	// ft_abort(arr, ft_arrlen(arr));
+	ft_abort(arr, ft_arrlen(arr));
 	//ft_free_split(arr);
-	// if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0)
-	// 	free(g_data.input_ex); //WTF IS THIS
+	if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0)
+		free(g_data.input_ex); //WTF IS THIS
 	// printf(RED"CHEKCK PIPES IS: %d\n"RST_CLR"."RST_CLR"\n"RST_CLR, n);
 	return (n);
 }
@@ -269,7 +269,7 @@ int	ft_lexic(void)
 	}
 	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
-	// printf(YELLOW"token1: %p, %s\n"RST_CLR, g_data.token1, g_data.token1[0]);
+	//printf(BLUE"token1: %p, %s\n"RST_CLR"\n"RST_CLR".", g_data.token1[0], g_data.token1[0]);
 	//ft_printf_arr(g_data.token1);
 	if (ft_check_empty_pipe() == -1)
 		return (1);

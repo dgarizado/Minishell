@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/04 14:09:55 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:21:43 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ static int	ft_built_in(char **arr)
 		return(ft_env());
 	else if (!ft_strncmp(arr[0], "exit", ft_strlen("exit")))
 	{
+		//printf(RED"input ex HERE :%p\n"RST_CLR"\n"RST_CLR, g_data.input_ex);
 		ft_free_split(arr);
+		//free(g_data.input_ex);
 		// printf(RED"exited HERE\n"RST_CLR"\n"RST_CLR);	
+		// printf(RED"input and its addres %s : %p\n"RST_CLR"\n"RST_CLR, g_data.input, g_data.input);
 		return(ft_exit());
 	}
 	else

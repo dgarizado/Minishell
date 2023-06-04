@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:51:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/04 14:10:15 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:21:16 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,15 @@ char	**specialsplit(char *str, char c)
 	int		j;
 	int		n;
 	char	**matriz;
-	static int		alloc = 0;
+	static int		alloc = 0;//DEBUG delete this
 	
 	if (!str || !(str[0]))
 		return (NULL);
-	// printf("STR ENTERED: %s, %p\n", str, str);
+	//printf("STR ENTERED: %s, %p\n", str, str);
 	n = count_str(str, c);
 	// printf("AFTER COUNT: %s, %p\n", str, str);
 	matriz = malloc((n + 1) * sizeof(char *));
-	alloc++;
+	alloc++; //DEBUG delete this
 	// printf(BLUE"\nallocated for: %s : %p : %d :flag %d: looking for '%c': n is %d\n"RST_CLR, str, matriz, alloc, g_data.flags.token1, c, n);
 	matriz[n] = NULL;
 	i = 0;

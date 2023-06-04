@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 19:54:02 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/03 19:05:40 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:24:45 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_printf_arr(char **arr)
 		return (msg_error(arr[0], "env"));
 	while (arr[n])
 	{
-		printf("%s\n, %p", arr[n], arr[n]);
+		printf("%s\n", arr[n]);
 		n++;
 	}
 	return (EXIT_SUCCESS);

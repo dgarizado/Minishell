@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:55:54 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/03 19:42:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:46:07 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ char	*ft_untoken(void)
 	{
 		aux = newstr;
 		newstr = ft_join(aux, g_data.token1[i]);
-		free (aux);
+		if (i > 1)
+			free (aux);
 		aux = NULL;
 		i++;
 	}

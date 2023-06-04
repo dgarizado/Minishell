@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:03:13 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/03 20:54:51 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:04:40 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ int	ft_free_split(char **arr)
 
 int freelancer(void)
 {
+	// printf(YELLOW"freelancer\n"RST_CLR""RST_CLR);
+	// printf("freeing input %s : "YELLOW"%p\n"RST_CLR""RST_CLR, g_data.input, g_data.input);
+	// printf("freeing tokenized lvl1 %p : "YELLOW"%s\n"RST_CLR""RST_CLR, g_data.token1[0], g_data.token1[0]);
+	// printf("freeing input_ex %s : "YELLOW"%p\n"RST_CLR""RST_CLR, g_data.input_ex, g_data.input_ex);
 	free(g_data.input);
 	if (g_data.token1 != NULL)
 		ft_free_split(g_data.token1);
