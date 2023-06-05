@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 21:17:50 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:02:45 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ctrld(void)
 {
 	printf("\033[F\033[K"PROMPT"exit\n");
 	printf("PRESSED CTRL-D! pointer input: %p\n", g_data.input);
+	//freelancer();
 	ft_exit();
 }
 
@@ -97,10 +98,10 @@ int	init(void)
 			//printf("\n:%d\n", g_data.child_status);
 			g_data.father = 0;
 			g_data.flags.concurrency = 0;
-			printf(RED"env array: %p\n"RST_CLR"\n"RST_CLR, g_data.env);
-			freelancer();
+			//printf(RED"env array: %p\n"RST_CLR"\n"RST_CLR, g_data.env);
 			g_data.flags.free_expanded = 0;
 		}
+		freelancer();
 	}
 	return (EXIT_SUCCESS);
 }

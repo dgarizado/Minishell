@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/04 20:21:43 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 20:39:43 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,22 @@ static int	ft_execve(char **arr)
 	char	*str_path;
 	char	**matriz_command;
 
+	str_path = NULL;
+	matriz_command = NULL;
 	gen_command_and_path(arr, g_data.env, &str_path, &matriz_command);
 	//ft_printf_arr(matriz_command);
 	//printf("\n path -> %s\n", str_path);
-	execve(str_path, matriz_command, g_data.env);
+	execve(str_path, matriz_command, g_data.env); //OJO!!
+	if(str_path != NULL)
+	{
+		free(str_path);
+		str_path = NULL;
+	}
+	if(matriz_command != NULL)
+	{
+		ft_free_split(matriz_command);
+		matriz_command = NULL;
+	}
 	return (str_error(arr[0], "command not found"));
 	//return(127);
 }
@@ -44,7 +56,7 @@ static int	ft_built_in(char **arr)
 	else if (!ft_strncmp(arr[0], "exit", ft_strlen("exit")))
 	{
 		//printf(RED"input ex HERE :%p\n"RST_CLR"\n"RST_CLR, g_data.input_ex);
-		ft_free_split(arr);
+		//ft_free_split(arr);
 		//free(g_data.input_ex);
 		// printf(RED"exited HERE\n"RST_CLR"\n"RST_CLR);	
 		// printf(RED"input and its addres %s : %p\n"RST_CLR"\n"RST_CLR, g_data.input, g_data.input);
@@ -72,7 +84,6 @@ int	ft_execute(char **arr)
 		return (ft_execve(arr));
 	}
 }
-
 /*
 int main(int argc, char **argv, char **env)
 {

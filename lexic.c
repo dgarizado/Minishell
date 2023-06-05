@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 20:20:44 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:29:30 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int ft_check_empty_pipe(void)
 
 	i = 0;
 
+	printf("\nTOKEN1: %s, %p\n", g_data.token1[0], g_data.token1);
+	// getchar();
 	while(g_data.token1[i + 1] )
 	{
 		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' && g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') ||  (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' && g_data.token1[i + 1][0] == '|'))
@@ -98,8 +100,8 @@ int	ft_check_pipes(void)
 		n = 0;
 	else
 		n = 1;
-	ft_abort(arr, ft_arrlen(arr));
-	//ft_free_split(arr);
+	//ft_abort(arr, ft_arrlen(arr));
+	ft_free_split(arr);
 	if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0)
 		free(g_data.input_ex); //WTF IS THIS
 	// printf(RED"CHEKCK PIPES IS: %d\n"RST_CLR"."RST_CLR"\n"RST_CLR, n);
@@ -130,62 +132,6 @@ int	ft_check_exe(void)
 	// printf(RED"CHEKCK EXE IS: %d\n"RST_CLR"."RST_CLR, 1);
 	return (1);
 }
-// static int	delimiter_input(char eof, int *fd)
-// {
-// 	char	*line;
-
-// 	while (42)
-// 	{
-// 		line = readline("> ");
-// 		write(fd[1], line, ft_strlen(line));
-// 		if (ft_str_index_chr(line, eof) != 0)
-// 			break ;
-// 		write(fd[1], "\n", 1);
-// 		free(line);
-// 	}
-// 	free(line);
-// 	close(fd[1]);
-// 	return (0);
-// }
-
-// /**
-//  * @brief Complete the input string unclosed with ' or " correspondent
-//  * 
-//  * @param input string from readline of main process
-//  * @param c the quote to be closed
-//  * @return char* string with closed quotes 
-//  */
-// char *ft_close_quotes_input(char *input, char c)
-// {
-// 	int			pid;
-// 	int			fd[2];
-// 	char		buff[1000];
-// 	ssize_t		n;
-// 	char		*tmp;
-// 	int			control_read;
-	
-// 	control_read = 1;
-// 	n = 0;
-// 	pipe(fd);
-// 	pid = fork();
-// 	if (pid == 0)
-// 	{
-// 		close(fd[0]);
-// 		exit (delimiter_input(c, fd));
-// 	}
-// 	else
-// 	{
-// 		wait(NULL);
-// 		n = read(fd[0], &buff, 1000);
-// 		buff[n] = '\0';
-// 		tmp = input;
-// 		input = ft_strjoin(input, buff);
-// 		free(tmp);
-// 		close (fd[1]);
-// 		close (fd[0]);
-// 	}
-// 	return (input);
-// }
 
 /**
  * @brief Checks if the string is only spaces

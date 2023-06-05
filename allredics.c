@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allredics.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/03 13:32:17 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:39:07 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,5 +162,6 @@ int	ft_redicc(char *str)
 	}
 	if (all > 0)
 		analyze_redicc();
+	free(aux);
 	return (0);
 }

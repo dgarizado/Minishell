@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/01 19:09:50 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:05:56 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,18 +103,18 @@ int	ft_expand(int i, int j)
 	lenvar = aux(i, j);
 	expand = ft_getenv(i, j, lenvar);
 	str2 = ft_strjoin(str1, expand);
-	expand = NULL;
 	free(expand);
-	str1 = NULL;
+	expand = NULL;
 	free(str1);
+	str1 = NULL;
 	str1 = ft_substr(g_data.token1[i], j + lenvar, ft_strlen(g_data.token1[i]));
-	g_data.token1[i] = NULL;
 	free (g_data.token1[i]);
+	g_data.token1[i] = NULL;
 	g_data.token1[i] = ft_strjoin(str2, str1);
-	str1 = NULL;
 	free(str1);
-	str2 = NULL;
+	str1 = NULL;
 	free(str2);
+	str2 = NULL;
 	return (0);
 }
 void ft_checkquotes(int i, int *j, int *flag_quote, int *flag_expand)

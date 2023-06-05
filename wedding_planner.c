@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wedding_planner.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 20:22:11 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 20:42:12 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	*ft_join_pipes(int *i)
  */
 int	wedding_planner(void)
 {
+	int status;
 	//printf("\n----BEFORE SPECIALSPLIT YES '' INTO WEDDING PLANNER------\n%s\n", g_data.input_ex);
 	//printf(GREEN"wedding_planner\n"RST_CLR"\n"RST_CLR);
 	g_data.flags.token1 = 0;
@@ -78,16 +79,17 @@ int	wedding_planner(void)
 	//write(1, "\n--------ARR INTO WEEDING PLANNER SPLIT INT '|' !-------\n",58); 
 	//ft_printf_arr(g_data.commands);
 	//write(1, "\n-----\n", 8);
-	free(g_data.input_ex);
 	if (ft_arrlen(g_data.commands) > 1)
 	{
-		//write(2, "way -> wedding planner -> ft_pipex\n", 36);
-		exit(ft_pipex(g_data.commands));
+		status = ft_pipex(g_data.commands);
+		//freelancer();
+		exit(status);
 	}
 	else
 	{
-		//write(2, "way -> wedding planner -> ft_program\n", 38);
-		exit(ft_program(g_data.commands[0]));
+		status =ft_program(g_data.commands[0]);
+		//freelancer();
+		exit(s
 	}
 	return (0);
 }
