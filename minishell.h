@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/03 22:00:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:14:54 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_data
 	char	*str_redic;
 	char	**token1;
 	char	**token2;
+	char	**tokenized_cmd;
 	char	**pipess;
 	char	**commands;
 	char	**infiles;//erase 

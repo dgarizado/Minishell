@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 22:56:34 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/25 01:48:45 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:36:30 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_copy(char **new_arr_env, char **arr, int i, int *n)
 			encounter++;
 		j++;
 	}
-	printf("ENCOUNTER = %d", encounter);
+	// printf("ENCOUNTER = %d", encounter);
 	if (encounter == 0)
 	{
 		new_arr_env[*n] = ft_strdup(g_data.env[i]);

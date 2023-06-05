@@ -1,0 +1,1045 @@
+Process:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:38.299 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 396 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:38.719 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:39.135 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:39.557 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:39.972 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:40.830 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:41.239 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:41.654 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:42.056 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:42.469 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:42.888 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:43.295 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:43.703 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         760K
+Physical footprint (peak):  760K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:44.115 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:44.530 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:44.941 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:45.348 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:45.759 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:46.170 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:46.577 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:46.985 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:47.387 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:47.796 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:48.198 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:48.603 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:49.006 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:49.428 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>
+[?2004lProcess:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:49.835 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         772K
+Physical footprint (peak):  772K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+
+[?2004h[1;35mmi[1;33mni[1;36mhell🐢[0m$>[?2004l
+[F[K[1;35mmi[1;33mni[1;36mhell🐢[0m$>exit
+PRESSED CTRL-D! pointer input: 0x0
+Process:         minishell [4867]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x100310000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [38225]
+
+Date/Time:       2023-06-05 20:04:51.624 +0200
+Launch Time:     2023-06-05 20:04:13.364 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         776K
+Physical footprint (peak):  776K
+----
+
+leaks Report Version: 4.0
+Process 4867: 394 nodes malloced for 335 KB
+Process 4867: 7 leaks for 112 total leaked bytes.
+
+    7 (112 bytes) << TOTAL >>
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e04140 [16]
+         1 (16 bytes) 0x7f8fc0e04190 [16]  length: 10  ">oouch.txt"
+
+      2 (32 bytes) ROOT LEAK: 0x7f8fc0e041a0 [16]
+         1 (16 bytes) 0x7f8fc0e041b0 [16]  length: 10  ">oouch.txt"
+
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041c0 [16]  length: 10  ">oouch.txt"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0e041f0 [16]  length: 3  "a=1"
+      1 (16 bytes) ROOT LEAK: 0x7f8fc0f04240 [16]  length: 11  ">oouch.tx4t"
+

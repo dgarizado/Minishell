@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:56:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/25 01:49:51 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/05 20:23:49 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void ft_gen_new_env2(char **arr)//posible error abort antes de tiempo
 	new_arr_env = ft_gen_new_arr(arr);
 	if (new_arr_env)
 	{
-		if (g_data.flag_env != 0)
+		//if (g_data.flag_env != 0)
 			ft_abort(g_data.env, ft_arrlen(g_data.env));
 		g_data.flag_env++;
 		g_data.env = new_arr_env;

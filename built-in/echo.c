@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:48:42 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/04 19:08:12 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:58:14 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_echo(char **arr)
 		}
 	}
 	//printf(GREEN"\nTOKENIZED CMD HERE: %p\n"RST_CLR"."RST_CLR, arr);
-	ft_free_split(arr);
+	//ft_free_split(arr); //HARDOCED TAKE CARE
 	if (flag == 0)
 		write(1, "\n", 1);
 	return(EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 20:37:19 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:53:23 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	ft_pwd(char **arr)
 
 int	ft_exit(void)
 {
-	free(g_data.input);
-	
+	if (g_data.input)
+		freelancer();
 	exit(EXIT_SUCCESS);
 	return (0);
 }

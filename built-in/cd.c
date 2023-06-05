@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:06:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/04 20:26:37 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 20:29:41 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int ft_change_env(char *name, char *value)
 	{
 		if (ft_strncmp(g_data.env[n], name, ft_strlen(name)) == 0)
 		{
-			g_data.env[n] = ft_strjoin(name, value); //LEAK??
+			//if (g_data.flag_env != 0) 
+				free(g_data.env[n]);
+			g_data.env[n] = ft_strjoin(name, value); //LEAK?? YES MY DEAR
 			return (0);
 		}
 		n++;
@@ -52,7 +54,6 @@ int ft_change_env(char *name, char *value)
  */
 int update_pwds(char *to_update)
 {
-	//char	*oldpwd;
 	char	buffer[1024];
 
 	memset(buffer, 0, sizeof(buffer));
@@ -66,11 +67,9 @@ static int	ch_home(char **arr)
 	char	*path_home;
 	int		status;
 
-	// path_home = gen_path_home();
 	path_home = getenv("HOME");
 	status = chdir(path_home);
-	// if (path_home)
-	// 	free(path_home);
+
 	if (status == 0)
 	{
 		update_pwds("PWD=");

@@ -1,0 +1,26 @@
+esto>noesredic
+Process:         minishell [4608]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x10f6c1000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  minishell [88252]
+
+Date/Time:       2023-06-05 20:02:07.449 +0200
+Launch Time:     2023-06-05 20:02:04.919 +0200
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         280K
+Physical footprint (peak):  280K
+----
+
+leaks Report Version: 4.0
+Process 4608: 441 nodes malloced for 338 KB
+Process 4608: 1 leak for 16 total leaked bytes.
+
+    1 (16 bytes) ROOT LEAK: 0x7fa682c06d00 [16]  length: 7  ">estosi"
+

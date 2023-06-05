@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 20:20:44 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:22:54 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int	ft_check_pipes(void)
 		n = 1;
 	ft_abort(arr, ft_arrlen(arr));
 	//ft_free_split(arr);
-	if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0)
-		free(g_data.input_ex); //WTF IS THIS
+	// if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0)
+	// 	free(g_data.input_ex); //WTF IS THIS
 	// printf(RED"CHEKCK PIPES IS: %d\n"RST_CLR"."RST_CLR"\n"RST_CLR, n);
 	return (n);
 }

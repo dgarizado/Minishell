@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:03:13 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 21:04:40 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:49:05 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,26 @@ int freelancer(void)
 	// printf("freeing input %s : "YELLOW"%p\n"RST_CLR""RST_CLR, g_data.input, g_data.input);
 	// printf("freeing tokenized lvl1 %p : "YELLOW"%s\n"RST_CLR""RST_CLR, g_data.token1[0], g_data.token1[0]);
 	// printf("freeing input_ex %s : "YELLOW"%p\n"RST_CLR""RST_CLR, g_data.input_ex, g_data.input_ex);
-	free(g_data.input);
+	if (g_data.input != NULL)
+	{
+		free(g_data.input);
+		g_data.input = NULL;
+	}	
 	if (g_data.token1 != NULL)
+	{
 		ft_free_split(g_data.token1);
+		g_data.token1 = NULL;
+	}
+	//  if (g_data.input_ex != NULL)
 	if (g_data.flags.free_expanded != 1)
+	{
 		free(g_data.input_ex);
+		g_data.input_ex = NULL;
+	}
+	if (g_data.tokenized_cmd != NULL)
+	{
+		ft_free_split(g_data.tokenized_cmd);
+		g_data.tokenized_cmd = NULL;
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 21:17:50 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/05 20:30:42 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	add_history_aux(char *input)
 int check_to_exe(void)
 {
 	// printf(YELLOW"stills token1: %p, '%s'\n"RST_CLR, g_data.token1, g_data.token1[0]);
-	if (ft_check_exe() == 0 && ft_check_pipes() == 1)// EXE IN GENESIS
+	if (ft_check_exe() == 0 && ft_check_pipes() == 1 && g_data.flags.concurrency == 0)// EXE IN GENESIS
 	{
 		return (0);
 		//status = ft_program(g_data.input_ex);
@@ -97,10 +97,11 @@ int	init(void)
 			//printf("\n:%d\n", g_data.child_status);
 			g_data.father = 0;
 			g_data.flags.concurrency = 0;
-			printf(RED"env array: %p\n"RST_CLR"\n"RST_CLR, g_data.env);
-			freelancer();
-			g_data.flags.free_expanded = 0;
+			//printf(RED"env array: %p\n"RST_CLR"\n"RST_CLR, g_data.env);
 		}
+		freelancer();
+		system("leaks minishell");
+		g_data.flags.free_expanded = 0;
 	}
 	return (EXIT_SUCCESS);
 }
