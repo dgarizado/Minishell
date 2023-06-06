@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 17:50:29 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:53:42 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_data	g_data;
 
-int ft_check_empty_pipe(void)
+static int ft_check_empty_pipe(void)
 {
 	int i;
 
@@ -44,7 +44,7 @@ int ft_check_empty_pipe(void)
  * @param c 
  * @return int 
  */
-int	ft_is_closed(char *str, int *index, char c)
+static int	ft_is_closed(char *str, int *index, char c)
 {
 	(*index)++;
 	while (str[*index] != '\0')
@@ -57,53 +57,12 @@ int	ft_is_closed(char *str, int *index, char c)
 }
 
 /**
- * @brief Check if there are pipes not enclosed in '' or "".
- * 
- * @return int 0 when there is at least 1 pipe, 
- * 1 for no pipes.
- */
-int	ft_check_pipes(void)
-{
-	char	**arr;
-	int		n;
-
-	arr = specialsplit(g_data.input_ex, '|');
-	if (ft_arrlen(arr) > 1)
-		n = 0;
-	else
-		n = 1;
-	ft_abort(arr, ft_arrlen(arr));
-	return (n);
-}
-
-/**
- * @brief Check to execute unset, export, cd
- * Check is alone or in pipes
- * execute ft_program in main followed to skip init_promt().
- * So we dont loose the changes in env and the path of the procees.
- * 
- * @return int 0 For executing directly at current parent process, 
- * 1 for executing in a child process.
- */
-int	ft_check_exe(void)
-{
-	if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0 || \
-	ft_strncmp((g_data.token1[0]), "export", 7) == 0 || \
-	ft_strncmp((g_data.token1[0]), "unset", 6) == 0 || \
-	ft_strncmp((g_data.token1[0]), "cd", 2) == 0)
-	{
-		return (0);
-	}
-	return (1);
-}
-
-/**
  * @brief Checks if the string is only spaces
  * 
  * @param str 
  * @return int 
  */
-int is_space(char *str)
+static int is_space(char *str)
 {
 	int	i;
 
@@ -126,7 +85,7 @@ int is_space(char *str)
  * @param str 
  * @return int 
  */
-void	check_heredocs(char *str)
+static void	check_heredocs(char *str)
 {
 	int	i;
 	int flag;

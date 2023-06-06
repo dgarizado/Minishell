@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 20:22:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:52:15 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_data	g_data;
 
-void	add_history_aux(char *input)
+static void	add_history_aux(char *input)
 {
 	if (ft_strlen(input) > 0)
 	{
@@ -23,25 +23,15 @@ void	add_history_aux(char *input)
 		rl_on_new_line();
 	}
 }
-/**
- * @brief check if run ft_program in main process to save the changes of path and env.
- */
-int check_to_exe(void)
-{
-	if (ft_check_exe() == 0 && ft_check_pipes() == 1 && g_data.flags.concurrency == 0)
-	{
-		return (0);
-	}
-	return (1);
-}
 
-void	ctrld(void)
+
+static void	ctrld(void)
 {
 	printf("\033[F\033[K"PROMPT"exit\n");
 	ft_exit();
 }
 
-void ft_run(void)
+static void ft_run(void)
 {
 	int flag;
 

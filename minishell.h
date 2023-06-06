@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 18:34:30 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:54:51 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,16 +140,13 @@ int		init(void);
 
 //LEXIC
 int			ft_lexic(void);
-int			ft_is_closed(char *str, int *index, char c);
-int			ft_check_pipes(void);
-int			ft_check_exe(void);
-
 
 //UTILS
 int		ft_error(char *err);
 int		delete_str(int i, int j, char *str);
 int		aux_del(int i);
 int		ignore_redics(char *str, int *i);
+
 
 //EXPAND
 int		ft_check_expand(void);
@@ -183,6 +180,7 @@ int		ft_openn(int i);
 int		ft_open_outfile(int i);
 
 //ALLUTILS
+int 	check_to_exe(void);
 int		aux_dell(int i);
 
 //WEDDING PLANNER
