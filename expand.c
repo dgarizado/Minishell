@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 17:36:49 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:21:33 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*ft_getenv(int i, int j, int lenvar)
 		n++;
 	}
 	if (g_data.env[n])
-		aux = &g_data.env[n][ft_strlen(var) + 1];
+		aux = ft_strdup(&g_data.env[n][ft_strlen(var) + 1]);
 	if (!aux)
 	{
 		aux = ft_calloc(1, 1);
@@ -94,7 +94,10 @@ int	ft_expand(int i, int j)
 	str1 = ft_substr(g_data.token1[i], 0, j);
 	lenvar = aux(i, j);
 	expand = ft_getenv(i, j, lenvar);
+	printf("expanded to : '%s': %p\n", expand, expand);
 	str2 = ft_strjoin(str1, expand);
+	free(expand);
+	expand = NULL;
 	free(str1);
 	str1 = NULL;
 	str1 = ft_substr(g_data.token1[i], j + lenvar, ft_strlen(g_data.token1[i]));
@@ -159,7 +162,7 @@ int	ft_check_expand(void)
 				ft_expand(i, j);
 				flag_quote = 0;
 				flag_expand = 1;
-				j = 0;
+				j = -1;
 			}
 			j++;
 		}		
