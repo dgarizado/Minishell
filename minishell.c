@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 18:27:36 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:35:08 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void sigint_handler_child(int sig)
 void sigint_handler(int sig) 
 {
 	sig = 0;
-	if (g_data.father == 0)
+	if (g_data.flags.father == 0)
 	{
 		rl_on_new_line();
 		rl_replace_line("", 0);

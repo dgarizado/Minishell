@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 18:32:23 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:39:46 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,19 @@ void	ctrld(void)
 
 void ft_run(void)
 {
+	int flag;
+
+	flag = 0;
 	add_history_aux(g_data.input);
-	g_data.flag = ft_lexic();
-	if (g_data.flag == 0 && check_to_exe() == 0)
+	flag = ft_lexic();
+	if (flag == 0 && check_to_exe() == 0)
 	{
-		g_data.flag = ft_program(g_data.input_ex);
-		g_data.child_status = g_data.flag;
+		flag = ft_program(g_data.input_ex);
+		g_data.child_status = flag;
 	}
-	else if (g_data.flag == 0)
+	else if (flag == 0)
 	{
-		g_data.father = 1;
+		g_data.flags.father = 1;
 		g_data.child_pid = fork();
 		if (g_data.child_pid == 0)
 		{
@@ -80,11 +83,11 @@ int	init(void)
 		if (g_data.input[0] != '\0')
 		{
 			ft_run();
+			g_data.flags.concurrency = 0;
+			g_data.flags.father = 0;
 		}
 		freelancer();
 		system("leaks minishell");
-		g_data.flags.concurrency = 0;
-		g_data.father = 0;
 		g_data.flags.free_expanded = 0;
 	}
 	return (EXIT_SUCCESS);
