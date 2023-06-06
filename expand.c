@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 20:21:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:35:53 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int	ft_expand(int i, int j)
 	str1 = ft_substr(g_data.token1[i], 0, j);
 	lenvar = aux(i, j);
 	expand = ft_getenv(i, j, lenvar);
-	printf("expanded to : '%s': %p\n", expand, expand);
 	str2 = ft_strjoin(str1, expand);
 	free(expand);
 	expand = NULL;

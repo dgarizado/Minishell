@@ -6,36 +6,13 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:54:37 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 17:24:59 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:28:22 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
-
-int	check_here_docs(void)
-{
-	int	i;
-	int	flag;
-
-	i = 0;
-	flag = 0;
-	while (g_data.infiles[i])
-	{
-		if (g_data.infiles[i][1] == '<' && g_data.infiles[i][2] != '<')
-			flag = 1;
-		if (g_data.infiles[i][1] == '<' \
-		&& g_data.infiles[i][2] == '<' && flag == 1)
-		{
-			ft_error_in(RED"minishell: syntax error near unexpected token `<'", \
-			NULL, "'\n"RST_CLR, 258);
-			break ;
-		}
-		i++;
-	}
-	return (0);
-}
 
 int	ft_open_outfile(int i)
 {

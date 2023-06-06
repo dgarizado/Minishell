@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 17:25:27 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:14:22 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ extern t_data	g_data;
  * @param c 
  * @return int 
  */
-int	ft_count_redicc(char *str, char c)
+static int	ft_count_redicc(char *str, char c)
 {
 	int	i;
 	int	count;
@@ -78,7 +78,7 @@ static int	auxc_auxc(int *i, int *j, int *k, char c)
  * @param str 
  * @return int 
  */
-int	auxc(int *i, int *j, int *k, char c)
+static int	auxc(int *i, int *j, int *k, char c)
 {
 	char	flag;
 
@@ -110,7 +110,7 @@ int	auxc(int *i, int *j, int *k, char c)
  * @param c 
  * @return char 
  */
-char	get_next_redicc(char *str, char c)
+static char	get_next_redicc(char *str, char c)
 {
 	int		i;
 	int		j;
@@ -158,9 +158,8 @@ int	ft_redicc(char *str)
 	{
 		g_data.redics = ft_calloc(sizeof(char *), all + 1);
 		get_next_redicc(aux, '<');
-	}
-	if (all > 0)
 		analyze_redicc();
+	}
 	free(aux);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:55:54 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 19:47:31 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:22:52 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*ft_copyy(char *dest, const char *src, size_t index)
  * @param s2 
  * @return int 
  */
-char	*ft_join(char *s1, char *s2)
+static char	*ft_join(char *s1, char *s2)
 {
 	char	*new_string;
 	int		last;

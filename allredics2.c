@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 17:29:06 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:20:42 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ extern t_data	g_data;
  * @param eof 
  * @return char* 
  */
-int	delimiterr(char *eof, int *fd, int std_out)
+static int	delimiterr(char *eof, int *fd, int std_out)
 {
 	char	*line;
 
@@ -51,7 +51,7 @@ int	delimiterr(char *eof, int *fd, int std_out)
  * The here_doc will be read only if there is no more infiles
  * @param eof 
  */
-void	ft_here_docc(char *eof, int i)
+static void	ft_here_docc(char *eof, int i)
 {
 	int		pid;
 	int		fd[2];
@@ -76,17 +76,16 @@ void	ft_here_docc(char *eof, int i)
 	}
 }
 
-//CHECKPOINTVICTOR SIMPATICO
 /**
  * @brief Analizes infiles array
  * open all the infiles and save the 
  * last fd in g_data.fd_in
  * checks if there is a here_doc call when 
  * there are "<<" in the infile name
- * adn calls the ft_here_docc function
+ * and calls the ft_here_docc function
  * @return int 
  */
-int	infiles_docc(void)
+static int	infiles_docc(void)
 {
 	int		i;
 	char	*eof;
@@ -117,7 +116,7 @@ int	infiles_docc(void)
  * yes, it can be done with access, but we get the same result.
  * @return int 
  */
-int	check_infiless(void)
+static int	check_infiless(void)
 {
 	int		i;
 	int		fd;

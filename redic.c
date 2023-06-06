@@ -6,43 +6,13 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 17:53:41 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:14:52 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
-
-/**
- * @brief Counts the number of redirections in order
- * to allocate enough strings for storing them.
- * It doesnt properly count if there is >>>>>>>
- * this can be improved. otherwise it will allocate
- * extra spaces, that wont generate errors.
- * @param str 
- * @param c 
- * @return int 
- */
-int	ft_count_redic(char *str, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (*str)
-	{
-		if (str[0] == c)
-		{
-			count++;
-			if (str[1] == c)
-				str++;
-		}
-		str++;
-	}
-	return (count);
-}
 
 /**
  * @brief Aux function for norminette issues.
@@ -81,7 +51,7 @@ static int	aux_aux(int *i, int *j, int *k, char c)
  * @param str 
  * @return int 
  */
-int	aux(int *i, int *j, int *k, char c)
+static int	aux(int *i, int *j, int *k, char c)
 {
 	if (g_data.str_redic[*i] == c)
 	{
