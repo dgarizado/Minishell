@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/05 19:21:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:44:31 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ int	ft_execute(char **arr)
 {
 	int status;
 	
-	if (!arr || !(arr[0]))
+	if (!arr) //ADDED TODAY
+		return (0);
+	if (!arr || !(arr[0])) //INWHAT CASES IS THIS TRUE?
 		return (str_error(arr[0], "missing arg"));
 	status = ft_built_in(arr);
 	if (status != -1)

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/05 20:30:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:46:23 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	init(void)
 		{
 			add_history_aux(g_data.input);
 			g_data.flag = ft_lexic();
+			// printf(PINK"Input ex: '%s', %p\n"RST_CLR, g_data.input_ex, g_data.input_ex);
 			//printf(YELLOW"still token1: %p, %s\n"RST_CLR, g_data.token1, g_data.token1[0]);
 			if (g_data.flag == 0 && check_to_exe() == 0)
 			{

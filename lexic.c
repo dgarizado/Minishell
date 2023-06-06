@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/05 19:22:54 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:47:03 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,12 @@ int	ft_check_pipes(void)
 	// printf("NOT FREEING HERE: %p\n", g_data.input_ex);
 	arr = specialsplit(g_data.input_ex, '|');
 	// printf(GREEN"ALLOCATED HERE: %p, %s, %d nodes\n"RST_CLR"."RST_CLR, arr, arr[0], ft_arrlen(arr));
+	//printf("\narr is: %p\n", arr);
 	if (ft_arrlen(arr) > 1)
 		n = 0;
 	else
 		n = 1;
+	// if (arr != NULL)
 	ft_abort(arr, ft_arrlen(arr));
 	//ft_free_split(arr);
 	// if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0)
@@ -271,10 +273,10 @@ int	ft_lexic(void)
 	g_data.token1 = specialsplit((g_data.input), ' ');
 	//printf(BLUE"token1: %p, %s\n"RST_CLR"\n"RST_CLR".", g_data.token1[0], g_data.token1[0]);
 	//ft_printf_arr(g_data.token1);
-	if (ft_check_empty_pipe() == -1)
-		return (1);
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
+	if (ft_check_empty_pipe() == -1 /*|| ft_strlen(g_data.input_ex) == 0*/)
+		return (1);
 	// printf(YELLOW"input_ex:"RST_CLR"%s, %p\n"". "RST_CLR, g_data.input_ex, g_data.input_ex);
 	check_heredocs(g_data.input_ex);
 	return (0);
