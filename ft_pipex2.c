@@ -3,35 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:32:29 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/30 19:57:00 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:41:58 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//extern t_data	g_data;
-t_data	g_data;
-
-void	close_all_pipes(void)
-{
-	//int	n;
-
-	//n = 0;
-	//while (n <= g_data.n_pipe)
-	///while (n < g_data.tmp_n_pipes)
-	//{
-		//close(g_data.pipes[n][STDIN_FILENO]);
-	//	close(g_data.pipes[n][STDOUT_FILENO]);
-	//	n++;
-	//}
-	if (g_data.fd_infile)
-		close(g_data.fd_infile);
-	if (g_data.fd_outfile)
-		close(g_data.fd_outfile);
-}
+extern t_data	g_data;
 
 void	receive_from_send_to_pipe(char *str)
 {

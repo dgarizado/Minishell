@@ -6,15 +6,12 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:51:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/04 20:21:16 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:54:51 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-//#include "./libft/libft.h"
-
 extern t_data	g_data;
-//t_data	g_data;
 
 static int	count_str(char *str, char c)
 {
@@ -140,16 +137,11 @@ char	**specialsplit(char *str, char c)
 	int		j;
 	int		n;
 	char	**matriz;
-	static int		alloc = 0;//DEBUG delete this
 	
 	if (!str || !(str[0]))
 		return (NULL);
-	//printf("STR ENTERED: %s, %p\n", str, str);
 	n = count_str(str, c);
-	// printf("AFTER COUNT: %s, %p\n", str, str);
 	matriz = malloc((n + 1) * sizeof(char *));
-	alloc++; //DEBUG delete this
-	// printf(BLUE"\nallocated for: %s : %p : %d :flag %d: looking for '%c': n is %d\n"RST_CLR, str, matriz, alloc, g_data.flags.token1, c, n);
 	matriz[n] = NULL;
 	i = 0;
 	j = 0;
@@ -157,22 +149,3 @@ char	**specialsplit(char *str, char c)
 		matriz[i++] = gen_str(str, &j, c);
 	return (matriz);
 }
-
-/*
-int main(int argc, char **arg, char **e)
-{
-	argc = 0;
-	arg = 0;
-	char *str = "\"5'6asd'\" '' o''''tr \"'\" a''";
-	char **matriz;
-	//char *str = "\"'1234'\" \"5'6asD'\"otra";
-	g_data.env = e;
-
-	g_data.flags.token1 = 1;
-	matriz = split_beta(str, ' ');
-	ft_printf_arr(split_beta(str, ' '));
-	ft_abort(matriz, ft_arrlen(matriz));
-	system("leaks a.out");
-	return 0;
-}
-*/

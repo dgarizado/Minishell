@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/05 18:48:07 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:25:27 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ static int	auxc_auxc(int *i, int *j, int *k, char c)
  * @param str 
  * @return int 
  */
-//CHECK POINT !!!!!!!!!!!!!55555
 int	auxc(int *i, int *j, int *k, char c)
 {
 	char	flag;
@@ -162,6 +161,6 @@ int	ft_redicc(char *str)
 	}
 	if (all > 0)
 		analyze_redicc();
-	free(aux); //CHECK POINT !!!!!!!!!!!!MODIFIED TODAy
+	free(aux);
 	return (0);
 }

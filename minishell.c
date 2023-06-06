@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/05 20:28:06 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:27:36 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,16 @@
 
 t_data	g_data;
 
-int	print_token1(char **str)
+void leaks(void)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != NULL)
-	{
-		printf("\n%s\n", str[i]);
-		i++;
-	}
-	return (0);
+	system("leaks minishell");
 }
 
-/**
- * @brief Child process that performs the ft_program.
- * 
- * @return int 
- */
-//CHECKPOIINT
-int	init_prompt_subps(void)
-{
-	wedding_planner();
-	return (0);
-}
 
 void sigint_handler_child(int sig) 
 {
 	sig = 0;
-	//printf("HA MUERTO UN HIJO!\n");
-//	if (g_data.child_pid == 0)
-		exit(127);
+	exit(127);
 }
 
 void sigint_handler(int sig) 
@@ -90,13 +69,21 @@ void set_signals(int n)
 	}
 	
 }
-
-void leaks(void)
+/**
+ * @brief Set the env to global object
+ */
+static void set_env_to_global(char **env)
 {
-	system("leaks minishell");
+	int	i;
+	
+	i = 0;
+	while (env[i])
+	{
+		g_data.env[i] = ft_strdup(env[i]);
+		i++;
+	}
 }
 
-//CHECKPOINT
 int	main(int argc, char **argv ,char **env)
 {	
 	int n_lines;
@@ -107,13 +94,9 @@ int	main(int argc, char **argv ,char **env)
 	g_data.original_std_in = dup(STDIN_FILENO);
 	n_lines = ft_arrlen(env);
 	g_data.env = ft_calloc(sizeof(char *), (n_lines + 1));
-	while (env[argc])
-	{
-		g_data.env[argc] = ft_strdup(env[argc]);
-		argc++;
-	}
+	set_env_to_global(env);
 	set_signals(1);
-	atexit(leaks);
+	//atexit(leaks);
 	init();
 	return (0);
 }

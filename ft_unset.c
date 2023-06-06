@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:56:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/05 20:23:49 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:42:42 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,19 @@ static char	**ft_gen_new_arr(char **arr)
 	return (new_arr_env);
 }
 
-static void ft_gen_new_env2(char **arr)//posible error abort antes de tiempo
+static void ft_gen_new_env2(char **arr)
 {
 	char	**new_arr_env;
 
 	new_arr_env = ft_gen_new_arr(arr);
 	if (new_arr_env)
 	{
-		//if (g_data.flag_env != 0)
-			ft_abort(g_data.env, ft_arrlen(g_data.env));
+		ft_abort(g_data.env, ft_arrlen(g_data.env));
 		g_data.flag_env++;
 		g_data.env = new_arr_env;
 	}
 }
 
-//When kill the main thread free the g_data.env
 int	ft_unset(char **arr)
 {	
 	if (!g_data.env)
@@ -89,32 +87,3 @@ int	ft_unset(char **arr)
 		ft_gen_new_env2(arr);
 	return (errno);
 }
-
-/*
-static void sswap_arg(char **arg)
-{
-	int i;
-	char *swap;
-
-	i = 1;
-	arg[0] = arg[1];
-	while(arg[i - 1])
-	{
-		arg[i] = arg[i +1];
-		i++;
-	}
-	arg[i] = NULL;
-	
-}
-
-int main(int argc, char **arg, char **env)
-{
-	g_data.flag_env = 0;
-	g_data.env = env;
-	//ft_printf_arr(g_data.env);
-	sswap_arg(arg);
-	ft_unset(arg);
-	ft_printf_arr(g_data.env);
-	atexit(check);
-	return(0);
-}*/

@@ -6,14 +6,13 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/04 16:11:04 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:39:29 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
-//t_data	g_data;
 
 void	gen_new_pipe(char **arr)
 {
@@ -53,9 +52,9 @@ static void ft_wait(void)
 	int i = 0;
 	
 	if (g_data.flags.concurrency == 1)
-		waitpid(g_data.pid, &g_data.child_status, 0); //not concurrent remind set flag
+		waitpid(g_data.pid, &g_data.child_status, 0);
 	else
-		i = waitpid(g_data.pid, &g_data.child_status, WNOHANG);//concurrent
+		i = waitpid(g_data.pid, &g_data.child_status, WNOHANG);
 	if (WIFEXITED(g_data.child_status))
 	{
 		g_data.child_status = WEXITSTATUS(g_data.child_status);
@@ -92,31 +91,16 @@ int ft_pipex(char **arr)
 	int wstatus;
 	int statuscode;
 	int pids[100];
+	int i = 0;
 	
 	memset(pids, 0, sizeof(pids));
 	pipe_and_fork(arr, pids);
-	// if (g_data.flags.concurrency == 1)
-	// 	waitpid(g_data.pid, &g_data.child_status, 0); //not concurrent remind set flag
-	// else
-	// 	waitpid(g_data.pid, &g_data.child_status, 0);
 	waitpid(g_data.pid, &wstatus, 0);
-	//DELETE THIS SHIT
-	int i = 0;
-	//printf(YELLOW"\nPROCESSES LIST\n");
-	// while (pids[i] != 0)
-	// {
-		
-	// 	printf(BLUE"\n%d\n"RST_CLR, pids[i]);
-	// 	i++;
-	// }
-	// printf("\nI AM DADDY %d\n", getpid());
 	while (pids[i] != 0)
 	{
 		kill(pids[i], 9);
 		i++;
 	}
-	//END DELETE SHIT
-
 	if (WIFEXITED(wstatus))
 	{
 		statuscode = WEXITSTATUS(wstatus);

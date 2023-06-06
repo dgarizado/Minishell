@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:06:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/05 20:29:41 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:19:43 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ int ft_change_env(char *name, char *value)
 	{
 		if (ft_strncmp(g_data.env[n], name, ft_strlen(name)) == 0)
 		{
-			//if (g_data.flag_env != 0) 
-				free(g_data.env[n]);
-			g_data.env[n] = ft_strjoin(name, value); //LEAK?? YES MY DEAR
+			free(g_data.env[n]);
+			g_data.env[n] = ft_strjoin(name, value);
 			return (0);
 		}
 		n++;
@@ -108,30 +107,3 @@ int	ft_cd(char **arr)
 	else
 		return (msg_error(arr[0], arr[1]));
 }
-/*
-void	swap_argv(int argc, char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (i < argc -1)
-	{
-		argv[i] = argv[i + 1];
-		i++;
-	}
-	argv[argc - 1] = NULL;
-}
-
-int	main(int argc, char **argv)
-{
-	char	vector[256];
-	int		status;
-	swap_argv(argc, argv);
-	printf("\n****DIRECCION before  %s\n", getcwd(vector, sizeof(vector)));
-	status = ft_cd(argv);
-	printf("DIRECCION afteeerr  %s\n", getcwd(vector, sizeof(vector)));
-	printf("****salida STATUS %d\n\n", status);
-	//atexit(check);
-	return (0);
-}
-*/

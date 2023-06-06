@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/05 19:14:54 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:17:22 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,6 @@ typedef struct s_execute
 		char	*str_path;
 }	t_struc;
 
-//MAIN
-int		init_prompt_subps(void);
-
 //BUILTS IN
 int		ft_pwd(char **arr);
 int		ft_exit(void);
@@ -128,7 +125,6 @@ void	ft_copy(char **new_arr_env, char **arr, int i, int *n);
 int 	ft_get_var(char *str, int n);
 int		ft_echo(char **arr);
 void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
-char	**pipexsplit(char *str);
 int		ft_env(void);
 int		str_error_export(char *s1, char *s2, char *s3);
 
@@ -138,20 +134,16 @@ int 	ft_pipex(char **arr);
 void	sent_to_pipe(char *str);
 void	receive_from_send_to_pipe(char *str);
 void	receive_from_pipe(char *str);
-void	close_all_pipes(void);
 
 //INIT
 int		init(void);
 
 //LEXIC
 int			ft_lexic(void);
-bool		is_enclosed(const char *str, int idx);
 int			ft_is_closed(char *str, int *index, char c);
 int			ft_check_pipes(void);
 int			ft_check_exe(void);
 
-//PIPEX SPLIT
-char	**pipexsplit(char *str);
 
 //UTILS
 int		ft_error(char *err);

@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 15:26:06 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:53:41 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ static int	aux_aux(int *i, int *j, int *k, char c)
  * @param str 
  * @return int 
  */
-//CHECK POINT !!!!!!!!!!!!!55555
 int	aux(int *i, int *j, int *k, char c)
 {
 	if (g_data.str_redic[*i] == c)

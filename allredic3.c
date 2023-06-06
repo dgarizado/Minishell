@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:54:37 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/29 17:53:56 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:24:59 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_here_docs(void)
 
 int	ft_open_outfile(int i)
 {
-	char	*aux; //leak?
+	char	*aux;
 	int		len;
 
 	aux = ft_strtrim(g_data.redics[i], "> ");
@@ -58,9 +58,8 @@ int	ft_open_outfile(int i)
 	if (g_data.fd_out != -1)
 	{
 		free(aux);
-		if (strcmp(g_data.redics[i], g_data.outfiles[len - 1]) == 0) //FORBIDDEMN FUNCTION!
+		if (ft_strncmp(g_data.redics[i], g_data.outfiles[len - 1], ft_strlen(g_data.redics[i])) == 0)
 			dup2(g_data.fd_out, STDOUT_FILENO);
-		//close(g_data.fd_out); //wtf?
 	}
 	return (0);
 }
@@ -75,7 +74,7 @@ int	ft_open_outfile(int i)
  */
 int	ft_openn(int i)
 {
-	char	*aux; //Leak?
+	char	*aux;
 	int		len;
 
 	aux = ft_strtrim(g_data.redics[i], "< ");
@@ -85,7 +84,7 @@ int	ft_openn(int i)
 	if (g_data.fd_in != -1)
 	{
 		free(aux);
-		if (strcmp(g_data.redics[i], g_data.infiles[len - 1]) == 0) //FORBIDDEN FUNCTION!
+		if (ft_strncmp(g_data.redics[i], g_data.infiles[len - 1], ft_strlen(g_data.redics[i])) == 0)
 			dup2(g_data.fd_in, STDIN_FILENO);
 		close(g_data.fd_in);
 	}

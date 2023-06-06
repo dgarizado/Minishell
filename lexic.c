@@ -6,13 +6,12 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 16:47:03 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:50:29 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// t_data	g_data;
 extern t_data	g_data;
 
 int ft_check_empty_pipe(void)
@@ -23,7 +22,10 @@ int ft_check_empty_pipe(void)
 
 	while(g_data.token1[i + 1] )
 	{
-		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' && g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') ||  (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' && g_data.token1[i + 1][0] == '|'))
+		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' &&\
+		g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') \
+		|| (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' \
+		&& g_data.token1[i + 1][0] == '|'))
 		{
 			str_error("minishell" ,"syntax error near unexpected token `|'");
 			return (-1);
@@ -31,32 +33,6 @@ int ft_check_empty_pipe(void)
 		i++;
 	}
 	return (0);
-}
-
-/**
- * @brief Returns true if it is enclosed by '
- * fasle if not.
- * @param str 
- * @param idx 
- * @return true 
- * @return false 
- */ //CHECKPOINT
-bool	is_enclosed(const char *str, int idx)
-{
-	bool	inside_quotes;
-	int		i;
-
-	inside_quotes = false;
-	i = 0;
-	while (i < idx)
-	{
-		if (str[i] == '\'')
-		{
-			inside_quotes = !inside_quotes;
-		}
-		i++;
-	}
-	return (inside_quotes);
 }
 
 /**
@@ -91,20 +67,12 @@ int	ft_check_pipes(void)
 	char	**arr;
 	int		n;
 
-	// printf("NOT FREEING HERE: %p\n", g_data.input_ex);
 	arr = specialsplit(g_data.input_ex, '|');
-	// printf(GREEN"ALLOCATED HERE: %p, %s, %d nodes\n"RST_CLR"."RST_CLR, arr, arr[0], ft_arrlen(arr));
-	//printf("\narr is: %p\n", arr);
 	if (ft_arrlen(arr) > 1)
 		n = 0;
 	else
 		n = 1;
-	// if (arr != NULL)
 	ft_abort(arr, ft_arrlen(arr));
-	//ft_free_split(arr);
-	// if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0)
-	// 	free(g_data.input_ex); //WTF IS THIS
-	// printf(RED"CHEKCK PIPES IS: %d\n"RST_CLR"."RST_CLR"\n"RST_CLR, n);
 	return (n);
 }
 
@@ -119,75 +87,15 @@ int	ft_check_pipes(void)
  */
 int	ft_check_exe(void)
 {
-	// printf(GREEN"CHEKCK EXE IS: '%s'."RST_CLR, g_data.token1[0]);
-	// getchar();
 	if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen(g_data.token1[0])) == 0 || \
 	ft_strncmp((g_data.token1[0]), "export", 7) == 0 || \
 	ft_strncmp((g_data.token1[0]), "unset", 6) == 0 || \
 	ft_strncmp((g_data.token1[0]), "cd", 2) == 0)
 	{
-		// printf(RED"CHECK EXE IS: %d\n"RST_CLR"."RST_CLR, 0);
 		return (0);
 	}
-	// printf(RED"CHEKCK EXE IS: %d\n"RST_CLR"."RST_CLR, 1);
 	return (1);
 }
-// static int	delimiter_input(char eof, int *fd)
-// {
-// 	char	*line;
-
-// 	while (42)
-// 	{
-// 		line = readline("> ");
-// 		write(fd[1], line, ft_strlen(line));
-// 		if (ft_str_index_chr(line, eof) != 0)
-// 			break ;
-// 		write(fd[1], "\n", 1);
-// 		free(line);
-// 	}
-// 	free(line);
-// 	close(fd[1]);
-// 	return (0);
-// }
-
-// /**
-//  * @brief Complete the input string unclosed with ' or " correspondent
-//  * 
-//  * @param input string from readline of main process
-//  * @param c the quote to be closed
-//  * @return char* string with closed quotes 
-//  */
-// char *ft_close_quotes_input(char *input, char c)
-// {
-// 	int			pid;
-// 	int			fd[2];
-// 	char		buff[1000];
-// 	ssize_t		n;
-// 	char		*tmp;
-// 	int			control_read;
-	
-// 	control_read = 1;
-// 	n = 0;
-// 	pipe(fd);
-// 	pid = fork();
-// 	if (pid == 0)
-// 	{
-// 		close(fd[0]);
-// 		exit (delimiter_input(c, fd));
-// 	}
-// 	else
-// 	{
-// 		wait(NULL);
-// 		n = read(fd[0], &buff, 1000);
-// 		buff[n] = '\0';
-// 		tmp = input;
-// 		input = ft_strjoin(input, buff);
-// 		free(tmp);
-// 		close (fd[1]);
-// 		close (fd[0]);
-// 	}
-// 	return (input);
-// }
 
 /**
  * @brief Checks if the string is only spaces
@@ -271,13 +179,10 @@ int	ft_lexic(void)
 	}
 	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
-	//printf(BLUE"token1: %p, %s\n"RST_CLR"\n"RST_CLR".", g_data.token1[0], g_data.token1[0]);
-	//ft_printf_arr(g_data.token1);
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
-	if (ft_check_empty_pipe() == -1 /*|| ft_strlen(g_data.input_ex) == 0*/)
+	if (ft_check_empty_pipe() == -1 || ft_strlen(g_data.input_ex) == 0)
 		return (1);
-	// printf(YELLOW"input_ex:"RST_CLR"%s, %p\n"". "RST_CLR, g_data.input_ex, g_data.input_ex);
 	check_heredocs(g_data.input_ex);
 	return (0);
 }

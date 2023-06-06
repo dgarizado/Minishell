@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:39:50 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/05 20:23:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:37:52 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ static void	ft_gen_new_env(char *str)
 	new_arr_env = ft_gen_new_arr(ft_parse_str(str));
 	if (new_arr_env)
 	{
-		//if (g_data.flag_env != 0)
-			ft_abort(g_data.env, ft_arrlen(g_data.env));
+		ft_abort(g_data.env, ft_arrlen(g_data.env));
 		g_data.flag_env++;
 		g_data.env = new_arr_env;
 	}
@@ -72,8 +71,7 @@ static void	ft_ch_value_var(char *arr, int n)
 	{
 		if (ft_strchr(arr, '=')[1] != '=')
 		{
-			//if(g_data.flag_env != 0)
-				 free(g_data.env[n]);
+			free(g_data.env[n]);
 			g_data.env[n] = ft_strdup(arr);
 		}
 		else
@@ -97,12 +95,12 @@ static void	ft_change_env(char **arr)
 			if (!ft_strncmp(g_data.env[n], arr[i], (ft_str_index_chr(g_data.env[n], '='))))
 			{
 				flag = 0;
-				ft_ch_value_var(arr[i], n);//leaks ok
+				ft_ch_value_var(arr[i], n);
 			}
 			n++;
 		}
 		if (flag == 1)
-			ft_gen_new_env(arr[i]);//leks ok
+			ft_gen_new_env(arr[i]);
 		i++;
 	}
 }

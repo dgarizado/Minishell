@@ -3,31 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execve2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/30 18:40:48 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:38:28 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
-
-// char	*ft_strtrim(char const *s1, char const *set)
-// {
-// 	char	*str_trimed;
-// 	size_t	len;
-
-// 	len = ft_strlen(s1);
-// 	while (s1[0] != '\0' && ft_strchr(set, s1[0]))
-// 		s1++;
-// 	len = ft_strlen(s1);
-// 	while (s1[0] != '\0' && ft_strrchr(set, s1[len - 1]))
-// 		len--;
-// 	str_trimed = ft_substr(s1, 0, len);
-// 	return (str_trimed);
-// }
 
 static char	*copy(char *str_program, char *str_path, char *program)
 {

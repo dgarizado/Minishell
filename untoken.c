@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:55:54 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/04 17:46:07 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:55:55 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,10 @@ char	*ft_join(char *s1, char *s2)
  */
 char	*ft_untoken(void)
 {
-	char	*newstr;//NEED TO BE FREED OR NOT IF IS IN A CHILD?
+	char	*newstr;
 	char	*aux;
 	int		i;
 
-	// if (!g_data.token1)
 	i = 1;
 	newstr = g_data.token1[0];
 	while (g_data.token1[i] != NULL)

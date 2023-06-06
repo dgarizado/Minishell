@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:28:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/06 16:44:31 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:31:50 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,7 @@ static int	ft_built_in(char **arr)
 	else if (!ft_strncmp(arr[0], "env", ft_strlen("env")))
 		return(ft_env());
 	else if (!ft_strncmp(arr[0], "exit", ft_strlen("exit")))
-	{
-		//printf(RED"input ex HERE :%p\n"RST_CLR"\n"RST_CLR, g_data.input_ex);
-		//free(g_data.input_ex);
-		// printf(RED"exited HERE\n"RST_CLR"\n"RST_CLR);	
-		// printf(RED"input and its addres %s : %p\n"RST_CLR"\n"RST_CLR, g_data.input, g_data.input);
 		return(ft_exit());
-	}
 	else
 		return (-1);
 }
@@ -57,32 +51,11 @@ int	ft_execute(char **arr)
 {
 	int status;
 	
-	if (!arr) //ADDED TODAY
+	if (!arr)
 		return (0);
-	if (!arr || !(arr[0])) //INWHAT CASES IS THIS TRUE?
-		return (str_error(arr[0], "missing arg"));
 	status = ft_built_in(arr);
 	if (status != -1)
-	{
-		//ft_abort(arr, ft_arrlen(arr));
 		return (status);
-	}
 	else
-	{
-		//ft_abort(arr, ft_arrlen(arr));
 		return (ft_execve(arr));
-	}
 }
-
-/*
-int main(int argc, char **argv, char **env)
-{
-	char *arr[3];
-	arr[0] = "env";
-	arr[1] = NULL;
-	arr[2] = NULL;
-	
-	g_data.env = env;
-	ft_execute(arr);
-	return(0);
-}*/
