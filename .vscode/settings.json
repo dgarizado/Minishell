@@ -1,0 +1,13 @@
+{
+	"files.associations": {
+		"bitset": "c",
+		"readline.h": "c",
+		"sstream": "c",
+		"__bit_reference": "c",
+		"algorithm": "c",
+		"chrono": "c",
+		"unordered_map": "c",
+		"minishell.h": "c",
+		"libft.h": "c"
+	}
+}

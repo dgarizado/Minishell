@@ -5,7 +5,7 @@
 
 NAME        := minishell
 CC        := gcc
-DEBUB        := gcc 
+DEBUG        := gcc 
 FLAGS    := -Wall -Wextra -Werror #-fsanitize=address -fno-omit-frame-pointer
 LIBFT = ./libft/libft.a
 HEADER = ./minishell.h
@@ -17,7 +17,8 @@ LIBS = -L "/Users/$(USER)/.brew/opt/readline/lib" -lreadline
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS        :=      $(wildcard *.c) $(wildcard built-in/*.c) $(wildcard signals/*.c)
+SRCS        :=      $(wildcard *.c) $(wildcard built-in/*.c) $(wildcard parsing/*.c) \
+$(wildcard program/*.c) $(wildcard redics/*.c) $(wildcard utils/*.c) 
                           
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
@@ -53,7 +54,7 @@ all:		${NAME}
 bonus:		all
 
 debug:
-	@${DEBUB}  ${OBJS} $(LIBFT) $(LIBS) ${FLAGS} -o debug
+	@${DEBUG}  ${OBJS} $(LIBFT) $(LIBS) ${FLAGS} -o debug
 
 clean:
 			@ ${RM} $(OBJ_DIR) *.o
