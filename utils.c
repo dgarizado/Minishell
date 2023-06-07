@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/03 13:11:37 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:35:30 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	aux_del(int i)
 	{
 		if (g_data.infiles[i][1] == '<' && g_data.infiles[i][2] == '<')
 		{
-			printf(RED"minishell: syntax error near unexpected token `<'\n"RST_CLR);
+			printf(RED"minishell: syntax error near unexpected token \
+			`<'\n"RST_CLR);
 			g_data.flags.here_doc_ret = 258;
 			g_data.flags.here_doc_aux = i;
 			break ;
@@ -86,9 +87,9 @@ int	delete_str(int i, int j, char *str)
  */
 int	ignore_redics(char *str, int *i)
 {
-	int flag;
-	
-	if (str[(*i)] =='\'' || str[(*i)] == '\"')
+	int	flag;
+
+	if (str[(*i)] == '\'' || str[(*i)] == '\"')
 	{
 		flag = str[(*i)];
 		(*i)++;

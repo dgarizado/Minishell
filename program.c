@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 21:03:15 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:40:25 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,27 @@ static int	ft_execve(char **arr)
 static int	ft_built_in(char **arr)
 {
 	if (!ft_strncmp(arr[0], "echo", ft_strlen("echo")))
-		return(ft_echo(arr));
+		return (ft_echo(arr));
 	else if (!ft_strncmp(arr[0], "export", ft_strlen("export")))
-		return(ft_export(arr));
+		return (ft_export(arr));
 	else if (!ft_strncmp(arr[0], "unset", ft_strlen("unset")))
-		return(ft_unset(arr));
+		return (ft_unset(arr));
 	else if (!ft_strncmp(arr[0], "cd", ft_strlen("cd")))
-		return(ft_cd(arr));
+		return (ft_cd(arr));
 	else if (!ft_strncmp(arr[0], "pwd", ft_strlen("pwd")))
-		return(ft_pwd(arr));
+		return (ft_pwd(arr));
 	else if (!ft_strncmp(arr[0], "env", ft_strlen("env")))
-		return(ft_env());
+		return (ft_env());
 	else if (!ft_strncmp(arr[0], "exit", ft_strlen("exit")))
-		return(ft_exit());
+		return (ft_exit());
 	else
 		return (-1);
 }
 
 static int	ft_execute(char **arr)
 {
-	int status;
-	
+	int	status;
+
 	if (!arr)
 		return (0);
 	status = ft_built_in(arr);
