@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:39:50 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/25 00:58:18 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:37:52 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ static void	ft_gen_new_env(char *str)
 	new_arr_env = ft_gen_new_arr(ft_parse_str(str));
 	if (new_arr_env)
 	{
-		if (g_data.flag_env != 0)
-			ft_abort(g_data.env, ft_arrlen(g_data.env));
+		ft_abort(g_data.env, ft_arrlen(g_data.env));
 		g_data.flag_env++;
 		g_data.env = new_arr_env;
 	}
@@ -71,7 +70,10 @@ static void	ft_ch_value_var(char *arr, int n)
 	if (ft_strchr(arr, '=') && arr[0] != '=')
 	{
 		if (ft_strchr(arr, '=')[1] != '=')
+		{
+			free(g_data.env[n]);
 			g_data.env[n] = ft_strdup(arr);
+		}
 		else
 			str_error_export("export", arr, " var found, wrong value");
 	}

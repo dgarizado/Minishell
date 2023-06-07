@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allredics2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/30 19:51:16 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:20:42 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ extern t_data	g_data;
  * @param eof 
  * @return char* 
  */
-int	delimiterr(char *eof, int *fd, int std_out)
+static int	delimiterr(char *eof, int *fd, int std_out)
 {
 	char	*line;
 
@@ -29,7 +29,6 @@ int	delimiterr(char *eof, int *fd, int std_out)
 	while (42)
 	{
 		line = readline("> ");
-		//printf("line = %s", line);
 		if (ft_strncmp(line, eof, ft_strlen(line)) == 0 \
 		&& ft_strlen(line) == ft_strlen(eof))
 		{
@@ -52,20 +51,17 @@ int	delimiterr(char *eof, int *fd, int std_out)
  * The here_doc will be read only if there is no more infiles
  * @param eof 
  */
-void	ft_here_docc(char *eof, int i)
+static void	ft_here_docc(char *eof, int i)
 {
 	int		pid;
 	int		fd[2];
 	int		len;
 
 	pipe(fd);
-	// printf("original_std_out = %d\n", g_data.original_std_out);
-	// write(g_data.original_std_out, "aaaaaaa\n", 8);
-	len =  ft_arrlen(g_data.infiles);
+	len = ft_arrlen(g_data.infiles);
 	pid = fork();
 	if (pid == 0)
 	{
-		// close(g_data.pipes[g_data.n_pipe -1][STDIN_FILENO]);
 		dup2(g_data.original_std_in, STDIN_FILENO);
 		close(fd[0]);
 		exit (delimiterr(eof, fd, g_data.original_std_out));
@@ -74,28 +70,25 @@ void	ft_here_docc(char *eof, int i)
 	{
 		waitpid (pid, NULL, 0);
 		close (fd[1]);
-		if (strcmp(g_data.redics[i], g_data.infiles[len - 1]) == 0) //FORBIDDEN	FUNCTION, change to ft_strcmp
+		if (ft_strncmp(g_data.redics[i], g_data.infiles[len - 1], ft_strlen(g_data.redics[i])) == 0)
 			dup2(fd[0], STDIN_FILENO);
-		//if (g_data.infiles[i + 1] == NULL && g_data.flags.here_doc_ret != 258) //This is an error, should be checking data.redics...
-			//dup2(fd[0], STDIN_FILENO);
 		close (fd[0]);
 	}
 }
 
-//CHECKPOINTVICTOR SIMPATICO
 /**
  * @brief Analizes infiles array
  * open all the infiles and save the 
  * last fd in g_data.fd_in
  * checks if there is a here_doc call when 
  * there are "<<" in the infile name
- * adn calls the ft_here_docc function
+ * and calls the ft_here_docc function
  * @return int 
  */
-int	infiles_docc(void)
+static int	infiles_docc(void)
 {
 	int		i;
-	char	*eof; //MEMORY LEAK
+	char	*eof;
 
 	i = 0;
 	while (g_data.redics[i])
@@ -115,8 +108,6 @@ int	infiles_docc(void)
 		ft_openn(i);
 		i++;
 	}
-	// if (eof) //MEMORY LEAK WH
-	// 	free(eof); 
 	return (0);
 }
 
@@ -125,7 +116,7 @@ int	infiles_docc(void)
  * yes, it can be done with access, but we get the same result.
  * @return int 
  */
-int	check_infiless(void)
+static int	check_infiless(void)
 {
 	int		i;
 	int		fd;
@@ -142,12 +133,10 @@ int	check_infiless(void)
 		fd = open(aux, O_RDONLY);
 		if (fd == -1)
 		{
-			//free(aux);
 			return (ft_error_in(RED"\nminishell: ", (g_data.infiles[i] + 1), \
 			": No such file or directory\n"RST_CLR, 1));
 		}
 		close(fd);
-		//free(aux);
 		i++;
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:00:06 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/16 20:02:22 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:24:07 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_arrlen(char **env)
 	int	n;
 
 	n = 0;
+	if (!env)
+		return (0);
 	while (env[n])
 		n++;
 	return (n);

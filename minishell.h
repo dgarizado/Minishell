@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/31 17:21:17 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:34:33 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 # define RED "\x1b[0;31m"
 # define BLUE "\x1b[1;36m"
 # define PINK "\x1b[1;35m"
+# define GREEN "\x1b[1;32m"
 # define RST_CLR "\x1b[0m"
 # define INFILEE "<"
 # define OUTFILEE ">"
 # define APPENDD ">>"
 # define HEREDOCC "<<"
+# define PROMPT PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>"
 
 # include <stdio.h>
 # include <readline/readline.h>
@@ -60,6 +62,9 @@ typedef struct s_flags
 	int	token1;
 	int	here_doc_ret;
 	int here_doc_aux;
+	int	concurrency;
+	int	free_expanded;
+	int father;//for signals condition
 }	t_flags;
 
 
@@ -72,6 +77,7 @@ typedef struct s_data
 	char	*str_redic;
 	char	**token1;
 	char	**token2;
+	char	**tokenized_cmd;
 	char	**pipess;
 	char	**commands;
 	char	**infiles;//erase 
@@ -100,31 +106,23 @@ typedef struct s_execute
 		char	*str_path;
 }	t_struc;
 
-//MAIN
-int		init_prompt_subps(void);
-
 //BUILTS IN
+int		ft_env(void);
+int		ft_echo(char **arr);
 int		ft_pwd(char **arr);
 int		ft_exit(void);
+int		ft_cd(char **arr);
+int		ft_unset(char **arr);
+int		ft_export(char **arr);
 int		msg_error(char *s1, char *s2);
 int		str_error(char *s1, char *s2);
-char	*swap_arg(char *s1, char *s2);
-int		chdir_swap(char *new_path, char **arr);//ls| cd
-int 	msg_error(char *s1, char *s2);
-int 	str_error(char *s1, char *s2);
-char 	*swap_arg(char *s1, char *s2);
-int 	chdir_swap(char *new_path, char **arr);
-int		ft_cd(char **arr);
-char	**ft_abort(char **new_array, unsigned int i);
-int		ft_export(char **arr);
-int		ft_unset(char **arr);
-void	ft_copy(char **new_arr_env, char **arr, int i, int *n);
-int 	ft_get_var(char *str, int n);
-int		ft_echo(char **arr);
-void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
-char	**pipexsplit(char *str);
-int		ft_env(void);
 int		str_error_export(char *s1, char *s2, char *s3);
+int 	ft_get_var(char *str, int n);
+char	**ft_abort(char **new_array, unsigned int i);
+void	ft_copy(char **new_arr_env, char **arr, int i, int *n);
+int		chdir_swap(char *new_path, char **arr);
+char	*swap_arg(char *s1, char *s2);
+void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
 
 
 //PIPEX
@@ -132,65 +130,49 @@ int 	ft_pipex(char **arr);
 void	sent_to_pipe(char *str);
 void	receive_from_send_to_pipe(char *str);
 void	receive_from_pipe(char *str);
-void	close_all_pipes(void);
 
 //INIT
 int		init(void);
 
 //LEXIC
 int			ft_lexic(void);
-bool		is_enclosed(const char *str, int idx);
-int			ft_is_closed(char *str, int *index, char c);
-int			ft_check_pipes(void);
-int			ft_check_exe(void);
-
-//PIPEX SPLIT
-char	**pipexsplit(char *str);
 
 //UTILS
 int		ft_error(char *err);
-int		delete_str(int i, int j, char *str);
+int		ft_error_in(char *s1, char *s2, char *s3, int ret);
 int		aux_del(int i);
+int		delete_str(int i, int j, char *str);
+int		ignore_redics(char *str, int *i);
+
 
 //EXPAND
 int		ft_check_expand(void);
 
 //UNTOKEN
 char	*ft_untoken(void);
-char	*ft_join(char *s1, char *s2);
 
 //PROGRAM
 int		ft_program(char *str);
 
 //REDIC
-// int		ft_redic(char *str);
 char	get_next_redic(char *str, char c);
 
-// //REDIC2
-// int		analyze_redic(void);
-int		ft_error_in(char *s1, char *s2, char *s3, int ret);
-int		delimiterr(char *eof, int *fd, int std_out);
-
-// //REDIC3
-// int		ft_open(int i);
-// int		check_here_docs(void);
+//ALLREDICS2
+int		analyze_redicc(void);
 
 //ALLREDIC
 int		ft_redicc(char *str);
 
-//ALLREDIC23
-int		analyze_redicc(void);
-int		ft_openn(int i);
+//ALLREDIC3
 int		ft_open_outfile(int i);
+int		ft_openn(int i);
 
 //ALLUTILS
+int 	check_to_exe(void);
 int		aux_dell(int i);
 
 //WEDDING PLANNER
 int		wedding_planner(void);
-
-//EXECUTE
-int		ft_execute(char **arr);
 
 //SPECIAL SPLIT
 char	**specialsplit(char *str, char c);
@@ -198,5 +180,9 @@ char	**specialsplit(char *str, char c);
 //SIGNALS
 void 	set_signals(int n);
 void 	sigint_handler(int sig);
-void sigint_handler_child(int sig);
+void	sigint_handler_child(int sig);
+
+//FREELANCER
+int		freelancer(void);
+int		ft_free_split(char **arr);
 #endif

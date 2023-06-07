@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   untoken.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:55:54 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/21 00:14:15 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:22:52 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*ft_copyy(char *dest, const char *src, size_t index)
  * @param s2 
  * @return int 
  */
-char	*ft_join(char *s1, char *s2)
+static char	*ft_join(char *s1, char *s2)
 {
 	char	*new_string;
 	int		last;
@@ -67,20 +67,22 @@ char	*ft_join(char *s1, char *s2)
  */
 char	*ft_untoken(void)
 {
-	char	*newstr;//NEED TO BE FREED OR NOT IF IS IN A CHILD?
+	char	*newstr;
 	char	*aux;
 	int		i;
 
-	// if (!g_data.token1)
 	i = 1;
 	newstr = g_data.token1[0];
 	while (g_data.token1[i] != NULL)
 	{
 		aux = newstr;
 		newstr = ft_join(aux, g_data.token1[i]);
+		if (i > 1)
+			free (aux);
 		aux = NULL;
-		free (aux);
 		i++;
 	}
+	if (i == 1)
+		g_data.flags.free_expanded = 1;
 	return (newstr);
 }

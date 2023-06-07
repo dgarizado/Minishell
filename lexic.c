@@ -6,15 +6,15 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/31 16:59:29 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:53:42 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_data	g_data;
+extern t_data	g_data;
 
-int ft_check_empty_pipe(void)
+static int ft_check_empty_pipe(void)
 {
 	int i;
 
@@ -22,7 +22,10 @@ int ft_check_empty_pipe(void)
 
 	while(g_data.token1[i + 1] )
 	{
-		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' && g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') ||  (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' && g_data.token1[i + 1][0] == '|'))
+		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' &&\
+		g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') \
+		|| (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' \
+		&& g_data.token1[i + 1][0] == '|'))
 		{
 			str_error("minishell" ,"syntax error near unexpected token `|'");
 			return (-1);
@@ -30,32 +33,6 @@ int ft_check_empty_pipe(void)
 		i++;
 	}
 	return (0);
-}
-
-/**
- * @brief Returns true if it is enclosed by '
- * fasle if not.
- * @param str 
- * @param idx 
- * @return true 
- * @return false 
- */ //CHECKPOINT
-bool	is_enclosed(const char *str, int idx)
-{
-	bool	inside_quotes;
-	int		i;
-
-	inside_quotes = false;
-	i = 0;
-	while (i < idx)
-	{
-		if (str[i] == '\'')
-		{
-			inside_quotes = !inside_quotes;
-		}
-		i++;
-	}
-	return (inside_quotes);
 }
 
 /**
@@ -67,7 +44,7 @@ bool	is_enclosed(const char *str, int idx)
  * @param c 
  * @return int 
  */
-int	ft_is_closed(char *str, int *index, char c)
+static int	ft_is_closed(char *str, int *index, char c)
 {
 	(*index)++;
 	while (str[*index] != '\0')
@@ -80,107 +57,12 @@ int	ft_is_closed(char *str, int *index, char c)
 }
 
 /**
- * @brief Check if there are pipes not enclosed in '' or "".
- * 
- * @return int 0 OK, 1 NO
- */
-int	ft_check_pipes(void)
-{
-	char	**arr;
-	int		n;
-
-	arr = specialsplit(g_data.input_ex, '|');
-	if (ft_arrlen(arr) > 1)
-		n = 0;
-	else
-		n = 1;
-	ft_abort(arr, ft_arrlen(arr));
-	return (n);
-}
-
-/**
- * @brief Check to execute unset, export, cd
- * Check is alone or in pipes
- * execute ft_program in main followed to skip init_promt().
- * So we dont loose the changes in env and the path of the procees.
- * 
- * @return int 0 OK, 1 NO
- */
-int	ft_check_exe(void)
-{
-	if (ft_strncmp((g_data.token1[0]), "exit", 4) == 0 || \
-	ft_strncmp((g_data.token1[0]), "export", 7) == 0 || \
-	ft_strncmp((g_data.token1[0]), "unset", 6) == 0 || \
-	ft_strncmp((g_data.token1[0]), "cd", 2) == 0)
-	{
-		return (0);
-	}
-	return (1);
-}
-// static int	delimiter_input(char eof, int *fd)
-// {
-// 	char	*line;
-
-// 	while (42)
-// 	{
-// 		line = readline("> ");
-// 		write(fd[1], line, ft_strlen(line));
-// 		if (ft_str_index_chr(line, eof) != 0)
-// 			break ;
-// 		write(fd[1], "\n", 1);
-// 		free(line);
-// 	}
-// 	free(line);
-// 	close(fd[1]);
-// 	return (0);
-// }
-
-// /**
-//  * @brief Complete the input string unclosed with ' or " correspondent
-//  * 
-//  * @param input string from readline of main process
-//  * @param c the quote to be closed
-//  * @return char* string with closed quotes 
-//  */
-// char *ft_close_quotes_input(char *input, char c)
-// {
-// 	int			pid;
-// 	int			fd[2];
-// 	char		buff[1000];
-// 	ssize_t		n;
-// 	char		*tmp;
-// 	int			control_read;
-	
-// 	control_read = 1;
-// 	n = 0;
-// 	pipe(fd);
-// 	pid = fork();
-// 	if (pid == 0)
-// 	{
-// 		close(fd[0]);
-// 		exit (delimiter_input(c, fd));
-// 	}
-// 	else
-// 	{
-// 		wait(NULL);
-// 		n = read(fd[0], &buff, 1000);
-// 		buff[n] = '\0';
-// 		tmp = input;
-// 		input = ft_strjoin(input, buff);
-// 		free(tmp);
-// 		close (fd[1]);
-// 		close (fd[0]);
-// 	}
-// 	return (input);
-// }
-
-/**
- * @brief Cheks if the string is only spaces
+ * @brief Checks if the string is only spaces
  * 
  * @param str 
  * @return int 
  */
-int is_space(char *str)
+static int is_space(char *str)
 {
 	int	i;
 
@@ -197,6 +79,38 @@ int is_space(char *str)
 }
 
 /**
+ * @brief Sets the flag to determine if there are heredocs 
+ * in order to have or not concurrency in pipex.
+ * Ignore the heredocs if they are inside quotes.
+ * @param str 
+ * @return int 
+ */
+static void	check_heredocs(char *str)
+{
+	int	i;
+	int flag;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] =='\'' || str[i] == '\"')
+		{
+			flag = str[i];
+			i++;
+			while (str[i] != flag)
+				i++;
+			i++;
+		}
+		if (str[i] == '<' && str[i + 1] == '<')
+		{
+			g_data.flags.concurrency = 1;
+			break;
+		}
+		i++;
+	}
+}
+
+/**
  * @brief Checks if there are unclosed  ' or ""
  * and performs a first tokenization(split by spaces) in order
  * to facilitate the expand function. The Expansion 
@@ -207,7 +121,6 @@ int is_space(char *str)
 int	ft_lexic(void)
 {
 	int	i;
-	//int	status;
 	char c;
 
 	i = 0;
@@ -225,10 +138,10 @@ int	ft_lexic(void)
 	}
 	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
-	//ft_printf_arr(g_data.token1);
-	if (ft_check_empty_pipe() == -1)
-		return (1);
 	ft_check_expand();
 	g_data.input_ex = ft_untoken();
+	if (ft_check_empty_pipe() == -1 || ft_strlen(g_data.input_ex) == 0)
+		return (1);
+	check_heredocs(g_data.input_ex);
 	return (0);
 }

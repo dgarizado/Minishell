@@ -6,43 +6,13 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/26 00:03:19 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:14:52 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern t_data	g_data;
-
-/**
- * @brief Counts the number of redirections in order
- * to allocate enough strings for storing them.
- * It doesnt properly count if there is >>>>>>>
- * this can be improved. otherwise it will allocate
- * extra spaces, that wont generate errors.
- * @param str 
- * @param c 
- * @return int 
- */
-int	ft_count_redic(char *str, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (*str)
-	{
-		if (str[0] == c)
-		{
-			count++;
-			if (str[1] == c)
-				str++;
-		}
-		str++;
-	}
-	return (count);
-}
 
 /**
  * @brief Aux function for norminette issues.
@@ -81,8 +51,7 @@ static int	aux_aux(int *i, int *j, int *k, char c)
  * @param str 
  * @return int 
  */
-//CHECK POINT !!!!!!!!!!!!!55555
-int	aux(int *i, int *j, int *k, char c)
+static int	aux(int *i, int *j, int *k, char c)
 {
 	if (g_data.str_redic[*i] == c)
 	{
@@ -121,39 +90,9 @@ char	get_next_redic(char *str, char c)
 	g_data.str_redic = str;
 	while (str[i] != '\0')
 	{
+		ignore_redics(str, &i);
 		aux(&i, &j, &k, c);
 	}
 	g_data.str_redic = NULL;
 	return (0);
 }
-
-/**
- * @brief Stores the redirections in the appropriate array.
- * 
- * @param str 
- * @return int 
- */
-// int	ft_redic(char *str)
-// {
-// 	int		i;
-// 	int		all;
-// 	char	*aux;
-
-// 	i = ft_count_redic(str, '>');
-// 	if (i > 0)
-// 		g_data.outfiles = ft_calloc(sizeof(char *), i + 1);
-// 	all = i;
-// 	i = ft_count_redic(str, '<');
-// 	all += i;
-// 	if (i > 0)
-// 		g_data.infiles = ft_calloc(sizeof(char *), i + 1);
-// 	if (all > 0)
-// 		g_data.redics = ft_calloc(sizeof(char *), all + 1);
-// 	aux = ft_strdup(str); 
-// 	if (all > 0)
-// 		ft_redicc(aux);
-// 	get_next_redic(str, '<');
-// 	get_next_redic(str, '>');
-// 	analyze_redic();
-// 	return (0);
-// }

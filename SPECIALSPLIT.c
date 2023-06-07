@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   SPECIALSPLIT.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:51:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/23 11:57:03 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:54:51 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-//#include "./libft/libft.h"
-
 extern t_data	g_data;
-//t_data	g_data;
 
 static int	count_str(char *str, char c)
 {
@@ -140,7 +137,7 @@ char	**specialsplit(char *str, char c)
 	int		j;
 	int		n;
 	char	**matriz;
-
+	
 	if (!str || !(str[0]))
 		return (NULL);
 	n = count_str(str, c);
@@ -152,22 +149,3 @@ char	**specialsplit(char *str, char c)
 		matriz[i++] = gen_str(str, &j, c);
 	return (matriz);
 }
-
-/*
-int main(int argc, char **arg, char **e)
-{
-	argc = 0;
-	arg = 0;
-	char *str = "\"5'6asd'\" '' o''''tr \"'\" a''";
-	char **matriz;
-	//char *str = "\"'1234'\" \"5'6asD'\"otra";
-	g_data.env = e;
-
-	g_data.flags.token1 = 1;
-	matriz = split_beta(str, ' ');
-	ft_printf_arr(split_beta(str, ' '));
-	ft_abort(matriz, ft_arrlen(matriz));
-	system("leaks a.out");
-	return 0;
-}
-*/

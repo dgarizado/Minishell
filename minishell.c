@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/31 19:05:25 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:35:08 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,38 @@
 
 t_data	g_data;
 
-int	print_token1(char **str)
+void leaks(void)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != NULL)
-	{
-		printf("\n%s\n", str[i]);
-		i++;
-	}
-	return (0);
+	system("leaks minishell");
 }
 
-/**
- * @brief Child process that performs the ft_program.
- * 
- * @return int 
- */
-//CHECKPOIINT
-int	init_prompt_subps(void)
-{
-	wedding_planner();
-	return (0);
-}
 
 void sigint_handler_child(int sig) 
 {
-	if (sig == SIGQUIT)
-		sig = 3;
-	if (g_data.child_pid == 0)
-		exit(127);
+	sig = 0;
+	exit(127);
 }
 
 void sigint_handler(int sig) 
 {
-	if (sig == SIGINT)
+	sig = 0;
+	if (g_data.flags.father == 0)
+	{
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		printf("\n\033[F\033[K"PROMPT"\n");
+		rl_redisplay();
+	}
+	else
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
-		rl_replace_line("", 1);
-		rl_redisplay();
-		waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
-				if (WIFEXITED(g_data.child_status))
-					g_data.child_status = WEXITSTATUS(g_data.child_status);
+		rl_replace_line("", 0);
 	}
-	if (sig == SIGQUIT)
-		sig = 3;
+	waitpid(g_data.child_pid, &g_data.child_status, WUNTRACED);
+	if (WIFEXITED(g_data.child_status))
+		g_data.child_status = WEXITSTATUS(g_data.child_status);
 }
-
 
 void set_signals(int n)
 {
@@ -70,35 +53,50 @@ void set_signals(int n)
 
     sigemptyset(&sa.sa_mask);
 	sigaddset(&sa.sa_mask, SIGINT);
-	sigaddset(&sa.sa_mask, SIGQUIT);
+	signal(SIGQUIT, SIG_IGN);
     sa.sa_flags = 0;
-	if (n != 0)
+	if (n == 1)
 	{
 		sa.sa_handler = sigint_handler;
 		if (sigaction(SIGINT, &sa, NULL) == -1)
         	perror("Error al configurar el manejador de señal");
-		if (sigaction(SIGQUIT, &sa, NULL) == -1)
-			perror("Error al configurar el manejador de señal");
 	}
 	if (n == 0)
 	{
-		 sa.sa_handler = sigint_handler_child;
+		sa.sa_handler = sigint_handler_child;
 		if (sigaction(SIGINT, &sa, NULL) == -1)
         	perror("Error al configurar el manejador de señal");
 	}
 	
 }
+/**
+ * @brief Set the env to global object
+ */
+static void set_env_to_global(char **env)
+{
+	int	i;
+	
+	i = 0;
+	while (env[i])
+	{
+		g_data.env[i] = ft_strdup(env[i]);
+		i++;
+	}
+}
 
-//CHECKPOINT
 int	main(int argc, char **argv ,char **env)
 {	
+	int n_lines;
 	argc = 0;
 	argv = NULL;
 	ft_bzero(&g_data, sizeof(g_data));
 	g_data.original_std_out = dup(STDOUT_FILENO);
 	g_data.original_std_in = dup(STDIN_FILENO);
-	g_data.env = env;
+	n_lines = ft_arrlen(env);
+	g_data.env = ft_calloc(sizeof(char *), (n_lines + 1));
+	set_env_to_global(env);
 	set_signals(1);
+	//atexit(leaks);
 	init();
 	return (0);
 }

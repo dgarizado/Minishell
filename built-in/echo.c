@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:48:42 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/29 16:29:25 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:20:06 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ int	ft_echo(char **arr)
 	}
 	if (flag == 0)
 		write(1, "\n", 1);
-	return (EXIT_SUCCESS);
+	return(EXIT_SUCCESS);
 }
