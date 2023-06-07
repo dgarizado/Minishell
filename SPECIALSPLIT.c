@@ -3,38 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   SPECIALSPLIT.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:51:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/06 17:54:51 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:39:04 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 extern t_data	g_data;
-
-static int	count_str(char *str, char c)
-{
-	int		count;
-	char	flag;
-
-	count = 0;
-	while (*str)
-	{
-		if (*str == '\'' || *str == '"')
-		{
-			flag = *str;
-			str++;
-			while (*str != flag)
-				str++;
-		}
-		if ((*str != c && *(str + 1) == c) || \
-		(*str != c && *(str + 1) == '\0'))
-			count++;
-		str++;
-	}
-	return (count);
-}
 
 static char	*gen_string_with(char *str, int *j, char c)
 {
@@ -61,28 +39,7 @@ static char	*gen_string_with(char *str, int *j, char c)
 	return (ft_substr(&str[((*j) - n)], 0, n));
 }
 
-unsigned char	*find_and_mark_chars(unsigned char *tmp)
-{
-	int		i;
-	char	flag;
-
-	i = 0;
-	while (tmp[i] != '\0')
-	{
-		if (tmp[i] == '\'' || tmp[i] == '\"')
-		{
-			flag = tmp[i];
-			tmp[i++] = 254;
-			while (tmp[i] != flag)
-				i++;
-			tmp[i] = 254;
-		}
-		i++;
-	}
-	return (tmp);
-}
-
-unsigned char	*skip_marked_chars(unsigned char *tmp)
+static unsigned char	*skip_marked_chars(unsigned char *tmp)
 {
 	int	i;
 
@@ -137,7 +94,7 @@ char	**specialsplit(char *str, char c)
 	int		j;
 	int		n;
 	char	**matriz;
-	
+
 	if (!str || !(str[0]))
 		return (NULL);
 	n = count_str(str, c);

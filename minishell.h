@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 21:34:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:09:09 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,20 @@ int		ft_exit(void);
 int		ft_cd(char **arr);
 int		ft_unset(char **arr);
 int		ft_export(char **arr);
-int		msg_error(char *s1, char *s2);
-int		str_error(char *s1, char *s2);
-int		str_error_export(char *s1, char *s2, char *s3);
+
+//BUILT IN UTILS
 int 	ft_get_var(char *str, int n);
+char	**ft_gen_new_arr(char *str_parsed);
 char	**ft_abort(char **new_array, unsigned int i);
 void	ft_copy(char **new_arr_env, char **arr, int i, int *n);
 int		chdir_swap(char *new_path, char **arr);
 char	*swap_arg(char *s1, char *s2);
 void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz);
 
+//HANDLE_ERRORS
+int		msg_error(char *s1, char *s2);
+int		str_error(char *s1, char *s2);
+int		str_error_export(char *s1, char *s2, char *s3);
 
 //PIPEX
 int 	ft_pipex(char **arr);
@@ -135,7 +139,7 @@ void	receive_from_pipe(char *str);
 int		init(void);
 
 //LEXIC
-int			ft_lexic(void);
+int		ft_lexic(void);
 
 //UTILS
 int		ft_error(char *err);
@@ -143,7 +147,6 @@ int		ft_error_in(char *s1, char *s2, char *s3, int ret);
 int		aux_del(int i);
 int		delete_str(int i, int j, char *str);
 int		ignore_redics(char *str, int *i);
-
 
 //EXPAND
 int		ft_check_expand(void);
@@ -175,7 +178,9 @@ int		aux_dell(int i);
 int		wedding_planner(void);
 
 //SPECIAL SPLIT
-char	**specialsplit(char *str, char c);
+char			**specialsplit(char *str, char c);
+unsigned char	*find_and_mark_chars(unsigned char *tmp);
+int				count_str(char *str, char c);
 
 //SIGNALS
 void 	set_signals(int n);

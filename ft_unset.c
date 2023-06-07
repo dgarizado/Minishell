@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:56:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/06 17:42:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:06:04 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ static int	ft_count_to_clear(char **arr)
 	return (nvar_to_clear);
 }
 
-static char	**ft_gen_new_arr(char **arr)
+static char	**ft_gen_new_arr_unset(char **arr)
 {
 	char	**new_arr_env;
 	int		len_new_env;
 	int		i;
 	int		n;
-	
+
 	if (!ft_count_to_clear(arr))
 		return (NULL);
 	len_new_env = ft_arrlen(g_data.env) - ft_count_to_clear(arr);
@@ -58,11 +58,11 @@ static char	**ft_gen_new_arr(char **arr)
 	return (new_arr_env);
 }
 
-static void ft_gen_new_env2(char **arr)
+static void	ft_gen_new_env2(char **arr)
 {
 	char	**new_arr_env;
 
-	new_arr_env = ft_gen_new_arr(arr);
+	new_arr_env = ft_gen_new_arr_unset(arr);
 	if (new_arr_env)
 	{
 		ft_abort(g_data.env, ft_arrlen(g_data.env));

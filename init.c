@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 21:36:01 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:50:51 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,15 @@ static void	add_history_aux(char *input)
 	}
 }
 
-
 static void	ctrld(void)
 {
 	printf("\033[F\033[K"PROMPT"exit\n");
 	ft_exit();
 }
 
-static void ft_run(void)
+static void	ft_run(void)
 {
-	int flag;
+	int	flag;
 
 	flag = 0;
 	add_history_aux(g_data.input);
@@ -82,4 +81,3 @@ int	init(void)
 	}
 	return (EXIT_SUCCESS);
 }
-

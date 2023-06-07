@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execve2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/06 17:38:28 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:54:00 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*gen_str_path(char**env, char *path, char *program)
 void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz)
 {
 	*matriz = ar;
-	if((*matriz)[0][0] == '/')
+	if ((*matriz)[0][0] == '/')
 		*path = (*matriz)[0];
 	else
 		*path = gen_str_path(en, "PATH", ar[0]);

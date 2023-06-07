@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freelancer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:03:13 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 19:53:05 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:55:03 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_free_split(char **arr)
 	return (0);
 }
 
-int freelancer(void)
+int	freelancer(void)
 {
 	if (g_data.input != NULL)
 	{
@@ -44,10 +44,10 @@ int freelancer(void)
 	}
 	if (g_data.flags.free_expanded != 1)
 	{
-	 	free(g_data.input_ex);
-	 	g_data.input_ex = NULL;
+		free(g_data.input_ex);
+		g_data.input_ex = NULL;
 	}
-	 g_data.input_ex = NULL;
+	g_data.input_ex = NULL;
 	if (g_data.tokenized_cmd != NULL)
 	{
 		ft_free_split(g_data.tokenized_cmd);
@@ -55,4 +55,3 @@ int freelancer(void)
 	}
 	return (0);
 }
-

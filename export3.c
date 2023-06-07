@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pipex2.c                                        :+:      :+:    :+:   */
+/*   export3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 18:32:29 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 16:52:01 by vcereced         ###   ########.fr       */
+/*   Created: 2023/06/07 16:56:51 by vcereced          #+#    #+#             */
+/*   Updated: 2023/06/07 16:58:35 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 
 extern t_data	g_data;
 
-void	receive_from_send_to_pipe(char *str)
+char	**ft_gen_new_arr(char *str_parsed)
 {
-	dup2(g_data.pipes[g_data.n_pipe - 1][STDIN_FILENO], STDIN_FILENO);
-	dup2(g_data.pipes[g_data.n_pipe][STDOUT_FILENO], STDOUT_FILENO);
-	exit(ft_program(str));
-}
+	char	**new_env;
+	int		len_env;
+	int		i;
+	int		n;
 
-void	sent_to_pipe(char *str)
-{
-	dup2(g_data.pipes[g_data.n_pipe][STDOUT_FILENO], STDOUT_FILENO);
-	exit(ft_program(str));
-}
-
-void	receive_from_pipe(char *str)
-{
-	dup2(g_data.pipes[g_data.n_pipe][STDIN_FILENO], STDIN_FILENO);
-	exit(ft_program(str));
+	i = 0;
+	n = 0;
+	if (str_parsed == NULL)
+		return (NULL);
+	len_env = ft_arrlen(g_data.env);
+	new_env = (char **)malloc(sizeof(char *) * (len_env + 2));
+	while (i < len_env)
+	{
+		new_env[i] = ft_strdup(g_data.env[i]);
+		i++;
+	}
+	new_env[i++] = ft_strdup(str_parsed);
+	new_env[i] = NULL;
+	return (new_env);
 }

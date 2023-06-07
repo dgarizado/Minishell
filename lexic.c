@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 20:53:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:50:23 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 extern t_data	g_data;
 
-static int ft_check_empty_pipe(void)
+static int	ft_check_empty_pipe(void)
 {
-	int i;
+	int	i;
 
 	i = 0;
-
-	while(g_data.token1[i + 1] )
+	while (g_data.token1[i + 1])
 	{
-		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' &&\
+		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' && \
 		g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') \
 		|| (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' \
 		&& g_data.token1[i + 1][0] == '|'))
 		{
-			str_error("minishell" ,"syntax error near unexpected token `|'");
+			str_error("minishell", "syntax error near unexpected token `|'");
 			return (-1);
 		}
 		i++;
@@ -62,16 +61,15 @@ static int	ft_is_closed(char *str, int *index, char c)
  * @param str 
  * @return int 
  */
-static int is_space(char *str)
+static int	is_space(char *str)
 {
 	int	i;
 
 	i = 0;
-
 	while (str[i] != '\0')
 	{
-		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' &&\
-		 str[i] != '\v' && str[i] != '\f' && str[i] != '\r')
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && \
+		str[i] != '\v' && str[i] != '\f' && str[i] != '\r')
 			return (0);
 		i++;
 	}
@@ -88,12 +86,12 @@ static int is_space(char *str)
 static void	check_heredocs(char *str)
 {
 	int	i;
-	int flag;
+	int	flag;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] =='\'' || str[i] == '\"')
+		if (str[i] == '\'' || str[i] == '\"')
 		{
 			flag = str[i];
 			i++;
@@ -104,7 +102,7 @@ static void	check_heredocs(char *str)
 		if (str[i] == '<' && str[i + 1] == '<')
 		{
 			g_data.flags.concurrency = 1;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -116,15 +114,17 @@ static void	check_heredocs(char *str)
  * to facilitate the expand function. The Expansion 
  * is also done here. 
  * @param input 
- * @return int if execute program return status, if not return -1 means to continue to init_promt()
+ * @return int if execute program return status, if not return -1 means 
+ * to continue to init_promt()
  */
 int	ft_lexic(void)
 {
-	int	i;
-	char c;
+	int		i;
+	char	c;
 
 	i = 0;
-	if (g_data.input == NULL || g_data.input[0] == '\0' || is_space(g_data.input) == 1)
+	if (g_data.input == NULL || g_data.input[0] == '\0' \
+	|| is_space(g_data.input) == 1)
 		return (1);
 	while (g_data.input[i] != '\0')
 	{

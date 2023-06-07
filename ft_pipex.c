@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 16:29:22 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:53:38 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ extern t_data	g_data;
 
 void	gen_new_pipe(char **arr)
 {
-	int i;
-	int n;
+	int	i;
+	int	n;
 
 	n = (ft_arrlen(arr) - 1);
 	g_data.pipes = (int **)malloc(sizeof(int *) * n);
 	if (!g_data.pipes)
 		exit(msg_error("pipex", "allocation memory gen pipes"));
-
 	i = 0;
 	while (i < n)
 	{
@@ -38,8 +37,9 @@ void	gen_new_pipe(char **arr)
 
 static void	fork_proccess(int *pids)
 {
-	static int i = 0;
-	
+	static int	i;
+
+	i = 0;
 	g_data.pid = fork();
 	pids[i] = g_data.pid;
 	if (g_data.pid == -1)
@@ -47,10 +47,11 @@ static void	fork_proccess(int *pids)
 	i++;
 }
 
-static void ft_wait(void)
+static void	ft_wait(void)
 {	
-	int i = 0;
-	
+	int	i;
+
+	i = 0;
 	if (g_data.flags.concurrency == 1)
 		waitpid(g_data.pid, &g_data.child_status, 0);
 	else
@@ -67,7 +68,7 @@ static void	pipe_and_fork(char **arr, int *pids)
 {
 	g_data.n_pipe = 0;
 	gen_new_pipe(arr);
-	 fork_proccess(pids);
+	fork_proccess(pids);
 	if (g_data.pid == 0)
 		sent_to_pipe(arr[g_data.n_pipe]);
 	while (g_data.n_pipe < (ft_arrlen(arr) - 2))
@@ -86,13 +87,14 @@ static void	pipe_and_fork(char **arr, int *pids)
 		receive_from_pipe(arr[g_data.n_pipe + 1]);
 }
 
-int ft_pipex(char **arr)
+int	ft_pipex(char **arr)
 {
-	int wstatus;
-	int statuscode;
-	int pids[100];
-	int i = 0;
-	
+	int	wstatus;
+	int	statuscode;
+	int	pids[100];
+	int	i;
+
+	i = 0;
 	memset(pids, 0, sizeof(pids));
 	pipe_and_fork(arr, pids);
 	waitpid(g_data.pid, &wstatus, 0);
