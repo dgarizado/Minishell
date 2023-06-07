@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:54:37 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 21:28:22 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:38:19 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	ft_open_outfile(int i)
 	if (g_data.fd_out != -1)
 	{
 		free(aux);
-		if (ft_strncmp(g_data.redics[i], g_data.outfiles[len - 1], ft_strlen(g_data.redics[i])) == 0)
+		if (ft_strncmp(g_data.redics[i], g_data.outfiles[len - 1], \
+		ft_strlen(g_data.redics[i])) == 0)
 			dup2(g_data.fd_out, STDOUT_FILENO);
 	}
 	return (0);
@@ -61,7 +62,8 @@ int	ft_openn(int i)
 	if (g_data.fd_in != -1)
 	{
 		free(aux);
-		if (ft_strncmp(g_data.redics[i], g_data.infiles[len - 1], ft_strlen(g_data.redics[i])) == 0)
+		if (ft_strncmp(g_data.redics[i], g_data.infiles[len - 1], \
+		ft_strlen(g_data.redics[i])) == 0)
 			dup2(g_data.fd_in, STDIN_FILENO);
 		close(g_data.fd_in);
 	}

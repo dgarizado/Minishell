@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 21:34:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:10:38 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ int		ignore_redics(char *str, int *i);
 
 
 //EXPAND
-int		ft_check_expand(void);
+int		ft_check_expand(int i, int j, int flag_quote, int flag_expand);
 
 //UNTOKEN
 char	*ft_untoken(void);
@@ -168,7 +168,8 @@ int		ft_open_outfile(int i);
 int		ft_openn(int i);
 
 //ALLUTILS
-int 	check_to_exe(void);
+int		ft_de_oca_a_oca(int i, int j, int *flag_quote, int *flag_expand);
+int		check_to_exe(void);
 int		aux_dell(int i);
 
 //WEDDING PLANNER

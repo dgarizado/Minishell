@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 21:35:53 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:08:33 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static char	*ft_getenv(int i, int j, int lenvar)
 		return (ft_itoa(g_data.child_status));
 	while (g_data.env[n])
 	{
-		if (ft_strncmp(g_data.env[n], var, ft_strlen(var)) == 0 && g_data.env[n][ft_strlen(var)] == '=')
+		if (ft_strncmp(g_data.env[n], var, ft_strlen(var)) == 0 \
+		&& g_data.env[n][ft_strlen(var)] == '=')
 			break ;
 		n++;
 	}
@@ -64,10 +65,10 @@ static int	aux(int i, int j)
 	int	k;
 
 	k = 0;
-
 	if (g_data.token1[i][j + 1] == '?')
 		return (2);
-	while (ft_isalnum((char)g_data.token1[i][j]) == 1 || g_data.token1[i][j] == '$')
+	while (ft_isalnum((char)g_data.token1[i][j]) == 1 \
+	|| g_data.token1[i][j] == '$')
 	{
 		j++;
 		k++;
@@ -109,26 +110,17 @@ int	ft_expand(int i, int j)
 	str2 = NULL;
 	return (0);
 }
-void ft_checkquotes(int i, int *j, int *flag_quote, int *flag_expand)
+
+void	ft_checkquotes(int i, int *j, int *flag_quote, int *flag_expand)
 {
 	if (g_data.token1[i][*j] == '\"' && *flag_quote == 0)
 		*flag_quote = 1;
 	else if (g_data.token1[i][*j] == '\"' && *flag_quote == 1)
 		*flag_quote = 0;
-	else if ( g_data.token1[i][*j] == '\'' && *flag_quote == 0)
+	else if (g_data.token1[i][*j] == '\'' && *flag_quote == 0)
 		*flag_expand = 0;
 	if (*flag_quote == 1)
 		*flag_expand = 1;
-}
-
-int ft_de_oca_a_oca(int i, int j, int *flag_quote, int *flag_expand)
-{
-	j++;
-	while (g_data.token1[i][j] != '\'')
-		j++;
-	*flag_quote = 0;
-	*flag_expand = 1;
-	return (j);
 }
 
 /**
@@ -138,13 +130,8 @@ int ft_de_oca_a_oca(int i, int j, int *flag_quote, int *flag_expand)
  * 
  * @return int 
  */
-int	ft_check_expand(void)
+int	ft_check_expand(int i, int j, int flag_expand, int flag_quote)
 {
-	int	i;
-	int	j;
-	int flag_expand;
-	int flag_quote;
-
 	i = 0;
 	while (g_data.token1[i] != NULL)
 	{
@@ -154,7 +141,7 @@ int	ft_check_expand(void)
 		while (g_data.token1[i][j] != '\0')
 		{	
 			ft_checkquotes(i, &j, &flag_quote, &flag_expand);
-			if(flag_expand == 0)
+			if (flag_expand == 0)
 				j = ft_de_oca_a_oca(i, j, &flag_quote, &flag_expand);
 			if (g_data.token1[i][j] == '$')
 			{

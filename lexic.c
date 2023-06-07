@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 20:53:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:08:57 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int	ft_lexic(void)
 	}
 	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
-	ft_check_expand();
+	ft_check_expand(0, 0, 0, 0);
 	g_data.input_ex = ft_untoken();
 	if (ft_check_empty_pipe() == -1 || ft_strlen(g_data.input_ex) == 0)
 		return (1);

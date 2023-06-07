@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 17:30:01 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:42:55 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ extern t_data	g_data;
 int	ft_pwd(char **arr)
 {
 	char	buffer[1024];
-	
+
 	memset(buffer, 0, sizeof(buffer));
 	if ((arr[1]))
 		return (str_error("pwd: bad option", arr[1]));

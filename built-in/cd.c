@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:06:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/06 17:19:43 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:35:44 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ extern t_data	g_data;
  * @param value 
  * @return int 
  */
-int ft_change_env(char *name, char *value)
+int	ft_change_env(char *name, char *value)
 {
 	int		i;
 	int		n;
@@ -51,7 +51,7 @@ int ft_change_env(char *name, char *value)
  * variable with the current working directory.
  * @return int 
  */
-int update_pwds(char *to_update)
+int	update_pwds(char *to_update)
 {
 	char	buffer[1024];
 
@@ -68,7 +68,6 @@ static int	ch_home(char **arr)
 
 	path_home = getenv("HOME");
 	status = chdir(path_home);
-
 	if (status == 0)
 	{
 		update_pwds("PWD=");

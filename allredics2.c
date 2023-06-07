@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/06 21:20:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:39:16 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ static void	ft_here_docc(char *eof, int i)
 	{
 		waitpid (pid, NULL, 0);
 		close (fd[1]);
-		if (ft_strncmp(g_data.redics[i], g_data.infiles[len - 1], ft_strlen(g_data.redics[i])) == 0)
+		if (ft_strncmp(g_data.redics[i], g_data.infiles[len - 1], \
+		ft_strlen(g_data.redics[i])) == 0)
 			dup2(fd[0], STDIN_FILENO);
 		close (fd[0]);
 	}
@@ -96,7 +97,8 @@ static int	infiles_docc(void)
 		if (g_data.redics[i][1] == '<' && g_data.redics[i][2] != '<')
 		{
 			eof = ft_strtrim(g_data.redics[i], "< ");
-			if (g_data.flags.here_doc_ret != 258 || g_data.flags.here_doc_aux > i)
+			if (g_data.flags.here_doc_ret != 258 \
+			|| g_data.flags.here_doc_aux > i)
 				ft_here_docc(eof, i);
 			if (g_data.redics[i + 1] == NULL)
 				break ;

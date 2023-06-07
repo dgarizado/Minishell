@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hand_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:05:51 by vcereced          #+#    #+#             */
-/*   Updated: 2023/05/17 21:31:25 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:36:27 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	str_error(char *s1, char *s2)
 	return (errno);
 }
 
-int str_error_export(char *s1, char *s2, char *s3)
+int	str_error_export(char *s1, char *s2, char *s3)
 {
 	write(2, s1, ft_strlen(s1));
 	write(2, ": ", 2);
