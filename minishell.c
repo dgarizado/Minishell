@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 16:46:22 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:46:32 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sigint_handler(int sig)
 	{
 		rl_on_new_line();
 		rl_replace_line("", 0);
-		printf("\n\033[F\033[K"PROMPT"\n");
+		printf("\n\033[F\033[K"PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>\n");
 		rl_redisplay();
 	}
 	else

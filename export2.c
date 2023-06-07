@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:39:50 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 16:58:19 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:41:31 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	ft_gen_new_env(char *str)
 	if (new_arr_env)
 	{
 		ft_abort(g_data.env, ft_arrlen(g_data.env));
-		g_data.flag_env++;
 		g_data.env = new_arr_env;
 	}
 }

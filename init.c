@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 16:50:51 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:46:05 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	add_history_aux(char *input)
 
 static void	ctrld(void)
 {
-	printf("\033[F\033[K"PROMPT"exit\n");
+	printf("\033[F\033[K"PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>exit\n");
 	ft_exit();
 }
 
@@ -66,7 +66,7 @@ int	init(void)
 {
 	while (42)
 	{
-		g_data.input = readline(PROMPT);
+		g_data.input = readline(PINK"mi"YELLOW"ni"BLUE"hell🐢"RST_CLR"$>");
 		if (!g_data.input)
 			ctrld();
 		if (g_data.input[0] != '\0')
