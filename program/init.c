@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 18:04:55 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/07 18:50:42 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	init(void)
 			g_data.flags.father = 0;
 		}
 		freelancer();
-		system("leaks minishell");
+		//system("leaks minishell");
 		g_data.flags.free_expanded = 0;
 	}
 	return (EXIT_SUCCESS);

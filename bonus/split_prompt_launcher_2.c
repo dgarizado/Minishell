@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_arr.c                                    :+:      :+:    :+:   */
+/*   split_prompt_launcher_2.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 19:54:02 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 19:55:12 by vcereced         ###   ########.fr       */
+/*   Created: 2023/06/08 22:32:28 by vcereced          #+#    #+#             */
+/*   Updated: 2023/06/08 22:35:15 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "../minishell.h"
 
-int	ft_printf_arr(char **arr)
+extern t_data	g_data;
+
+int	ft_move_next_parenthesis(char *str, int i)
 {
-	int	n;
-
-	n = 0;
-
-	while (arr[n])
+	if (str[i] == '(')
 	{
-		printf("%s\n", arr[n]);
-		n++;
+		i++;
+		while (str[i] != ')')
+			i++;
 	}
-	return (EXIT_SUCCESS);
+	return (i);
+
 }

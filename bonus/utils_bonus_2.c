@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_arr.c                                    :+:      :+:    :+:   */
+/*   utils_bonus_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 19:54:02 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 19:55:12 by vcereced         ###   ########.fr       */
+/*   Created: 2023/06/08 22:51:45 by vcereced          #+#    #+#             */
+/*   Updated: 2023/06/08 23:00:15 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "../minishell.h"
 
-int	ft_printf_arr(char **arr)
+extern t_data	g_data;
+
+int status_and_free(char **prompts, int status)
 {
-	int	n;
-
-	n = 0;
-
-	while (arr[n])
-	{
-		printf("%s\n", arr[n]);
-		n++;
-	}
-	return (EXIT_SUCCESS);
+	ft_free_split(prompts);
+	return(status);
 }
