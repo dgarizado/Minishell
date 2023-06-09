@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/08 22:57:30 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:44:21 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,134 +14,135 @@
 
 extern t_data	g_data;
 
-char *ft_trim_priority_parentesis(char *str)
+char	*ft_trim_priority_parentesis(char *str)
 {
-	char *tmp;
-	char *str_trim_spce;
-	char *str_trim_parenthesis;
-	
+	char	*tmp;
+	char	*str_trim_spce;
+	char	*str_trim_parenthesis;
+
 	str_trim_spce = ft_strtrim(str, " ");
-	if (str_trim_spce[0] == '(' && str_trim_spce[ft_strlen(str_trim_spce) - 1] == ')')
+	if (str_trim_spce[0] == '(' && str_trim_spce[ft_strlen(str_trim_spce) - 1] \
+	== ')')
 	{
 		tmp = str_trim_spce;
-		while(tmp[0] == '(' && tmp[ft_strlen(tmp) - 1] == ')')
+		while (tmp[0] == '(' && tmp[ft_strlen(tmp) - 1] == ')')
 		{
-			str_trim_parenthesis = ft_substr(tmp, 1, ft_strlen(tmp) -2);
+			str_trim_parenthesis = ft_substr(tmp, 1, ft_strlen(tmp) - 2);
 			free(tmp);
 			tmp = str_trim_parenthesis;
 		}
 	}
 	else
 	{
-		str_trim_parenthesis = ft_strdup(str_trim_spce);	
+		str_trim_parenthesis = ft_strdup(str_trim_spce);
 		free(str_trim_spce);
 	}
 	return (str_trim_parenthesis);
 }
 
-int ft_prompt_AND(char *arr)
+int	ft_prompt_and(char *arr)
 {
-	char	**misiles;
+	char	**prompts;
 	int		status;
 	int		i;
-	
-	misiles = special_split_launcher(arr, "&&");
+
+	prompts = special_split_launcher(arr, "&&");
 	i = 0;
-	if (ft_arrlen(misiles) > 1)
+	if (ft_arrlen(prompts) > 1)
 	{
-		while (misiles[i])
+		while (prompts[i])
 		{
-			status = ft_prompt_launcher(misiles[i]);
+			status = ft_prompt_launcher(prompts[i]);
 			if (status != EXIT_SUCCESS)
 			{
-				return(status_and_free(misiles, status));
-				//ft_free_split(misiles);
-				//return(status);
+				return (status_and_free(prompts, status));
 			}
 			i++;
 		}
-		return(status_and_free(misiles, status));
-		//ft_free_split(misiles);
-		//return(status);
+		return (status_and_free(prompts, status));
 	}
 	else
 	{
-		status = ft_prompt_AND(misiles[0]);
-		return(status_and_free(misiles, status));
-		//ft_free_split(misiles);
-		//return(status);
+		status = wedding_planner(prompts[0]);
+		return (status_and_free(prompts, status));
 	}
 }
 
-int ft_prompt_OR(char *arr)
+int	ft_prompt_or(char *arr)
 {
-	char	**misiles;
-	int	status;
-	int	i;
-	
-	misiles = special_split_launcher(arr, "||");
+	char	**prompts;
+	int		status;
+	int		i;
+
+	prompts = special_split_launcher(arr, "||");
 	i = 0;
-	if (ft_arrlen(misiles) > 1)
+	if (ft_arrlen(prompts) > 1)
 	{
-		while (misiles[i])
+		while (prompts[i])
 		{
-			status = ft_prompt_launcher(misiles[i]);
+			status = ft_prompt_launcher(prompts[i]);
 			if (status == EXIT_SUCCESS)
 			{
-				return(status_and_free(misiles, status));
-				//ft_free_split(misiles);
-				//return(status);
+				return (status_and_free(prompts, status));
 			}
 			i++;
 		}
-		return(status_and_free(misiles, status));
-		//ft_free_split(misiles);
-		//return(status);
+		return (status_and_free(prompts, status));
 	}
 	else
 	{
-		status = ft_prompt_OR(misiles[0]);
-		return(status_and_free(misiles, status));
-		//ft_free_split(misiles);
-		//return(status);
+		status = wedding_planner(prompts[0]);
+		return (status_and_free(prompts, status));
 	}
 }
 
+/*
+ * @brief split the string received and discover if it has 1 or more 
+ * prompts to execute. So send the prompts to pipex or just execute the 
+ * lonely prompt.
 
-int ft_prompt_launcher(char *arr)
-{
-	int status;
-	arr = ft_trim_priority_parentesis(arr);
-	status = ft_check_to_AND(arr);
-	if (status != -1)
-		return (status);
-	status = ft_check_to_OR(arr);
-	if (status != -1)
-		return (status);
-	status = ft_program(arr);
-	free(arr);
-	return (status);
-}
-
-/**
- * @brief Counts pipes and allocates 
- * pipes + 2 strings (for NULL terminating and for the last command)
- * 
- * @return int 
+ * @return int return status of the prompt or the last prompt of pipex
  */
 
-int	wedding_planner(void)
+int	wedding_planner(char *str)
 {
-	g_data.flags.token1 = 0;
-	g_data.commands = special_split_pipe(g_data.input_ex);
-	free(g_data.input_ex);
-	if (ft_arrlen(g_data.commands) > 1)
+	int		status;
+	char	**commands;
+
+	commands = special_split_pipe(str);
+	if (ft_arrlen(commands) > 1)
 	{
-		exit(ft_pipex(g_data.commands));
+		status = ft_pipex(commands);
+		ft_free_split(commands);
+		return (status);
 	}
 	else
 	{
-		exit(ft_prompt_launcher(g_data.commands[0]));
+		status = ft_to_program(commands);
+		ft_free_split(commands);
+		return (status);
 	}
 	return (0);
+}
+
+int	ft_prompt_launcher(char *arr)
+{
+	int	status;
+
+	arr = ft_trim_priority_parentesis(arr);
+	status = ft_check_to_and(arr);
+	if (status != -1)
+	{
+		free(arr);
+		return (status);
+	}
+	status = ft_check_to_or(arr);
+	if (status != -1)
+	{
+		free(arr);
+		return (status);
+	}
+	status = wedding_planner(arr);
+	free(arr);
+	return (status);
 }

@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/08 23:04:03 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:50:21 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int				check_to_exe(void);
 int				aux_dell(int i);
 
 //WEDDING PLANNER
-int				wedding_planner(void);
+int				wedding_planner(char *str);
 
 //SPECIAL SPLIT
 char			**specialsplit(char *str, char c);
@@ -158,7 +158,7 @@ int				ft_free_split(char **arr);
 
 //BONUS
 char			**special_split_pipe(char *str);
-char 			**special_split_launcher(char *str, char *c);
+char			**special_split_launcher(char *str, char *c);
 int				ft_move_next_quotes(char *str, int i);
 void			ft_move_next_quotes_pip(char *str, int *n, int *j);
 int				ft_move_next_parenthesis(char *str, int i);
@@ -167,6 +167,7 @@ int				ft_prompt_OR(char *arr);
 int				ft_check_to_AND(char *arr);
 int				ft_check_to_OR(char *arr);
 int				ft_prompt_launcher(char *arr);
-int 			status_and_free(char **prompts, int status);
+int				status_and_free(char **prompts, int status);
+int				ft_to_program(char **commands);
 
 #endif

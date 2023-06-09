@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:35:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/08 21:26:08 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:48:35 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static char	*gen_string_with_pip(char *str, int *j)
 		(*j)++;
 		if (str[*j] == '|' && str[*j + 1] == '|')
 		{
-			n +=2;
-			(*j)+=2;
+			n += 2;
+			(*j) += 2;
 		}
 	}
 	return (ft_substr(&str[((*j) - n)], 0, n));

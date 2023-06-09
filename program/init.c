@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 18:50:42 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:40:53 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	ctrld(void)
 static void	ft_run(void)
 {
 	int	flag;
+	int	status;
 
-	flag = 0;
 	add_history_aux(g_data.input);
 	flag = ft_lexic();
 	if (flag == 0 && check_to_exe() == 0)
@@ -49,7 +49,9 @@ static void	ft_run(void)
 		if (g_data.child_pid == 0)
 		{
 			set_signals(0);
-			wedding_planner();
+			status = ft_prompt_launcher(g_data.input_ex);
+			freelancer();
+			exit(status);
 		}
 	}
 	waitpid(g_data.child_pid, &g_data.child_status, 0);
@@ -57,6 +59,7 @@ static void	ft_run(void)
 		g_data.child_status = WEXITSTATUS(g_data.child_status);
 }
 
+//system("leaks minishell");
 /**
  * @brief Main process wont execute commands. 
  * it reads the input and then forks.
@@ -76,7 +79,6 @@ int	init(void)
 			g_data.flags.father = 0;
 		}
 		freelancer();
-		//system("leaks minishell");
 		g_data.flags.free_expanded = 0;
 	}
 	return (EXIT_SUCCESS);

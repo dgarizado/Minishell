@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:32:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/08 22:35:15 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:46:05 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ int	ft_move_next_parenthesis(char *str, int i)
 			i++;
 	}
 	return (i);
-
 }

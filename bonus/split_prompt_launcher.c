@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:11:07 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/08 22:43:50 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:48:06 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ static int	count_str2(char *str, char *c)
 	count = 0;
 	while (str[i])
 	{
-		i =	ft_move_next_quotes(str, i);
-		i =	ft_move_next_parenthesis(str, i);
-		if (ft_strncmp(&(str[i]), c, ft_strlen(c)) && !ft_strncmp(&(str[i + 1]), c, ft_strlen(c)))
+		i = ft_move_next_quotes(str, i);
+		i = ft_move_next_parenthesis(str, i);
+		if (ft_strncmp(&(str[i]), c, ft_strlen(c)) \
+		&& !ft_strncmp(&(str[i + 1]), c, ft_strlen(c)))
 		{
 			count++;
-			i = i +ft_strlen(c);	
-		} 
+			i = i + ft_strlen(c);
+		}
 		else if (ft_strncmp(&(str[i]), c, 2) && str[i + 1] == '\0')
 		{
 			count++;
@@ -81,7 +82,7 @@ static char	*gen_str2(char *str, int *j, char *c)
 	return (NULL);
 }
 
-char **special_split_launcher(char *str, char *c)
+char	**special_split_launcher(char *str, char *c)
 {
 	int		i;
 	int		j;

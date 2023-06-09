@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:41:15 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/08 22:31:38 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:38:30 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,30 @@ int	ft_move_next_quotes(char *str, int i)
 	char	flag;
 
 	if (str[i] == '\'' || *str == '"')
-		{
-			flag = str[i];
+	{
+		flag = str[i];
+		i++;
+		while (str[i] != flag)
 			i++;
-			while (str[i] != flag)
-				i++;
-		}
+	}
 	return (i);
 }
 
 void	ft_move_next_quotes_pip(char *str, int *n, int *j)
 {
 	char	flag;
-	
+
 	if (str[*j] == '\'' || str[*j] == '"')
+	{
+		flag = str[*j];
+		(*n)++;
+		(*j)++;
+		while (str[*j] != flag)
 		{
-			flag = str[*j];
 			(*n)++;
 			(*j)++;
-			while (str[*j] != flag)
-			{
-				(*n)++;
-				(*j)++;
-			}
 		}
+	}
 }
 
 int	ft_move_next_priority_quote(char *arr, int i)
@@ -65,19 +65,18 @@ int	ft_move_next_priority_quote(char *arr, int i)
 	return (i);
 }
 
-int	ft_check_to_OR(char *arr)
+int	ft_check_to_or(char *arr)
 {
 	int		i;
 	int		status;
-	
+
 	i = 0;
 	while (arr[i])
 	{
 		i = ft_move_next_priority_quote(arr, i);
 		if (!ft_strncmp(&arr[i], "||", 2))
 		{
-			status = ft_prompt_OR(arr);
-			free(arr);
+			status = ft_prompt_or(arr);
 			return (status);
 		}
 		i++;
@@ -85,11 +84,11 @@ int	ft_check_to_OR(char *arr)
 	return (-1);
 }
 
-int	ft_check_to_AND(char *arr)
+int	ft_check_to_and(char *arr)
 {
 	int	i;
 	int	status;
-	
+
 	i = 0;
 	while (arr[i])
 	{
@@ -97,10 +96,9 @@ int	ft_check_to_AND(char *arr)
 		if (!ft_strncmp(&(arr[i]), "&&", 2))
 		{
 			status = ft_prompt_AND(arr);
-			free(arr);
 			return (status);
 		}
-		i++;	
+		i++;
 	}
 	return (-1);
 }

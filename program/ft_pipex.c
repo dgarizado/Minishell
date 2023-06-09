@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:23:03 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/08 23:18:17 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:39:48 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,19 +94,15 @@ int	ft_pipex(char **arr)
 	int	i;
 
 	i = 0;
+	statuscode = 0;
 	memset(pids, 0, sizeof(pids));
 	pipe_and_fork(arr, pids);
-	waitpid(g_data.pid, &wstatus, 0);
-	while (pids[i] != 0)
+	while (pids[i])
 	{
-		kill(pids[i], 9);
+		waitpid(-1, &wstatus, 0);
 		i++;
 	}
 	if (WIFEXITED(wstatus))
-	{
 		statuscode = WEXITSTATUS(wstatus);
-		if (statuscode != 0)
-			exit(statuscode);
-	}
-	exit(EXIT_SUCCESS);
+	return (statuscode);
 }
