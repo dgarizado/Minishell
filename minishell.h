@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 18:50:21 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:02:30 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,10 +162,10 @@ char			**special_split_launcher(char *str, char *c);
 int				ft_move_next_quotes(char *str, int i);
 void			ft_move_next_quotes_pip(char *str, int *n, int *j);
 int				ft_move_next_parenthesis(char *str, int i);
-int				ft_prompt_AND(char *arr);
-int				ft_prompt_OR(char *arr);
-int				ft_check_to_AND(char *arr);
-int				ft_check_to_OR(char *arr);
+int				ft_prompt_and(char *arr);
+int				ft_prompt_or(char *arr);
+int				ft_check_to_and(char *arr);
+int				ft_check_to_or(char *arr);
 int				ft_prompt_launcher(char *arr);
 int				status_and_free(char **prompts, int status);
 int				ft_to_program(char **commands);
