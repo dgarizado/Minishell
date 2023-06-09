@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 18:02:38 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:26:21 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	ft_checkquotes(int i, int *j, int *flag_quote, int *flag_expand)
 }
 
 /**
- * @brief This function checks if there is $ 
+ * @brief This function checks if there is $ or *
  * in each token. Then expand it if it is
  * not enclosed by single quotes.
  * 
@@ -143,7 +143,8 @@ int	ft_check_expand(int i, int j, int flag_expand, int flag_quote)
 			ft_checkquotes(i, &j, &flag_quote, &flag_expand);
 			if (flag_expand == 0)
 				j = ft_de_oca_a_oca(i, j, &flag_quote, &flag_expand);
-			if (g_data.token1[i][j] == '$')
+			if (g_data.token1[i][j] == '$' && g_data.token1[i][j + 1] \
+			!= '\0' && g_data.token1[i][j + 1] != ' ')
 			{
 				ft_expand(i, j);
 				flag_quote = 0;
@@ -151,8 +152,9 @@ int	ft_check_expand(int i, int j, int flag_expand, int flag_quote)
 				j = -1;
 			}
 			j++;
-		}		
+		}
 		i++;
 	}
+	ft_check_wildcard(0, 0, 0, 0);
 	return (0);
 }

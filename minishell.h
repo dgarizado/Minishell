@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 20:36:05 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 22:32:09 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define RED "\x1b[0;31m"
 # define BLUE "\x1b[1;36m"
 # define PINK "\x1b[1;35m"
+# define GREEN "\x1b[1;32m"
 # define RST_CLR "\x1b[0m"
 
 # include <stdio.h>
@@ -41,6 +42,7 @@ typedef struct s_flags
 	int	here_doc_aux;
 	int	concurrency;
 	int	free_expanded;
+	int	wildcard_expanded;
 	int	father;
 }	t_flags;
 
@@ -170,5 +172,12 @@ int				ft_check_to_or(char *arr);
 int				ft_prompt_launcher(char *arr);
 int				status_and_free(char **prompts, int status);
 int				ft_to_program(char **commands);
+
+
+//BONUS WILDCARD
+int				ft_check_wildcard(int i, int j, \
+int flag_expand, int flag_quote);
+int				ft_expand_star(int i, int j);
+int				ft_replace_chr(char *str, char c, char r);
 
 #endif
