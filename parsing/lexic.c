@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 19:00:25 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:48:15 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,5 @@ int	ft_lexic(void)
 	if (ft_check_empty_pipe() == -1 || ft_strlen(g_data.input_ex) == 0)
 		return (1);
 	check_heredocs(g_data.input_ex);
-	return (0);
+	return (0); 
 }
