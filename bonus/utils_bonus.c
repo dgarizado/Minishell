@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:41:15 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/09 19:02:41 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/10 00:59:39 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ extern t_data	g_data;
 int	ft_move_next_quotes(char *str, int i)
 {
 	char	flag;
-
-	if (str[i] == '\'' || *str == '"')
+	if (str[i] == '\'' || str[i] == '\"')
 	{
 		flag = str[i];
 		i++;
 		while (str[i] != flag)
+		{
+			//printf("XX%c ", str[i]);
 			i++;
+		}
 	}
 	return (i);
 }
@@ -32,7 +34,7 @@ void	ft_move_next_quotes_pip(char *str, int *n, int *j)
 {
 	char	flag;
 
-	if (str[*j] == '\'' || str[*j] == '"')
+	if (str[*j] == '\'' || str[*j] == '\"')
 	{
 		flag = str[*j];
 		(*n)++;

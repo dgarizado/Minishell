@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:11:07 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/09 18:48:06 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:02:45 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,40 @@ static int	count_str2(char *str, char *c)
 	return (count);
 }
 
+static	void ft_aux(char *str, int *n, int *j)
+{
+	int		n_parentesis;
+
+	n_parentesis = 0;
+	if (str[*j] == '(')
+	{
+		n_parentesis++;
+		(*j)++;
+		n++;
+		while (str[*j] != ')' || n_parentesis > 0)
+		{
+			(*j)++;
+			n++;
+			if (str[*j] == '(')
+				n_parentesis++;
+			if (str[*j] == ')')
+				n_parentesis--;
+		}
+	}
+}
+
 static char	*gen_string_with2(char *str, int *j, char *c)
 {
 	int		n;
-	int		n_parentesis;
 
-	n = *j;
-	n_parentesis = 0;
+	n = 0;
 	while (ft_strncmp(&(str[*j]), c, ft_strlen(c)) && str[*j] != 0)
 	{
-		ft_move_next_quotes_pip(&str[*j], &n, j);
-		if (str[*j] == '(')
-		{
-			n_parentesis++;
-			(*j)++;
-			while (str[*j] != ')' || n_parentesis > 0)
-			{
-				(*j)++;
-				if (str[*j] == '(')
-					n_parentesis++;
-				if (str[*j] == ')')
-					n_parentesis--;
-			}
-		}
+		ft_move_next_quotes_pip(str, &n, j);
+		ft_aux(str, &n, j);
 		(*j)++;
+		n++;
 	}
-	n = *j - n;
 	return (ft_substr(&str[((*j) - n)], 0, n));
 }
 
@@ -100,3 +108,10 @@ char	**special_split_launcher(char *str, char *c)
 		matriz[i++] = gen_str2(str, &j, c);
 	return (matriz);
 }
+
+// int main(int argc, char **arg)
+// {
+// 	argc = 0;
+// 	ft_printf_arr(special_split_launcher("echo esto es un fak ,\"(||)||(||)\", || .!|!. pip adios", "||"));
+// 	return 0 ;
+// }
