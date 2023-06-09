@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 19:31:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:27:26 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_flags
 	int	here_doc_aux;
 	int	concurrency;
 	int	free_expanded;
+	int	wildcard_expanded;
 	int	father;
 }	t_flags;
 
@@ -157,5 +158,9 @@ int				freelancer(void);
 int				ft_free_split(char **arr);
 
 //BONUS WILDCARD
-int				ft_check_wildcard(int i, int j, int flag_expand, int flag_quote);
+int				ft_check_wildcard(int i, int j, \
+int flag_expand, int flag_quote);
+int				ft_expand_star(int i, int j);
+int				ft_replace_chr(char *str, char c, char r);
+
 #endif
