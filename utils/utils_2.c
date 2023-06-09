@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_bonus_2.c                                    :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 22:51:45 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/09 20:40:03 by vcereced         ###   ########.fr       */
+/*   Created: 2023/06/09 20:35:22 by vcereced          #+#    #+#             */
+/*   Updated: 2023/06/09 20:38:39 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,25 @@
 
 extern t_data	g_data;
 
-int	status_and_free(char **prompts, int status)
+int	ft_alexic(void)
 {
-	ft_free_split(prompts);
-	return (status);
-}
+	int	i;
 
-int	ft_to_program(char **commands)
-{
-	pid_t	pid;
-	int		status;
-	int		wstatus;
-	int		statuscode;
-
-	statuscode = 0;
-	pid = fork();
-	if (pid == 0)
+	i = 0;
+	if (g_data.input_ex[0] == '|' && g_data.input_ex[1] == '|')
 	{
-		status = ft_program(commands[0]);
-		ft_free_split(commands);
-		freelancer();
-		exit(status);
+		str_error("minishell", "syntax error near unexpected token `||'");
+		return (258);
 	}
-	waitpid(pid, &wstatus, 0);
-	if (WIFEXITED(wstatus))
-		statuscode = WEXITSTATUS(wstatus);
-	return (statuscode);
+	while (g_data.input[i] != '\0')
+	{
+		if (g_data.input[i] == '|' && g_data.input[i + 1] == '|' \
+		&& g_data.input[i + 2] == '|')
+		{
+			str_error("minishell", "syntax error near unexpected token `|'");
+			return (258);
+		}
+		i++;
+	}
+	return (0);
 }

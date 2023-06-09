@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 19:02:30 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:36:05 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int				ft_error_in(char *s1, char *s2, char *s3, int ret);
 int				aux_del(int i);
 int				delete_str(int i, int j, char *str);
 int				ignore_redics(char *str, int *i);
+int				ft_alexic(void);
 
 //EXPAND
 int				ft_check_expand(int i, int j, int flag_quote, int flag_expand);

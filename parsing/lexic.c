@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 18:02:42 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:38:52 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,22 @@ static int	ft_check_empty_pipe(void)
 	int	i;
 
 	i = 0;
+	if (g_data.input_ex[0] == '|' && g_data.input_ex[1] == '\0')
+	{
+		str_error("minishell", "syntax error near unexpected token `|'");
+		return (258);
+	}
+	if (ft_alexic() == 258)
+		return (258);
 	while (g_data.token1[i + 1])
 	{
-		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' && \
-		g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') \
+		if ((g_data.token1[i][0] == '|' && g_data.token1[i][1] == '\0' \
+		&& g_data.token1[i + 1][0] == '|' && g_data.token1[i + 1][1] == '\0') \
 		|| (g_data.token1[i][ft_strlen(g_data.token1[i]) - 1] == '|' \
 		&& g_data.token1[i + 1][0] == '|'))
 		{
 			str_error("minishell", "syntax error near unexpected token `|'");
-			return (-1);
+			return (258);
 		}
 		i++;
 	}
@@ -140,8 +147,8 @@ int	ft_lexic(void)
 	g_data.token1 = specialsplit((g_data.input), ' ');
 	ft_check_expand(0, 0, 0, 0);
 	g_data.input_ex = ft_untoken();
-	if (ft_check_empty_pipe() == -1 || ft_strlen(g_data.input_ex) == 0)
-		return (1);
+	if (ft_check_empty_pipe() == 258 || ft_strlen(g_data.input_ex) == 0)
+		return (258);
 	check_heredocs(g_data.input_ex);
 	return (0);
 }

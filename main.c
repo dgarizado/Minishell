@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 18:50:33 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:39:23 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,12 @@ static void	set_env_to_global(char **env)
 		i++;
 	}
 }
-
-// void leaks(void)
-// {
-// 	system("leaks minishell");
-// }
+/*
+void leaks(void)
+{
+	system("leaks minishell");
+}
+*/
 
 //atexit(leaks);
 int	main(int argc, char **argv, char **env)

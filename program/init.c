@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 18:40:53 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:34:39 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,15 @@ static void	ctrld(void)
 
 static void	ft_run(void)
 {
-	int	flag;
 	int	status;
 
 	add_history_aux(g_data.input);
-	flag = ft_lexic();
-	if (flag == 0 && check_to_exe() == 0)
+	g_data.child_status = ft_lexic();
+	if (g_data.child_status == 0 && check_to_exe() == 0)
 	{
-		flag = ft_program(g_data.input_ex);
-		g_data.child_status = flag;
+		g_data.child_status = ft_program(g_data.input_ex);
 	}
-	else if (flag == 0)
+	else if (g_data.child_status == 0)
 	{
 		g_data.flags.father = 1;
 		g_data.child_pid = fork();
