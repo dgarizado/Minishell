@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:35:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/09 18:48:35 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:04:17 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int	count_str3(char *str, char c)
 	count = 0;
 	while (str[i])
 	{
-		i = ft_move_next_quotes(&str[i], i);
+		i = ft_move_next_quotes(str, i);
+		
 		if (str[i] == '(')
 		{
 			i++;
@@ -50,7 +51,7 @@ static char	*gen_string_with_pip(char *str, int *j)
 	n = 0;
 	while ((str[*j] != '|' && str[*j] != 0))
 	{
-		ft_move_next_quotes_pip(&str[*j], &n, j);
+		ft_move_next_quotes_pip(str, &n, j);
 		if (str[*j] == '(')
 		{
 			(*j)++;
@@ -98,6 +99,8 @@ char	**special_split_pipe(char *str)
 	n = count_str3(str, '|');
 	if (n == 0)
 		return (NULL);
+	if (n == 0)
+		return (NULL);
 	matriz = malloc((n + 1) * sizeof(char *));
 	matriz[n] = NULL;
 	i = 0;
@@ -106,3 +109,11 @@ char	**special_split_pipe(char *str)
 		matriz[i++] = gen_str_pip(str, &j);
 	return (matriz);
 }
+
+// int main(int argc, char **arg)
+// {
+// 	argc = 0;
+// 	ft_printf_arr(special_split_pipe(arg[1]));
+// 	return 0 ;
+// }
+
