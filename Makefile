@@ -4,7 +4,7 @@
 ################################################################################
 
 NAME        := minishell
-CC        := gcc
+CC        := gcc 
 DEBUG        := gcc 
 FLAGS    := -Wall -Wextra -Werror #-fsanitize=address -fno-omit-frame-pointer
 LIBFT = ./libft/libft.a

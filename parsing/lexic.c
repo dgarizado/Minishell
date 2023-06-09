@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 17:26:19 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:00:25 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ static void	check_heredocs(char *str)
 			g_data.flags.concurrency = 1;
 			break ;
 		}
+		if (str[i] == '\0')
+			break ;
 		i++;
 	}
 }
