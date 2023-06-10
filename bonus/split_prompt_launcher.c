@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:11:07 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/10 01:02:45 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/10 19:24:22 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	count_str2(char *str, char *c)
 	return (count);
 }
 
-static	void ft_aux(char *str, int *n, int *j)
+static	void	ft_aux(char *str, int *n, int *j)
 {
 	int		n_parentesis;
 
@@ -50,11 +50,11 @@ static	void ft_aux(char *str, int *n, int *j)
 	{
 		n_parentesis++;
 		(*j)++;
-		n++;
-		while (str[*j] != ')' || n_parentesis > 0)
+		(*n)++;
+		while ((str[*j] != ')' || n_parentesis > 0) && str[*j] != '\0')
 		{
 			(*j)++;
-			n++;
+			(*n)++;
 			if (str[*j] == '(')
 				n_parentesis++;
 			if (str[*j] == ')')
@@ -108,10 +108,10 @@ char	**special_split_launcher(char *str, char *c)
 		matriz[i++] = gen_str2(str, &j, c);
 	return (matriz);
 }
-
-// int main(int argc, char **arg)
-// {
-// 	argc = 0;
-// 	ft_printf_arr(special_split_launcher("echo esto es un fak ,\"(||)||(||)\", || .!|!. pip adios", "||"));
-// 	return 0 ;
-// }
+/*
+ int main(int argc, char **arg)
+{
+ 	argc = 0;
+ 	ft_printf_arr(special_split_launcher("echo (((((hola", "&&"));
+ 	return 0 ;
+}*/

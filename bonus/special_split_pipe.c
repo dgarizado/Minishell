@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:35:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/10 01:04:17 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/10 19:25:10 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static int	count_str3(char *str, char c)
 	while (str[i])
 	{
 		i = ft_move_next_quotes(str, i);
-		
 		if (str[i] == '(')
 		{
 			i++;
-			while (str[i] != ')')
+			while (str[i] != ')' && str[i] != '\0')
 				i++;
 		}
 		if (str[i] == '|' && str[i + 1] == '|')
@@ -56,7 +55,7 @@ static char	*gen_string_with_pip(char *str, int *j)
 		{
 			(*j)++;
 			n++;
-			while (str[*j] != ')')
+			while (str[*j] != ')' && str[*j] != '\0')
 			{
 				n++;
 				(*j)++;
@@ -109,11 +108,10 @@ char	**special_split_pipe(char *str)
 		matriz[i++] = gen_str_pip(str, &j);
 	return (matriz);
 }
+/*
+int main(void)
+{
 
-// int main(int argc, char **arg)
-// {
-// 	argc = 0;
-// 	ft_printf_arr(special_split_pipe(arg[1]));
-// 	return 0 ;
-// }
-
+	ft_printf_arr(special_split_pipe("echo ((((((((hola"));
+ 	return 0 ;
+}*/
