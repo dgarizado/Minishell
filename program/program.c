@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 19:26:29 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/09 22:50:49 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_execve(char **arr)
 	execve(str_path, matriz_command, g_data.env);
 	free(str_path);
 	str_error(arr[0], "command not found");
-	return (1);
+	return (127);
 }
 
 static int	ft_built_in(char **arr)
