@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:41:15 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/11 19:38:04 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:27:15 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	ft_check_to_and(char *arr)
 		i = ft_move_next_priority_quote(arr, i);
 		if (!ft_strncmp(&(arr[i]), "&&", 2))
 		{
+			write(2, "TO -> OR\n", 10);
 			status = ft_prompt_and(arr);
 			return (status);
 		}

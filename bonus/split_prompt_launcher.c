@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:11:07 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/11 19:36:52 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:27:12 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static	void	ft_aux(char *str, int *n, int *j)
 	if (str[*j] == '(')
 	{
 		n_parentesis++;
-		(*j)++;
-		(*n)++;
-		while ((str[*j] != ')' || n_parentesis > 0) && str[*j] != '\0')
+		//(*j)++;
+		//(*n)++;
+		while (n_parentesis != 0 && str[*j] != '\0')
 		{
 			(*j)++;
 			(*n)++;

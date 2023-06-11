@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 17:55:41 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:48:48 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ int				ft_check_to_or(char *arr);
 int				ft_prompt_launcher(char *arr);
 int				status_and_free(char **prompts, int status);
 int				ft_to_program(char **commands);
+int				ft_check_paralel_parenthesis(char *str_trimed);
 
 
 //BONUS WILDCARD

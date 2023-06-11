@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 19:24:22 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:27:49 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ char	*ft_trim_priority_parentesis(char *str)
 	char	*str_trim_parenthesis;
 
 	str_trim_spce = ft_strtrim(str, " ");
-	if (str_trim_spce[0] == '(' && str_trim_spce[ft_strlen(str_trim_spce) - 1] \
-	== ')')
+	if (ft_check_paralel_parenthesis(str_trim_spce))
 	{
 		tmp = str_trim_spce;
-		while (tmp[0] == '(' && tmp[ft_strlen(tmp) - 1] == ')')
+		while (ft_check_paralel_parenthesis(tmp))
 		{
 			str_trim_parenthesis = ft_substr(tmp, 1, ft_strlen(tmp) - 2);
 			free(tmp);
@@ -128,8 +127,9 @@ int	wedding_planner(char *str)
 int	ft_prompt_launcher(char *arr)
 {
 	int	status;
-
+	printf("PROMt 	%s\n", arr );
 	arr = ft_trim_priority_parentesis(arr);
+	printf("PROMt TRIMED	%s\n", arr);
 	status = ft_check_to_and(arr);
 	if (status != -1)
 	{

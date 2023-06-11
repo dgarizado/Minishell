@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 18:26:09 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:41:52 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,13 @@ static void	set_env_to_global(char **env)
 		i++;
 	}
 }
-
+/*
 void leaks(void)
 {
 	system("leaks minishell");
-}
+}*/
 
+//atexit(leaks);
 int	main(int argc, char **argv, char **env)
 {	
 	argc = 0;
@@ -93,7 +94,6 @@ int	main(int argc, char **argv, char **env)
 	ft_bzero(&g_data, sizeof(g_data));
 	g_data.original_std_out = dup(STDOUT_FILENO);
 	g_data.original_std_in = dup(STDIN_FILENO);
-	atexit(leaks);
 	set_env_to_global(env);
 	set_signals(1);
 	init();
