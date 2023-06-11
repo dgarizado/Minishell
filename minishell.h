@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 20:49:05 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:52:35 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,34 +50,33 @@ typedef struct s_wildcard
 {
 	char	*start;
 	char	*end;
-	char 	*end_aux;
+	char	*end_aux;
 	int		type;
-	
-} t_wildcards;
+}	t_wildcards;
 
 typedef struct s_data
 {
-	char	*input; 
-	char	*input_ex;
-	char	*str_redic;
-	char	**token1;
-	char	**tokenized_cmd;
-	char	**commands;
-	char	**infiles;
-	char	**outfiles;
-	char	**redics;
-	char	**env;
-	int		**pipes;
-	int		n_pipe;
-	int		fd_in;
-	int		fd_out;
-	pid_t	pid;
-	pid_t	child_pid;
-	t_flags	flags;
+	char		*input;
+	char		*input_ex;
+	char		*str_redic;
+	char		**token1;
+	char		**tokenized_cmd;
+	char		**commands;
+	char		**infiles;
+	char		**outfiles;
+	char		**redics;
+	char		**env;
+	int			**pipes;
+	int			n_pipe;
+	int			fd_in;
+	int			fd_out;
+	pid_t		pid;
+	pid_t		child_pid;
+	t_flags		flags;
 	t_wildcards	wc;
-	int		child_status;
-	int		original_std_out;
-	int		original_std_in;
+	int			child_status;
+	int			original_std_out;
+	int			original_std_in;
 }	t_data;
 
 //BUILTS IN
@@ -185,7 +184,6 @@ int				status_and_free(char **prompts, int status);
 int				ft_to_program(char **commands);
 int				ft_check_paralel_parenthesis(char *str_trimed);
 
-
 //BONUS WILDCARDS
 
 char			*ft_read_pipe(int fd, char *aux);
@@ -193,7 +191,7 @@ int				ft_check_wildcard(int i, int j, \
 int flag_expand, int flag_quote);
 int				ft_expand_star(int i, int j);
 int				ft_replace_chr(char *str, char c, char r);
-int				analyze_pattern (char *pattern);
+int				analyze_pattern(char *pattern);
 
 //BONUS WILDCARDS2
 
@@ -201,7 +199,7 @@ char			*strinder(char *str, char *pattern);
 
 //WILDCARDS AUX
 
-int 			ft_rstrncmp(const char *s1, const char*s2, unsigned int n);
+int				ft_rstrncmp(const char *s1, const char*s2, unsigned int n);
 char			*ft_more_stars(char *str);
 char			*ft_join_free(char *s1, char *s2);
 

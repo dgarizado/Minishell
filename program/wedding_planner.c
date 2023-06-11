@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 21:48:02 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:50:58 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int	wedding_planner(char *str)
 int	ft_prompt_launcher(char *arr)
 {
 	int	status;
+
 	arr = ft_trim_priority_parentesis(arr);
 	status = ft_check_to_and(arr);
 	if (status != -1)
