@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 18:04:59 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/09 22:50:49 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,32 @@ static int	ft_execve(char **arr)
 	gen_command_and_path(arr, g_data.env, &str_path, &matriz_command);
 	execve(str_path, matriz_command, g_data.env);
 	free(str_path);
-	return (str_error(arr[0], "command not found"));
+	str_error(arr[0], "command not found");
+	return (127);
 }
 
 static int	ft_built_in(char **arr)
 {
-	if (!ft_strncmp(arr[0], "echo", ft_strlen("echo")))
+	if (!ft_strncmp(arr[0], "echo", ft_strlen("echo")) && \
+	(ft_strlen("echo") == ft_strlen(arr[0])))
 		return (ft_echo(arr));
-	else if (!ft_strncmp(arr[0], "export", ft_strlen("export")))
+	else if (!ft_strncmp(arr[0], "export", ft_strlen("export")) \
+	&& (ft_strlen("export") == ft_strlen(arr[0])))
 		return (ft_export(arr));
-	else if (!ft_strncmp(arr[0], "unset", ft_strlen("unset")))
+	else if (!ft_strncmp(arr[0], "unset", ft_strlen("unset")) \
+	&& (ft_strlen("unset") == ft_strlen(arr[0])))
 		return (ft_unset(arr));
-	else if (!ft_strncmp(arr[0], "cd", ft_strlen("cd")))
+	else if (!ft_strncmp(arr[0], "cd", ft_strlen("cd")) \
+	&& (ft_strlen("cd") == ft_strlen(arr[0])))
 		return (ft_cd(arr));
-	else if (!ft_strncmp(arr[0], "pwd", ft_strlen("pwd")))
+	else if (!ft_strncmp(arr[0], "pwd", ft_strlen("pwd")) \
+	&& (ft_strlen("pwd") == ft_strlen(arr[0])))
 		return (ft_pwd(arr));
-	else if (!ft_strncmp(arr[0], "env", ft_strlen("env")))
+	else if (!ft_strncmp(arr[0], "env", ft_strlen("env")) \
+	&& (ft_strlen("env") == ft_strlen(arr[0])))
 		return (ft_env());
-	else if (!ft_strncmp(arr[0], "exit", ft_strlen("exit")))
+	else if (!ft_strncmp(arr[0], "exit", ft_strlen("exit")) \
+	&& (ft_strlen("exit") == ft_strlen(arr[0])))
 		return (ft_exit());
 	else
 		return (-1);

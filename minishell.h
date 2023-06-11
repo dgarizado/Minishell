@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 18:26:01 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:55:41 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ typedef struct s_flags
 	int	father;
 }	t_flags;
 
+typedef struct s_wildcard
+{
+	char	*start;
+	char	*end;
+	char 	*end_aux;
+	int		type;
+	
+} t_wildcards;
+
 typedef struct s_data
 {
 	char	*input;
@@ -63,8 +72,9 @@ typedef struct s_data
 	int		fd_in;
 	int		fd_out;
 	pid_t	pid;
-	t_flags	flags;
 	pid_t	child_pid;
+	t_flags	flags;
+	t_wildcards	wc;
 	int		child_status;
 	int		original_std_out;
 	int		original_std_in;
@@ -112,12 +122,14 @@ int				ft_error_in(char *s1, char *s2, char *s3, int ret);
 int				aux_del(int i);
 int				delete_str(int i, int j, char *str);
 int				ignore_redics(char *str, int *i);
+int				ft_alexic(void);
 
 //EXPAND
 int				ft_check_expand(int i, int j, int flag_quote, int flag_expand);
 
 //UNTOKEN
 char			*ft_untoken(void);
+char			*ft_copyy(char *dest, const char *src, size_t index);
 
 //PROGRAM
 int				ft_program(char *str);
@@ -142,7 +154,7 @@ int				check_to_exe(void);
 int				aux_dell(int i);
 
 //WEDDING PLANNER
-int				wedding_planner(void);
+int				wedding_planner(char *str);
 
 //SPECIAL SPLIT
 char			**specialsplit(char *str, char c);
@@ -158,10 +170,27 @@ void			sigint_handler_child(int sig);
 int				freelancer(void);
 int				ft_free_split(char **arr);
 
+//BONUS
+char			**special_split_pipe(char *str);
+char			**special_split_launcher(char *str, char *c);
+int				ft_move_next_quotes(char *str, int i);
+void			ft_move_next_quotes_pip(char *str, int *n, int *j);
+int				ft_move_next_parenthesis(char *str, int i);
+int				ft_prompt_and(char *arr);
+int				ft_prompt_or(char *arr);
+int				ft_check_to_and(char *arr);
+int				ft_check_to_or(char *arr);
+int				ft_prompt_launcher(char *arr);
+int				status_and_free(char **prompts, int status);
+int				ft_to_program(char **commands);
+
+
 //BONUS WILDCARD
 int				ft_check_wildcard(int i, int j, \
 int flag_expand, int flag_quote);
 int				ft_expand_star(int i, int j);
 int				ft_replace_chr(char *str, char c, char r);
+char			*ft_join_free(char *s1, char *s2);
+char			*ft_more_stars(char *str);
 
 #endif

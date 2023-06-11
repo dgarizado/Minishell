@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/08 20:01:01 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/09 22:31:07 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,24 @@ static void	ctrld(void)
 
 static void	ft_run(void)
 {
-	int	flag;
+	int	status;
 
-	flag = 0;
 	add_history_aux(g_data.input);
-	flag = ft_lexic();
-	if (flag == 0 && check_to_exe() == 0)
+	g_data.child_status = ft_lexic();
+	if (g_data.child_status == 0 && check_to_exe() == 0)
 	{
-		flag = ft_program(g_data.input_ex);
-		g_data.child_status = flag;
+		g_data.child_status = ft_program(g_data.input_ex);
 	}
-	else if (flag == 0)
+	else if (g_data.child_status == 0)
 	{
 		g_data.flags.father = 1;
 		g_data.child_pid = fork();
 		if (g_data.child_pid == 0)
 		{
 			set_signals(0);
-			wedding_planner();
+			status = ft_prompt_launcher(g_data.input_ex);
+			freelancer();
+			exit(status);
 		}
 	}
 	waitpid(g_data.child_pid, &g_data.child_status, 0);
@@ -57,6 +57,7 @@ static void	ft_run(void)
 		g_data.child_status = WEXITSTATUS(g_data.child_status);
 }
 
+//system("leaks minishell");
 /**
  * @brief Main process wont execute commands. 
  * it reads the input and then forks.
@@ -76,7 +77,6 @@ int	init(void)
 			g_data.flags.father = 0;
 		}
 		freelancer();
-		//system("leaks minishell");
 		g_data.flags.free_expanded = 0;
 	}
 	return (EXIT_SUCCESS);

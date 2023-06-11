@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/09 18:49:18 by vcereced          #+#    #+#              #
+#    Updated: 2023/06/11 15:30:05 by dgarizad         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 
 ################################################################################
 #                                     CONFIG                                   #
@@ -18,7 +30,7 @@ LIBS = -L "/Users/$(USER)/.brew/opt/readline/lib" -lreadline
 ################################################################################
 
 SRCS        :=      $(wildcard *.c) $(wildcard built-in/*.c) $(wildcard parsing/*.c) \
-$(wildcard program/*.c) $(wildcard redics/*.c) $(wildcard utils/*.c) 
+$(wildcard program/*.c) $(wildcard redics/*.c) $(wildcard utils/*.c) $(wildcard bonus/*.c)
                           
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
