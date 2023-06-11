@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 18:31:20 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/05/04 18:15:05 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:40:08 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	if (*needle == '\0')
 		return ((char *)haystack);
 	i = 0;
+	printf("haystack: %s\nneedle: %s\nlen: %zu\n", haystack, needle, len);
 	while (haystack[i] != '\0' && i < len)
 	{
 		if (*needle == haystack[i])

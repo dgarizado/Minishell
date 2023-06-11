@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 22:32:09 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:55:41 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ typedef struct s_flags
 	int	father;
 }	t_flags;
 
+typedef struct s_wildcard
+{
+	char	*start;
+	char	*end;
+	char 	*end_aux;
+	int		type;
+	
+} t_wildcards;
+
 typedef struct s_data
 {
 	char	*input;
@@ -63,8 +72,9 @@ typedef struct s_data
 	int		fd_in;
 	int		fd_out;
 	pid_t	pid;
-	t_flags	flags;
 	pid_t	child_pid;
+	t_flags	flags;
+	t_wildcards	wc;
 	int		child_status;
 	int		original_std_out;
 	int		original_std_in;
@@ -119,6 +129,7 @@ int				ft_check_expand(int i, int j, int flag_quote, int flag_expand);
 
 //UNTOKEN
 char			*ft_untoken(void);
+char			*ft_copyy(char *dest, const char *src, size_t index);
 
 //PROGRAM
 int				ft_program(char *str);
@@ -179,5 +190,7 @@ int				ft_check_wildcard(int i, int j, \
 int flag_expand, int flag_quote);
 int				ft_expand_star(int i, int j);
 int				ft_replace_chr(char *str, char c, char r);
+char			*ft_join_free(char *s1, char *s2);
+char			*ft_more_stars(char *str);
 
 #endif

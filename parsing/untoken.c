@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:55:54 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 18:02:46 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:55:23 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ extern t_data	g_data;
  * @param index 
  * @return char* 
  */
-static char	*ft_copyy(char *dest, const char *src, size_t index)
+char	*ft_copyy(char *dest, const char *src, size_t index)
 {
 	unsigned int	i;
 
