@@ -6,13 +6,36 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:53:53 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 19:02:09 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:15:47 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 extern t_data	g_data;
+
+/**
+ * @brief Checks if the string s2 is 
+ * contained at the end of the string s1.
+ * 
+ * @param s1 
+ * @param s2 
+ * @param n 
+ * @return int 
+ */
+int	ft_rstrncmp(const char *s1, const char*s2, unsigned int n)
+{
+	int	len1;
+	int	len2;
+	int	i;
+
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	i = len1 - len2;
+	if (ft_strncmp(s1 + i, s2, n) == 0)
+		return (0);
+	return (1);
+}
 
 /**
  * @brief WHen there are more than one star in the pattern,
@@ -22,7 +45,7 @@ extern t_data	g_data;
  * @param i
  * @return char*
  */
-char	*new_pattern(char *str, int i)
+static char	*new_pattern(char *str, int i)
 {
 	char	*new_pattern;
 	char	**str_array;
@@ -30,13 +53,13 @@ char	*new_pattern(char *str, int i)
 	int		j;
 
 	str_array = ft_split(str, ' ');
-	aux =  NULL;
+	aux = NULL;
 	new_pattern = ft_substr(g_data.wc.end, 0, i);
-	getchar();
 	j = 0;
 	while (str_array[j] != NULL)
 	{
-		if (ft_strnstr(str_array[j], new_pattern, ft_strlen(str_array[j])) != NULL)
+		if (ft_strnstr(str_array[j], new_pattern, \
+		ft_strlen(str_array[j])) != NULL)
 		{
 			if (aux == NULL)
 				aux = ft_strdup(str_array[j]);
@@ -50,7 +73,14 @@ char	*new_pattern(char *str, int i)
 	return (aux);
 }
 
-char	*ft_helper(char *str, char *aux)
+/**
+ * @brief This function is called when there is a star
+ * and frees the dinamic memory. 
+ * @param str 
+ * @param aux 
+ * @return char* 
+ */
+static char	*ft_helper(char *str, char *aux)
 {
 	free(str);
 	str = NULL;
@@ -84,7 +114,6 @@ char	*ft_more_stars(char *str)
 	}
 	if (aux != NULL)
 		return (ft_helper(str, aux));
-
 	return (str);
 }
 
