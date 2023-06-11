@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 17:55:41 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:27:38 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_wildcard
 
 typedef struct s_data
 {
-	char	*input;
+	char	*input; 
 	char	*input_ex;
 	char	*str_redic;
 	char	**token1;
