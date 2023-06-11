@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:51:45 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/11 19:37:13 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:46:41 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	ft_check_paralel_parenthesis(char *str_trimed)
 	{
 		while (str_trimed[i] != '\0')
 		{
+			i = ft_move_next_quotes(str_trimed, i);
 			if (str_trimed[i] == '(')
 				n_parentesis++;
 			if (str_trimed[i] == ')')
