@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:55 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 20:39:23 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:23:40 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void leaks(void)
 }
 */
 
-//atexit(leaks);
+	//atexit(leaks);
+
 int	main(int argc, char **argv, char **env)
 {	
 	argc = 0;

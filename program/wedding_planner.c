@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/10 19:23:28 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:33:22 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ char	*ft_trim_priority_parentesis(char *str)
 	char	*str_trim_parenthesis;
 
 	str_trim_spce = ft_strtrim(str, " ");
-	if (str_trim_spce[0] == '(' && str_trim_spce[ft_strlen(str_trim_spce) - 1] \
-	== ')')
+	if (ft_check_paralel_parenthesis(str_trim_spce) == 1)
 	{
 		tmp = str_trim_spce;
-		while (tmp[0] == '(' && tmp[ft_strlen(tmp) - 1] == ')')
+		while (ft_check_paralel_parenthesis(tmp) == 1)
 		{
 			str_trim_parenthesis = ft_substr(tmp, 1, ft_strlen(tmp) - 2);
 			free(tmp);

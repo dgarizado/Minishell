@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtsin.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:45:45 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 17:56:40 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:24:19 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_exit(void)
 {
 	if (g_data.input)
 		freelancer();
+	ft_free_split(g_data.env);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
