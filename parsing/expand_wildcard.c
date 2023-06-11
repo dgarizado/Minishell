@@ -6,13 +6,29 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/10 12:11:52 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:39:56 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 extern t_data	g_data;
+
+/**
+ * @brief This function reads the pipe and returns
+ * the string read.
+ * @param fd
+ * @return char*
+ */
+char	*ft_read_pipe(int fd, char *aux)
+{
+	char	buffer[1024];
+	int		i;
+
+	i = read(fd, buffer, 1024);
+	buffer[i] = '\0';
+	return (strinder(strdup(buffer), aux));
+}
 
 void	ft_checkquotess(int i, int *j, int *flag_quote, int *flag_expand)
 {
