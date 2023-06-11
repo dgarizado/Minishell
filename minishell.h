@@ -6,7 +6,7 @@
 /*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 20:38:10 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:45:08 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ int flag_expand, int flag_quote);
 int				ft_expand_star(int i, int j);
 int				ft_replace_chr(char *str, char c, char r);
 int				analyze_pattern (char *pattern);
+
 //BONUS WILDCARDS2
 
 char			*strinder(char *str, char *pattern);
