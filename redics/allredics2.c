@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allredics2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 17:57:45 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:18:56 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static void	ft_here_docc(char *eof, int i)
 	{
 		dup2(g_data.original_std_in, STDIN_FILENO);
 		close(fd[0]);
+		freelancer();
+		ft_free_split(g_data.env);
 		exit (delimiterr(eof, fd, g_data.original_std_out));
 	}
 	else

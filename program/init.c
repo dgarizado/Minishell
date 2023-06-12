@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 22:34:31 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 22:31:07 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:15:15 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	ft_run(void)
 			set_signals(0);
 			status = ft_prompt_launcher(g_data.input_ex);
 			freelancer();
+			ft_free_split(g_data.env);
 			exit(status);
 		}
 	}

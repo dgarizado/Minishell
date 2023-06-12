@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execve2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 18:04:41 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:07:01 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ static char	*copy(char *str_program, char *str_path, char *program)
 	size_t	j;
 
 	j = 0;
-	while (str_path[j++] != '\0')
-	str_program = (char *)calloc(j + ft_strlen(program) + 2, sizeof(char));
+	while (str_path[j] != '\0')
+		j++;
+	//str_program = (char *)calloc(j + ft_strlen(program) + 2, sizeof(char));
+	str_program = (char *)calloc(ft_strlen(str_path) + ft_strlen(program) + 2, sizeof(char));
 	if (!(str_program))
 		return (NULL);
 	j = ft_strlcpy(str_program, str_path, j + 1);
 	str_program[j++] = '/';
 	j = j + ft_strlcpy(&str_program[j], program, ft_strlen(program) + 1);
-	str_program[j] = '\0';
+	str_program[j++] = '\0';
 	return (str_program);
 }
 

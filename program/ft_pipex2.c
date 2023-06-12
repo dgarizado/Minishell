@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:32:29 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/09 18:40:18 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:28:28 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	receive_from_send_to_pipe(char *str)
 	dup2(g_data.pipes[g_data.n_pipe][STDOUT_FILENO], STDOUT_FILENO);
 	status = ft_prompt_launcher(str);
 	freelancer();
+	ft_free_split(g_data.env);
 	exit(status);
 }
 
@@ -32,6 +33,7 @@ void	sent_to_pipe(char *str)
 	dup2(g_data.pipes[g_data.n_pipe][STDOUT_FILENO], STDOUT_FILENO);
 	status = ft_prompt_launcher(str);
 	freelancer();
+	ft_free_split(g_data.env);
 	exit(status);
 }
 
@@ -42,5 +44,6 @@ void	receive_from_pipe(char *str)
 	dup2(g_data.pipes[g_data.n_pipe][STDIN_FILENO], STDIN_FILENO);
 	status = ft_prompt_launcher(str);
 	freelancer();
+	ft_free_split(g_data.env);
 	exit(status);
 }

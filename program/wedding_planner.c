@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 21:50:58 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 22:38:21 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,28 @@ char	*ft_trim_priority_parentesis(char *str)
 	char	*str_trim_spce;
 	char	*str_trim_parenthesis;
 
+	//printf("trim_priority before %s\n", str);
 	str_trim_spce = ft_strtrim(str, " ");
-	if (ft_check_paralel_parenthesis(str_trim_spce))
+	//printf("trim_priority after spc %s\n", str);
+	if (!ft_check_paralel_parenthesis(str_trim_spce))
 	{
+		//write(2, "ENTRA\n", 7);
 		tmp = str_trim_spce;
-		while (ft_check_paralel_parenthesis(tmp))
+		while (!ft_check_paralel_parenthesis(tmp))
 		{
 			str_trim_parenthesis = ft_substr(tmp, 1, ft_strlen(tmp) - 2);
 			free(tmp);
 			tmp = str_trim_parenthesis;
+			//printf("trim_priority after trim () %s\n", str);
 		}
 	}
 	else
 	{
+		//printf("EXMAPLE A() %s\n", str_trim_spce);
 		str_trim_parenthesis = ft_strdup(str_trim_spce);
 		free(str_trim_spce);
 	}
+	//printf("RETURN() %s\n", str_trim_parenthesis);
 	return (str_trim_parenthesis);
 }
 
@@ -108,7 +114,12 @@ int	wedding_planner(char *str)
 	int		status;
 	char	**commands;
 
+	//printf("str in wedding planer %s\n", str);
 	commands = special_split_pipe(str);
+	//write(2, "\nWEDDING PLANNER\n", 18);
+	//ft_printf_arr(commands);
+	//if (!commands)
+		//return (0);
 	if (ft_arrlen(commands) > 1)
 	{
 		status = ft_pipex(commands);
@@ -128,7 +139,10 @@ int	ft_prompt_launcher(char *arr)
 {
 	int	status;
 
+	//write(2, "\nft_prompt_launcher\n", 21);
+	//printf("\nbefore trim %s\n", arr);
 	arr = ft_trim_priority_parentesis(arr);
+	//printf("\nafter trim %s\n", arr);
 	status = ft_check_to_and(arr);
 	if (status != -1)
 	{

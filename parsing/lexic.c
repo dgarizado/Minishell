@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 20:43:59 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/11 22:38:32 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,12 @@ int	ft_lexic(void)
 	}
 	g_data.flags.token1 = 0;
 	g_data.token1 = specialsplit((g_data.input), ' ');
+	//write(2, "before\n", 8);
+	//ft_printf_arr(g_data.token1);
+	//write(2, "after\n", 7);
 	ft_check_expand(0, 0, 0, 0);
 	g_data.input_ex = ft_untoken();
+	//printf("expanded %s\n", g_data.input_ex);
 	if (ft_check_empty_pipe() == 258 || ft_strlen(g_data.input_ex) == 0)
 		return (258);
 	check_heredocs(g_data.input_ex);

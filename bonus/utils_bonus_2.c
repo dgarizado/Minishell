@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:51:45 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/11 21:46:41 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:14:18 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_to_program(char **commands)
 	{
 		status = ft_program(commands[0]);
 		ft_free_split(commands);
+		ft_free_split(g_data.env);
 		freelancer();
 		exit(status);
 	}
@@ -46,7 +47,7 @@ int	ft_to_program(char **commands)
  * @brief check if starts with '(' and finish with ')', 
  * then checks if there are paralel '( )'
  * @param str_trimed 
- * @return int 1 if not paralel '( )', return 0 if yes
+ * @return int 1 NO to trim , return 0 YES to trim
  */
 int	ft_check_paralel_parenthesis(char *str_trimed)
 {
@@ -68,9 +69,11 @@ int	ft_check_paralel_parenthesis(char *str_trimed)
 				break ;
 			i++;
 		}
+		if (i == ((int)ft_strlen(str_trimed) - 1))
+			return (0);
+		else
+			return (1);
 	}
-	if (i == ((int)ft_strlen(str_trimed) - 1))
-		return (1);
 	else
-		return (0);
+		return (1);
 }

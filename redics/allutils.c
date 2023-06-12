@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 19:19:48 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/11 22:57:25 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int	ft_de_oca_a_oca(int i, int j, int *flag_quote, int *flag_expand)
  */
 static int	ft_check_exe(void)
 {
-	if (ft_strncmp((g_data.token1[0]), "exit", \
-	ft_strlen(g_data.token1[0])) == 0 || \
+	if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen("exit")) == 0 || \
 	ft_strncmp((g_data.token1[0]), "export", 7) == 0 || \
 	ft_strncmp((g_data.token1[0]), "unset", 6) == 0 || \
 	ft_strncmp((g_data.token1[0]), "cd", 2) == 0)
