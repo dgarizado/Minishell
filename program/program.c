@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 17:05:22 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:02:59 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,11 @@ static int	ft_execute(char **arr)
  */
 int	ft_program(char *str)
 {
+	//printf("\nBEFORE REDIC '%s'\n", str);
 	ft_redicc(str);
+	//printf("\nAFTER REDIC '%s'\n", str);
+	if (is_space(str))
+		ft_exit();
 	g_data.flags.token1 = 1;
 	g_data.tokenized_cmd = specialsplit(str, ' ');
 	return (ft_execute(g_data.tokenized_cmd));

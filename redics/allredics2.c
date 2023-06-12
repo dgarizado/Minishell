@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 17:18:56 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:17:13 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,10 @@ static int	infiles_docc(void)
 			|| g_data.flags.here_doc_aux > i)
 				ft_here_docc(eof, i);
 			if (g_data.redics[i + 1] == NULL)
+			{
+				free(eof);
 				break ;
+			}
 			else
 				free(eof);
 		}
@@ -127,6 +130,7 @@ static int	check_infiless(void)
 	char	*aux;
 
 	i = 0;
+	aux = NULL;
 	while (g_data.infiles[i])
 	{
 		while (g_data.infiles[i] != NULL && g_data.infiles[i][1] == '<')
@@ -137,12 +141,14 @@ static int	check_infiless(void)
 		fd = open(aux, O_RDONLY);
 		if (fd == -1)
 		{
-			return (ft_error_in(RED"\nminishell: ", (g_data.infiles[i] + 1), \
-			": No such file or directory\n"RST_CLR, 1));
+			free(aux);
+			aux = NULL;
+			return (ft_error_in("", (g_data.infiles[i] + 1), "", 1));
 		}
 		close(fd);
 		i++;
 	}
+	free(aux);
 	return (0);
 }
 

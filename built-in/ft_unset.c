@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:56:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 18:00:47 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:55:50 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_count_to_clear(char **arr)
 	nvar_to_clear = 0;
 	while (g_data.env[i])
 	{
-		n = 1;
+		n = 0;
 		while (arr[n])
 		{
 			if (ft_get_var(arr[n], i) == 1)
@@ -43,18 +43,19 @@ static char	**ft_gen_new_arr_unset(char **arr)
 	int		i;
 	int		n;
 
-	if (!ft_count_to_clear(arr))
-		return (NULL);
-	len_new_env = ft_arrlen(g_data.env) - ft_count_to_clear(arr);
-	new_arr_env = (char **)malloc(sizeof(char *) * len_new_env + 1);
+	len_new_env = 0;
 	i = 0;
 	n = 0;
+	if (!ft_count_to_clear(arr))
+		return (NULL);
+	printf("\nn_var found %d\n", ft_count_to_clear(arr));
+	len_new_env = ft_arrlen(g_data.env) - ft_count_to_clear(arr);
+	new_arr_env = (char **)ft_calloc(sizeof(char *), len_new_env + 1);
 	while (i < ft_arrlen(g_data.env))
 	{
 		ft_copy(new_arr_env, arr, i, &n);
 		i++;
 	}
-	new_arr_env[n] = NULL;
 	return (new_arr_env);
 }
 

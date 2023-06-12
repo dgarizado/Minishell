@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allredic3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:54:37 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 17:57:33 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:12:46 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ int	ft_openn(int i)
 			dup2(g_data.fd_in, STDIN_FILENO);
 		close(g_data.fd_in);
 	}
+	else
+		free(aux);
 	return (0);
 }

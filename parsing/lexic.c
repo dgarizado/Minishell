@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:22:19 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 22:38:32 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:56:58 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	ft_is_closed(char *str, int *index, char c)
  * @param str 
  * @return int 
  */
-static int	is_space(char *str)
+int	is_space(char *str)
 {
 	int	i;
 
@@ -156,5 +156,6 @@ int	ft_lexic(void)
 	if (ft_check_empty_pipe() == 258 || ft_strlen(g_data.input_ex) == 0)
 		return (258);
 	check_heredocs(g_data.input_ex);
+	//printf("\nAFTER LEXIC '%s'\n", g_data.input_ex);
 	return (0);
 }

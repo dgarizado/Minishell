@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:51:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 19:46:17 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:56:53 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ char	**specialsplit(char *str, char c)
 	if (!str || !(str[0]))
 		return (NULL);
 	n = count_str(str, c);
+	//printf("\nCOUNT WORD SPLIT %d\n", n);
 	matriz = malloc((n + 1) * sizeof(char *));
 	matriz[n] = NULL;
 	i = 0;

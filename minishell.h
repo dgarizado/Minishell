@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 21:52:35 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:54:57 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int				init(void);
 
 //LEXIC
 int				ft_lexic(void);
+int				is_space(char *str);
 
 //UTILS
 int				ft_error(char *err);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/07 18:06:05 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:17:29 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ int	ft_error(char *err)
  */
 int	ft_error_in(char *s1, char *s2, char *s3, int ret)
 {
-	ft_putstr_fd(s1, 2);
+	s1 = NULL;
+	s3 = NULL;
+	ft_putstr_fd(RED"\nminishell: "RST_CLR, 2);
 	if (s2)
 		ft_putstr_fd(s2, 2);
-	ft_putstr_fd(s3, 2);
-	exit (ret);
+	ft_putstr_fd(": No such file or directory\n"RST_CLR, 2);
+	exit(ret);
 }
 
 /**

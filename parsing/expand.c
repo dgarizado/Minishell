@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:03:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/09 17:26:21 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:21:50 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static char	*ft_getenv(int i, int j, int lenvar)
 	int		n;
 
 	aux = NULL;
-	var = ft_substr(g_data.token1[i], j + 1, lenvar - 1);
-	n = 0;
 	if (g_data.token1[i][j + 1] == '?')
 		return (ft_itoa(g_data.child_status));
+	var = ft_substr(g_data.token1[i], j + 1, lenvar - 1);
+	n = 0;
 	while (g_data.env[n])
 	{
 		if (ft_strncmp(g_data.env[n], var, ft_strlen(var)) == 0 \
