@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:56:47 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/12 18:55:50 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 23:25:53 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static char	**ft_gen_new_arr_unset(char **arr)
 	n = 0;
 	if (!ft_count_to_clear(arr))
 		return (NULL);
-	printf("\nn_var found %d\n", ft_count_to_clear(arr));
 	len_new_env = ft_arrlen(g_data.env) - ft_count_to_clear(arr);
 	new_arr_env = (char **)ft_calloc(sizeof(char *), len_new_env + 1);
 	while (i < ft_arrlen(g_data.env))

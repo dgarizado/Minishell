@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:11:07 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/11 21:30:57 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:59:58 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ char	**special_split_launcher(char *str, char *c)
  int main(int argc, char **arg)
 {
  	argc = 0;
- 	ft_printf_arr(special_split_launcher("echo (((((hola", "&&"));
+ 	ft_printf_arr(special_split_launcher("((echo 222 || echo 333) ||| cat) '|' cat", "||"));
  	return 0 ;
 }*/

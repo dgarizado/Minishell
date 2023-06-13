@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 17:54:57 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 22:44:32 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_data
 	char		**outfiles;
 	char		**redics;
 	char		**env;
-	int			**pipes;
+	int			pipes[100][2];
 	int			n_pipe;
 	int			fd_in;
 	int			fd_out;
@@ -176,6 +176,7 @@ char			**special_split_launcher(char *str, char *c);
 int				ft_move_next_quotes(char *str, int i);
 void			ft_move_next_quotes_pip(char *str, int *n, int *j);
 int				ft_move_next_parenthesis(char *str, int i);
+int				ft_move_next_priority_quote(char *arr, int i);
 int				ft_prompt_and(char *arr);
 int				ft_prompt_or(char *arr);
 int				ft_check_to_and(char *arr);

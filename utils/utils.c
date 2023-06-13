@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 19:17:29 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 23:59:40 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_error_in(char *s1, char *s2, char *s3, int ret)
 	if (s2)
 		ft_putstr_fd(s2, 2);
 	ft_putstr_fd(": No such file or directory\n"RST_CLR, 2);
+	freelancer();
+	ft_free_split(g_data.env);
 	exit(ret);
 }
 

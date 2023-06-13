@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:41:15 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/11 21:48:17 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:22:27 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_move_next_quotes_pip(char *str, int *n, int *j)
 	}
 }
 
-static int	ft_move_next_priority_quote(char *arr, int i)
+int	ft_move_next_priority_quote(char *arr, int i)
 {
 	int	n_parentesis;
 

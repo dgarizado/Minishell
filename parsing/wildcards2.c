@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 20:18:00 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 20:43:41 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:26:50 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ char	*end_matchs(char *str)
 	aux = NULL;
 	if (str == NULL)
 		return (str);
-	str_array = end_matchs_aux(str);
 	str = ft_more_stars(str);
+	str_array = end_matchs_aux(str);
 	while (str_array[i] != NULL)
 	{
 		if (ft_rstrncmp(str_array[i], g_data.wc.end, \

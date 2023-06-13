@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 18:02:59 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:54:03 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ static int	ft_execve(char **arr)
 	char	**matriz_command;
 
 	gen_command_and_path(arr, g_data.env, &str_path, &matriz_command);
+	//write(1, "BOOM\n", 5);
+	//ft_printf_arr(matriz_command);
+	//printf("\npath -> %s\n", str_path);
 	execve(str_path, matriz_command, g_data.env);
 	free(str_path);
 	str_error(arr[0], "command not found");
@@ -84,5 +87,8 @@ int	ft_program(char *str)
 		ft_exit();
 	g_data.flags.token1 = 1;
 	g_data.tokenized_cmd = specialsplit(str, ' ');
+	//write(1, "SPECIAL SPLIT\n", 15);
+	//ft_printf_arr(g_data.tokenized_cmd);
+	//write(1, "----------\n", 12);
 	return (ft_execute(g_data.tokenized_cmd));
 }

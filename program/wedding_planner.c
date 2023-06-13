@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:37:46 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 22:38:21 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:46:54 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_prompt_and(char *arr)
 
 	prompts = special_split_launcher(arr, "&&");
 	i = 0;
-	if (ft_arrlen(prompts) > 1)
+	if (prompts && ft_arrlen(prompts) > 1)
 	{
 		while (prompts[i])
 		{
@@ -81,7 +81,7 @@ int	ft_prompt_or(char *arr)
 
 	prompts = special_split_launcher(arr, "||");
 	i = 0;
-	if (ft_arrlen(prompts) > 1)
+	if (prompts && ft_arrlen(prompts) > 1)
 	{
 		while (prompts[i])
 		{
@@ -115,9 +115,11 @@ int	wedding_planner(char *str)
 	char	**commands;
 
 	//printf("str in wedding planer %s\n", str);
+	//getchar();
 	commands = special_split_pipe(str);
 	//write(2, "\nWEDDING PLANNER\n", 18);
 	//ft_printf_arr(commands);
+	//getchar();
 	//if (!commands)
 		//return (0);
 	if (ft_arrlen(commands) > 1)

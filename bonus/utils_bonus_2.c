@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 22:51:45 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/12 17:14:18 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:32:17 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@ extern t_data	g_data;
 
 int	status_and_free(char **prompts, int status)
 {
-	ft_free_split(prompts);
-	return (status);
+	if(*prompts)
+	{
+		ft_free_split(prompts);
+		prompts = NULL;
+		return (status);
+	}
+	else
+		return (status);
 }
 
 int	ft_to_program(char **commands)
