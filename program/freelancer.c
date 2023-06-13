@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:03:13 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 22:41:04 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:32:22 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_free_split(char **arr)
 	int	i;
 
 	i = 0;
-	// getchar();
 	if (arr == NULL)
 		return (0);
 	while (arr[i])
@@ -54,11 +53,5 @@ int	freelancer(void)
 		ft_free_split(g_data.tokenized_cmd);
 		g_data.tokenized_cmd = NULL;
 	}
-/*	if (g_data.pipes != NULL)
-	{
-		while(g)
-		ft_free_split(g_data.pipes);
-		g_data.pipes = NULL;
-	}*/
 	return (0);
 }

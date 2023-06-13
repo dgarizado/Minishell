@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:35:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/12 20:12:07 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:34:16 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ static int	count_str3(char *str, char c)
 	{
 		i = ft_move_next_quotes(str, i);
 		i = ft_move_next_priority_quote(str, i);
-		// if (str[i] == '(')
-		// {
-		// 	i++;
-		// 	while (str[i] != ')' && str[i] != '\0')
-		// 		i++;
-		// }
 		if (str[i] == '|' && str[i + 1] == '|')
 		{
 			i++;
@@ -44,10 +38,9 @@ static int	count_str3(char *str, char c)
 	return (count);
 }
 
-static char	*gen_string_with_pip(char *str, int *j)//echo 111 (|')' echo adios | echo 333)
+static char	*gen_string_with_pip(char *str, int *j)
 {
 	int		n;
-	//int		extra;
 	int		tmp;
 
 	n = 0;
@@ -56,19 +49,7 @@ static char	*gen_string_with_pip(char *str, int *j)//echo 111 (|')' echo adios |
 		ft_move_next_quotes_pip(str, &n, j);
 		tmp = *j;
 		*j = ft_move_next_priority_quote(str, *j);
-		//*j = extra;
 		n = n + (*j - tmp);
-		/*if (str[*j] == '(')
-		{
-			(*j)++;
-			n++;
-			while (str[*j] != ')' && str[*j] != '\0')
-			{
-				ft_move_next_quotes_pip(str, &n, j);
-				n++;
-				(*j)++;
-			}
-		}*/
 		n++;
 		(*j)++;
 		if (str[*j] == '|' && str[*j + 1] == '|')
@@ -104,7 +85,6 @@ char	**special_split_pipe(char *str)
 	if (!str || !(str[0]))
 		return (NULL);
 	n = count_str3(str, '|');
-	//printf("\nn_WORDS %d\n", n);
 	if (n == 0)
 		return (NULL);
 	if (n == 0)
@@ -117,9 +97,3 @@ char	**special_split_pipe(char *str)
 		matriz[i++] = gen_str_pip(str, &j);
 	return (matriz);
 }
-/*
-int main(void)
-{
-	ft_printf_arr(special_split_pipe("(echo 222 | echo 333) | asdf "));
- 	return 0 ;
-}*/

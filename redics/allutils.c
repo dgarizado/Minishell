@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/13 18:57:16 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:29:11 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ static int	ft_check_pipes(void)
  */
 int	check_to_exe(void)
 {
-	if (ft_check_exe() == 0 && ft_check_pipes() == 1 && g_data.flags.concurrency == 0)
+	if (ft_check_exe() == 0 && ft_check_pipes() == 1 \
+	&& g_data.flags.concurrency == 0)
 	{
 		return (0);
 	}

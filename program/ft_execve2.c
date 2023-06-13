@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/13 15:57:32 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:34:39 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static char	*copy(char *str_program, char *str_path, char *program)
 	j = 0;
 	while (str_path[j] != '\0')
 		j++;
-	//str_program = (char *)calloc(j + ft_strlen(program) + 2, sizeof(char));
-	str_program = (char *)calloc(ft_strlen(str_path) + ft_strlen(program) + 2, sizeof(char));
+	str_program = (char *)calloc(ft_strlen(str_path) + ft_strlen(program) \
+	+ 2, sizeof(char));
 	if (!(str_program))
 		return (NULL);
 	j = ft_strlcpy(str_program, str_path, j + 1);

@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 23:20:33 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:29:45 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ static char	get_next_redicc(char *str, char c)
 		ignore_redics(str, &i);
 		auxc(&i, &j, &k, c);
 		if ((size_t)i > ft_strlen(str))
-			break;
+			break ;
 	}
 	g_data.str_redic = NULL;
 	return (0);
