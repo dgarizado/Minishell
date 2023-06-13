@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/11 22:57:25 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:36:13 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_de_oca_a_oca(int i, int j, int *flag_quote, int *flag_expand)
  * @return int 0 For executing directly at current parent process, 
  * 1 for executing in a child process.
  */
-static int	ft_check_exe(void)
+int	ft_check_exe(void)
 {
 	if (ft_strncmp((g_data.token1[0]), "exit", ft_strlen("exit")) == 0 || \
 	ft_strncmp((g_data.token1[0]), "export", 7) == 0 || \
@@ -71,8 +71,7 @@ static int	ft_check_pipes(void)
  */
 int	check_to_exe(void)
 {
-	if (ft_check_exe() == 0 && ft_check_pipes() == 1 \
-	&& g_data.flags.concurrency == 0)
+	if (ft_check_exe() == 0 && ft_check_pipes() == 1 && g_data.flags.concurrency == 0)
 	{
 		return (0);
 	}

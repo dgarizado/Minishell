@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 19:17:13 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:49:50 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ static int	infiles_docc(void)
  * yes, it can be done with access, but we get the same result.
  * @return int 
  */
-static int	check_infiless(void)
+int	check_infiless(void)
 {
 	int		i;
 	int		fd;

@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 22:44:32 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:45:25 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ int				ft_get_var(char *str, int n);
 char			**ft_gen_new_arr(char *str_parsed);
 char			**ft_abort(char **new_array, unsigned int i);
 void			ft_copy(char **new_arr_env, char **arr, int i, int *n);
-int				chdir_swap(char *new_path, char **arr);
-char			*swap_arg(char *s1, char *s2);
 void			gen_command_and_path(char **ar, char **en, \
 char **path, char ***matriz);
 
@@ -139,6 +137,7 @@ char			get_next_redic(char *str, char c);
 
 //ALLREDICS2
 int				analyze_redicc(void);
+int				check_infiless(void);
 
 //ALLREDIC
 int				ft_redicc(char *str);
@@ -152,6 +151,7 @@ int				ft_de_oca_a_oca(int i, int j, \
 int *flag_quote, int *flag_expand);
 int				check_to_exe(void);
 int				aux_dell(int i);
+int				ft_check_exe(void);
 
 //WEDDING PLANNER
 int				wedding_planner(char *str);

@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:55:30 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/13 14:42:56 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:57:32 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	gen_command_and_path(char **ar, char **en, char **path, char ***matriz)
 {
 	*matriz = ar;
 	if ((*matriz)[0][0] == '/' || (*matriz)[0][0] == '.')
-		*path = (*matriz)[0];
+		*path = ft_strdup((*matriz)[0]);
 	else
 		*path = gen_str_path(en, "PATH", ar[0]);
 }

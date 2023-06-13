@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:06:28 by vcereced          #+#    #+#             */
-/*   Updated: 2023/06/07 16:35:44 by dgarizad         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:33:18 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,11 @@ static int	ch_home(char **arr)
 		return (msg_error(arr[0], arr[1]));
 }
 
-static int	count_args(char **arr)
-{
-	int	n;
-
-	n = 0;
-	while (arr[n])
-		n++;
-	return (n);
-}
-
 int	ft_cd(char **arr)
 {
 	update_pwds("OLDPWD=");
 	if (!arr || !*arr)
 		return (127);
-	else if (count_args(arr) > 3)
-		return (str_error(arr[0], "too many arguments"));
-	else if (count_args(arr) == 3)
-		return (chdir_swap(swap_arg(arr[1], arr[2]), arr));
 	else if (!arr[1])
 		return (ch_home(arr));
 	else if (chdir(arr[1]) == 0)
