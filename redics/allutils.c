@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 21:06:29 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/13 17:36:13 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:57:16 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	aux_dell(int i)
 {
 	while (g_data.redics[i])
 	{
-		ignore_redics(g_data.redics[i], &i);
 		if (g_data.redics[i][1] == '<' && g_data.redics[i][2] == '<')
 		{
 			printf(RED"minishell: syntax error near unexpected token `<'\n"\
