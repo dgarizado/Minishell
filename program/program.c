@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgarizad <dgarizad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:59:17 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/12 18:02:59 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:29:50 by dgarizad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,18 @@ static int	ft_execute(char **arr)
  */
 int	ft_program(char *str)
 {
+	int i;
+
+	
+	g_data.tokenized_cmd = specialsplit(str, ' ');
+	i = ft_built_in(g_data.tokenized_cmd);
+	if (i != -1)
+		return (i);
+	else 
+	{
+		free(g_data.tokenized_cmd);
+		g_data.tokenized_cmd = NULL;
+	}
 	//printf("\nBEFORE REDIC '%s'\n", str);
 	ft_redicc(str);
 	//printf("\nAFTER REDIC '%s'\n", str);
