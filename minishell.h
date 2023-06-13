@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:48:02 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/13 17:45:25 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:49:11 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ int				check_infiless(void);
 int				ft_redicc(char *str);
 
 //ALLREDIC3
+int				infiles_docc_aux(int i, char *eof);
 int				ft_open_outfile(int i);
 int				ft_openn(int i);
 

@@ -6,13 +6,35 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:54:37 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/13 17:44:22 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:50:08 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 extern t_data	g_data;
+
+int	infiles_docc_aux(int i, char *eof)
+{
+	if (g_data.redics[i + 1] == NULL)
+	{
+		free(eof);
+		eof = NULL;
+		return (1);
+	}
+	return (0);
+}
+
+int	ft_open_outfile2(int i, char *aux)
+{
+	if (g_data.infiles)
+		check_infiless();
+	if (g_data.redics[i][1] == '>')
+		g_data.fd_out = open(aux, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	else
+		g_data.fd_out = open(aux, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	return (0);
+}
 
 int	ft_open_outfile(int i)
 {
@@ -28,12 +50,7 @@ int	ft_open_outfile(int i)
 		g_data.flags.here_doc_aux = i;
 		return (258);
 	}
-	if (g_data.infiles)
-			check_infiless();
-	if (g_data.redics[i][1] == '>')
-		g_data.fd_out = open(aux, O_WRONLY | O_CREAT | O_APPEND, 0644);
-	else
-		g_data.fd_out = open(aux, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	ft_open_outfile2(i, aux);
 	if (g_data.fd_out != -1)
 	{
 		free(aux);

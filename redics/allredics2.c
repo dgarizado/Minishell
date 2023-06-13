@@ -6,7 +6,7 @@
 /*   By: vcereced <vcereced@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:25:47 by dgarizad          #+#    #+#             */
-/*   Updated: 2023/06/13 17:49:50 by vcereced         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:49:46 by vcereced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,8 @@ static int	infiles_docc(void)
 			if (g_data.flags.here_doc_ret != 258 \
 			|| g_data.flags.here_doc_aux > i)
 				ft_here_docc(eof, i);
-			if (g_data.redics[i + 1] == NULL)
-			{
-				free(eof);
+			if (infiles_docc_aux(i, eof) == 1)
 				break ;
-			}
 			else
 				free(eof);
 		}
